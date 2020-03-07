@@ -247,6 +247,22 @@ header.masthead8 {
 	border: 1px solid #000;
 }
 
+header.masthead8-1 {
+	margin-top: 10px;
+	margin-left: 500px;
+	width: 150px;
+	height: 30px;
+	border: 1px solid #000;
+}
+
+header.masthead8-2 {
+	margin-top: 10px;
+	margin-left: 500px;
+	width: 150px;
+	height: 30px;
+	border: 1px solid #000;
+}
+
 #store-filter{
 	margin-left: 10px;
 	width: 150px;
@@ -278,6 +294,32 @@ header.masthead8 {
 }
 
 #store-filter3-2{
+	text-align: left;
+	margin-left: 10px;
+	width: 50px;
+	height: 10px;
+	float: left;
+}
+
+#store-filter4{
+	margin-top: 10px;
+	text-align: left;
+	margin-left: 20px;
+	width: 50px;
+	height: 100px;
+	float: left;
+}
+
+
+#store-filter4-1{
+	text-align: left;
+	margin-left: 10px;
+	width: 50px;
+	height: 10px;
+	float: left;
+}
+
+#store-filter4-2{
 	text-align: left;
 	margin-left: 10px;
 	width: 50px;
@@ -369,3 +411,26 @@ header.masthead8 {
 	list-style: none;
 	float: left;
 }
+
+.menu5-1 ul{}
+
+.menu5-1 {
+	margin-left: 40px;
+	list-style: none;
+	float: left;
+}
+
+.menu5-2 ul{}
+
+.menu5-2 {
+	margin-left: 40px;
+	list-style: none;
+	float: left;
+}
+
+.menu6 {
+	margin-right: 40px;
+	margin-top: 10px;
+	margin-left: 40px;
+}
+
