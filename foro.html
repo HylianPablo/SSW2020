@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>HealthyBowl</title>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  	<link rel="stylesheet" type="text/css" href="styles.css">
+  	<!--<link rel="stylesheet" type="text/css" href="bootstrap.css">-->
+</head>
+<body id="page-top">
+	<div id=app></div>
+  	<!--Banner-->
+	<header class="masthead">
+  		<div class="container">
+  			<div class="intro-class">
+  				<div class="intro-lead-in">HealthyBowl</div>
+  				<div class="intro-heading text-uppercase">Dietas a medida</div>
+  			</div>
+  		</div>
+  	</header>
+
+
+	<div class="container" id="cuerpo">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light" id="mainNav">
+			<div class="container">
+				<a class="navbar-brand js-scroll-trigger" href="#page-top">HealthyBowl</a>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav text-uppercase mx-auto">
+						<li class="nav-item">
+							<a class="nav-link js-scroll-trigger" href="#services">Inicio</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link js-scroll-trigger actualPage" href="#portfolio">Foro</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link js-scroll-trigger" href="#about">Top Dietas</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+        <h1>Foro principal</h1>
+        <br>
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Nueva entrada:</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Agregar entrada...">
+            </div>
+            <button type="submit" class="btn btn-primary entradaBoton">Submit</button>
+        </form>
+        <br>
+        <br>
+        <br>
+        <br>
+        <textarea class="form-control entradaForo" rows="6" autofocus readonly>
+        La dieta mediterránea es genial.
+
+        Desayunar pan con aceite y tomate regula la circulación sanguínea...
+        </textarea>
+            <button type="button" id="addEntrada" onclick="addEntradaF()" class="btn btn-primary agregarEntradaBoton">+</button>
+            <br>
+            <br>
+            <input type="text" id="respuesta" class="form-control nuevaEntrada" placeholder="Respuesta">
+        <br>
+        <br>
+
+        <script>
+        function addEntradaF(){
+            var textarea = document.getElementById("respuesta");
+            textarea.style.display="block";
+        }
+        </script>
