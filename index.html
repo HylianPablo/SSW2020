@@ -52,97 +52,158 @@
 			<a class="btn btn-warning" href="#" role="button">Regístrate</a>
 		</div><br/>
 		<h2 class="text-center">Crea tu dieta personalizada</h2><br/>
-		<div id="carouselExampleCaptions" class="carousel slide mx-5" data-ride="carousel" data-interval="true">
+		<div id="carouselCreaDieta" class="carousel slide mx-5 rounded" data-ride="carousel" data-interval="true">
 			<ol class="carousel-indicators">
-				<li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-				<li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-				<li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+				<li data-target="#carouselCreaDieta" data-slide-to="0" class="active"></li>
+				<li data-target="#carouselCreaDieta" data-slide-to="1"></li>
+				<li data-target="#carouselCreaDieta" data-slide-to="2"></li>
 			</ol>
 			<div class="carousel-inner">
 				<form class="form-group">
-					<div class="carousel-item active bg-transparent px-5">
-						<div class="container">
-							<h5>Datos personales</h5>
+					<div class="carousel-item active bg-transparent p-5">
+						<div class="formulario">
+						<div class="container text-center">
+							<h4>Datos personales</h4>
 						</div>
-						<div class="form-group formulario">
-							<label for="ageForm">Edad:</label><br>
-							<input class="form-control" type="text" id="ageForm" name="ageForm"><br/>
-							<label for="heigthForm">Altura:</label>
-							<input class="form-control" type="text" id="heigthForm" name="heigthForm"><br/>
-							<label for="ageForm">Sexo:</label>
-							<input class="form-control" type="text" id="sexForm" name="sexForm"><br/>
-							<label for="weigthForm">Peso:</label>
-							<input class="form-control" type="text" id="weigthForm" name="weigthForm"><br/>
-							<label for="idealWeigthForm">Peso ideal:</label>
-							<input class="form-control" type="text" id="idealWeigthForm" name="idealWeigthForm"><br/>
+						<div class="container my-5">
+							<div class="form-group">
+								<label for="ageForm">Edad:</label>
+								<input class="form-control" type="text" id="ageForm" name="ageForm">
+							</div>
+							<div class="form-group">
+								<label for="heigthForm">Altura:</label>
+								<input class="form-control" type="text" id="heigthForm" name="heigthForm">
+							</div>
+							<div class="form-group">
+								<label for="weigthForm">Peso actual:</label>
+								<input class="form-control" type="text" id="weigthForm" name="weigthForm">
+							</div>
+							<div class="form-group">
+								<label for="idealWeigthForm">Peso ideal (opcional):</label>
+								<input class="form-control" type="text" id="idealWeigthForm" name="idealWeigthForm">
+							</div>
 						</div>
 						<div class="float-right">
-							<a class="btn btn-primary" href="#carouselExampleCaptions" role="button" data-slide="next">Siguiente ></a>
+							<a class="btn btn-primary" href="#carouselCreaDieta" role="button" data-slide="next">Siguiente ></a>
+						</div>
 						</div>
 					</div>
-					<div class="carousel-item bg-transparent px-5">
+					<div class="carousel-item bg-transparent p-5">
 						<div class="formulario">
-						<div class="container my-5">
-							<h5>Alergias</h5>
-							<div class="custom-control custom-checkbox checkbox-xl">
-								<input type="checkbox" class="custom-control-input" id="frutosSecosCheck">
-								<label class="custom-control-label" for="frutosSecosCheck"> Frutos secos</label>
-							</div>
-							<div class="custom-control custom-checkbox checkbox-xl">
-								<input type="checkbox" class="custom-control-input" id="cerdoCheck">
-								<label class="custom-control-label" for="cerdoCheck"> Cerdo</label>
-							</div>
-							<div class="custom-control custom-checkbox checkbox-xl">
-								<input type="checkbox" class="custom-control-input" id="mariscoCheck">
-								<label class="custom-control-label" for="mariscoCheck"> Marisco</label>
-							</div>
-							<div class="custom-control custom-checkbox checkbox-xl">
-								<input type="checkbox" class="custom-control-input" id="melocotonCheck">
-								<label class="custom-control-label" for="melocotonCheck"> Melocotón</label>
-							</div>
+						<div class="container text-center">
+							<h4>Incompatibilidades de alimentos</h4>
 						</div>
-						<div class="container my-5">
-							<h5>Intolerancias</h5>
-							<div class="custom-control custom-checkbox checkbox-xl">
-								<input type="checkbox" class="custom-control-input" id="celicacoCheck">
-								<label class="custom-control-label" for="celicacoCheck"> Celiaco (Gluten)</label>
+						<div class="row">
+							<div class="col container my-5">
+								<h5>Alergias</h5>
+								<div class="custom-control custom-checkbox checkbox-xl">
+									<input type="checkbox" class="custom-control-input" id="cerdoCheck">
+									<label class="custom-control-label" for="cerdoCheck"> Cerdo</label>
+								</div>
+								<div class="custom-control custom-checkbox checkbox-xl">
+									<input type="checkbox" class="custom-control-input" id="mariscoCheck">
+									<label class="custom-control-label" for="mariscoCheck"> Marisco</label>
+								</div>
+								<div class="custom-control custom-checkbox checkbox-xl">
+									<input type="checkbox" class="custom-control-input" id="pescadoCheck">
+									<label class="custom-control-label" for="pescadoCheck"> Pescado</label>
+								</div>
+								<div class="custom-control custom-checkbox checkbox-xl">
+									<input type="checkbox" class="custom-control-input" id="huevoCheck">
+									<label class="custom-control-label" for="huevoCheck"> Huevo</label>
+								</div>
+								<div class="custom-control custom-checkbox checkbox-xl">
+									<input type="checkbox" class="custom-control-input" id="frutosSecosCheck">
+									<label class="custom-control-label" for="frutosSecosCheck"> Frutos secos (no cacahuetes)</label>
+								</div>
+								<div class="custom-control custom-checkbox checkbox-xl">
+									<input type="checkbox" class="custom-control-input" id="cacahuetesCheck">
+									<label class="custom-control-label" for="cacahuetesCheck"> Cacahuetes</label>
+								</div>
+								<div class="custom-control custom-checkbox checkbox-xl">
+									<input type="checkbox" class="custom-control-input" id="sojaCheck">
+									<label class="custom-control-label" for="sojaCheck"> Soja</label>
+								</div>
 							</div>
-							<div class="custom-control custom-checkbox checkbox-xl">
-								<input type="checkbox" class="custom-control-input" id="lactosaCheck">
-								<label class="custom-control-label" for="lactosaCheck"> Lactosa</label>
+							<div class="col container my-5">
+								<h5>Alergias a frutas</h5>
+								<div class="custom-control custom-checkbox checkbox-xl">
+									<input type="checkbox" class="custom-control-input" id="melocotonCheck">
+									<label class="custom-control-label" for="melocotonCheck"> Melocotón</label>
+								</div>
+								<div class="custom-control custom-checkbox checkbox-xl">
+									<input type="checkbox" class="custom-control-input" id="peraCheck">
+									<label class="custom-control-label" for="peraCheck"> Pera</label>
+								</div>
+								<div class="custom-control custom-checkbox checkbox-xl">
+									<input type="checkbox" class="custom-control-input" id="manzanaCheck">
+									<label class="custom-control-label" for="manzanaCheck"> Manzana</label>
+								</div>
+								<div class="custom-control custom-checkbox checkbox-xl">
+									<input type="checkbox" class="custom-control-input" id="melonCheck">
+									<label class="custom-control-label" for="melonCheck"> Melón</label>
+								</div>
+								<div class="custom-control custom-checkbox checkbox-xl">
+									<input type="checkbox" class="custom-control-input" id="kiwiCheck">
+									<label class="custom-control-label" for="kiwiCheck"> Kiwi</label>
+								</div>
+								<div class="custom-control custom-checkbox checkbox-xl">
+									<input type="checkbox" class="custom-control-input" id="pinaCheck">
+									<label class="custom-control-label" for="pinaCheck"> Piña</label>
+								</div>
+								<div class="custom-control custom-checkbox checkbox-xl">
+									<input type="checkbox" class="custom-control-input" id="fresaCheck">
+									<label class="custom-control-label" for="fresaCheck"> Fresa</label>
+								</div>
 							</div>
-						</div>
-						<div class="container my-5">
-							<h5>Otras incompatibilidades</h5>
-							<div class="custom-control custom-checkbox checkbox-xl">
-								<input type="checkbox" class="custom-control-input" id="vegetarianoCheck">
-								<label class="custom-control-label" for="vegetarianoCheck"> Vegetariano</label>
+							<div class="col container">
+								<div class="container my-5">
+									<h5>Intolerancias</h5>
+									<div class="custom-control custom-checkbox checkbox-xl">
+										<input type="checkbox" class="custom-control-input" id="celicacoCheck">
+										<label class="custom-control-label" for="celicacoCheck"> Celiaco (Gluten)</label>
+									</div>
+									<div class="custom-control custom-checkbox checkbox-xl">
+										<input type="checkbox" class="custom-control-input" id="lactosaCheck">
+										<label class="custom-control-label" for="lactosaCheck"> Lactosa</label>
+									</div>
+								</div>
+								<div class="container my-5">
+									<h5>Otras incompatibilidades</h5>
+									<div class="custom-control custom-checkbox checkbox-xl">
+										<input type="checkbox" class="custom-control-input" id="vegetarianoCheck">
+										<label class="custom-control-label" for="vegetarianoCheck"> Vegetariano</label>
+									</div>
+									<div class="custom-control custom-checkbox checkbox-xl">
+										<input type="checkbox" class="custom-control-input" id="veganoCheck">
+										<label class="custom-control-label" for="veganoCheck"> Vegano</label>
+									</div>
+									<div class="custom-control custom-checkbox checkbox-xl">
+										<input type="checkbox" class="custom-control-input" id="musulmanCheck">
+										<label class="custom-control-label" for="musulmanCheck"> Musulman</label>
+									</div>
+								</div>
 							</div>
-							<div class="custom-control custom-checkbox checkbox-xl">
-								<input type="checkbox" class="custom-control-input" id="veganoCheck">
-								<label class="custom-control-label" for="veganoCheck"> Vegano</label>
-							</div>
-							<div class="custom-control custom-checkbox checkbox-xl">
-								<input type="checkbox" class="custom-control-input" id="musulmanCheck">
-								<label class="custom-control-label" for="musulmanCheck"> Musulman</label>
-							</div>
-						</div>
 						</div>
 						<div class="float-left d-inline-block">
-							<a class="btn btn-primary" href="#carouselExampleCaptions" role="button" data-slide="prev">&lt; Volver</a>
+							<a class="btn btn-primary" href="#carouselCreaDieta" role="button" data-slide="prev">&lt; Volver</a>
 						</div>
 						<div class="float-right d-inline-block">
-							<a class="btn btn-primary" href="#carouselExampleCaptions" role="button" data-slide="next">Siguiente ></a>
+							<a class="btn btn-primary" href="#carouselCreaDieta" role="button" data-slide="next">Siguiente ></a>
+						</div>
 						</div>
 					</div>
-					<div class="carousel-item bg-transparent px-5">
-						<div>
-							<div class="formulario mr-auto text-center">
+					<div class="carousel-item bg-transparent p-5">
+						<div class="formulario">
+							<div class="container text-center">
+								<h4>Últimos ajustes</h4>
+							</div>
+							<div class="mr-auto text-center">
 								<button class="btn submitDiet">Generar Dieta</button>
 							</div>
-						</div>
-						<div class="text-left">
-							<a class="btn btn-primary" href="#carouselExampleCaptions" role="button" data-slide="prev">&lt; Volver</a>
+							<div class="text-left">
+								<a class="btn btn-primary" href="#carouselCreaDieta" role="button" data-slide="prev">&lt; Volver</a>
+							</div>
 						</div>
 					</div>
 				</form>
