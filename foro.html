@@ -30,24 +30,22 @@
 
 
 	<div class="container" id="cuerpo">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light" id="mainNav">
-			<div class="container">
-				<a class="navbar-brand js-scroll-trigger" href="#page-top">HealthyBowl</a>
-				<div class="collapse navbar-collapse" id="navbarResponsive">
-					<ul class="navbar-nav text-uppercase mx-auto">
-						<li class="nav-item">
-							<a class="nav-link js-scroll-trigger" href="#services">Inicio</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link js-scroll-trigger actualPage" href="#portfolio">Foro</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link js-scroll-trigger" href="#about">Top Dietas</a>
-						</li>
-					</ul>
-				</div>
+
+		<div class="row text-center my-3">
+			<div class="col"></div>
+			<div class="col">
+				<a class="btn w-100" href="./index.html" role="button">INICIO</a>
 			</div>
-		</nav>
+			<div class="col">
+				<a class="btn w-100 actualPage" href="./index.html" role="button">FORO</a>
+			</div>
+			<div class="col">
+				<a class="btn w-100" href="./index.html" role="button">TOP DIETAS</a>
+			</div>
+			<div class="col"></div>
+			<hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+		</div>
+		<br/>
 
         <h1>Foro principal</h1>
         <br>
@@ -71,12 +69,15 @@
             <br>
             <br>
             <input type="text" id="respuesta" class="form-control nuevaEntrada" placeholder="Respuesta">
+            <button id="botonRespuesta" type="submit" class="btn btn-primary botonNuevaEntrada">Submit</button>
         <br>
         <br>
 
         <script>
         function addEntradaF(){
             var textarea = document.getElementById("respuesta");
+            var button = document.getElementById("botonRespuesta");
             textarea.style.display="block";
+            button.style.display="block";
         }
         </script>
