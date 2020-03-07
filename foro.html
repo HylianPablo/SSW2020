@@ -52,24 +52,27 @@
         <form>
             <div class="form-group">
                 <label for="exampleInputEmail1">Nueva entrada:</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Agregar entrada...">
+                <input type="text" class="form-control entradaForoTitulo" placeholder="Agregar entrada - Título">
+                <textarea type="text" class="form-control entradaForoCuerpo" placeholder="Descripción" rows="4  "></textarea>
             </div>
-            <button type="submit" class="btn btn-primary entradaBoton">Submit</button>
+            <button type="submit" class="btn btn-primary entradaBoton">Agregar entrada</button>
         </form>
         <br>
         <br>
         <br>
         <br>
-        <textarea class="form-control entradaForo" rows="6" autofocus readonly>
+        <div class="card entradaForoTitulo">
         La dieta mediterránea es genial.
+        </div>
 
+        <div class="card entradaForoCuerpo">
         Desayunar pan con aceite y tomate regula la circulación sanguínea...
-        </textarea>
+        </div>
             <button type="button" id="addEntrada" onclick="addEntradaF()" class="btn btn-primary agregarEntradaBoton">+</button>
             <br>
             <br>
             <input type="text" id="respuesta" class="form-control nuevaEntrada" placeholder="Respuesta">
-            <button id="botonRespuesta" type="submit" class="btn btn-primary botonNuevaEntrada">Submit</button>
+            <button id="botonRespuesta" type="submit" class="btn btn-primary botonNuevaEntrada">Agregar entrada</button>
         <br>
         <br>
 
