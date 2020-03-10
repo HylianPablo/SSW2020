@@ -194,8 +194,8 @@ header.masthead2 {
 header.masthead3 {
 	background-color: rgb(255,180,122);
 	width: 900px;
-	height: 2000px;
-	margin-top: 50px;
+	height: 1200px;
+	margin-top: 30px;
 	float:center;
 	margin-left: 100px;
 	border: 1px solid #000;
@@ -203,7 +203,7 @@ header.masthead3 {
 
 .ScrollStyle
 {
-    max-height: 1000px;
+    max-height: 600px;
     width: 1050px;
     overflow-y: scroll;
 }
@@ -211,8 +211,8 @@ header.masthead3 {
 
 header.masthead4 {
 	width: 700px;
-	height: 300px;
-	margin-top: 50px;
+	height: 250px;
+	margin-top: 30px;
 	float:center;
 	margin-left: 100px;
 	border: 1px solid #000;
@@ -220,7 +220,7 @@ header.masthead4 {
 
 header.masthead5 {
 	width: 700px;
-	height: 100px;
+	height: 50px;
 	border: 1px solid #000;
 }
 
@@ -233,68 +233,6 @@ header.masthead5-1 {
 }
 
 header.masthead5-2 {
-	margin-top: 10px;
-	margin-left: 500px;
-	width: 150px;
-	height: 30px;
-	border: 1px solid #000;
-}
-
-header.masthead7 {
-	width: 700px;
-	height: 300px;
-	margin-top: 50px;
-	float:center;
-	margin-left: 100px;
-	border: 1px solid #000;
-}
-
-header.masthead8 {
-	width: 700px;
-	height: 100px;
-	border: 1px solid #000;
-}
-
-header.masthead8-1 {
-	margin-top: 10px;
-	margin-left: 500px;
-	width: 150px;
-	height: 30px;
-	border: 1px solid #000;
-}
-
-header.masthead8-2 {
-	margin-top: 10px;
-	margin-left: 500px;
-	width: 150px;
-	height: 30px;
-	border: 1px solid #000;
-}
-
-header.masthead10 {
-	width: 700px;
-	height: 300px;
-	margin-top: 50px;
-	float:center;
-	margin-left: 100px;
-	border: 1px solid #000;
-}
-
-header.masthead11 {
-	width: 700px;
-	height: 100px;
-	border: 1px solid #000;
-}
-
-header.masthead11-1 {
-	margin-top: 10px;
-	margin-left: 500px;
-	width: 150px;
-	height: 30px;
-	border: 1px solid #000;
-}
-
-header.masthead11-2 {
 	margin-top: 10px;
 	margin-left: 500px;
 	width: 150px;
@@ -340,65 +278,6 @@ header.masthead11-2 {
 	float: left;
 }
 
-#store-filter4{
-	margin-top: 10px;
-	text-align: left;
-	margin-left: 20px;
-	width: 50px;
-	height: 100px;
-	float: left;
-}
-
-#store-filter4-1{
-	text-align: left;
-	margin-left: 10px;
-	width: 50px;
-	height: 10px;
-	float: left;
-}
-
-#store-filter4-2{
-	text-align: left;
-	margin-left: 10px;
-	width: 50px;
-	height: 10px;
-	float: left;
-}
-
-#store-filter5{
-	margin-top: 10px;
-	text-align: left;
-	margin-left: 20px;
-	width: 50px;
-	height: 100px;
-	float: left;
-}
-
-#store-filter5-1{
-	text-align: left;
-	margin-left: 10px;
-	width: 50px;
-	height: 10px;
-	float: left;
-}
-
-#store-filter5-2{
-	text-align: left;
-	margin-left: 10px;
-	width: 50px;
-	height: 10px;
-	float: left;
-}
-
-#store-filter6{
-	margin-top: 10px;
-	text-align: left;
-	margin-left: 20px;
-	width: 50px;
-	height: 100px;
-	float: left;
-}
-
 .menu2{
 	width: 600px;
 	height: 40px;
@@ -428,68 +307,6 @@ header.masthead11-2 {
 }
 
 .menu4 {
-	margin-right: 40px;
-	margin-top: 10px;
-	margin-left: 40px;
-}
-
-.menu5 ul{}
-
-.menu5 ul{
-	margin-top: 10px;
-	list-style: none;
-	float: left;
-}
-
-.menu5-1 ul{}
-
-.menu5-1 {
-	margin-left: 40px;
-	list-style: none;
-	float: left;
-}
-
-.menu5-2 ul{}
-
-.menu5-2 {
-	margin-left: 40px;
-	list-style: none;
-	float: left;
-}
-
-
-
-.menu6 {
-	margin-right: 40px;
-	margin-top: 10px;
-	margin-left: 40px;
-}
-
-.menu7-1 ul{}
-
-.menu7-1 {
-	margin-left: 40px;
-	list-style: none;
-	float: left;
-}
-
-.menu7-2 ul{}
-
-.menu7-2 {
-	margin-left: 40px;
-	list-style: none;
-	float: left;
-}
-
-.menu7 ul{}
-
-.menu7 ul{
-	margin-top: 10px;
-	list-style: none;
-	float: left;
-}
-
-.menu8 {
 	margin-right: 40px;
 	margin-top: 10px;
 	margin-left: 40px;
