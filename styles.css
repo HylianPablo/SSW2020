@@ -75,6 +75,33 @@ body {
     display: none;
 }
 
+.dots {
+    display: inline;
+}
+
+.more {
+    display: none;
+}
+
+.botonesEntrada {
+    display: inline-block;
+}
+
+.respuesta {
+    width: "50%";
+    display: inline-block;
+}
+
+.user {
+    position: absolute;
+    left: 970px;
+    float: "left";
+    text-align: "right";
+    padding-left: "100px";
+    margin-left: "auto";
+    margin-right: "0"
+}
+
 .entradaForoTitulo {
     width: 100%;
     height: 45px;
@@ -86,6 +113,13 @@ body {
 }
 
 .entradaForoCuerpo {
+    width: 100%;
+    height: 50px;
+    padding: 5px;
+    resize: none;
+}
+
+.entradaForoCuerpoMax {
     width: 100%;
     height: 200px;
     padding: 5px;

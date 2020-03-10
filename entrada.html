@@ -47,26 +47,15 @@
 		</div>
 		<br/>
 
-        <h1>Foro principal</h1>
+        <h1>Entrada de ejemplo</h1>
         <br>
-        <form>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Nueva entrada:</label>
-                <input type="text" class="form-control entradaForoTitulo" placeholder="Agregar entrada - Título">
-                <textarea type="text" class="form-control entradaForoCuerpo" placeholder="Descripción" rows="4  "></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary entradaBoton">Agregar entrada</button>
-        </form>
-        <br>
-        <br>
-        <br>
-        <br>
+        
         <div class="card entradaForoTitulo">
         La dieta mediterránea es genial.
         </div>
 
-        <div class="card entradaForoCuerpo" id ="entradaEjemplo">
-        <p>Desayunar pan con aceite y tomate regula la circulación sanguínea. <span class="dots" id="dots">...</span><span class="more" id="more">
+        <div class="card entradaForoCuerpoMax" id ="entradaEjemplo">
+        Desayunar pan con aceite y tomate regula la circulación sanguínea.
 
 La Dieta Mediterránea es una valiosa herencia cultural que representa mucho más que una simple pauta nutricional, rica y saludable. Es un estilo de vida equilibrado que recoge recetas, formas de cocinar, celebraciones, costumbres, productos típicos y actividades humanas diversas.
 
@@ -74,31 +63,34 @@ Entre las muchas propiedades beneficiosas para la salud de este patrón alimenta
 
 Así lo reconoció y celebró la UNESCO inscribiendo la Dieta Mediterránea como uno de los elementos de la Lista Representativa del Patrimonio Cultural Inmaterial de la Humanidad.
 La alimentación saludable que nos proporciona la Dieta Mediterránea es perfectamente compatible con el placer de degustar sabrosos platos.
- </span></p>
         </div>
         <br>
-			<button class="botonesEntrada" onclick="mostrarMas()" id="myBtn">Read more</button>
-			<button class="botonesEntrada" onclick="window.location.href='entrada.html';">Ir al hilo</button> 
+        <br>
+        <div class="card entradaForoCuerpo botonesEntrada">
+        Es una dieta muy buena, me ha encantado.
+        <a class="user" href="">UsuarioEjemplo1</a>
+        </div>
+            <br>
+        <br>
+        <div class="card entradaForoCuerpo botonesEntrada">
+        Es una dieta genial, me ha encantado.
+        <a class="user" href="">UsuarioEjemplo2</a>
+        </div>
+        <br>
+        <br>
+         <button type="button" id="addEntrada" onclick="addEntradaF()" class="btn btn-primary agregarEntradaBoton">+ Añadir respuesta</button>
+        <br>
+        <br>
+         <input type="text" id="respuesta" class="form-control nuevaEntrada" placeholder="Respuesta">
+            <button id="botonRespuesta" type="submit" class="btn btn-primary botonNuevaEntrada">Agregar entrada</button>
         <br>
         <br>
 
-		<script>
-		function mostrarMas(){
-			var entrada = document.getElementById("entradaEjemplo");
-			var dots = document.getElementById("dots");
- 	 		var moreText = document.getElementById("more");
-  			var btnText = document.getElementById("myBtn");
-
-  			if (dots.style.display === "none") {
-    			dots.style.display = "inline";
-				entrada.style.height = "50px";
-    			btnText.innerHTML = "Read more"; 
-    			moreText.style.display = "none";
-  			} else {
-    			dots.style.display = "none";
-				entrada.style.height = "200px"
-    			btnText.innerHTML = "Read less"; 
-    			moreText.style.display = "inline";
-  			}	
-		}
-		</script>
+        <script>
+        function addEntradaF(){
+            var textarea = document.getElementById("respuesta");
+            var button = document.getElementById("botonRespuesta");
+            textarea.style.display="block";
+            button.style.display="block";
+        }
+        </script>
