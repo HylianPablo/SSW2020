@@ -6512,7 +6512,7 @@ a.close.disabled {
     position: relative;
     width: 100%;
     overflow: hidden;
-    background-color:   color:#3AB27A;
+    background-color: color: #3AB27A;
 }
 
 .carousel-inner::after {

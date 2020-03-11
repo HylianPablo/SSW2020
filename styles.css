@@ -1,6 +1,6 @@
 body {
     font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    background-color: rgb(154, 255, 208)
+    background-image: url(fondo.jpg);
 }
 
 .checkbox-xl .custom-control-label::before,
@@ -16,7 +16,7 @@ body {
 }
 
 #carouselCreaDieta {
-    background-color: rgb(255, 180, 122);
+    background-color: #A0FB83;
 }
 
 .checkbox-xl .custom-control-label::before,
@@ -26,18 +26,97 @@ body {
     height: 1.85rem;
 }
 
+.MultiCarousel {
+    float: left;
+    overflow: hidden;
+    padding: 15px;
+    width: 100%;
+    position: relative;
+}
+
+.MultiCarousel .MultiCarousel-inner {
+    transition: 1s ease all;
+    float: left;
+}
+
+.MultiCarousel .MultiCarousel-inner .item {
+    float: left;
+}
+
+.MultiCarousel .MultiCarousel-inner .item>div {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    background: #f1f1f1;
+    color: #666;
+}
+
+.MultiCarousel .leftLst,
+.MultiCarousel .rightLst {
+    position: absolute;
+    border-radius: 50%;
+    top: calc(50% - 20px);
+}
+
+.MultiCarousel .leftLst {
+    left: 0;
+}
+
+.MultiCarousel .rightLst {
+    right: 0;
+}
+
+.MultiCarousel .leftLst.over,
+.MultiCarousel .rightLst.over {
+    pointer-events: none;
+    background: #ccc;
+}
+
 .checkbox-xl .custom-control-label {
     padding-top: 23px;
     padding-left: 10px;
 }
 
 #carouselCreaDieta {
-    background-color: rgb(255, 180, 122);
+    background-color: #A0FB83;
 }
 
 .example {
     margin: auto;
     display: block;
+}
+
+@font-face {
+    font-family: vegan;
+    src: url("VeganStyle.ttf");
+}
+
+@font-face {
+    font-family: leahlee;
+    src: url("Leahlee.ttf");
+}
+
+.coolFont {
+    font-family: leahlee;
+    font-size: 35px;
+}
+
+.intro-lead-in {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 10px;
+    margin-bottom: 25px;
+    font-family: leahlee;
+    color: #0E180B
+}
+
+.intro-heading {
+    font-size: 65px;
+    font-weight: 700;
+    line-height: 100px;
+    margin-bottom: 10px;
+    font-family: vegan;
+    color: #2E6332
 }
 
 .formulario {
@@ -55,6 +134,57 @@ body {
     position: absolute;
     left: 1090px;
     display: inline-block;
+    background-color: #81D367;
+    border-color: #81D367;
+    outline-color: #81D367;
+}
+
+.botonEstandar {
+    background-color: #81D367;
+    border-color: #81D367;
+    outline-color: #81D367;
+}
+
+.botonEstandar:hover {
+    background-color: #75BE5D;
+    border-color: #75BE5D;
+    outline-color: #81D367;
+}
+
+.botonEstandar:focus {
+    background-color: #75BE5D;
+    border-color: #75BE5D;
+    outline-color: #81D367;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.botonEstandar {
+    background-color: #75BE5D;
+    border-color: #75BE5D;
+    outline-color: #81D367;
+}
+
+.botonEstandar:active {
+    background-color: #75BE5D;
+    border-color: #75BE5D;
+    outline-color: #81D367;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.botonEstandar:visited {
+    background-color: #75BE5D;
+    border-color: #75BE5D;
+    outline-color: #81D367;
+}
+
+.botonEstandar:not(:disabled):not(.disabled):active {
+    background-color: #75BE5D;
+    border-color: #75BE5D;
+    outline-color: #81D367;
+    border-color: transparent;
+    box-shadow: none;
 }
 
 .agregarEntradaBoton {
@@ -166,7 +296,6 @@ textarea {
 header.masthead {
     text-align: center;
     color: #fff;
-    background-image: url(banner.jpg);
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
