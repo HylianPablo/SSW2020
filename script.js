@@ -99,4 +99,14 @@ $(document).ready(function() {
         ResCarousel(ell, Parent, slide);
     }
 
+    function colorDay() {
+        console.log("Funciona")
+        var x = document.getElementById("Lunes");
+        var date = new Date();
+        var day = date.getDay();
+        if (day === 4) {
+            x.style.color = "#D9CF35"
+        }
+    }
+
 });

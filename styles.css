@@ -130,6 +130,28 @@ body {
     font-weight: bold;
 }
 
+.inlineBlock {
+    display: inline-block;
+}
+
+.favButton {
+    color: #EFE107;
+}
+
+.favButton:focus {
+    color: #EFE107;
+    outline: "none";
+}
+
+.likeButton {
+    color: #D11A01;
+}
+
+.likeButton:focus {
+    color: #D11A01;
+    outline: "none";
+}
+
 .entradaBoton {
     position: absolute;
     left: 1090px;

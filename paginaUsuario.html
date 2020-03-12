@@ -20,6 +20,9 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   	<link rel="stylesheet" type="text/css" href="styles.css">
+	  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   	<!--<link rel="stylesheet" type="text/css" href="bootstrap.css">-->
 </head>
 <body id="page-top">
@@ -39,7 +42,7 @@
 		<div class="row text-center my-3">
 			<div class="col"></div>
 			<div class="col">
-				<a class="coolFont btn w-100 actualPage" href="./index.html" role="button">INICIO</a>
+				<a class="coolFont btn w-100 actualPage" href="./paginaUsuario.html" role="button">INICIO</a>
 			</div>
 			<div class="col">
 				<a class="coolFont btn w-100" href="./foroUsuario.html" role="button">FORO</a>
@@ -55,14 +58,35 @@
 		</div>
 		<br/>
 
-	<h1>Dieta semanal</h1>
+	<h1 class="inlineBlock">Dieta semanal</h1>
+	<br>
+	<br>
+	<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dietas guardadas
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Dieta fitness</a>
+    <a class="dropdown-item" href="#">Dieta mediterránea</a>
+    <a class="dropdown-item" href="#">Dieta vegana</a>
+  </div>
+</div>
+
+<div class="row">
+	    <div class="col-md-12 text-center">
+	        <br/>
+	        <hr/>
+	    </div>
+</div>
+
+<h2>Dieta fitness</h2>
 
 <div class="container">
 	<div class="row">
 		<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
             <div class="MultiCarousel-inner">
                 <div class="item">
-                    <div class="pad15">
+                    <div id="Lunes" class="pad15">
                         <p class="lead">Lunes</p>
                         <p>Vaso de leche</p>
                         <p>Arroz y pollo</p>
@@ -70,7 +94,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="pad15">
+                    <div id="Martes" class="pad15">
                         <p class="lead">Martes</p>
                         <p>₹ 1</p>
                         <p>₹ 6000</p>
@@ -78,7 +102,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="pad15">
+                    <div id="Miercoles" class="pad15">
                         <p class="lead">Miércoles</p>
                         <p>₹ 1</p>
                         <p>₹ 6000</p>
@@ -86,7 +110,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="pad15">
+                    <div id="Jueves" class="pad15">
                         <p class="lead">Jueves</p>
                         <p>₹ 1</p>
                         <p>₹ 6000</p>
@@ -94,7 +118,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="pad15">
+                    <div id="Viernes" class="pad15">
                         <p class="lead">Viernes</p>
                         <p>₹ 1</p>
                         <p>₹ 6000</p>
@@ -102,7 +126,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="pad15">
+                    <div id="Sabado" class="pad15">
                         <p class="lead">Sábado</p>
                         <p>₹ 1</p>
                         <p>₹ 6000</p>
@@ -110,7 +134,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="pad15">
+                    <div id="Domingo" class="pad15">
                         <p class="lead">Domingo</p>
                         <p>₹ 1</p>
                         <p>₹ 6000</p>
@@ -118,10 +142,14 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary leftLst"><</button>
-            <button class="btn btn-primary rightLst">></button>
+            <button class="btn btn-success leftLst"><</button>
+            <button class="btn btn-success rightLst">></button>
         </div>
 	</div>
+	<div class="inlineBlock">
+<button class="favButton btn btn-success"><i class="fa fa-star"></i> Favorito</button>
+<button class="likeButton btn btn-success"><i class="fa fa-heart"></i> Guardado</button>
+</div>
 	<div class="row">
 	    <div class="col-md-12 text-center">
 	        <br/>
@@ -129,6 +157,7 @@
 	    </div>
 	</div>
 </div>
+
 
 
 		<h2 class="text-center">Crea tu dieta personalizada</h2><br/>
@@ -297,6 +326,44 @@
 			
 			</div>
 		</footer>
+
+<script>
+	   function colorDay() {
+		   console.log("Funciona")
+        var lunes = document.getElementById("Lunes");
+        var martes = document.getElementById("Martes");
+        var miercoles = document.getElementById("Miercoles");
+        var jueves = document.getElementById("Jueves");
+        var viernes = document.getElementById("Viernes");
+        var sabado = document.getElementById("Sabado");
+        var domingo = document.getElementById("Domingo");
+        var date = new Date();
+        var day = date.getDay();
+        if (day == "0") {
+            domingo.style.background = "#D9CF35"
+        }
+		else if(day == "1"){
+			lunes.style.background = "#D9CF35" 
+		}
+		else if(day == "2"){
+			martes.style.background = "#D9CF35" 
+		}
+		else if(day == "3"){
+			miercoles.style.background = "#D9CF35" 
+		}
+		else if(day == "4"){
+			jueves.style.background = "#D9CF35" 
+		}
+		else if(day == "5"){
+			viernes.style.background = "#D9CF35" 
+		}
+		else{
+			sabado.style.background = "#D9CF35" 
+		}
+    }
+	window.onload=colorDay();
+	</script>
+
 	<script>
 $('.carousel').carousel({
     interval: false
