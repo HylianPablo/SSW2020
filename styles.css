@@ -26,6 +26,7 @@ body {
     height: 1.85rem;
 }
 
+
 .MultiCarousel {
     float: left;
     overflow: hidden;
@@ -86,6 +87,14 @@ body {
     display: block;
 }
 
+.h1Size{
+    font-size:50px;
+}
+
+.oneLine{
+    white-space: nowrap;
+}
+
 @font-face {
     font-family: vegan;
     src: url("VeganStyle.ttf");
@@ -115,7 +124,7 @@ body {
 }
 
 .intro-lead-in {
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 700;
     line-height: 10px;
     margin-bottom: 25px;
@@ -124,10 +133,10 @@ body {
 }
 
 .intro-heading {
-    font-size: 65px;
+    font-size: 70px;
     font-weight: 700;
     line-height: 100px;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
     font-family: vegan;
     color: #2E6332
 }
@@ -166,8 +175,7 @@ body {
 }
 
 .entradaBoton {
-    position: absolute;
-    left: 1090px;
+    position: static;
     display: inline-block;
     background-color: #81D367;
     border-color: #81D367;
@@ -463,4 +471,45 @@ header.masthead {
     to {
         opacity: 1
     }
+}   
+
+.ScrollStyle
+{
+    max-height: 600px;
+    width: 100%;
+    overflow-y: scroll;
+    overflow: auto;
+    word-wrap: break-word;
+}
+
+.entradaForoTitulo2 {
+    width: 100%;
+    height: 45px;
+    padding: 0px;
+    resize: none;
+    font-size: 20px;
+    padding: 5px;
+    font-weight: bold;
+    background-color:  #81D367;
+}
+
+#prueba{
+    width: 100%;
+    height: 45px;
+    padding: 0px;
+    resize: none;
+    font-size: 20px;
+    padding: 5px;
+    font-weight: bold;
+    background-color: rgb(255,180,122);
+    border: 1px solid #000;
+}
+
+.entradaForoCuerpo2 {
+    width: 100%;
+    height: 100px;
+    overflow:auto;
+    padding: 5px;
+    background-color: rgb(212,333,222);
+    resize: none;
 }
