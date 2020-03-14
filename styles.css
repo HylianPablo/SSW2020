@@ -472,3 +472,60 @@ header.masthead {
     background-color: rgb(212, 333, 222);
     resize: none;
 }
+
+header.masthead2 {
+    background-color: rgb(255, 180, 122);
+    width: 900px;
+    height: 480px;
+    margin-top: 50px;
+    float: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #000;
+}
+
+.contenedor {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    margin-left: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+}
+
+header.masthead {
+    text-align: center;
+    color: #fff;
+    background-image: url(banner.jpg);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.contenedorPerfil {
+    display: flex;
+    justify-content: center;
+}
+
+.imgPerfil {
+    margin-left: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+}
+
+.cuadros {
+    background-color: rgb(212, 333, 222);
+    float: center;
+    margin-left: auto;
+    margin-right: auto;
+}
