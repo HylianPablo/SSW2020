@@ -32,7 +32,6 @@
 
 
     <div class="container" id="cuerpo">
-
         <div class="row text-center my-3">
             <div class="col"></div>
             <div class="col">
@@ -50,70 +49,59 @@
         <br/>
 
         <h1 class="h1Size coolFontParagraph">Foro principal</h1>
-          <div class="row">
+        <div class="row">
             <div class="col-md-12 text-center">
                 <br/>
                 <hr/>
             </div>
         </div>
-        <form>
-            <div class="form-group">
-                <label for="exampleInputEmail1" class="coolFont">Nueva entrada:</label>
-                <input type="text" class="form-control entradaForoTitulo" placeholder="Agregar entrada - Título">
-                <textarea type="text" class="form-control entradaForoCuerpo" placeholder="Descripción" rows="4  "></textarea>
+
+        <button class="botonEstandar btn btn-success botonesEntrada my-3" onclick="window.location.href='nuevaEntrada.html';">Agregar nueva entrada</button>
+
+        <div class="card my-3">
+            <div class="mx-3 mt-3 entradaForoTitulo">
+                La dieta mediterránea es genial.
+                <button class="botonEstandar btn btn-success botonesEntrada" onclick="window.location.href='entrada.html';">Ir al hilo</button>
+                <button class="botonEstandar btn btn-success botonesEntrada" onclick="mostrarMas()" id="myBtn">Leer más</button>
+                <hr/>
             </div>
-            <button type="submit" class=" botonEstandar entradaBoton btn btn-success">Agregar entrada</button>
-        </form>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="card entradaForoTitulo">
-            La dieta mediterránea es genial.
-        </div>
-
-        <div class="card entradaForoCuerpo" id="entradaEjemplo">
-            <p> Desayunar pan con aceite y tomate regula la circulación sanguínea. <span class="dots" id="dots">...</span><span class="more" id="more">
-
+            <div class="mx-3" id="entradaEjemplo">
+                <p>
+                    Desayunar pan con aceite y tomate regula la circulación sanguínea.
+                    <span class="dots" id="dots">...</span>
+                    <span class="more" id="more">
 La Dieta Mediterránea es una valiosa herencia cultural que representa mucho más que una simple pauta nutricional, rica y saludable. Es un estilo de vida equilibrado que recoge recetas, formas de cocinar, celebraciones, costumbres, productos típicos y actividades humanas diversas.
 
 Entre las muchas propiedades beneficiosas para la salud de este patrón alimentario se puede destacar el tipo de grasa que lo caracteriza (aceite de oliva, pescado y frutos secos), las proporciones en los nutrientes principales que guardan sus recetas (cereales y vegetales como base de los platos y carnes o similares como “guarnición”) y la riqueza en micronutrientes que contiene, fruto de la utilización de verduras de temporada, hierbas aromáticas y condimentos.
 
 Así lo reconoció y celebró la UNESCO inscribiendo la Dieta Mediterránea como uno de los elementos de la Lista Representativa del Patrimonio Cultural Inmaterial de la Humanidad.
 La alimentación saludable que nos proporciona la Dieta Mediterránea es perfectamente compatible con el placer de degustar sabrosos platos.
- </span></p>
+
+					</span>
+                </p>
+            </div>
         </div>
-        <br>
-        <button class="botonEstandar btn btn-success botonesEntrada" onclick="mostrarMas()" id="myBtn">Read more</button>
-        <button class="botonEstandar btn btn-success botonesEntrada" onclick="window.location.href='entrada.html';">Ir al hilo</button>
-        <br>
-        <br>
-        <br>
-        <button class="boton Estandar btn btn-success botonesEntrada" onclick="window.location.href='nuevaEntrada.html';">Agregar nueva entrada</button>
-        <br>
-        <br>
+        <br/>
 
         <script>
             function mostrarMas() {
-                var entrada = document.getElementById("entradaEjemplo");
                 var dots = document.getElementById("dots");
                 var moreText = document.getElementById("more");
                 var btnText = document.getElementById("myBtn");
 
                 if (dots.style.display === "none") {
                     dots.style.display = "inline";
-                    entrada.style.height = "50px";
-                    btnText.innerHTML = "Read more";
+                    btnText.innerHTML = "Leer más";
                     moreText.style.display = "none";
                 } else {
                     dots.style.display = "none";
-                    entrada.style.height = "200px"
-                    btnText.innerHTML = "Read less";
+                    btnText.innerHTML = "Leer menos";
                     moreText.style.display = "inline";
                 }
             }
         </script>
     </div>
+    <br/>
 </body>
 
 </html>
