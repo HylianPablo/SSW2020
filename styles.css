@@ -282,6 +282,7 @@ body {
     height: 50px;
     padding: 5px;
     resize: none;
+    overflow: auto;
 }
 
 .entradaForoCuerpoMax {
