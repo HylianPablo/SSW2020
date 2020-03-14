@@ -1,6 +1,8 @@
 body {
     font-family: 'Roboto Slab', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    background-image: url(fondo.jpg);
+    background-image: url(img/fondo.jpg);
+	background-color:  #0d1e26;
+	background-repeat: repeat-x;
 }
 
 .checkbox-xl .custom-control-label::before,
@@ -97,17 +99,17 @@ body {
 
 @font-face {
     font-family: vegan;
-    src: url("VeganStyle.ttf");
+    src: url("fonts/VeganStyle.ttf");
 }
 
 @font-face {
     font-family: leahlee;
-    src: url("Leahlee.ttf");
+    src: url("fonts/Leahlee.ttf");
 }
 
 @font-face {
     font-family: blackbird;
-    src: url("Blackbird.ttf");
+    src: url("fonts/Blackbird.ttf");
 }
 
 .coolFont {
@@ -230,34 +232,12 @@ body {
     box-shadow: none;
 }
 
-.agregarEntradaBoton {
-    position: absolute;
-    left: 125 px;
-    display: inline-block;
-}
-
-.botonNuevaEntrada {
-    display: none;
-    position: absolute;
-    left: 1090px;
-}
-
-.nuevaEntrada {
-    width: 70%;
-    left: 140px;
-    display: none;
-}
-
 .dots {
     display: inline;
 }
 
 .more {
     display: none;
-}
-
-.botonesEntrada {
-    display: inline-block;
 }
 
 .respuesta {
@@ -276,27 +256,8 @@ body {
 }
 
 .entradaForoTitulo {
-    width: 100%;
-    height: 45px;
-    padding: 0px;
-    resize: none;
     font-size: 20px;
-    padding: 5px;
     font-weight: bold;
-}
-
-.entradaForoCuerpo {
-    width: 100%;
-    height: 50px;
-    padding: 5px;
-    resize: none;
-}
-
-.entradaForoCuerpoMax {
-    width: 100%;
-    height: 200px;
-    padding: 5px;
-    resize: none;
 }
 
 .submitDiet {

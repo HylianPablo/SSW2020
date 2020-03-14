@@ -47,14 +47,12 @@
 		</div>
 		<br/>
 
-        <h1 class="coolFontParagraph">Entrada de ejemplo</h1>
-        <br>
-        
-        <div class="card entradaForoTitulo">
-        La dieta mediterránea es genial.
-        </div>
+        <h1 class="coolFontParagraph">La dieta mediterránea es genial.</h1>
 
-        <div class="card entradaForoCuerpoMax" id ="entradaEjemplo">
+        <div class="card my-3" id ="entradaEjemplo">
+		<div class="m-2">
+			<p class="font-weight-bold">UsuarioAutor1</p>
+			<p>
         Desayunar pan con aceite y tomate regula la circulación sanguínea.
 
 La Dieta Mediterránea es una valiosa herencia cultural que representa mucho más que una simple pauta nutricional, rica y saludable. Es un estilo de vida equilibrado que recoge recetas, formas de cocinar, celebraciones, costumbres, productos típicos y actividades humanas diversas.
@@ -63,34 +61,33 @@ Entre las muchas propiedades beneficiosas para la salud de este patrón alimenta
 
 Así lo reconoció y celebró la UNESCO inscribiendo la Dieta Mediterránea como uno de los elementos de la Lista Representativa del Patrimonio Cultural Inmaterial de la Humanidad.
 La alimentación saludable que nos proporciona la Dieta Mediterránea es perfectamente compatible con el placer de degustar sabrosos platos.
+			</p>
+		</div>
         </div>
-        <br>
-        <br>
-        <div class="card entradaForoCuerpo botonesEntrada">
-        Es una dieta muy buena, me ha encantado.
-        <a class="user" href="">UsuarioEjemplo1</a>
+		<br/>
+		<button class="my-3 botonEstandar btn btn-success" type="button" id="addEntrada" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
+			+ Añadir respuesta
+		</button>
+		<div class="collapse" id="collapseForm">
+			<form class="m-3">
+				<input type="text" id="respuesta" class="form-control" placeholder="Respuesta">
+				<button id="botonRespuesta" type="submit" class="botonEstandar btn btn-success">Agregar entrada</button>
+			</form>
+		</div>
+        <div class="card m-3">
+			<div class="m-2">
+				<p class="font-weight-bold">UsuarioEjemplo1</p>
+				<p>Es una dieta muy buena, me ha encantado.</p>
+			</div>
         </div>
-            <br>
-        <br>
-        <div class="card entradaForoCuerpo botonesEntrada">
-        Es una dieta genial, me ha encantado.
-        <a class="user" href="">UsuarioEjemplo2</a>
+        <div class="card m-3">
+			<div class="m-2">
+				<p class="font-weight-bold">UsuarioEjemplo2</p>
+				<p>Es una dieta genial, me ha gustado mucho a mí también.</p>
+			</div> 
         </div>
-        <br>
-        <br>
-         <button type="button" id="addEntrada" onclick="addEntradaF()" class="botonEstandar btn btn-success agregarEntradaBoton">+ Añadir respuesta</button>
-        <br>
-        <br>
-         <input type="text" id="respuesta" class="form-control nuevaEntrada" placeholder="Respuesta">
-            <button id="botonRespuesta" type="submit" class="botonEstandar btn btn-success botonNuevaEntrada">Agregar entrada</button>
-        <br>
-        <br>
-
-        <script>
-        function addEntradaF(){
-            var textarea = document.getElementById("respuesta");
-            var button = document.getElementById("botonRespuesta");
-            textarea.style.display="block";
-            button.style.display="block";
-        }
-        </script>
+		<br/>
+	</div>
+	<br/>
+</body>
+</html>
