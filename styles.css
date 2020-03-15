@@ -142,6 +142,10 @@ body {
     color: #2E6332
 }
 
+.rightAligned{
+    float: right;
+}
+
 .formulario {
     width: 100%;
     height: 650px;
