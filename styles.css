@@ -96,9 +96,22 @@ body {
     src: url("Leahlee.ttf");
 }
 
+@font-face {
+    font-family: blackbird;
+    src: url("Blackbird.ttf");
+}
+
 .coolFont {
     font-family: leahlee;
     font-size: 35px;
+}
+
+.coolFontParagraph {
+    font-family: blackbird;
+}
+
+.entradillaInicio {
+    font-size: 60px;
 }
 
 .intro-lead-in {
