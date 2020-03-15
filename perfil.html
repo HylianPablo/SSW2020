@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="icon" href="img/logo.png">
-    <!--<link rel="stylesheet" type="text/css" href="bootstrap.css">-->
+	
 </head>
 
 <body id="page-top">
@@ -39,7 +39,7 @@
                 <a class="coolFont btn w-100" href="./index.html" role="button">INICIO</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100 actualPage" href="./foro.html" role="button">FORO</a>
+                <a class="coolFont btn w-100" href="./foro.html" role="button">FORO</a>
             </div>
             <div class="col">
                 <a class="coolFont btn w-100" href="./ranking.html" role="button">TOP DIETAS</a>
@@ -50,23 +50,30 @@
         <br/>
 
         <h1 class="h1Size coolFontParagraph center">Mi perfil</h1>
-        <div class="container-perfil" id="cuadroPerfil">
-            <div class="imgPerfil" align="center">
-                <img src="5.jpg" alt="img" class="m-3 img-thumbnail">
+		<br/>
+		<hr/>
+		<p>Por favor, actualize su información personal si ésta ha cambiado</p>
+        <div class="container" id="cuadroPerfil">
+            <div class="imagen" align="center">
+                <img src="img/profile.jpg" alt="img" class="m-3 img-thumbnail">
             </div>
-            <div class="w-70">
+            <div class="m-3">
                 <form role="form">
                     <div class="form-group w-70">
-                        <label for="usuario">Usuario</label>
-                        <input type="in_usuario" class="form-control" placeholder="--sin modificar--">
+                        <label for="usuario">Usuario: usuario1239</label>
+                        <input type="text" id="usuario" class="form-control" placeholder="--sin modificar--">
                     </div>
                     <div class="form-group w-70">
-                        <label for="password">Contraseña</label>
-                        <input type="password" class="form-control" placeholder="--sin modificar--">
+                        <label for="password">Contraseña actual (*)</label>
+                        <input type="password" id="password" class="form-control" placeholder="--obligatorio--">
                     </div>
                     <div class="form-group w-70">
-                        <label for="correo">Correo</label>
-                        <p class="lead">correo@gmail.com</p>
+                        <label for="npassword">Nueva contraseña</label>
+                        <input type="password" id="npassword" class="form-control" placeholder="--sin modificar--">
+                    </div>
+                    <div class="form-group w-70">
+                        <label for="correo">Correo:</label>
+						<p>usuario1239@gmail.com</p>
                     </div>
                     <div class="form-group">
                         <label for="archivo">Adjuntar una imagen para tu perfil:</label>
@@ -81,15 +88,16 @@
                         </ul>
                         <br/>
                     </div>
-                    <div class="contenedorPerfil">
-                        <button id="guardar" type="button" class="btn btn-success" onclick="window.location.href='entrada.html';">Guardar</button>
+					<p>Los campos marcados con (*) son obligatorios para cualquier modificación</p>
+                    <div class="contenedor">
+                        <button id="guardar" type="button" class="btn btn-primary btn-lg" onclick="window.location.href='iniciarSesion.html';">Guardar</button>
                     </div>
                 </form>
-                <br>
-                <br>
             </div>
         </div>
+		<br/>
     </div>
+	<br/>
 </body>
 
 </html>
