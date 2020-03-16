@@ -33,23 +33,26 @@
 
     <div class="container" id="cuerpo">
         <div class="row text-center my-3">
-            <div class="col"></div>
+			<div class="col"></div>
+			<div class="col">
+				<a class="coolFont btn w-100" href="./paginaUsuario.html" role="button">INICIO</a>
+			</div>
+			<div class="col">
+				<a class="coolFont btn w-100 actualPage" href="./foroUsuario.html" role="button">FORO</a>
+			</div>
+			<div class="col">
+				<a class="oneLine coolFont btn w-100" href="./rankingUsuario.html" role="button">TOP DIETAS</a>
+			</div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./index.html" role="button">INICIO</a>
-            </div>
-            <div class="col">
-                <a class="coolFont btn w-100 actualPage" href="./foro.html" role="button">FORO</a>
-            </div>
-            <div class="col">
-                <a class="coolFont btn w-100" href="./ranking.html" role="button">TOP DIETAS</a>
-            </div>
-            <div class="col"></div>
-            <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
-        </div>
+				<a class="coolFont btn w-100" href="./perfil.html" role="button">MI PERFIL</a>
+			</div>
+			<div class="col"></div>
+			<hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+		</div>
         <br/>
 
         <h1 class="coolFontParagraph">Nueva entrada</h1>
-         <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
+        <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
         <br>
         <form>
             <div class="form-group">
@@ -57,7 +60,8 @@
                 <input type="text" class="form-control entradaForoTitulo" placeholder="Agregar entrada - Título">
                 <textarea type="text" class="form-control entradaForoCuerpo" placeholder="Descripción" rows="10 "></textarea>
             </div>
-            <button type="submit" class=" botonEstandar entradaBoton btn btn-success">Agregar entrada</button>
+            <a role="button" href="./foroUsuario.html" class="inline-block botonEstandar entradaBoton btn btn-success m-2 ">Agregar entrada</button>
+			<a class="btn-info btn inline-block" href="./foroUsuario.html" role="button">Cancelar</a>
         </form>
         <br>
         <br>
