@@ -166,11 +166,11 @@
                 <li data-target="#carouselCreaDieta" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
-                <form class="form-group">
+                <form action="./dieta.html">
                     <div class="carousel-item active bg-transparent p-5">
                         <div class="formulario">
                             <div class="container text-center">
-                                <h4>Datos personales</h4>
+                                <h4 class="coolFont">Datos personales</h4>
                             </div>
                             <div class="container my-5">
                                 <div class="form-group">
@@ -198,7 +198,7 @@
                     <div class="carousel-item bg-transparent p-5">
                         <div class="formulario">
                             <div class="container text-center">
-                                <h4>Incompatibilidades de alimentos</h4>
+                                <h4 class="coolFont">Incompatibilidades de alimentos</h4>
                             </div>
                             <div class="row">
                                 <div class="col container my-5">
@@ -302,11 +302,29 @@
                     </div>
                     <div class="carousel-item bg-transparent p-5">
                         <div class="formulario">
-                            <div class="container text-center">
-                                <h4>Últimos ajustes</h4>
+							<div class="container text-center">
+                                <h4 class="coolFont">Últimos ajustes</h4>
                             </div>
+							<br/>
+							<div class="container m-3">
+								<div class="m-3 form-group">
+									<h5>Ejercicio físico realizado semanalmente:</h5>
+									<div class="d-flex justify-content-center my-4">
+										<span class="font-weight-bold indigo-text mr-2 mt-1">Nada</span>
+										<input class="custom-range" type="range" min="0" max="100" />
+										<span class="font-weight-bold indigo-text ml-2 mt-1">Mucho</span>
+									</div>
+								</div>
+								<br/>
+								<div class="m-3">
+									<h5>Advertencia:</h5>
+									<p>Las dietas generadas en HealthyBowl son personalizadas pero no pueden sustituir el trabajo de un dietista o un médico. En caso de necesitar una atención mucho más personalizada debería
+									contactar con uno.</p>
+								</div>
+								<br/>
+							</div>
                             <div class="mr-auto text-center">
-                                <button class="btn submitDiet">Generar Dieta</button>
+                                <button type="submit" class="btn submitDiet">Generar Dieta</button>
                             </div>
                             <div class="text-left">
                                 <a class="btn btn-success" href="#carouselCreaDieta" role="button" data-slide="prev">&lt; Volver</a>
