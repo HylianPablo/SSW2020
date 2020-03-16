@@ -446,13 +446,7 @@ header.masthead {
 }
 
 .entradaForoTitulo2 {
-    width: 100%;
-    height: 45px;
-    padding: 0px;
-    resize: none;
     font-size: 20px;
-    padding: 5px;
-    font-weight: bold;
     background-color: #81D367;
 }
 
@@ -469,29 +463,8 @@ header.masthead {
 }
 
 .entradaForoCuerpo2 {
-    width: 100%;
-    height: 100px;
     overflow: auto;
-    padding: 5px;
     background-color: rgb(212, 333, 222);
-    resize: none;
-}
-
-header.masthead2 {
-    background-color: rgb(255, 180, 122);
-    width: 900px;
-    height: 480px;
-    margin-top: 50px;
-    float: center;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid #000;
-}
-
-.contenedor {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
 }
 
 img {
