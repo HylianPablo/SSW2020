@@ -15,13 +15,8 @@
 
     <script type="text/javascript" src="script.js"></script>
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="img/logo.png">
@@ -61,6 +56,7 @@
         <br/>
 
         <h1 class="h1Size coolFontParagraph inlineBlock">Dieta semanal</h1>
+        <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
         <br>
         <br>
         <div class="dropdown">
@@ -85,7 +81,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
+                <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="false">
                     <div class="MultiCarousel-inner">
                         <div class="item">
                             <div id="Lunes" class="pad15">
@@ -163,7 +159,7 @@
 
 
         <h2 class="coolFontParagraph text-center">Crea tu dieta personalizada</h2><br/>
-        <div id="carouselCreaDieta" class="carousel slide mx-5 rounded" data-ride="carousel" data-interval="true">
+        <div id="carouselCreaDieta" class="carousel slide mx-5 rounded" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselCreaDieta" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselCreaDieta" data-slide-to="1"></li>
@@ -331,7 +327,6 @@
 
         <script>
             function colorDay() {
-                console.log("Funciona")
                 var lunes = document.getElementById("Lunes");
                 var martes = document.getElementById("Martes");
                 var miercoles = document.getElementById("Miercoles");
@@ -357,10 +352,9 @@
                     sabado.style.background = "#D9CF35"
                 }
             }
-            window.onload = colorDay();
+            document.onload = colorDay();
         </script>
-
-        <script>
+           <script>
             $('.carousel').carousel({
                 interval: false
             });
