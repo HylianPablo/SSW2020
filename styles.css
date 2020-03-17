@@ -497,7 +497,14 @@ header.masthead {
 }
 
 .botonSiguienteyAnterior {
-    background-color: #0040FF;
-    border-color: #0040FF;
-    outline-color: #0040FF;
+    background-color: #34552E;
+    border-color: #487540;
+    outline-color: #487540;
+}
+
+.botonSiguienteyAnterior:hover {
+    color:#FFFFFF;
+    background-color: #263E22;
+    border-color: #487540;
+    outline-color: #487540;
 }
