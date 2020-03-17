@@ -96,6 +96,10 @@ body {
     white-space: nowrap;
 }
 
+.blackHref{
+    color: #000000;
+}
+
 @font-face {
     font-family: vegan;
     src: url("fonts/VeganStyle.ttf");
@@ -205,15 +209,9 @@ body {
     box-shadow: none;
 }
 
-.botonEstandar {
-    background-color: #75BE5D;
-    border-color: #75BE5D;
-    outline-color: #81D367;
-}
-
 .botonEstandar:active {
-    background-color: #75BE5D;
-    border-color: #75BE5D;
+    background-color: #81D367;
+    border-color: #81D367;
     outline-color: #81D367;
     border-color: transparent;
     box-shadow: none;
