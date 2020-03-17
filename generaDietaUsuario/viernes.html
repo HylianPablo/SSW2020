@@ -14,9 +14,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" href="img/logo.png">
+    <link rel="icon" href="../img/logo.png">
     <!--<link rel="stylesheet" type="text/css" href="bootstrap.css">-->
 </head>
 
@@ -35,25 +35,28 @@
     <div class="container rounded" id="cuerpo">
 
         <div class="row text-center my-3">
-            <div class="col"></div>
+			<div class="col"></div>
+			<div class="col">
+				<a class="coolFont btn w-100" href="../paginaUsuario.html" role="button">INICIO</a>
+			</div>
+			<div class="col">
+				<a class="coolFont btn w-100" href="../foroUsuario.html" role="button">FORO</a>
+			</div>
+			<div class="col">
+				<a class="oneLine coolFont btn w-100" href="../rankingUsuario.html" role="button">TOP DIETAS</a>
+			</div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./index.html" role="button">INICIO</a>
-            </div>
-            <div class="col">
-                <a class="coolFont btn w-100" href="./foro.html" role="button">FORO</a>
-            </div>
-            <div class="col">
-                <a class="coolFont btn w-100" href="./ranking.html" role="button">TOP DIETAS</a>
-            </div>
-            <div class="col"></div>
-            <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
-        </div>
+				<a class="coolFont btn w-100" href="../perfil.html" role="button">MI PERFIL</a>
+			</div>
+			<div class="col"></div>
+			<hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+		</div>
         <br/>
 
         <h1 class="h1Size coolFontParagraph">Selección de Platos</h1>
 		<hr/>
-		<h1 class="text-center display-4 coolFontParagraph">Lunes</h1>
-		<form action="martes.html">
+		<h1 class="text-center display-4 coolFontParagraph">Viernes</h1>
+		<div>
 			<div class="card bg-transparent mx-3 my-5">
 				<div class="entradaForoTitulo2 rounded-top p-2">
 					<div class="text-center font-weight-bold">Desayuno</div>
@@ -199,10 +202,27 @@
 					</table>
 				</div>
 			</div>
-            <div class="text-center m-3">
-				<button type="submit" class="btn btn-primary p-3">Siguiente Día</button>
+            <div class="row text-center my-3">
+				<div class="col"></div>
+				<div class="col">
+						<button class="botonSiguienteyAnterior btn submitDiet" onclick="window.location.href='jueves.html';">Anterior</button>
+				</div>
+				<div class="col"></div>
+				<div class="col"></div>
+				<div class="col"></div>
+				<div class="col"></div>
+				<div class="col"></div>
+				<div class="col"></div>
+				<div class="col"></div>
+				<div class="col"></div>
+				<div class="col"></div>
+				<div class="col"></div>
+				<div class="col">
+						<button class="botonSiguienteyAnterior btn submitDiet" onclick="window.location.href='sabado.html';">Siguiente</button>
+				</div>
+				<div class="col"></div>
 			</div>
-		</form>
+		</div>
 		<br/>
     </div>
 	<br/>
