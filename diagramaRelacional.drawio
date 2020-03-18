@@ -1,31 +1,31 @@
-<mxfile host="app.diagrams.net" modified="2020-03-16T18:38:07.970Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36" etag="XvsZVus6Yt3jAQr1scXI" version="12.8.5" type="github">
+<mxfile host="app.diagrams.net" modified="2020-03-18T10:53:45.905Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36" etag="2GsBJYe5YgmKu495e2Yd" version="12.8.6" type="github">
   <diagram id="29hRNnKXACexP1v_duyr" name="Page-1">
-    <mxGraphModel dx="2249" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2249" dy="745" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-1" value="Usuario(nombre, &lt;u&gt;nombreUsuario&lt;/u&gt;, contraseña, correo, favorito)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-1" value="Usuario(nombre, &lt;u&gt;nombreUsuario&lt;/u&gt;, contraseña, correo, favorito)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="44" y="180" width="370" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-2" value="Plato (&lt;u&gt;códigoPlato&lt;/u&gt;, Kcal, glúcidos, aminoácidos, proteínas, hidratosDeCarbono, descripción, vegano, vegetariano, frutosSecos, Gluten)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-2" value="Plato (&lt;u&gt;códigoPlato&lt;/u&gt;, desayuno, Kcal, glúcidos, aminoácidos, proteínas, hidratosDeCarbono, descripción, vegano, vegetariano, frutosSecos, Gluten)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="39" y="460" width="750" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-3" value="Ingrediente(&lt;u&gt;códigoIngrediente&lt;/u&gt;, macromoléculaP, vegano, vegetariano, frutosSecos, Gluten)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-3" value="Ingrediente(&lt;u&gt;códigoIngrediente&lt;/u&gt;, macromoléculaP, vegano, vegetariano, frutosSecos, Gluten)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="75" y="610" width="580" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-4" value="Dieta(&lt;u&gt;códigoDieta&lt;/u&gt;, descripción)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-4" value="Dieta(&lt;u&gt;códigoDieta&lt;/u&gt;, descripción)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="440" y="240" width="190" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-5" value="Guardado(&lt;u&gt;nombreUsuario&lt;/u&gt;, &lt;u&gt;codigoDieta)&lt;/u&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-5" value="Guardado(&lt;u&gt;nombreUsuario&lt;/u&gt;, &lt;u&gt;codigoDieta)&lt;/u&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="-20" y="260" width="370" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-6" value="PertenenciaPlato(&lt;u&gt;codigoIngrediente&lt;/u&gt;, &lt;u&gt;codigoPlato&lt;/u&gt;)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-6" value="PertenenciaPlato(&lt;u&gt;codigoIngrediente&lt;/u&gt;, &lt;u&gt;codigoPlato&lt;/u&gt;)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="30" y="540" width="360" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-7" value="PlatoMenú(&lt;u&gt;codigoPlato&lt;/u&gt;, &lt;u&gt;codigoDieta,&lt;/u&gt;&amp;nbsp;diaSemana, momento)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-7" value="PlatoMenú(&lt;u&gt;codigoPlato&lt;/u&gt;, &lt;u&gt;codigoDieta,&lt;/u&gt;&amp;nbsp;diaSemana, momento)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="130" y="380" width="470" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-8" value="" style="endArrow=classic;html=1;exitX=0.53;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Ck8MsScD6dfkMRM8H-GI-5">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-8" value="" style="endArrow=classic;html=1;exitX=0.53;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="Ck8MsScD6dfkMRM8H-GI-5" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="210" y="220" as="sourcePoint" />
             <mxPoint x="200" y="203" as="targetPoint" />
@@ -35,7 +35,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-9" value="" style="endArrow=classic;html=1;exitX=0.67;exitY=1.2;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Ck8MsScD6dfkMRM8H-GI-5">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-9" value="" style="endArrow=classic;html=1;exitX=0.67;exitY=1.2;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="Ck8MsScD6dfkMRM8H-GI-5" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="370" y="280" as="sourcePoint" />
             <mxPoint x="510" y="270" as="targetPoint" />
@@ -45,7 +45,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-11" value="" style="endArrow=classic;html=1;entryX=0.123;entryY=0.05;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.366;exitY=1.2;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Ck8MsScD6dfkMRM8H-GI-7" target="Ck8MsScD6dfkMRM8H-GI-2">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-11" value="" style="endArrow=classic;html=1;entryX=0.123;entryY=0.05;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.366;exitY=1.2;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="Ck8MsScD6dfkMRM8H-GI-7" target="Ck8MsScD6dfkMRM8H-GI-2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="440" y="420" as="sourcePoint" />
             <mxPoint x="490" y="370" as="targetPoint" />
@@ -55,13 +55,13 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-12" value="" style="endArrow=classic;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitX=0.531;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Ck8MsScD6dfkMRM8H-GI-6" target="Ck8MsScD6dfkMRM8H-GI-3">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-12" value="" style="endArrow=classic;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitX=0.531;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="Ck8MsScD6dfkMRM8H-GI-6" target="Ck8MsScD6dfkMRM8H-GI-3" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="390" y="590" as="sourcePoint" />
             <mxPoint x="440" y="540" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-13" value="" style="endArrow=classic;html=1;entryX=0.127;entryY=0.95;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="Ck8MsScD6dfkMRM8H-GI-6" target="Ck8MsScD6dfkMRM8H-GI-2">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-13" value="" style="endArrow=classic;html=1;entryX=0.127;entryY=0.95;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" parent="1" source="Ck8MsScD6dfkMRM8H-GI-6" target="Ck8MsScD6dfkMRM8H-GI-2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="240" y="550" as="sourcePoint" />
             <mxPoint x="290" y="500" as="targetPoint" />
@@ -71,7 +71,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-14" value="" style="endArrow=classic;html=1;exitX=0.547;exitY=0.05;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Ck8MsScD6dfkMRM8H-GI-7">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-14" value="" style="endArrow=classic;html=1;exitX=0.547;exitY=0.05;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="Ck8MsScD6dfkMRM8H-GI-7" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="280" y="440" as="sourcePoint" />
             <mxPoint x="535" y="270" as="targetPoint" />
@@ -81,7 +81,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-15" value="" style="endArrow=classic;html=1;exitX=0.868;exitY=0.95;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.468;entryY=0.05;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Ck8MsScD6dfkMRM8H-GI-1" target="Ck8MsScD6dfkMRM8H-GI-4">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-15" value="" style="endArrow=classic;html=1;exitX=0.868;exitY=0.95;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.468;entryY=0.05;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Ck8MsScD6dfkMRM8H-GI-1" target="Ck8MsScD6dfkMRM8H-GI-4" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="430" y="250" as="sourcePoint" />
             <mxPoint x="480" y="200" as="targetPoint" />
