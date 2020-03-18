@@ -88,6 +88,11 @@ body {
     display: block;
 }
 
+.uncheckedButton{
+    background-color: #FFFFFF;
+    color: #28A745;
+}
+
 .h1Size {
     font-size: 50px;
 }
