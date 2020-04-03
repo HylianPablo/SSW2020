@@ -1,5 +1,4 @@
 public class Ingrediente{
-
 	private String nombre, codigoIngrediente;
 	private boolean vegano, vegetariano, frutosSecos, gluten;
 
