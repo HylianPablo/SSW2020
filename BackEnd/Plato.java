@@ -1,31 +1,31 @@
-public class Usuario{
+public class Plato{
 	private String codigoPlato nombre, descripcion;
-    private boolean desayuno, vegano, vegetariano, frutosSecos, gluten;
-    private int kcal, glucidosSimples, polisacaridos, aminoacidos, proteinas, hidratosDeCarbono;
+	private boolean desayuno, vegano, vegetariano, frutosSecos, gluten;
+	private int kcal, glucidosSimples, polisacaridos, aminoacidos, proteinas, hidratosDeCarbono;
 
-	public Usuario(String codigoPlato, String nombre, String descripcion,
+	public Plato(String codigoPlato, String nombre, String descripcion,
 			boolean desayuno, boolean vegano, boolean vegetariano, boolean frutosSecos, boolean gluten, int kcal, int glucidosSimples, int polisacaridos, int aminoacidos, int proteinas, int hidratosDeCarbono){
 		this.codigoPlato=codigoPlato;
 		this.nombre=nombre;
 		this.descripcion=descripcion;
 		this.desayuno=desayuno;
 		this.vegano=vegano;
-        this.vegetariano=vegetariano;
-        this.frutosSecos=frutosSecos;
-        this.gluten=gluten;
-        this.kcal=kcal;
-        this.glucidosSimples=glucidosSimples;
-        this.polisacaridos=polisacaridos;
-        this.aminoacidos=aminoacidos;
-        this.proteinas=proteinas;
-        this.hidratosDeCarbono=hidratosDeCarbono;
+		this.vegetariano=vegetariano;
+		this.frutosSecos=frutosSecos;
+		this.gluten=gluten;
+		this.kcal=kcal;
+		this.glucidosSimples=glucidosSimples;
+		this.polisacaridos=polisacaridos;
+		this.aminoacidos=aminoacidos;
+		this.proteinas=proteinas;
+		this.hidratosDeCarbono=hidratosDeCarbono;
 	}
 
 	public String getCodigoPlato(){
 		return codigoPlato;
 	}
 
-    public String getNombre(){
+	public String getNombre(){
 		return nombre;
 	}
 
@@ -44,36 +44,36 @@ public class Usuario{
 	public boolean getVegetariano(){
 		return vegetariano;
 	}
-    
-    public boolean getFrutosSecos(){
+
+	public boolean getFrutosSecos(){
 		return frutosSecos;
 	}
 
-    public boolean getGluten(){
+	public boolean getGluten(){
 		return gluten;
 	}
 
-    public int getKcal(){
+	public int getKcal(){
 		return kcal;
 	}
 
-    public int getGlucidosSimples(){
+	public int getGlucidosSimples(){
 		return glucidosSimples;
 	}
 
-    public int getPolisacaridos(){
+	public int getPolisacaridos(){
 		return polisacaridos;
 	}
 
-    public int getAminoacidos(){
+	public int getAminoacidos(){
 		return aminoacidos;
 	}
 
-    public int getProteinas(){
+	public int getProteinas(){
 		return proteinas;
 	}
 
-    public int getHidratosDeCarbono(){
+	public int getHidratosDeCarbono(){
 		return hidratosDeCarbono;
 	}
 }
