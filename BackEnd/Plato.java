@@ -36,7 +36,7 @@ public class Plato{
 	public boolean getDesayuno(){
 		return desayuno;
 	}
-
+	
 	public boolean getVegano(){
 		return vegano;
 	}

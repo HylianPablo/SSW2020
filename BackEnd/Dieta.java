@@ -1,5 +1,4 @@
 public class Dieta{
-
 	private String codigoDieta, titulo, descripcion;
 
 	public Dieta(String codigoDieta, String titulo, String descipcion){
