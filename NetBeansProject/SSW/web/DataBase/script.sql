@@ -1,0 +1,1 @@
+INSERT a INTO a;

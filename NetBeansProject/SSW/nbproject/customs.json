@@ -1,0 +1,11 @@
+{
+    "elements": {},
+    "attributes": {
+        "integrity": {
+            "context": "script"
+        },
+        "type": {
+            "context": "textarea"
+        }
+    }
+}

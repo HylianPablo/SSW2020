@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HealthyBowl</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="script.js"></script> 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="icon" href="img/logo.png">
+</head>
+
+<body id="page-top">
+    <div id=app></div>
+    <!--Banner-->
+    <header class="masthead">
+        <div class="container">
+            <div class="intro-class">
+                <div class="intro-heading">HealthyBowl</div>
+                <div class="intro-lead-in text-uppercase">Dietas a medida</div>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="container rounded" id="cuerpo">
+
+        <div class="row text-center my-3">
+			<div class="col"></div>
+			<div class="col">
+				<a class="coolFont btn w-100" href="./paginaUsuario.html" role="button">INICIO</a>
+			</div>
+			<div class="col">
+				<a class="coolFont btn w-100" href="./foroUsuario.html" role="button">FORO</a>
+			</div>
+			<div class="col">
+				<a class="oneLine coolFont btn w-100" href="./rankingUsuario.html" role="button">TOP DIETAS</a>
+			</div>
+            <div class="col">
+				<a class="coolFont btn w-100" href="./perfil.html" role="button">MI PERFIL</a>
+			</div>
+			<div class="col"></div>
+			<hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+		</div>
+		<br/>
+
+        <h1 class="coolFontParagraph inlineBlock">Dieta mediterránea.</h1>
+        <div class="btn-group-toggle inlineBlock" data-toggle="buttons">
+            <label class="uncheckedButton btn btn-success" onclick="changeStar()" id="fav">
+                <input type="checkbox" checked autocomplete="off"> <i class="fa fa-star text-warning"></i> Favorito
+            </label>
+        </div>
+        <div class="btn-group-toggle inlineBlock" data-toggle="buttons">
+            <label class="uncheckedButton btn btn-success" onclick="changeHeart()" id="like">
+                <input type="checkbox" checked autocomplete="off"> <i class="fa fa-heart text-danger" "></i> Guardado
+            </label>
+        </div>
+        <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
+
+        <div class="row">
+                <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="false">
+                    <div class="MultiCarousel-inner">
+                        <div class="item">
+                            <div id="Lunes" class="pad15">
+                                <h4 class="font-weight-bold">Lunes</h4>
+                                <div class="my-4">
+                                <h5>Desayuno</h5>
+                                <p>Vaso de leche</p>
+                                </div>
+                                <div class="my-4">
+                                <h5>Comida</h5>
+                                <p>Arroz</p>
+                                <p>Pollo con <br>tomate</p>
+                                <p>Postre</p>
+                                </div>
+                                <div class="my-4">
+                                <h5>Cena</h5>
+                                <p>Puré de Patata</p>
+                                <p>Postre</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div id="Martes">
+                                <h4 class="font-weight-bold">Martes</h4>
+                                <div class="my-4">
+                                <h5>Desayuno</h5>
+                                <p>Café y tostadas</p>
+                                </div>
+                                <div class="my-4">
+                                <h5>Comida</h5>
+                                <p>Brócoli</p>
+                                <p>Dorada con patatas</p>
+                                <p>Postre</p>
+                                </div>
+                                <div class="my-4">
+                                <h5>Cena</h5>
+                                <p class="oneLine">Ensalada de <br>garbanzos</p>
+                                <p>Postre</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div id="Miercoles">
+                                <h4 class="font-weight-bold">Miércoles</h4>
+                                <div class="my-4">
+                                <h5>Desayuno</h5>
+                                <p>Gachas</p>
+                                </div>
+                                <div class="my-4">
+                                <h5>Comida</h5>
+                                <p>Crema de <br>verduras</p>
+                                <p>San Jacobo</p>
+                                <p>Postre</p>
+                                </div>
+                                <div class="my-4">
+                                <h5>Cena</h5>
+                                <p>Lentejas</p>
+                                <p>Postre</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div id="Jueves">
+                                <h4 class="font-weight-bold">Jueves</h4>
+                                <div class="my-4">
+                                <h5>Desayuno</h5>
+                                <p>Pan con aceite</p>
+                                </div>
+                                <div class="my-4">
+                                <h5>Comida</h5>
+                                <p>Ensalada de pasta</p>
+                                <p>Filete ruso</p>
+                                <p>Postre</p>
+                                </div>
+                                <div class="my-4">
+                                <h5>Cena</h5>
+                                <p>Huevos fritos con patatas</p>
+                                <p>Postre</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div id="Viernes">
+                                <h4 class="font-weight-bold">Viernes</h4>
+                               <div class="my-4">
+                                <h5>Desayuno</h5>
+                                <p>Café y tostadas</p>
+                                </div>
+                                <div class="my-4">
+                                <h5>Comida</h5>
+                                <p>Sopa de cocido</p>
+                                <p>Cocido completo</p>
+                                <p>Postre</p>
+                                </div>
+                                <div class="my-4">
+                                <h5>Cena</h5>
+                                <p>Melón con <br>jamón</p>
+                                <p>Postre</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div id="Sabado">
+                                <h4 class="font-weight-bold">Sábado</h4>
+                               <div class="my-4">
+                                <h5>Desayuno</h5>
+                                <p>Pan con aceite</p>
+                                </div>
+                                <div class="my-4">
+                                <h5>Comida</h5>
+                                <p>Judías verdes con patatas</p>
+                                <p>Bacalao al pilpil</p>
+                                <p>Postre</p>
+                                </div>
+                                <div class="my-4">
+                                <h5>Cena</h5>
+                                <p>Alubias a la jardinera</p>
+                                <p>Postre</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div id="Domingo">
+                                <h4 class="font-weight-bold">Domingo</h4>
+                                <div class="my-4">
+                                <h5>Desayuno</h5>
+                                <p>Tostadas de anchoa</p>
+                                </div>
+                                <div class="my-4">
+                                <h5>Comida</h5>
+                                <p>Ensaladilla rusa</p>
+                                <p>Conejo al ajillo</p>
+                                <p>Postre</p>
+                                </div>
+                                <div class="my-4">
+                                <h5>Cena</h5>
+                                <p>Huevos revueltos y ensalada</p>
+                                <p>Postre</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-success leftLst"><</button>
+                    <button class="btn btn-success rightLst">></button>
+                </div>
+            </div>
+        <br/>
+        <hr>
+        <br>
+        <h2 class="coolFontParagraph">Descripción de la dieta</h2>
+        
+        <div class="card my-3" id="entradaEjemplo">
+            <div class="m-2">
+                <p>
+                    Desayunar pan con aceite y tomate regula la circulación sanguínea. La Dieta Mediterránea es una valiosa herencia cultural que representa mucho más que una simple pauta nutricional, rica y saludable. Es un estilo de vida equilibrado que recoge recetas,
+                    formas de cocinar, celebraciones, costumbres, productos típicos y actividades humanas diversas.</p><br><p> Entre las muchas propiedades beneficiosas para la salud de este patrón alimentario se puede destacar el tipo de grasa que lo caracteriza
+                    (aceite de oliva, pescado y frutos secos), las proporciones en los nutrientes principales que guardan sus recetas (cereales y vegetales como base de los platos y carnes o similares como “guarnición”) y la riqueza en micronutrientes
+                    que contiene, fruto de la utilización de verduras de temporada, hierbas aromáticas y condimentos. </p><br><p>Así lo reconoció y celebró la UNESCO inscribiendo la Dieta Mediterránea como uno de los elementos de la Lista Representativa del Patrimonio
+                    Cultural Inmaterial de la Humanidad. La alimentación saludable que nos proporciona la Dieta Mediterránea es perfectamente compatible con el placer de degustar sabrosos platos.
+                </p>
+            </div>
+        </div>
+        <br/>
+    </div>
+    <br/>
+
+    <script>
+        var countHeart=0;
+            function changeHeart() {  
+                var but = document.getElementById("like");
+                if (countHeart == 1) {
+                    but.style.color = '#28A745';
+                    but.style.backgroundColor = '#FFFFFF';
+                    countHeart=0;
+                } else {
+                        but.style.color = '#FFFFFF';
+                        but.style.backgroundColor = '#28A745';
+                        countHeart=1;
+                }
+            }
+        </script>
+
+        <script>
+        var countStar=0;
+            function changeStar() {
+                var but = document.getElementById("fav");
+                if (countStar == 1) {
+                    but.style.color = '#28A745';
+                    but.style.backgroundColor = '#FFFFFF';
+                    countStar=0;
+                } else {
+                        but.style.color = '#FFFFFF';
+                        but.style.backgroundColor = '#28A745';
+                        countStar=1;
+                }
+            }
+        </script>
+</body>
+
+</html>
