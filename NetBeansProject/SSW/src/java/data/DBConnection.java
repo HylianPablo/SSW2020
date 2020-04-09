@@ -65,13 +65,12 @@ public class DBConnection {
             
             if(rs.next()){
                 //Igual es mejor tener las clases vacías y usar setters en vez de constructor
-                entrada = new Entrada(
-                        rs.getString("codigoEntrada"),
-                        rs.getString("titulo"),
-                        rs.getString("cuerpo"),
-                        rs.getString("nombreUsuario"),
-                        rs.getString("fecha")
-                );
+                entrada = new Entrada();
+                entrada.setCodigoEntrada(rs.getString("codigoEntrada"));
+                entrada.setTitulo(rs.getString("titulo"));
+                entrada.setCuerpo(rs.getString("cuerpo"));
+                entrada.setNombreUsuario(rs.getString("nombreUsuario"));
+                entrada.setFecha(rs.getString("fecha"));
             }
             rs.close();
             ps.close();

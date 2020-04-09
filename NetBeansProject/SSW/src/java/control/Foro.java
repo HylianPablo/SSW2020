@@ -5,7 +5,7 @@ package control;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import data.DBConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -37,23 +37,26 @@ public class Foro extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            
-            String codigo = "codigoEjemplo";
-            String titulo = request.getParameter("tituloNuevaEntrada");
-            String cuerpo = request.getParameter("cuerpoNuevaEntrada");
-            String usuario = request.getParameter("usuarioNuevaEntrada");
-            String date = request.getParameter("fechaNuevaEntrada");
-            Entrada entrada = new Entrada(codigo,titulo,cuerpo,usuario,date);
-            
-            String url = "";
-            url = "/foro.jsp";
-            HttpSession session = request.getSession();
-            session.setAttribute("entrada", entrada);
-            
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-            dispatcher.forward(request,response);
-        }
+
+        String codigo = "codigoEjemplo";
+        String titulo = request.getParameter("tituloNuevaEntrada");
+        String cuerpo = request.getParameter("cuerpoNuevaEntrada");
+        String usuario = "pepe";//request.getParameter("usuarioNuevaEntrada");
+        String date = "2019-04-03";//request.getParameter("fechaNuevaEntrada");
+        Entrada entrada = new Entrada();
+        entrada.setCodigoEntrada(codigo);
+        entrada.setTitulo(titulo);
+        entrada.setCuerpo(cuerpo);
+        entrada.setNombreUsuario(usuario);
+        entrada.setFecha(date);
+
+        String url = "/FrontEnd/foro.jsp";
+        DBConnection.insertEntrada(entrada);
+        HttpSession session = request.getSession();
+        session.setAttribute("entrada", entrada);
+
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

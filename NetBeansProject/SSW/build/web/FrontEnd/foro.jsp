@@ -8,8 +8,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>HealthyBowl</title>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HealthyBowl</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/SSW/FrontEnd/styles.css"><link>
+    <link rel="icon" href="/SSW/FronEnd/img/logo.png">
     </head>
     <body id="page-top">
 	<div id=app></div>
@@ -45,7 +57,7 @@
 		<br/>
 		
         <h1 class="h1Size coolFontParagraph inlineBlock">Foro principal</h1>
-        <jsp:useBean id="entrada" scope="session" class="data.Entrada"/>
+       
         <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
         <br/>
         <hr/>
@@ -76,6 +88,7 @@ La alimentación saludable que nos proporciona la Dieta Mediterránea es perfect
         </div>
         <br/>
         
+         <jsp:useBean id="entrada" scope="session" class="data.Entrada"/>
         <div class="card my-3">
             <div class="mx-3 mt-3 entradaForoTitulo">
                 <jsp:getProperty name="entrada" property="titulo"/>
