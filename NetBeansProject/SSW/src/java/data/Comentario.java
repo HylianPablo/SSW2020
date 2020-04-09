@@ -3,34 +3,49 @@ import java.time.LocalDateTime;
 
 public class Comentario{
 	private String codigoComentario, codigoPadre, cuerpo, nombreUsuario;
-	private LocalDateTime fecha;
-
-	public Comentario(String codigoComentario, String codigoPadre,
-		String cuerpo, String nombreUsuario, LocalDateTime fecha){
-		this.codigoComentario=codigoComentario;
-		this.codigoPadre=codigoPadre;
-		this.cuerpo=cuerpo;
-		this.nombreUsuario=nombreUsuario;
-		this.fecha=fecha;
-	}
+        private LocalDateTime fecha;
+        
+        public Comentario(){
+            
+        }
 
 	public String getCodigoComentario(){
 		return codigoComentario;
+	}
+        
+        public void setCodigoComentario(String codigo){
+		codigoComentario = codigo;
 	}
 
 	public String getCodigoPadre(){
 		return codigoPadre;
 	}
+        
+        public void setCodigoPadre(String codigo){
+		codigoPadre = codigo;
+	}
 
 	public String getCuerpo(){
 		return cuerpo;
+	}
+        
+        public void setCuerpo(String cuerpo){
+		this.cuerpo = cuerpo;
 	}
 
 	public String getNombreUsuario(){
 		return nombreUsuario;
 	}
+        
+        public void setNombreUsuario(String nombre){
+		nombreUsuario = nombre;
+	}
 
 	public LocalDateTime getFecha(){
 		return fecha;
+	}
+        
+        public void setFecha(LocalDateTime fecha){
+		this.fecha = fecha;
 	}
 }

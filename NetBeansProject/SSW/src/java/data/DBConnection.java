@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class DBConnection {
     //EJEMPLO 
@@ -40,7 +41,7 @@ public class DBConnection {
             ps.setString(2,entrada.getTitulo());
             ps.setString(3,entrada.getCuerpo());
             ps.setString(4,entrada.getNombreUsuario());
-            ps.setString(5,entrada.getFecha());
+            ps.setTimestamp(5,Timestamp.valueOf(entrada.getFecha()));
             int res = ps.executeUpdate();
             ps.close();
             pool.freeConnection(connection);
@@ -70,7 +71,7 @@ public class DBConnection {
                 entrada.setTitulo(rs.getString("titulo"));
                 entrada.setCuerpo(rs.getString("cuerpo"));
                 entrada.setNombreUsuario(rs.getString("nombreUsuario"));
-                entrada.setFecha(rs.getString("fecha"));
+                entrada.setFecha(rs.getTimestamp("fecha").toLocalDateTime());
             }
             rs.close();
             ps.close();
