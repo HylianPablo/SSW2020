@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public class DBConnection {
     //EJEMPLO 
@@ -52,11 +53,43 @@ public class DBConnection {
         }
     }
     
+    public static ArrayList<Entrada> getAllEntradas(){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT * FROM Entrada";
+        ArrayList<Entrada> retorno = new ArrayList<>();
+        try{
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            Entrada entrada;
+            
+            while(rs.next()){
+                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
+                entrada = new Entrada();
+                entrada.setCodigoEntrada(rs.getString("codigoEntrada"));
+                entrada.setTitulo(rs.getString("titulo"));
+                entrada.setCuerpo(rs.getString("cuerpo"));
+                entrada.setNombreUsuario(rs.getString("nombreUsuario"));
+                entrada.setFecha(rs.getTimestamp("fecha").toLocalDateTime());
+                retorno.add(entrada);
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return retorno;
+        } catch(SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     public static Entrada selectEntrada(String codigoEntrada){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
-        PreparedStatement ps  = null;
-        ResultSet rs = null;
+        PreparedStatement ps;
+        ResultSet rs;
         String query = "SELECT * FROM Entrada WHERE codigoEntrada = ?";
         try{
             ps = connection.prepareStatement(query);
