@@ -1,5 +1,8 @@
 package data;
-public class Dieta{
+
+import java.io.Serializable;
+
+public class Dieta implements Serializable{
 	private String codigoDieta, titulo, descripcion;
         
         public Dieta(){

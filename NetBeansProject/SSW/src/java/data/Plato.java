@@ -1,5 +1,8 @@
 package data;
-public class Plato{
+
+import java.io.Serializable;
+
+public class Plato implements Serializable{
 	private String codigoPlato, nombre, descripcion;
 	private boolean desayuno, vegano, vegetariano, frutosSecos, gluten;
 	private int kcal, glucidosSimples, polisacaridos, aminoacidos, proteinas, hidratosDeCarbono;
