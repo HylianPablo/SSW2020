@@ -4,6 +4,9 @@
     Author     : pablo
 --%>
 
+<%@page import="data.DBConnection"%>
+<%@page import="data.Entrada"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,7 +24,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/SSW/FrontEnd/styles.css"><link>
-    <link rel="icon" href="/SSW/FronEnd/img/logo.png">
+    <link rel="icon" href="/SSW/FrontEnd/img/logo.png">
     </head>
     <body id="page-top">
 	<div id=app></div>
@@ -61,58 +64,38 @@
         <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
         <br/>
         <hr/>
-        <button class="botonEstandar btn btn-success botonesEntrada my-3" onclick="window.location.href='nuevaEntrada.html';">Agregar nueva entrada</button>
+        <button class="botonEstandar btn btn-success botonesEntrada my-3" onclick="window.location.href='/SSW/FrontEnd/nuevaEntrada.html';">Agregar nueva entrada</button>
+<%
+    ArrayList<Entrada> entradas = DBConnection.getAllEntradas();
+    for(int i = 0; i < entradas.size(); i++){
+%>
 
         <div class="card my-3">
             <div class="mx-3 mt-3 entradaForoTitulo">
-                La dieta mediterránea es genial.
+                <%= entradas.get(i).getTitulo()%>
                 <button class="botonEstandar btn btn-success botonesEntrada" onclick="window.location.href='entradaUsuario.html';">Ir al hilo</button>
-                <button class="botonEstandar btn btn-success botonesEntrada" onclick="mostrarMas()" id="myBtn">Leer más</button>
+                <button class="botonEstandar btn btn-success botonesEntrada" onclick="mostrarMas(<%=i%>)" id="leerMas<%=i%>">Leer más</button>
                 <hr/>
             </div>
-            <div class="mx-3" id="entradaEjemplo">
+            <div class="mx-3" id="entrada<%=i%>">
                 <p>
                     Desayunar pan con aceite y tomate regula la circulación sanguínea.
-                    <span class="dots" id="dots">...</span>
-                    <span class="more" id="more">
-La Dieta Mediterránea es una valiosa herencia cultural que representa mucho más que una simple pauta nutricional, rica y saludable. Es un estilo de vida equilibrado que recoge recetas, formas de cocinar, celebraciones, costumbres, productos típicos y actividades humanas diversas.
+                    <span class="dots" id="dots<%=i%>">...</span>
+                    <span class="more" id="more<%=i%>">
+                        <%= entradas.get(i).getCuerpo() %>
 
-Entre las muchas propiedades beneficiosas para la salud de este patrón alimentario se puede destacar el tipo de grasa que lo caracteriza (aceite de oliva, pescado y frutos secos), las proporciones en los nutrientes principales que guardan sus recetas (cereales y vegetales como base de los platos y carnes o similares como “guarnición”) y la riqueza en micronutrientes que contiene, fruto de la utilización de verduras de temporada, hierbas aromáticas y condimentos.
-
-Así lo reconoció y celebró la UNESCO inscribiendo la Dieta Mediterránea como uno de los elementos de la Lista Representativa del Patrimonio Cultural Inmaterial de la Humanidad.
-La alimentación saludable que nos proporciona la Dieta Mediterránea es perfectamente compatible con el placer de degustar sabrosos platos.
-
-					</span>
-                </p>
-            </div>
-        </div>
-        <br/>
-        
-         <jsp:useBean id="entrada" scope="session" class="data.Entrada"/>
-        <div class="card my-3">
-            <div class="mx-3 mt-3 entradaForoTitulo">
-                <jsp:getProperty name="entrada" property="titulo"/>
-                <button class="botonEstandar btn btn-success botonesEntrada" onclick="window.location.href='entradaUsuario.html';">Ir al hilo</button>
-                <button class="botonEstandar btn btn-success botonesEntrada" onclick="mostrarMas()" id="myBtn">Leer más</button>
-                <hr/>
-            </div>
-            <div class="mx-3" id="entradaEjemplo">
-                <p>
-                    Texto pequeño.
-                    <span class="dots" id="dots">...</span>
-                    <span class="more" id="more">
-                        <jsp:getProperty name="entrada" property="cuerpo"/>
                     </span>
                 </p>
             </div>
         </div>
         <br/>
+        <%}%>
 
         <script>
-            function mostrarMas() {
-                var dots = document.getElementById("dots");
-                var moreText = document.getElementById("more");
-                var btnText = document.getElementById("myBtn");
+            function mostrarMas(i) {
+                var dots = document.getElementById("dots"+i);
+                var moreText = document.getElementById("more"+i);
+                var btnText = document.getElementById("leerMas"+i);
 
                 if (dots.style.display === "none") {
                     dots.style.display = "inline";

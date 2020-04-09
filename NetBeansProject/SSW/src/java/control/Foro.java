@@ -52,7 +52,7 @@ public class Foro extends HttpServlet {
         entrada.setFecha(date);
 
         String url = "/FrontEnd/foro.jsp";
-        DBConnection.insertEntrada(entrada);
+        //DBConnection.insertEntrada(entrada);
         HttpSession session = request.getSession();
         session.setAttribute("entrada", entrada);
 

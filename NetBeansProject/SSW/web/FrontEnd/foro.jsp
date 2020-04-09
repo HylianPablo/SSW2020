@@ -64,7 +64,7 @@
         <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
         <br/>
         <hr/>
-        <button class="botonEstandar btn btn-success botonesEntrada my-3" onclick="window.location.href='nuevaEntrada.html';">Agregar nueva entrada</button>
+        <button class="botonEstandar btn btn-success botonesEntrada my-3" onclick="window.location.href='/SSW/FrontEnd/nuevaEntrada.html';">Agregar nueva entrada</button>
 <%
     ArrayList<Entrada> entradas = DBConnection.getAllEntradas();
     for(int i = 0; i < entradas.size(); i++){
@@ -72,7 +72,7 @@
 
         <div class="card my-3">
             <div class="mx-3 mt-3 entradaForoTitulo">
-                <%= entradas.get(i).getTitulo() %>
+                <%= entradas.get(i).getTitulo()%>
                 <button class="botonEstandar btn btn-success botonesEntrada" onclick="window.location.href='entradaUsuario.html';">Ir al hilo</button>
                 <button class="botonEstandar btn btn-success botonesEntrada" onclick="mostrarMas(<%=i%>)" id="leerMas<%=i%>">Leer más</button>
                 <hr/>
