@@ -24,7 +24,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/SSW/FrontEnd/styles.css"><link>
-    <link rel="icon" href="/SSW/FronEnd/img/logo.png">
+    <link rel="icon" href="/SSW/FrontEnd/img/logo.png">
     </head>
     <body id="page-top">
 	<div id=app></div>
@@ -64,7 +64,7 @@
         <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
         <br/>
         <hr/>
-        <button class="botonEstandar btn btn-success botonesEntrada my-3" onclick="window.location.href='nuevaEntrada.html';">Agregar nueva entrada</button>
+        <button class="botonEstandar btn btn-success botonesEntrada my-3" onclick="window.location.href='/SSW/FrontEnd/nuevaEntrada.html';">Agregar nueva entrada</button>
 <%
     ArrayList<Entrada> entradas = DBConnection.getAllEntradas();
     for(int i = 0; i < entradas.size(); i++){
@@ -72,7 +72,7 @@
 
         <div class="card my-3">
             <div class="mx-3 mt-3 entradaForoTitulo">
-                <% entradas.get(i).getTitulo();%>
+                <%= entradas.get(i).getTitulo()%>
                 <button class="botonEstandar btn btn-success botonesEntrada" onclick="window.location.href='entradaUsuario.html';">Ir al hilo</button>
                 <button class="botonEstandar btn btn-success botonesEntrada" onclick="mostrarMas()" id="myBtn">Leer más</button>
                 <hr/>
@@ -82,7 +82,7 @@
                     Desayunar pan con aceite y tomate regula la circulación sanguínea.
                     <span class="dots" id="dots">...</span>
                     <span class="more" id="more">
-                        <% entradas.get(i).getCuerpo();%>
+                        <%= entradas.get(i).getCuerpo()%>
                     </span>
                 </p>
             </div>
