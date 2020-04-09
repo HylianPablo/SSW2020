@@ -74,15 +74,16 @@
             <div class="mx-3 mt-3 entradaForoTitulo">
                 <%= entradas.get(i).getTitulo()%>
                 <button class="botonEstandar btn btn-success botonesEntrada" onclick="window.location.href='entradaUsuario.html';">Ir al hilo</button>
-                <button class="botonEstandar btn btn-success botonesEntrada" onclick="mostrarMas()" id="myBtn">Leer más</button>
+                <button class="botonEstandar btn btn-success botonesEntrada" onclick="mostrarMas(<%=i%>)" id="leerMas<%=i%>">Leer más</button>
                 <hr/>
             </div>
-            <div class="mx-3" id="entradaEjemplo">
+            <div class="mx-3" id="entrada<%=i%>">
                 <p>
                     Desayunar pan con aceite y tomate regula la circulación sanguínea.
-                    <span class="dots" id="dots">...</span>
-                    <span class="more" id="more">
-                        <%= entradas.get(i).getCuerpo()%>
+                    <span class="dots" id="dots<%=i%>">...</span>
+                    <span class="more" id="more<%=i%>">
+                        <%= entradas.get(i).getCuerpo() %>
+
                     </span>
                 </p>
             </div>
@@ -91,10 +92,10 @@
         <%}%>
 
         <script>
-            function mostrarMas() {
-                var dots = document.getElementById("dots");
-                var moreText = document.getElementById("more");
-                var btnText = document.getElementById("myBtn");
+            function mostrarMas(i) {
+                var dots = document.getElementById("dots"+i);
+                var moreText = document.getElementById("more"+i);
+                var btnText = document.getElementById("leerMas"+i);
 
                 if (dots.style.display === "none") {
                     dots.style.display = "inline";
