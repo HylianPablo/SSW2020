@@ -24,7 +24,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/SSW/FrontEnd/styles.css"><link>
-    <link rel="icon" href="/SSW/FronEnd/img/logo.png">
+    <link rel="icon" href="/SSW/FrontEnd/img/logo.png">
     </head>
     <body id="page-top">
 	<div id=app></div>
@@ -79,10 +79,20 @@
             </div>
             <div class="mx-3" id="entrada<%=i%>">
                 <p>
-                    Desayunar pan con aceite y tomate regula la circulación sanguínea.
+                        <%
+                            String cuerpo = entradas.get(i).getCuerpo();
+                            if(cuerpo == null) cuerpo = "";
+                            String[] palabras = cuerpo.split("([ ]|\n)");
+                            int NMAX = 10;
+                            for(int j = 0; (j < NMAX) && (j < palabras.length); j++){
+                        %>
+                        <%= palabras[j] %>
+                        <%}%>
                     <span class="dots" id="dots<%=i%>">...</span>
                     <span class="more" id="more<%=i%>">
-                        <%= entradas.get(i).getCuerpo() %>
+                        <%for(int j = NMAX; j < palabras.length; j++){%>
+                        <%= palabras[j] %>
+                        <%}%>
                     </span>
                 </p>
             </div>
