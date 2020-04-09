@@ -4,7 +4,7 @@ public class Comentario{
 	private String codigoComentario, codigoPadre, cuerpo, nombreUsuario;
 	private LocalDateTime fecha;
 
-	public Usuario(String codigoComentario, String codigoPadre,
+	public Comentario(String codigoComentario, String codigoPadre,
 		String cuerpo, String nombreUsuario, LocalDateTime fecha){
 		this.codigoComentario=codigoComentario;
 		this.codigoPadre=codigoPadre;
