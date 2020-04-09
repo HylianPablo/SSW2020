@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import data.Entrada;
 import java.time.LocalDateTime;
+import java.time.Month;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
@@ -42,7 +43,7 @@ public class Foro extends HttpServlet {
         String titulo = request.getParameter("tituloNuevaEntrada");
         String cuerpo = request.getParameter("cuerpoNuevaEntrada");
         String usuario = "pepe";//request.getParameter("usuarioNuevaEntrada");
-        String date = "2019-04-03";//request.getParameter("fechaNuevaEntrada");
+        LocalDateTime date = LocalDateTime.of(2019,Month.APRIL,03, 19, 30, 40);//request.getParameter("fechaNuevaEntrada");
         Entrada entrada = new Entrada();
         entrada.setCodigoEntrada(codigo);
         entrada.setTitulo(titulo);

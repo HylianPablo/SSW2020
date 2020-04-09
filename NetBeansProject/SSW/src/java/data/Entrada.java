@@ -4,48 +4,49 @@ import java.time.LocalDateTime;
 
 public class Entrada implements Serializable{
 	private String codigoEntrada, titulo, cuerpo, nombreUsuario;
-	private String fecha;
-
+        private LocalDateTime fecha;
+        
 	public Entrada(){
+            
 	}
 
 	public String getCodigoEntrada(){
 		return codigoEntrada;
 	}
+        
+        public void setCodigoEntrada(String codigo){
+		codigoEntrada = codigo;
+	}
 
 	public String getTitulo(){
 		return titulo;
+	}
+        
+        public void setTitulo(String titulo){
+		this.titulo = titulo;
 	}
 
 	public String getCuerpo(){
 		return cuerpo;
 	}
+        
+        public void setCuerpo(String cuerpo){
+		this.cuerpo = cuerpo;
+	}
 
 	public String getNombreUsuario(){
 		return nombreUsuario;
 	}
+        
+        public void setNombreUsuario(String nombre){
+		nombreUsuario = nombre;
+	}
 
-	public String getFecha(){
+	public LocalDateTime getFecha(){
 		return fecha;
 	}
         
-        public void setCodigoEntrada(String c){
-            codigoEntrada=c;
-        }
-        
-        public void setTitulo(String t){
-            titulo=t;
-        }
-        
-        public void setCuerpo(String c){
-            cuerpo=c;
-        }
-        
-        public void setNombreUsuario(String nu){
-            nombreUsuario=nu;
-        }
-        
-        public void setFecha(String f){
-            fecha=f;
-        }
+        public void setFecha(LocalDateTime fecha){
+		this.fecha = fecha;
+	}
 }

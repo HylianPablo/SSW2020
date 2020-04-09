@@ -2,39 +2,56 @@ package data;
 public class Ingrediente{
 	private String nombre, codigoIngrediente;
 	private boolean vegano, vegetariano, frutosSecos, gluten;
-
-	public Ingrediente(String codigoIngrediente, String nombre,
-		boolean vegano, boolean vegetariano, boolean frutosSecos,
-		boolean gluten){
-		this.nombre = nombre;
-		this.vegano = vegano;
-		this.codigoIngrediente = codigoIngrediente;
-		this.vegetariano = vegetariano;
-		this.frutosSecos = frutosSecos;
-		this.gluten = gluten;
-	}
+        
+        public Ingrediente(){
+            
+        }      
 
 	public String getNombre(){
 		return nombre;
 	}
+        
+        public void setNombre(String nombre){
+                this.nombre = nombre;
+        }
 
 	public String getCodigoIngrediente(){
 		return codigoIngrediente;
+	}
+        
+        public void setCodigoIngrediente(String codigo){
+		codigoIngrediente = codigo;
 	}
 
 	public boolean vegano(){
 		return vegano;
 	}
+        
+        public void setVegano(boolean vegano){
+		this.vegano = vegano;
+	}
 
 	public boolean vegetariano(){
 		return vegetariano;
+	}
+        
+        public void setVegetariano(boolean vegetariano){
+		this.vegetariano = vegetariano;
 	}
 
 	public boolean frutosSecos(){
 		return frutosSecos;
 	}
-
+        
+        public void setFrutosSecos(boolean frutosSecos){
+		this.frutosSecos = frutosSecos;
+	}
+        
 	public boolean gluten(){
 		return gluten;
+	}
+        
+        public void setGluten(boolean gluten){
+		this.gluten = gluten;
 	}
 }
