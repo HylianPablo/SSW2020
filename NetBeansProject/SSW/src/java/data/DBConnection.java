@@ -210,6 +210,47 @@ public class DBConnection {
         }
     }
     
+    public static Plato getPlato(){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT * FROM Plato p WHERE p.codigoPlato=00000000";
+        //ArrayList<Plato> retorno = new ArrayList<>();
+        try{
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            Plato plato = null;
+            
+            if(rs.next()){
+                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
+                plato = new Plato();
+                plato.setCodigoPlato(rs.getString("codigoPlato"));
+                plato.setNombre(rs.getString("nombre"));
+                plato.setDescripcion(rs.getString("descripcion"));
+                plato.setDesayuno(rs.getBoolean("desayuno"));
+                plato.setVegano(rs.getBoolean("vegano"));
+                plato.setVegetariano(rs.getBoolean("vegetariano"));
+                plato.setFrutosSecos(rs.getBoolean("frutosSecos"));
+                plato.setGluten(rs.getBoolean("gluten"));
+                plato.setKcal(rs.getInt("kcal"));
+                plato.setGlucidosSimples(rs.getInt("glucidosSimples"));
+                plato.setPolisacaridos(rs.getInt("polisacaridos"));
+                plato.setAminoacidos(rs.getInt("aminoacidos"));
+                plato.setProteinas(rs.getInt("proteinas"));
+                plato.setHidratosDeCarbono(rs.getInt("hidratosDeCarbono"));
+                //retorno.add(entrada);
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return plato;
+        } catch(SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return null;
+        }
+    }
     
     public static ArrayList<Entrada> getAllEntradas(){
         ConnectionPool pool = ConnectionPool.getInstance();

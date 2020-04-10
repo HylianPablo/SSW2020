@@ -3,12 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/pablo/NetBeansProjects/SSW/src/java/data/ConnectionPool.java</file>
-            <file>file:/home/pablo/NetBeansProjects/SSW/web/FrontEnd/nuevaEntrada.html</file>
-            <file>file:/home/pablo/NetBeansProjects/SSW/src/java/data/DBConnection.java</file>
-            <file>file:/home/pablo/NetBeansProjects/SSW/src/java/data/Entrada.java</file>
-            <file>file:/home/pablo/NetBeansProjects/SSW/src/java/control/Foro.java</file>
-            <file>file:/home/pablo/NetBeansProjects/SSW/web/FrontEnd/foro.jsp</file>
+            <file>file:/home/alejandro/UNI/SSW/UltimoRepo/SSW2020/NetBeansProject/SSW/web/FrontEnd/nuevaEntrada.html</file>
+            <file>file:/home/alejandro/UNI/SSW/UltimoRepo/SSW2020/NetBeansProject/SSW/src/java/data/Dia.java</file>
+            <file>file:/home/alejandro/UNI/SSW/UltimoRepo/SSW2020/NetBeansProject/SSW/web/FrontEnd/foroUsuario.jsp</file>
+            <file>file:/home/alejandro/UNI/SSW/UltimoRepo/SSW2020/NetBeansProject/SSW/web/FrontEnd/entrada.jsp</file>
+            <file>file:/home/alejandro/UNI/SSW/UltimoRepo/SSW2020/NetBeansProject/SSW/web/FrontEnd/foroUsuario.html</file>
+            <file>file:/home/alejandro/UNI/SSW/UltimoRepo/SSW2020/NetBeansProject/SSW/web/FrontEnd/generaDieta/diaDieta.jsp</file>
+            <file>file:/home/alejandro/UNI/SSW/UltimoRepo/SSW2020/NetBeansProject/SSW/src/java/data/DBConnection.java</file>
+            <file>file:/home/alejandro/UNI/SSW/UltimoRepo/SSW2020/NetBeansProject/SSW/src/java/data/Plato.java</file>
+            <file>file:/home/alejandro/UNI/SSW/UltimoRepo/SSW2020/NetBeansProject/SSW/web/FrontEnd/rankingUsuario.jsp</file>
+            <file>file:/home/alejandro/UNI/SSW/UltimoRepo/SSW2020/NetBeansProject/SSW/web/FrontEnd/generaDieta/lunes.html</file>
+            <file>file:/home/alejandro/UNI/SSW/UltimoRepo/SSW2020/NetBeansProject/SSW/src/java/data/Dieta.java</file>
+            <file>file:/home/alejandro/UNI/SSW/UltimoRepo/SSW2020/NetBeansProject/SSW/web/FrontEnd/generaDieta/martes.html</file>
+            <file>file:/home/alejandro/UNI/SSW/UltimoRepo/SSW2020/NetBeansProject/SSW/web/FrontEnd/entradaUsuario.jsp</file>
+            <file>file:/home/alejandro/UNI/SSW/UltimoRepo/SSW2020/NetBeansProject/SSW/web/FrontEnd/foro.jsp</file>
+            <file>file:/home/alejandro/UNI/SSW/UltimoRepo/SSW2020/NetBeansProject/SSW/src/java/data/CreacionDieta.java</file>
         </group>
     </open-files>
 </project-private>
