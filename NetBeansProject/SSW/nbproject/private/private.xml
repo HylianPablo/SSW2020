@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/DATOS%20USUARIO/Javier/Universidad/Tercero/SSW/Web/SSW2020/NetBeansProject/SSW/src/java/control/NuevoComentario.java</file>
-            <file>file:/D:/DATOS%20USUARIO/Javier/Universidad/Tercero/SSW/Web/SSW2020/NetBeansProject/SSW/web/FrontEnd/nuevaEntrada.html</file>
-            <file>file:/D:/DATOS%20USUARIO/Javier/Universidad/Tercero/SSW/Web/SSW2020/NetBeansProject/SSW/src/java/data/DBConnection.java</file>
-            <file>file:/D:/DATOS%20USUARIO/Javier/Universidad/Tercero/SSW/Web/SSW2020/NetBeansProject/SSW/web/FrontEnd/foroUsuario.jsp</file>
-            <file>file:/D:/DATOS%20USUARIO/Javier/Universidad/Tercero/SSW/Web/SSW2020/NetBeansProject/SSW/src/java/control/Foro.java</file>
-            <file>file:/D:/DATOS%20USUARIO/Javier/Universidad/Tercero/SSW/Web/SSW2020/NetBeansProject/SSW/web/FrontEnd/entradaUsuario.jsp</file>
+            <file>file:/home/pablo/NetBeansProjects/SSW/src/java/data/ConnectionPool.java</file>
+            <file>file:/home/pablo/NetBeansProjects/SSW/web/FrontEnd/nuevaEntrada.html</file>
+            <file>file:/home/pablo/NetBeansProjects/SSW/src/java/data/DBConnection.java</file>
+            <file>file:/home/pablo/NetBeansProjects/SSW/src/java/data/Entrada.java</file>
+            <file>file:/home/pablo/NetBeansProjects/SSW/src/java/control/Foro.java</file>
+            <file>file:/home/pablo/NetBeansProjects/SSW/web/FrontEnd/foro.jsp</file>
         </group>
     </open-files>
 </project-private>
