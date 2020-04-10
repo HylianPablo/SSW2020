@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Dieta implements Serializable{
 	private String codigoDieta, titulo, descripcion;
+        private int guardados, favoritos;
         
         public Dieta(){
             
@@ -31,5 +32,21 @@ public class Dieta implements Serializable{
         
         public void setDescripcion(String descripcion){
 		this.descripcion = descripcion;
+	}
+        
+        public int getGuardados(){
+		return guardados;
+	}
+        
+        public void setGuardados(int guardados){
+		this.guardados = guardados;
+	}
+        
+        public int getFavoritos(){
+		return favoritos;
+	}
+        
+        public void setFavoritos(int favoritos){
+		this.favoritos = favoritos;
 	}
 }
