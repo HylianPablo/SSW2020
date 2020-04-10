@@ -1,10 +1,12 @@
 package data;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 public class Dieta implements Serializable{
 	private String codigoDieta, titulo, descripcion;
         private int guardados, favoritos;
+        private LocalDateTime fecha;
         
         public Dieta(){
             
@@ -48,5 +50,13 @@ public class Dieta implements Serializable{
         
         public void setFavoritos(int favoritos){
 		this.favoritos = favoritos;
+	}
+        
+        public LocalDateTime getFecha(){
+		return fecha;
+	}
+        
+        public void setFecha(LocalDateTime fecha){
+		this.fecha = fecha;
 	}
 }
