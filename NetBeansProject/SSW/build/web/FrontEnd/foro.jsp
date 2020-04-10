@@ -46,7 +46,7 @@
                 <a class="coolFont btn w-100" href="./index.html" role="button">INICIO</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100 actualPage" href="./foro.html" role="button">FORO</a>
+                <a class="coolFont btn w-100 actualPage" href="./foro.jsp" role="button">FORO</a>
             </div>
             <div class="col">
                 <a class="coolFont btn w-100" href="./ranking.html" role="button">TOP DIETAS</a>
@@ -76,13 +76,7 @@
                     <input name="cod" type="hidden" value="<%= entradas.get(i).getCodigoEntrada()%>"/>
                     <button class="botonEstandar btn btn-success botonesEntrada" type="submit">Ir al hilo</button>
                 </form>
-                <button class="botonEstandar btn btn-success botonesEntrada" onclick="mostrarMas(<%=i%>)" id="leerMas<%=i%>">Leer más</button>
-                
-                <hr/>
-            </div>
-            <div class="mx-3" id="entrada<%=i%>">
-                <p>
-                    <%
+                <%
                         String cuerpo = entradas.get(i).getCuerpo();
                         if (cuerpo == null) {
                             cuerpo = "";
@@ -96,9 +90,16 @@
                         for (int j = NMAX; j < palabras.length; j++) {
                             palabrasPost = palabrasPost + palabras[j] + " ";
                         }
-                    %>
+                        if(palabras.length>NMAX){
+                %>
+                <button class="botonEstandar btn btn-success botonesEntrada" onclick="mostrarMas(<%=i%>)" id="leerMas<%=i%>">Leer más</button>
+                <%}%>
+                <hr/>
+            </div>
+            <div class="mx-3" id="entrada<%=i%>">
+                <p>
                     <%= palabrasPre%>
-                    <span class="dots" id="dots<%=i%>">...</span>
+                    <span class="dots" id="dots<%=i%>"><%if(palabras.length>NMAX){%>...<%}%></span>
                     <span class="more" id="more<%=i%>">
                         <%= palabrasPost%>
                     </span>
