@@ -176,15 +176,13 @@ public class DBConnection {
         Connection connection = pool.getConnection();
         PreparedStatement ps;
         ResultSet rs;
-        String query = "WITH DietaF as (SELECT D.codigoDieta,"
-                + " (SELECT COUNT(*) FROM Usuario U WHERE U.favorito=D.codigoDieta) as favoritos" +
-        " FROM Dieta D GROUP BY D.codigoDieta), DietaG as (SELECT D.codigoDieta," +
-        " (SELECT COUNT(*) FROM Guardado G WHERE G.codigoDieta=D.codigoDieta) as guardados" +
-        " FROM Dieta D GROUP BY D.codigoDieta )" +
-        " SELECT d.codigoDieta, d.titulo, d.descripcion, dF.favoritos, dG.guardados" +
-        " FROM DietaF dF, Dieta d, DietaG dG" +
-        " WHERE d.codigoDieta = dF.codigoDieta AND d.codigoDieta = dG.codigoDieta" +
-        " ORDER BY dF.guardados DESC";
+        String query = "SELECT d.codigoDieta, d.titulo, d.descripcion, dF.favoritos, dG.guardados"
+        + " FROM (SELECT D.codigoDieta, (SELECT COUNT(*) FROM Usuario U WHERE U.favorito=D.codigoDieta)"
+        + "AS favoritos FROM Dieta D GROUP BY D.codigoDieta) AS dF, Dieta d, (SELECT D.codigoDieta,"
+        + " (SELECT COUNT(*) FROM Guardado G WHERE G.codigoDieta=D.codigoDieta) AS guardados"
+        + " FROM Dieta D GROUP BY D.codigoDieta ) dG"
+        + " WHERE d.codigoDieta = dF.codigoDieta AND d.codigoDieta = dG.codigoDieta"
+        + " ORDER BY dG.guardados DESC";
         ArrayList<Dieta> retorno = new ArrayList<>();
         try{
             ps = connection.prepareStatement(query);
