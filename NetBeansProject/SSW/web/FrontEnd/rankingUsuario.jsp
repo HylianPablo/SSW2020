@@ -134,10 +134,10 @@
                     dietas = DBConnection.getDietasGuardadas();
                 }
                 for(int i = 0; i < dietas.size(); i++){
-                    LocalDateTime fechaDieta = LocalDateTime.of(2020,Month.MARCH,04, 19, 30, 40);//dietas.get(i).getFecha();
+                    LocalDateTime fechaDieta = dietas.get(i).getFecha();
                     if(siempre || fechaDieta.compareTo(fechaLimite)>=0){
             %>
-            <a class="text-decoration-none blackHref" href="dietaMediterraneaUsuario.html">
+            <a class="text-decoration-none blackHref" href="dietaUsuario.jsp?cod=<%=dietas.get(i).getCodigoDieta()%>">
                 <div class="card bg-transparent mx-3 my-4">
                     <div class="entradaForoTitulo2 rounded-top p-2">
                         <div class="row">

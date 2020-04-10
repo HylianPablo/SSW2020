@@ -12,6 +12,7 @@ create table Dieta(
 	codigoDieta	char(20) not null,
 	titulo		char(20) not null,
 	descripcion	text not null,
+	fecha		date not null,
 	primary key(codigoDieta)
 );
 
@@ -103,9 +104,9 @@ create table PertenenciaPlato(
 	primary key(codigoIngrediente, codigoPlato)
 );
 
-insert into Dieta Values ('00000000','Dieta vegeteriana','Una dieta que no lleva animales, salvo ovolácteos');
-insert into Dieta Values ('00000001','Dieta mediterranea','Una dieta basada en la comida tradicional de la costa mediterranea');
-insert into Dieta Values ('00000002','Dieta de deportistas','Una dieta orientada a personas que realizan mucho deporte a diario');
+insert into Dieta Values ('00000000','Dieta vegeteriana','Una dieta que no lleva animales, salvo ovolácteos','2018-01-01');
+insert into Dieta Values ('00000001','Dieta mediterranea','Una dieta basada en la comida tradicional de la costa mediterranea','2020-04-10');
+insert into Dieta Values ('00000002','Dieta de deportistas','Una dieta orientada a personas que realizan mucho deporte a diario','2020-03-01');
 
 insert into Usuario Values ('Pedro Sanz Lopez', 'pedsanz', '12345pedro','pedrosanzl@gmail.com','00000000');
 insert into Usuario Values ('Marta Sanchez Rojo', 'martsanro', 'farola4','marta1912@gmail.com','00000000');
@@ -126,10 +127,12 @@ insert into Comentario Values ('00002','00001','No comas carne','pedsanz','2020-
 insert into Plato Values ('00000000','Garbanzos con espinacas','Garbanzos de la huerta cocinados con espinaca baby y aceite de oliva',FALSE,TRUE,TRUE,FALSE,FALSE,350,10,10,10,50,20);
 insert into Plato Values ('00000001','Pez espada','Pez espada con limón y romero, marinado con piñones',FALSE,FALSE,FALSE,TRUE,FALSE,280,10,20,30,20,20);
 insert into Plato Values ('00000002','Macarrones a la bolonesa','Macarrones con carne picada, tomate y orégano',FALSE,FALSE,FALSE,FALSE,TRUE,400,10,10,10,10,60);
+insert into Plato Values ('00000003','Vaso de leche','Vaso de leche de vaca',TRUE,FALSE,TRUE,FALSE,FALSE,0,0,0,0,0,0);
 
 insert into PlatoMenu Values ('00000002','00000001','lunes','comidaPrimero');
 insert into PlatoMenu Values ('00000001','00000001','lunes','comidaSegundo');
 insert into PlatoMenu Values ('00000000','00000000','jueves','cena');
+insert into PlatoMenu Values ('00000003','00000000','lunes','desayuno');
 
 insert into Ingrediente Values('00000000','Garbanzo',TRUE,TRUE,FALSE,FALSE);
 insert into Ingrediente Values('00000001','Espinaca',TRUE,TRUE,FALSE,FALSE);
