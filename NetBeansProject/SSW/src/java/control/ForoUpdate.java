@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  * @author pablo
  */
 @WebServlet(name = "Foro", urlPatterns = {"/FrontEnd/foroUpdate"})
-public class Foro extends HttpServlet {
+public class ForoUpdate extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
