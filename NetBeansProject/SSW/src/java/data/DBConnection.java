@@ -137,15 +137,13 @@ public class DBConnection {
         Connection connection = pool.getConnection();
         PreparedStatement ps;
         ResultSet rs;
-        String query = "WITH DietaF as (SELECT D.codigoDieta,"
-                + " (SELECT COUNT(*) FROM Usuario U WHERE U.favorito=D.codigoDieta) as favoritos" +
-        " FROM Dieta D GROUP BY D.codigoDieta), DietaG as (SELECT D.codigoDieta," +
-        " (SELECT COUNT(*) FROM Guardado G WHERE G.codigoDieta=D.codigoDieta) as guardados" +
-        " FROM Dieta D GROUP BY D.codigoDieta )" +
-        " SELECT d.codigoDieta, d.titulo, d.descripcion, dF.favoritos, dG.guardados" +
-        " FROM DietaF dF, Dieta d, DietaG dG" +
-        " WHERE d.codigoDieta = dF.codigoDieta AND d.codigoDieta = dG.codigoDieta" +
-        " ORDER BY dF.favoritos DESC";
+        String query = "SELECT d.codigoDieta, d.titulo, d.descripcion, dF.favoritos, dG.guardados"
+        + " FROM (SELECT D.codigoDieta, (SELECT COUNT(*) FROM Usuario U WHERE U.favorito=D.codigoDieta)"
+        + "AS favoritos FROM Dieta D GROUP BY D.codigoDieta) AS dF, Dieta d, (SELECT D.codigoDieta,"
+        + " (SELECT COUNT(*) FROM Guardado G WHERE G.codigoDieta=D.codigoDieta) AS guardados"
+        + " FROM Dieta D GROUP BY D.codigoDieta ) dG"
+        + " WHERE d.codigoDieta = dF.codigoDieta AND d.codigoDieta = dG.codigoDieta"
+        + " ORDER BY dF.favoritos DESC";
         ArrayList<Dieta> retorno = new ArrayList<>();
         try{
             ps = connection.prepareStatement(query);
@@ -178,15 +176,13 @@ public class DBConnection {
         Connection connection = pool.getConnection();
         PreparedStatement ps;
         ResultSet rs;
-        String query = "WITH DietaF as (SELECT D.codigoDieta,"
-                + " (SELECT COUNT(*) FROM Usuario U WHERE U.favorito=D.codigoDieta) as favoritos" +
-        " FROM Dieta D GROUP BY D.codigoDieta), DietaG as (SELECT D.codigoDieta," +
-        " (SELECT COUNT(*) FROM Guardado G WHERE G.codigoDieta=D.codigoDieta) as guardados" +
-        " FROM Dieta D GROUP BY D.codigoDieta )" +
-        " SELECT d.codigoDieta, d.titulo, d.descripcion, dF.favoritos, dG.guardados" +
-        " FROM DietaF dF, Dieta d, DietaG dG" +
-        " WHERE d.codigoDieta = dF.codigoDieta AND d.codigoDieta = dG.codigoDieta" +
-        " ORDER BY dF.guardados DESC";
+        String query = "SELECT d.codigoDieta, d.titulo, d.descripcion, dF.favoritos, dG.guardados"
+        + " FROM (SELECT D.codigoDieta, (SELECT COUNT(*) FROM Usuario U WHERE U.favorito=D.codigoDieta)"
+        + "AS favoritos FROM Dieta D GROUP BY D.codigoDieta) AS dF, Dieta d, (SELECT D.codigoDieta,"
+        + " (SELECT COUNT(*) FROM Guardado G WHERE G.codigoDieta=D.codigoDieta) AS guardados"
+        + " FROM Dieta D GROUP BY D.codigoDieta ) dG"
+        + " WHERE d.codigoDieta = dF.codigoDieta AND d.codigoDieta = dG.codigoDieta"
+        + " ORDER BY dF.guardados DESC";
         ArrayList<Dieta> retorno = new ArrayList<>();
         try{
             ps = connection.prepareStatement(query);
@@ -214,6 +210,47 @@ public class DBConnection {
         }
     }
     
+    public static Plato getPlato(){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT * FROM Plato p WHERE p.codigoPlato=00000000";
+        //ArrayList<Plato> retorno = new ArrayList<>();
+        try{
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            Plato plato = null;
+            
+            if(rs.next()){
+                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
+                plato = new Plato();
+                plato.setCodigoPlato(rs.getString("codigoPlato"));
+                plato.setNombre(rs.getString("nombre"));
+                plato.setDescripcion(rs.getString("descripcion"));
+                plato.setDesayuno(rs.getBoolean("desayuno"));
+                plato.setVegano(rs.getBoolean("vegano"));
+                plato.setVegetariano(rs.getBoolean("vegetariano"));
+                plato.setFrutosSecos(rs.getBoolean("frutosSecos"));
+                plato.setGluten(rs.getBoolean("gluten"));
+                plato.setKcal(rs.getInt("kcal"));
+                plato.setGlucidosSimples(rs.getInt("glucidosSimples"));
+                plato.setPolisacaridos(rs.getInt("polisacaridos"));
+                plato.setAminoacidos(rs.getInt("aminoacidos"));
+                plato.setProteinas(rs.getInt("proteinas"));
+                plato.setHidratosDeCarbono(rs.getInt("hidratosDeCarbono"));
+                //retorno.add(entrada);
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return plato;
+        } catch(SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return null;
+        }
+    }
     
     public static ArrayList<Entrada> getAllEntradas(){
         ConnectionPool pool = ConnectionPool.getInstance();
