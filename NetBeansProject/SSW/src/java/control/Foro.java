@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author pablo
  */
-@WebServlet(name = "Foro", urlPatterns = {"/Foro"})
+@WebServlet(name = "Foro", urlPatterns = {"/FrontEnd/foroUpdate"})
 public class Foro extends HttpServlet {
 
     /**
@@ -39,10 +39,11 @@ public class Foro extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String codigo = "codigoEjemplo";
+        String codigo = DBConnection.getLastCodigoEntrada();
+        codigo = String.format("%05d",Integer.parseInt(codigo)+1);
         String titulo = request.getParameter("tituloNuevaEntrada");
         String cuerpo = request.getParameter("cuerpoNuevaEntrada");
-        String usuario = "pepe";//request.getParameter("usuarioNuevaEntrada");
+        String usuario = request.getParameter("usuario");
         LocalDateTime date = LocalDateTime.of(2019,Month.APRIL,03, 19, 30, 40);//request.getParameter("fechaNuevaEntrada");
         Entrada entrada = new Entrada();
         entrada.setCodigoEntrada(codigo);
@@ -50,14 +51,16 @@ public class Foro extends HttpServlet {
         entrada.setCuerpo(cuerpo);
         entrada.setNombreUsuario(usuario);
         entrada.setFecha(date);
+        DBConnection.insertEntrada(entrada);
+        String url = "/SSW/FrontEnd/foroUsuario.jsp"; //ahora la url tiene SSW
+        response.sendRedirect(url);
+        /*//HttpSession session = request.getSession();
+        //session.setAttribute("entrada", entrada);
+        
+        //Lo quito y pongo sendRedirect, asi si das F5 no peta
+        //RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        //dispatcher.forward(request, response);*/
 
-        String url = "/FrontEnd/foro.jsp";
-        //DBConnection.insertEntrada(entrada);
-        HttpSession session = request.getSession();
-        session.setAttribute("entrada", entrada);
-
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

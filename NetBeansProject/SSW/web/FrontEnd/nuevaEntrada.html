@@ -38,7 +38,7 @@
 				<a class="coolFont btn w-100" href="./paginaUsuario.html" role="button">INICIO</a>
 			</div>
 			<div class="col">
-				<a class="coolFont btn w-100 actualPage" href="./foroUsuario.html" role="button">FORO</a>
+				<a class="coolFont btn w-100 actualPage" href="./foroUsuario.jsp" role="button">FORO</a>
 			</div>
 			<div class="col">
 				<a class="oneLine coolFont btn w-100" href="./rankingUsuario.html" role="button">TOP DIETAS</a>
@@ -54,14 +54,15 @@
         <h1 class="coolFontParagraph">Nueva entrada</h1>
         <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
         <br>
-        <form action="../Foro" method="post">
+        <form action="./foroUpdate" method="post">
             <div class="form-group">
                 <label class="coolFont" for="exampleInputEmail1">Nueva entrada:</label>
                 <input name="tituloNuevaEntrada" type="text" class="form-control entradaForoTitulo" placeholder="Agregar entrada - Título">
                 <textarea name="cuerpoNuevaEntrada" type="text" class="form-control entradaForoCuerpo" placeholder="Descripción" rows="10"></textarea>
+                <input name="usuario" type="hidden" value="pedsanz"/>
             </div>
             <button type="submit" class="inline-block botonEstandar entradaBoton btn btn-success m-2 ">Agregar entrada</button>
-			<a class="btn-info btn inline-block" href="./foroUsuario.html" role="button">Cancelar</a>
+			<a class="btn-info btn inline-block" href="./foroUsuario.jsp" role="button">Cancelar</a>
         </form>
         <br>
         <br>

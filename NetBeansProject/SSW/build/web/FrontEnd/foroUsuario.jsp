@@ -43,13 +43,16 @@
         <div class="row text-center my-3">
             <div class="col"></div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./index.html" role="button">INICIO</a>
+                <a class="coolFont btn w-100" href="./paginaUsuario.html" role="button">INICIO</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100 actualPage" href="./foro.html" role="button">FORO</a>
+                <a class="coolFont btn w-100 actualPage" href="./foroUsuario.jsp" role="button">FORO</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./ranking.html" role="button">TOP DIETAS</a>
+                <a class="oneLine coolFont btn w-100" href="./rankingUsuario.html" role="button">TOP DIETAS</a>
+            </div>
+            <div class="col">
+                <a class="coolFont btn w-100" href="./perfil.html" role="button">MI PERFIL</a>
             </div>
             <div class="col"></div>
             <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
@@ -57,13 +60,11 @@
         <br/>
 
         <h1 class="h1Size coolFontParagraph inlineBlock">Foro principal</h1>
-        <a class="m-2 btn btn-warning inlineBlock rightAligned" href="./registro.html" role="button">Regístrate</a>
-        <a class="m-2 btn btn-primary inlineBlock rightAligned" href="./iniciarSesion.html" role="button">Inicia sesión</a>
+
+        <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
         <br/>
         <hr/>
-
-        <p>¡Para escribir una entrada tienes que iniciar sesión!</p>
-        <button class="btn botonesEntrada my-3 btn-success" disabled onclick="window.location.href = 'nuevaEntrada.html';">Agregar nueva entrada</button>
+        <button class="botonEstandar btn btn-success botonesEntrada my-3" onclick="window.location.href = '/SSW/FrontEnd/nuevaEntrada.html';">Agregar nueva entrada</button>
         <%
             ArrayList<Entrada> entradas = DBConnection.getAllEntradas();
             for (int i = 0; i < entradas.size(); i++) {
@@ -72,7 +73,7 @@
         <div class="card my-3">
             <div class="mx-3 mt-3 entradaForoTitulo">
                 <%= entradas.get(i).getTitulo()%>
-                <form action="entrada.jsp" class="d-inline-block">
+                <form action="entradaUsuario.jsp" class="d-inline-block">
                     <input name="cod" type="hidden" value="<%= entradas.get(i).getCodigoEntrada()%>"/>
                     <button class="botonEstandar btn btn-success botonesEntrada" type="submit">Ir al hilo</button>
                 </form>

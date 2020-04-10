@@ -1,7 +1,7 @@
 <%-- 
     Document   : foro
     Created on : Apr 9, 2020, 12:48:12 PM
-    Author     : pablo
+    Author     : pablo y el javgatto
 --%>
 
 <%@page import="data.DBConnection"%>
@@ -10,8 +10,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -25,65 +25,82 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/SSW/FrontEnd/styles.css"><link>
     <link rel="icon" href="/SSW/FrontEnd/img/logo.png">
-    </head>
-    <body id="page-top">
-	<div id=app></div>
-  	<!--Banner-->
-	<header class="masthead">
-  		<div class="container">
-  			<div class="intro-class">
-  				<div class="intro-heading">HealthyBowl</div>
-  				<div class="intro-lead-in">Dietas a medida</div>
-  			</div>
-  		</div>
-  	</header>
+</head>
+<body id="page-top">
+    <div id=app></div>
+    <!--Banner-->
+    <header class="masthead">
+        <div class="container">
+            <div class="intro-class">
+                <div class="intro-heading">HealthyBowl</div>
+                <div class="intro-lead-in">Dietas a medida</div>
+            </div>
+        </div>
+    </header>
 
 
-	<div class="container rounded" id="cuerpo">
-		<div class="row text-center my-3">
-			<div class="col"></div>
-			<div class="col">
-				<a class="coolFont btn w-100" href="./paginaUsuario.html" role="button">INICIO</a>
-			</div>
-			<div class="col">
-				<a class="coolFont btn w-100 actualPage" href="./foroUsuario.html" role="button">FORO</a>
-			</div>
-			<div class="col">
-				<a class="oneLine coolFont btn w-100" href="./rankingUsuario.html" role="button">TOP DIETAS</a>
-			</div>
+    <div class="container rounded" id="cuerpo">
+        <div class="row text-center my-3">
+            <div class="col"></div>
             <div class="col">
-				<a class="coolFont btn w-100" href="./perfil.html" role="button">MI PERFIL</a>
-			</div>
-			<div class="col"></div>
-			<hr style="width: 100%; color: black; height: 1px; background-color:black;" />
-		</div>
-		<br/>
-		
+                <a class="coolFont btn w-100" href="./index.html" role="button">INICIO</a>
+            </div>
+            <div class="col">
+                <a class="coolFont btn w-100 actualPage" href="./foro.html" role="button">FORO</a>
+            </div>
+            <div class="col">
+                <a class="coolFont btn w-100" href="./ranking.html" role="button">TOP DIETAS</a>
+            </div>
+            <div class="col"></div>
+            <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+        </div>
+        <br/>
+
         <h1 class="h1Size coolFontParagraph inlineBlock">Foro principal</h1>
-       
-        <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
+        <a class="m-2 btn btn-warning inlineBlock rightAligned" href="./registro.html" role="button">Regístrate</a>
+        <a class="m-2 btn btn-primary inlineBlock rightAligned" href="./iniciarSesion.html" role="button">Inicia sesión</a>
         <br/>
         <hr/>
-        <button class="botonEstandar btn btn-success botonesEntrada my-3" onclick="window.location.href='/SSW/FrontEnd/nuevaEntrada.html';">Agregar nueva entrada</button>
-<%
-    ArrayList<Entrada> entradas = DBConnection.getAllEntradas();
-    for(int i = 0; i < entradas.size(); i++){
-%>
+
+        <p>¡Para escribir una entrada tienes que iniciar sesión!</p>
+        <button class="btn botonesEntrada my-3 btn-success" disabled onclick="window.location.href = 'nuevaEntrada.html';">Agregar nueva entrada</button>
+        <%
+            ArrayList<Entrada> entradas = DBConnection.getAllEntradas();
+            for (int i = 0; i < entradas.size(); i++) {
+        %>
 
         <div class="card my-3">
             <div class="mx-3 mt-3 entradaForoTitulo">
                 <%= entradas.get(i).getTitulo()%>
-                <button class="botonEstandar btn btn-success botonesEntrada" onclick="window.location.href='entradaUsuario.html';">Ir al hilo</button>
+                <form action="entrada.jsp" class="d-inline-block">
+                    <input name="cod" type="hidden" value="<%= entradas.get(i).getCodigoEntrada()%>"/>
+                    <button class="botonEstandar btn btn-success botonesEntrada" type="submit">Ir al hilo</button>
+                </form>
                 <button class="botonEstandar btn btn-success botonesEntrada" onclick="mostrarMas(<%=i%>)" id="leerMas<%=i%>">Leer más</button>
+                
                 <hr/>
             </div>
             <div class="mx-3" id="entrada<%=i%>">
                 <p>
-                    Desayunar pan con aceite y tomate regula la circulación sanguínea.
+                    <%
+                        String cuerpo = entradas.get(i).getCuerpo();
+                        if (cuerpo == null) {
+                            cuerpo = "";
+                        }
+                        String[] palabras = cuerpo.split("([ ]|\n)");
+                        String palabrasPre = "", palabrasPost = "";
+                        int NMAX = 10;
+                        for (int j = 0; (j < NMAX) && (j < palabras.length); j++) {
+                            palabrasPre = palabrasPre + palabras[j] + " ";
+                        }
+                        for (int j = NMAX; j < palabras.length; j++) {
+                            palabrasPost = palabrasPost + palabras[j] + " ";
+                        }
+                    %>
+                    <%= palabrasPre%>
                     <span class="dots" id="dots<%=i%>">...</span>
                     <span class="more" id="more<%=i%>">
-                        <%= entradas.get(i).getCuerpo() %>
-
+                        <%= palabrasPost%>
                     </span>
                 </p>
             </div>
@@ -93,9 +110,9 @@
 
         <script>
             function mostrarMas(i) {
-                var dots = document.getElementById("dots"+i);
-                var moreText = document.getElementById("more"+i);
-                var btnText = document.getElementById("leerMas"+i);
+                var dots = document.getElementById("dots" + i);
+                var moreText = document.getElementById("more" + i);
+                var btnText = document.getElementById("leerMas" + i);
 
                 if (dots.style.display === "none") {
                     dots.style.display = "inline";

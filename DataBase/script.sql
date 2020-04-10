@@ -103,38 +103,38 @@ create table PertenenciaPlato(
 	primary key(codigoIngrediente, codigoPlato)
 );
 
-insert into Dieta Values ('ASDF9999','Dieta vegeteriana','Una dieta que no lleva animales, salvo ovolácteos');
-insert into Dieta Values ('RJUK1312','Dieta mediterranea','Una dieta basada en la comida tradicional de la costa mediterranea');
-insert into Dieta Values ('HIWH1370','Dieta de deportistas','Una dieta orientada a personas que realizan mucho deporte a diario');
+insert into Dieta Values ('00000000','Dieta vegeteriana','Una dieta que no lleva animales, salvo ovolácteos');
+insert into Dieta Values ('00000001','Dieta mediterranea','Una dieta basada en la comida tradicional de la costa mediterranea');
+insert into Dieta Values ('00000002','Dieta de deportistas','Una dieta orientada a personas que realizan mucho deporte a diario');
 
-insert into Usuario Values ('Pedro Sanz Lopez', 'pedsanz', '12345pedro','pedrosanzl@gmail.com','ASDF9999');
-insert into Usuario Values ('Marta Sanchez Rojo', 'martsanro', 'farola4','marta1912@gmail.com','ASDF9999');
-insert into Usuario Values ('Marcos Moya Gallo', 'marmoyaga', 'tirabuzon89','marcos.mg@yahoo.com','ASDF9999');
+insert into Usuario Values ('Pedro Sanz Lopez', 'pedsanz', '12345pedro','pedrosanzl@gmail.com','00000000');
+insert into Usuario Values ('Marta Sanchez Rojo', 'martsanro', 'farola4','marta1912@gmail.com','00000000');
+insert into Usuario Values ('Marcos Moya Gallo', 'marmoyaga', 'tirabuzon89','marcos.mg@yahoo.com','00000000');
 
-insert into Guardado Values ('pedsanz','ASDF9999');
-insert into Guardado Values ('martsanro','ASDF9999');
-insert into Guardado Values ('marmoyaga','ASDF9999');
+insert into Guardado Values ('pedsanz','00000000');
+insert into Guardado Values ('martsanro','00000000');
+insert into Guardado Values ('marmoyaga','00000000');
 
-insert into Entrada Values ('AKA78','Quiero comer bien','Quiero tener una alimentacion sana y no se cocinar','pedsanz','2020-04-03');
-insert into Entrada Values ('JTG45','Quiero ser vegana',NULL,'martsanro','2020-03-23');
-insert into Entrada Values ('DHB88','Receta de cupcakes','Esta receta me la enseño mi abuela. Lleva harina y huevos','marmoyaga','2020-03-08');
+insert into Entrada Values ('00000','Quiero comer bien','Quiero tener una alimentacion sana y no se cocinar','pedsanz','2020-04-03');
+insert into Entrada Values ('00001','Quiero ser vegana',NULL,'martsanro','2020-03-23');
+insert into Entrada Values ('00002','Receta de cupcakes','Esta receta me la enseño mi abuela. Lleva harina y huevos','marmoyaga','2020-03-08');
 
-insert into Comentario Values ('65JH9','AKA78','Prueba a no comer bollos','marmoyaga','2020-04-05');
-insert into Comentario Values ('90TR1','AKA78','El aguacate es un alimento muy sano, incluyelo en tus platos','marmoyaga','2020-04-06');
-insert into Comentario Values ('39DV4','JTG45','No comas carne','pedsanz','2020-03-25');
+insert into Comentario Values ('00000','00000','Prueba a no comer bollos','marmoyaga','2020-04-05');
+insert into Comentario Values ('00001','00000','El aguacate es un alimento muy sano, incluyelo en tus platos','marmoyaga','2020-04-06');
+insert into Comentario Values ('00002','00001','No comas carne','pedsanz','2020-03-25');
 
-insert into Plato Values ('3109YRYU','Garbanzos con espinacas','Garbanzos de la huerta cocinados con espinaca baby y aceite de oliva',FALSE,TRUE,TRUE,FALSE,FALSE,350,10,10,10,50,20);
-insert into Plato Values ('2019WEMO','Pez espada','Pez espada con limón y romero, marinado con piñones',FALSE,FALSE,FALSE,TRUE,FALSE,280,10,20,30,20,20);
-insert into Plato Values ('6480FAHJ','Macarrones a la bolonesa','Macarrones con carne picada, tomate y orégano',FALSE,FALSE,FALSE,FALSE,TRUE,400,10,10,10,10,60);
+insert into Plato Values ('00000000','Garbanzos con espinacas','Garbanzos de la huerta cocinados con espinaca baby y aceite de oliva',FALSE,TRUE,TRUE,FALSE,FALSE,350,10,10,10,50,20);
+insert into Plato Values ('00000001','Pez espada','Pez espada con limón y romero, marinado con piñones',FALSE,FALSE,FALSE,TRUE,FALSE,280,10,20,30,20,20);
+insert into Plato Values ('00000002','Macarrones a la bolonesa','Macarrones con carne picada, tomate y orégano',FALSE,FALSE,FALSE,FALSE,TRUE,400,10,10,10,10,60);
 
-insert into PlatoMenu Values ('6480FAHJ','RJUK1312','lunes','comidaPrimero');
-insert into PlatoMenu Values ('2019WEMO','RJUK1312','lunes','comidaSegundo');
-insert into PlatoMenu Values ('3109YRYU','ASDF9999','jueves','cena');
+insert into PlatoMenu Values ('00000002','00000001','lunes','comidaPrimero');
+insert into PlatoMenu Values ('00000001','00000001','lunes','comidaSegundo');
+insert into PlatoMenu Values ('00000000','00000000','jueves','cena');
 
-insert into Ingrediente Values('98HJHE98','Garbanzo',TRUE,TRUE,FALSE,FALSE);
-insert into Ingrediente Values('56WKEP56','Espinaca',TRUE,TRUE,FALSE,FALSE);
-insert into Ingrediente Values('21DHIU21','Pez espada',FALSE,FALSE,FALSE,FALSE);
+insert into Ingrediente Values('00000000','Garbanzo',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente Values('00000001','Espinaca',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente Values('00000002','Pez espada',FALSE,FALSE,FALSE,FALSE);
 
-insert into PertenenciaPlato Values('98HJHE98','3109YRYU');
-insert into PertenenciaPlato Values('56WKEP56','3109YRYU');
-insert into PertenenciaPlato Values('21DHIU21','2019WEMO');
+insert into PertenenciaPlato Values('00000000','00000000');
+insert into PertenenciaPlato Values('00000001','00000000');
+insert into PertenenciaPlato Values('00000002','00000001');
