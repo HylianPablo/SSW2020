@@ -61,13 +61,29 @@
             <hr/>
             <button type="button" id="dia" value="0" style="display:none"></button>
             <%
-                for(int i = 0; i < 7; i++){
+                String diaSemana = request.getParameter("diaSemana");
+                String visible;
+                ArrayList<String> Dias = new ArrayList<>();
+                Dias.add("Lunes");
+                Dias.add("Martes");
+                Dias.add("Miercoles");
+                Dias.add("Jueves");
+                Dias.add("Viernes");
+                Dias.add("Sabado");
+                Dias.add("Domingo");
+                for (int i = 0; i < 7; i++) {
                     Plato p = DBConnection.getPlato();
-                    
+                    if (i == Integer.parseInt(diaSemana)) {
+                        visible = "";
+                    } else {
+                        visible = "hidden";
+                    }
+
             %>
-            <form action="martes.jsp" class="d-inline-block">
-                <h1 class="text-center display-4 coolFontParagraph">Lunes</h1>
-                <div>
+            <h1 class="text-center display-4 coolFontParagraph" <%=visible%>><%=Dias.get(i)%></h1>
+            <div <%=visible%>>
+                <input type="hidden" value=<%=Integer.parseInt(diaSemana) + 1%>>
+                <form action="diaDieta.jsp" >
                     <div class="card bg-transparent mx-3 my-5">
                         <div class="entradaForoTitulo2 rounded-top p-2">
                             <div class="text-center font-weight-bold">Desayuno</div>
@@ -81,7 +97,7 @@
                                         </th>
                                         <td>
                                             <div class="custom-control custom-radio">
-                                                <input value=<%=p.getNombre()%> type="radio" id="desayuno1" name="desayuno" class="custom-control-input">
+                                                <input value=<%=p.getNombre()%>type="radio" id="desayuno1" name="desayuno" class="custom-control-input">
                                                 <label class="custom-control-label" for="desayuno1">
                                                     <%=p.getNombre()%>
                                                 </label>
@@ -110,7 +126,7 @@
                     </div>
                     <div class="card bg-transparent mx-3 my-5">
                         <div class="entradaForoTitulo2 rounded-top p-2">
-                            <div class="text-center font-weight-bold">Comida</div>
+                            <div class="text-center font-weight-bold"<%=visible%>>Comida</div>
                         </div>
                         <div class="entradaForoCuerpo2 rounded-bottom p-2">
                             <table class="table table-borderless">
@@ -251,13 +267,14 @@
                         <div class="col"></div>
                         <div class="col"></div>
                         <div class="col">
-                            <button class="botonEstandar btn btn-success botonesEntrada" type="submit">Siguiente</button>
+                            <%int diaSem = Integer.parseInt(diaSemana) + 1;%>
+                            <button name="diaSemana" class="botonEstandar btn btn-success botonesEntrada" type="submit" value=<%=Integer.toString(diaSem)%>>Siguiente</button>
                         </div>
                         <div class="col"></div>
                     </div>
-                </div>
-                <br/>
-            </form>
+                </form>
+            </div>
+            <br/>
             <%}%>
         </div>
         <br/>
