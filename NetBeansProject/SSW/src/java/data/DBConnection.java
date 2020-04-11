@@ -132,12 +132,43 @@ public class DBConnection {
         }
     }
     
+    public static Dieta selectDieta(String codigoDieta){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT * FROM Dieta WHERE codigoDieta = ?";
+        try{
+            ps = connection.prepareStatement(query);
+            ps.setString(1,codigoDieta);
+            rs = ps.executeQuery();
+            Dieta dieta = null;
+            
+            while(rs.next()){
+                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
+                dieta = new Dieta();
+                dieta.setCodigoDieta(rs.getString("codigoDieta"));
+                dieta.setDescripcion(rs.getString("descripcion"));
+                dieta.setTitulo(rs.getString("titulo"));
+                dieta.setFecha(rs.getTimestamp("fecha").toLocalDateTime());
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return dieta;
+        } catch(SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     public static ArrayList<Dieta> getDietasFavoritas(){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps;
         ResultSet rs;
-        String query = "SELECT d.codigoDieta, d.titulo, d.descripcion, dF.favoritos, dG.guardados"
+        String query = "SELECT d.codigoDieta, d.titulo, d.descripcion, d.fecha, dF.favoritos, dG.guardados"
         + " FROM (SELECT D.codigoDieta, (SELECT COUNT(*) FROM Usuario U WHERE U.favorito=D.codigoDieta)"
         + "AS favoritos FROM Dieta D GROUP BY D.codigoDieta) AS dF, Dieta d, (SELECT D.codigoDieta,"
         + " (SELECT COUNT(*) FROM Guardado G WHERE G.codigoDieta=D.codigoDieta) AS guardados"
@@ -156,9 +187,45 @@ public class DBConnection {
                 dieta.setCodigoDieta(rs.getString("codigoDieta"));
                 dieta.setDescripcion(rs.getString("descripcion"));
                 dieta.setTitulo(rs.getString("titulo"));
-                dieta.setGuardados(rs.getInt("favoritos"));
+                dieta.setGuardados(rs.getInt("guardados"));
                 dieta.setFavoritos(rs.getInt("favoritos"));
+                dieta.setFecha(rs.getTimestamp("fecha").toLocalDateTime());
                 retorno.add(dieta);
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return retorno;
+        } catch(SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public static ArrayList<Plato> getPlatosDieta(String codigoDieta){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT P.nombre, P.codigoPlato, P.descripcion FROM Plato P, PlatoMenu PM, Dieta D"
+                + " WHERE D.codigoDieta = ? AND D.codigoDieta = PM.codigoDieta AND PM.codigoPlato = P.codigoPlato "
+                + "ORDER BY FIELD(PM.diaSemana, 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo') ASC,"
+                + " FIELD(PM.momento, 'desayuno', 'comidaPrimero', 'comidaSegundo', 'cena') ASC";
+        ArrayList<Plato> retorno = new ArrayList<>();
+        try{
+            ps = connection.prepareStatement(query);
+            ps.setString(1,codigoDieta);
+            rs = ps.executeQuery();
+            Plato plato;
+            
+            while(rs.next()){
+                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
+                plato = new Plato();
+                plato.setNombre(rs.getString("nombre"));
+                plato.setCodigoPlato(rs.getString("codigoPlato"));
+                plato.setDescripcion(rs.getString("descripcion"));
+                retorno.add(plato);
             }
             rs.close();
             ps.close();
@@ -176,7 +243,7 @@ public class DBConnection {
         Connection connection = pool.getConnection();
         PreparedStatement ps;
         ResultSet rs;
-        String query = "SELECT d.codigoDieta, d.titulo, d.descripcion, dF.favoritos, dG.guardados"
+        String query = "SELECT d.codigoDieta, d.titulo, d.descripcion, d.fecha, dF.favoritos, dG.guardados"
         + " FROM (SELECT D.codigoDieta, (SELECT COUNT(*) FROM Usuario U WHERE U.favorito=D.codigoDieta)"
         + "AS favoritos FROM Dieta D GROUP BY D.codigoDieta) AS dF, Dieta d, (SELECT D.codigoDieta,"
         + " (SELECT COUNT(*) FROM Guardado G WHERE G.codigoDieta=D.codigoDieta) AS guardados"
@@ -195,8 +262,9 @@ public class DBConnection {
                 dieta.setCodigoDieta(rs.getString("codigoDieta"));
                 dieta.setDescripcion(rs.getString("descripcion"));
                 dieta.setTitulo(rs.getString("titulo"));
-                dieta.setGuardados(rs.getInt("favoritos"));
+                dieta.setGuardados(rs.getInt("guardados"));
                 dieta.setFavoritos(rs.getInt("favoritos"));
+                dieta.setFecha(rs.getTimestamp("fecha").toLocalDateTime());
                 retorno.add(dieta);
             }
             rs.close();

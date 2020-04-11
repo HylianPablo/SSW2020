@@ -4,6 +4,8 @@
     Author     : pablo y el javgatto
 --%>
 
+<%@page import="java.time.Month"%>
+<%@page import="java.time.LocalDateTime"%>
 <%@page import="data.Dieta"%>
 <%@page import="data.DBConnection"%>
 <%@page import="data.Entrada"%>
@@ -62,49 +64,80 @@
         <h1 class="h1Size coolFontParagraph inlineBlock">Top dietas</h1>
         <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
         <hr/>
+        
+        <%
+                boolean favoritas;
+                String criterio = request.getParameter("criterio");
+                if(criterio!=null && criterio.equals("Favoritas")){
+                    favoritas=true;
+                }else{
+                    favoritas=false;
+                }
+                boolean siempre = false;
+                int selectTiempo = 5;
+                LocalDateTime hoy = LocalDateTime.of(2020,Month.APRIL,03, 19, 30, 40);
+                LocalDateTime fechaLimite;
+                String tiempo = request.getParameter("tiempo");
+                if(tiempo==null || tiempo.equals("Siempre")){
+                    siempre=true;
+                    selectTiempo = 0;
+                    fechaLimite = hoy;
+                }else if(tiempo.equals("Última Semana")){
+                    selectTiempo = 1;
+                    fechaLimite = hoy.minusDays(7);
+                }else if(tiempo.equals("Último Mes")){
+                    selectTiempo = 2;
+                    fechaLimite = hoy.minusMonths(1);
+                }else{
+                    selectTiempo = 3;
+                    fechaLimite = hoy.minusYears(1);
+                }
+            %>
+        <form action="rankingUsuario.jsp">
         <div class="row mb-5">
             <div class="col">
                 <div class="row">
                     <div class="col">
                         <h5 class="inlineBlock">Ordenar por:</h5>
-                        <p class="inlineBlock">&nbsp;&nbsp;&nbsp;</p>
-                        <button class="botonEstandar inlineBlock btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Guardadas
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="active dropdown-item" href="#">Guardadas</a>
-                            <a class="dropdown-item" href="#">Favoritas</a>
-                        </div>
+                        <select class="inlineBlock botonEstandar btn btn-secondary" name="criterio" onchange="this.form.submit();">
+                            <option <%if(!favoritas){%>selected<%}%>>Guardadas</option>
+                            <option <%if(favoritas){%>selected<%}%>>Favoritas</option>
+                        </select>
                     </div>
                 </div>
             </div>
             <div class="col"></div>
-
+            
             <div class="col">
                 <div class="inlineBlock row">
                     <div class="col">
                         <h5 class="oneLine inlineBlock">Fecha de creación: </h5>
-                        <p class="inlineBlock">&nbsp;&nbsp;&nbsp;</p>
-                        <button class="botonEstandar inlineBlock btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Siempre
-                        </button>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="active dropdown-item" href="#">Siempre</a>
-                            <a class="dropdown-item" href="#">Última Semana</a>
-                            <a class="dropdown-item" href="#">Último Mes</a>
-                            <a class="dropdown-item" href="#">Último Año</a>
-                        </div>
+                        <select class="inlineBlock botonEstandar btn btn-secondary" name="tiempo" onchange="this.form.submit();">
+                            <option <%if(siempre){%>selected<%}%>>Siempre</option>
+                            <option <%if(selectTiempo==1){%>selected<%}%>>Última Semana</option>
+                            <option <%if(selectTiempo==2){%>selected<%}%>>Último Mes</option>
+                            <option <%if(selectTiempo==3){%>selected<%}%>>Último Año</option>
+                        </select>
                     </div>
                 </div>
             </div>
         </div>
+        </form>
+
         <div class="ScrollStyle p-2"> 
             <%
-                ArrayList<Dieta> dietas = DBConnection.getDietasFavoritas();
+                
+                ArrayList<Dieta> dietas;
+                if(favoritas){
+                    dietas = DBConnection.getDietasFavoritas();
+                }else{
+                    dietas = DBConnection.getDietasGuardadas();
+                }
                 for(int i = 0; i < dietas.size(); i++){
+                    LocalDateTime fechaDieta = dietas.get(i).getFecha();
+                    if(siempre || fechaDieta.compareTo(fechaLimite)>=0){
             %>
-            <a class="text-decoration-none blackHref" href="dietaMediterraneaUsuario.html">
+            <a class="text-decoration-none blackHref" href="dietaUsuario.jsp?cod=<%=dietas.get(i).getCodigoDieta()%>">
                 <div class="card bg-transparent mx-3 my-4">
                     <div class="entradaForoTitulo2 rounded-top p-2">
                         <div class="row">
@@ -120,7 +153,7 @@
                     </div>
                 </div>
             </a>
-            <%}%>
+            <%}}%>
         </div>
         <br/>
     </div>
