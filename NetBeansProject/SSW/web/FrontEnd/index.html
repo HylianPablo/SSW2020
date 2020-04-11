@@ -65,7 +65,8 @@
                 <li data-target="#carouselCreaDieta" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
-                <form action="generaDieta/lunes.html">
+                <form action="generaDieta/diaDieta.jsp">
+                    <input type="hidden" name="diaSemana" value="0">
                     <div class="carousel-item active bg-transparent p-5">
                         <div class="formulario">
                             <div class="container text-center">
@@ -227,7 +228,7 @@
 								<br/>
 							</div>
 							<div class="mr-auto text-center">
-                                <button type="submit" class="btn submitDiet" onclick="window.location.href='generaDieta/lunes.html';">Generar Dieta</button>
+                                <button type="submit" class="btn submitDiet">Generar Dieta</button>
                             </div>
                             <div class="text-left">
                                 <a class="btn btn-success" href="#carouselCreaDieta" role="button" data-slide="prev">&lt; Volver</a>
