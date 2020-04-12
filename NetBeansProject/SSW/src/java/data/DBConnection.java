@@ -418,4 +418,137 @@ public class DBConnection {
             return null;
         }
     }
+    
+    public static boolean checkGuardado(String nombreUsuario, String codigoDieta){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT * FROM Guardado WHERE codigoDieta = ? AND nombreUsuario = ?";
+        boolean result;
+        try{
+            ps = connection.prepareStatement(query);
+            ps.setString(1,codigoDieta);
+            ps.setString(2,nombreUsuario);
+            rs = ps.executeQuery();
+            if(rs.next())
+                result = true;
+            else
+                result = false;
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return result;
+        } catch(SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public static boolean checkFavorito(String nombreUsuario, String favorito){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT * FROM Usuario WHERE favorito = ? AND nombreUsuario = ?";
+        boolean result;
+        try{
+            ps = connection.prepareStatement(query);
+            ps.setString(1,favorito);
+            ps.setString(2,nombreUsuario);
+            rs = ps.executeQuery();
+            if(rs.next())
+                result = true;
+            else
+                result = false;
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return result;
+        } catch(SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public static int guardarDieta(String codigoDieta, String nombreUsuario){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String queryExample = "INSERT INTO Guardado (nombreUsuario, codigoDieta) VALUES(?,?)";
+        try{
+            ps = connection.prepareStatement(queryExample);
+            ps.setString(1,nombreUsuario);
+            ps.setString(2,codigoDieta);
+            int res = ps.executeUpdate();
+            ps.close();
+            pool.freeConnection(connection);
+            return res;
+        }catch (SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    
+    public static int noGuardarDieta(String codigoDieta, String nombreUsuario){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String queryExample = "DELETE FROM Guardado WHERE codigoDieta = ? AND nombreUsuario = ?";
+        try{
+            ps = connection.prepareStatement(queryExample);
+            ps.setString(1,codigoDieta);
+            ps.setString(2,nombreUsuario);
+            int res = ps.executeUpdate();
+            ps.close();
+            pool.freeConnection(connection);
+            return res;
+        }catch (SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    
+    public static int setFavorito(String codigoDieta, String nombreUsuario){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String queryExample = "UPDATE Usuario SET favorito = ? WHERE nombreUsuario = ?";
+        try{
+            ps = connection.prepareStatement(queryExample);
+            ps.setString(1,codigoDieta);
+            ps.setString(2,nombreUsuario);
+            int res = ps.executeUpdate();
+            ps.close();
+            pool.freeConnection(connection);
+            return res;
+        }catch (SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    
+    public static int borrarFavorito(String nombreUsuario){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String queryExample = "UPDATE Usuario SET favorito = NULL WHERE nombreUsuario = ?";
+        try{
+            ps = connection.prepareStatement(queryExample);
+            ps.setString(1,nombreUsuario);
+            int res = ps.executeUpdate();
+            ps.close();
+            pool.freeConnection(connection);
+            return res;
+        }catch (SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }
