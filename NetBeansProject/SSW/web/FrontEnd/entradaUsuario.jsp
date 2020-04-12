@@ -61,7 +61,7 @@
                 <a class="coolFont btn w-100 actualPage" href="./foroUsuario.jsp" role="button">FORO</a>
             </div>
             <div class="col">
-                <a class="oneLine coolFont btn w-100" href="./rankingUsuario.html" role="button">TOP DIETAS</a>
+                <a class="oneLine coolFont btn w-100" href="./rankingUsuario.jsp" role="button">TOP DIETAS</a>
             </div>
             <div class="col">
                 <a class="coolFont btn w-100" href="./perfil.html" role="button">MI PERFIL</a>

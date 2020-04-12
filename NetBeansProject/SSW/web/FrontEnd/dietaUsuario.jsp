@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/SSW/FrontEnd/styles.css"><link>
+    <link rel="stylesheet" type="text/css" href="/SSW/FrontEnd/styles.css">
     <link rel="icon" href="/SSW/FrontEnd/img/logo.png">
 </head>
 <body id="page-top">
@@ -80,20 +80,24 @@
                     Dieta dieta = DBConnection.selectDieta(codigoDieta);
                     String[] diaSemana = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
                     int nPlato = 0;
+                    String nombreUsuario = "pedsanz";
+                    boolean guardado = DBConnection.checkGuardado(nombreUsuario, codigoDieta);
+                    boolean favorito = DBConnection.checkFavorito(nombreUsuario, codigoDieta);
         %>
         <h1 class="coolFontParagraph inlineBlock"><%=dieta.getTitulo()%>. </h1>
-        <div class="btn-group-toggle inlineBlock" data-toggle="buttons">
-            <label class="uncheckedButton btn btn-success" onclick="changeStar()" id="fav">
-                <input type="checkbox" checked autocomplete="off"> <i class="fa fa-star text-warning"></i> Favorito
-            </label>
-        </div>
-        <div class="btn-group-toggle inlineBlock" data-toggle="buttons">
-            <label class="uncheckedButton btn btn-success" onclick="changeHeart()" id="like">
-                <input type="checkbox" checked autocomplete="off"> <i class="fa fa-heart text-danger" "></i> Guardado
-            </label>
-        </div>
+            <button class="<%if(!favorito){%>uncheckedButton<%}%> btn btn-success inlineBlock" data-toggle="modal" href="#confirmarFav">
+                <i class="fa fa-star text-warning"></i> Favorito
+            </button>
+        <form method="post" class="d-inline-block" action="guardarDieta">
+            <input type="hidden" name="guardado" value="<%=!guardado%>"/>
+            <input type="hidden" name="nombreUsuario" value="<%=nombreUsuario%>"/>
+            <input type="hidden" name="codigoDieta" value="<%=codigoDieta%>"/>
+            <button type="submit" class="<%if(!guardado){%>uncheckedButton<%}%> btn btn-success inlineBlock">
+                <i class="fa fa-heart text-rosa"></i><%if(!guardado){%> Guardar<%}else{%> Guardado<%}%>
+            </button>
+        </form>
         <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
-
+        
         <div class="row">
             <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="false">
                 <div class="MultiCarousel-inner">
@@ -143,37 +147,39 @@
     </div>
     <br/>
 
-    <script>
-        var countHeart=0;
-            function changeHeart() {  
-                var but = document.getElementById("like");
-                if (countHeart == 1) {
-                    but.style.color = '#28A745';
-                    but.style.backgroundColor = '#FFFFFF';
-                    countHeart=0;
-                } else {
-                        but.style.color = '#FFFFFF';
-                        but.style.backgroundColor = '#28A745';
-                        countHeart=1;
-                }
-            }
-    </script>
-
-    <script>
-    var countStar=0;
-        function changeStar() {
-            var but = document.getElementById("fav");
-            if (countStar == 1) {
-                but.style.color = '#28A745';
-                but.style.backgroundColor = '#FFFFFF';
-                countStar=0;
-            } else {
-                    but.style.color = '#FFFFFF';
-                    but.style.backgroundColor = '#28A745';
-                    countStar=1;
-            }
-        }
-    </script>
+    <!-- Modal -->
+    <div class="modal fade" id="confirmarFav" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        <%if(favorito){%>¿Eliminar favorito?<%}else{%>
+                        ¿Confirmar favorito?<%}%>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <%if(!favorito){%>
+                    <p>Sólo puedes tener una dieta como favorita</p>
+                    <p>Si marcas esta dieta como favorita cualquier otra dieta que tengas marcada se desmarcará.</p>
+                    <%}else{%>
+                    <p>¿Seguro que quieres desmarcar esta dieta como favorita?</p>
+                    <%}%>
+                </div>
+                <div class="modal-footer">
+                    <form method="post" action="favoritoDieta">
+                        <input type="hidden" name="codigoDieta" value="<%=codigoDieta%>"/>
+                        <input type="hidden" name="favorito" value="<%=!favorito%>"/>
+                        <input type="hidden" name="nombreUsuario" value="<%=nombreUsuario%>"/>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <%}}%>
 </body>
 </html>
