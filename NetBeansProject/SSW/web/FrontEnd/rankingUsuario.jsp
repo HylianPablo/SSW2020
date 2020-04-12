@@ -55,7 +55,7 @@
                 <a class="oneLine coolFont btn w-100 actualPage" href="./rankingUsuario.jsp" role="button">TOP DIETAS</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./perfil.html" role="button">MI PERFIL</a>
+                <a class="coolFont btn w-100" href="./perfil.jsp" role="button">MI PERFIL</a>
             </div>
             <div class="col"></div>
             <hr style="width: 100%; color: black; height: 1px; background-color:black;" />

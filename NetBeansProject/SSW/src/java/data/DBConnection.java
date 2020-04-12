@@ -163,6 +163,70 @@ public class DBConnection {
         }
     }
     
+        public static Dieta selectDietaFavorita(String nombreUsuario){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT * FROM Dieta D, Usuario U WHERE U.nombreUsuario = ? AND D.codigoDieta = U.favorito";
+        try{
+            ps = connection.prepareStatement(query);
+            ps.setString(1,nombreUsuario);
+            rs = ps.executeQuery();
+            Dieta dieta = null;
+            
+            while(rs.next()){
+                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
+                dieta = new Dieta();
+                dieta.setCodigoDieta(rs.getString("codigoDieta"));
+                dieta.setDescripcion(rs.getString("descripcion"));
+                dieta.setTitulo(rs.getString("titulo"));
+                dieta.setFecha(rs.getTimestamp("fecha").toLocalDateTime());
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return dieta;
+        } catch(SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public static ArrayList<Dieta> selectDietasGuardadas(String nombreUsuario){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT * FROM Dieta D, Guardado G WHERE G.nombreUsuario = ? AND D.codigoDieta = G.codigoDieta";
+        ArrayList<Dieta> dietas = new ArrayList<>();
+        try{
+            ps = connection.prepareStatement(query);
+            ps.setString(1,nombreUsuario);
+            rs = ps.executeQuery();
+            Dieta dieta = null;
+            
+            while(rs.next()){
+                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
+                dieta = new Dieta();
+                dieta.setCodigoDieta(rs.getString("codigoDieta"));
+                dieta.setDescripcion(rs.getString("descripcion"));
+                dieta.setTitulo(rs.getString("titulo"));
+                dieta.setFecha(rs.getTimestamp("fecha").toLocalDateTime());
+                dietas.add(dieta);
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return dietas;
+        } catch(SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     public static ArrayList<Dieta> getDietasFavoritas(){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -549,6 +613,38 @@ public class DBConnection {
             pool.freeConnection(connection);
             e.printStackTrace();
             return 0;
+        }
+    }
+    
+    public static Usuario selectUsuario(String nombreUsuario){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT * FROM Usuario WHERE nombreUsuario = ?";
+        try{
+            ps = connection.prepareStatement(query);
+            ps.setString(1,nombreUsuario);
+            rs = ps.executeQuery();
+            Usuario usuario = null;
+            
+            if(rs.next()){
+                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
+                usuario = new Usuario();
+                usuario.setContrasena(rs.getString("contrasena"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setFavorito(rs.getString("favorito"));
+                usuario.setCorreo(rs.getString("correo"));
+                usuario.setNombreUsuario(rs.getString("nombreUsuario"));
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return usuario;
+        } catch(SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return null;
         }
     }
 }
