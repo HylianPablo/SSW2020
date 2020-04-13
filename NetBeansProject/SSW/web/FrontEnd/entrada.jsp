@@ -4,9 +4,9 @@
     Author     : pablo y el javgatto
 --%>
 
-<%@page import="data.Comentario"%>
-<%@page import="data.DBConnection"%>
-<%@page import="data.Entrada"%>
+<%@page import="modelo.Comentario"%>
+<%@page import="modelo.DBConnection"%>
+<%@page import="modelo.Entrada"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

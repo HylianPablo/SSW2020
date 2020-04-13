@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package control;
+package controlador;
 
-import data.DBConnection;
+import modelo.DBConnection;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Javier
  */
-@WebServlet(name = "guardarDieta", urlPatterns = {"/FrontEnd/guardarDieta"})
-public class guardarDieta extends HttpServlet {
+@WebServlet(name = "favoritoDieta", urlPatterns = {"/FrontEnd/favoritoDieta"})
+public class favoritoDieta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,11 +35,11 @@ public class guardarDieta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String codigoDieta = request.getParameter("codigoDieta");
         String nombreUsuario = request.getParameter("nombreUsuario");
-        boolean guardado = Boolean.parseBoolean(request.getParameter("guardado"));
-        if(guardado)
-            DBConnection.guardarDieta(codigoDieta, nombreUsuario);
+        boolean favorito = Boolean.parseBoolean(request.getParameter("favorito"));
+        if(favorito)
+            DBConnection.setFavorito(codigoDieta, nombreUsuario);
         else
-            DBConnection.noGuardarDieta(codigoDieta, nombreUsuario);
+            DBConnection.borrarFavorito(nombreUsuario);
         String url = "/SSW/FrontEnd/dietaUsuario.jsp?cod="+codigoDieta;
         response.sendRedirect(url);
     }

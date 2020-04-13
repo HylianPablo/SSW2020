@@ -1,11 +1,11 @@
-package control;
+package controlador;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import data.DBConnection;
+import modelo.DBConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import data.Entrada;
+import modelo.Entrada;
 import java.time.LocalDateTime;
 import java.time.Month;
 import javax.servlet.RequestDispatcher;
@@ -55,11 +55,11 @@ public class ForoUpdate extends HttpServlet {
         String url = "/SSW/FrontEnd/foroUsuario.jsp"; //ahora la url tiene SSW
         response.sendRedirect(url);
         /*//HttpSession session = request.getSession();
-        //session.setAttribute("entrada", entrada);
+        session.setAttribute("entrada", entrada);
         
         //Lo quito y pongo sendRedirect, asi si das F5 no peta
         //RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-        //dispatcher.forward(request, response);*/
+        dispatcher.forward(request, response);*/
 
     }
 

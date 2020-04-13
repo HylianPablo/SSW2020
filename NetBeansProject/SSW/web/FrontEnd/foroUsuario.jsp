@@ -4,8 +4,8 @@
     Author     : pablo y el javgatto
 --%>
 
-<%@page import="data.DBConnection"%>
-<%@page import="data.Entrada"%>
+<%@page import="modelo.DBConnection"%>
+<%@page import="modelo.Entrada"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -73,7 +73,7 @@
         <div class="card my-3">
             <div class="mx-3 mt-3 entradaForoTitulo">
                 <%= entradas.get(i).getTitulo()%>
-                <form action="entradaUsuario.jsp" class="d-inline-block">
+                <form action="./EntradaUsuario" class="d-inline-block">
                     <input name="cod" type="hidden" value="<%= entradas.get(i).getCodigoEntrada()%>"/>
                     <button class="botonEstandar btn btn-success botonesEntrada" type="submit">Ir al hilo</button>
                 </form>

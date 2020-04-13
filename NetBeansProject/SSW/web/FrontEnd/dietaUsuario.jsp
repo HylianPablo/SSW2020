@@ -4,13 +4,13 @@
     Author     : pablo y el javgatto
 --%>
 
-<%@page import="data.DiaSemana"%>
-<%@page import="data.Plato"%>
+<%@page import="modelo.DiaSemana"%>
+<%@page import="modelo.Plato"%>
 <%@page import="java.time.Month"%>
 <%@page import="java.time.LocalDateTime"%>
-<%@page import="data.Dieta"%>
-<%@page import="data.DBConnection"%>
-<%@page import="data.Entrada"%>
+<%@page import="modelo.Dieta"%>
+<%@page import="modelo.DBConnection"%>
+<%@page import="modelo.Entrada"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

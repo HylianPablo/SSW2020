@@ -1,4 +1,4 @@
-package data;
+package modelo;
 import java.sql.*;
 import javax.sql.DataSource;
 import javax.naming.InitialContext;

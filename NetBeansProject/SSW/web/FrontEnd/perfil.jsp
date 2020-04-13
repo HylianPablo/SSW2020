@@ -4,10 +4,10 @@
     Author     : pablo y el javgatto
 --%>
 
-<%@page import="data.Dieta"%>
-<%@page import="data.Usuario"%>
-<%@page import="data.DBConnection"%>
-<%@page import="data.Entrada"%>
+<%@page import="modelo.Dieta"%>
+<%@page import="modelo.Usuario"%>
+<%@page import="modelo.DBConnection"%>
+<%@page import="modelo.Entrada"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
