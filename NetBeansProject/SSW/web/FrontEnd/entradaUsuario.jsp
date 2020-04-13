@@ -38,10 +38,13 @@
         </div>
     </header>
     
+    <jsp:useBean id="comentarios" class="java.util.ArrayList" scope="session">  
+    </jsp:useBean>
     <jsp:useBean id="entrada" class="modelo.Entrada" scope="session">  
     </jsp:useBean>
     <%
         String codigoEntrada = request.getParameter("cod");
+        ArrayList<Comentario> comentariosTemp = comentarios;
         //entrada = (Entrada)session.getAttribute("entrada");
     %>
 
@@ -92,13 +95,13 @@
         </div>
         <%
             //ArrayList<Comentario> comentarios = (ArrayList<Comentario>)request.getAttribute("comentarios");     
-            ArrayList<Comentario> comentarios = DBConnection.getComentarios(codigoEntrada);        
+            //ArrayList<Comentario> comentarios = DBConnection.getComentarios(codigoEntrada);        
             for(int i = 0; i < comentarios.size(); i++){
         %>
         <div class="card m-3">
             <div class="m-2">
-                <p class="font-weight-bold"><%= comentarios.get(i).getNombreUsuario()%></p>
-                <p><%= comentarios.get(i).getCuerpo()%></p>
+                <p class="font-weight-bold"><%= comentariosTemp.get(i).getNombreUsuario()%></p>
+                <p><%= comentariosTemp.get(i).getCuerpo()%></p>
             </div>
         </div>
         <%}%>
