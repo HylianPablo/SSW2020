@@ -55,8 +55,7 @@ public class diaDieta extends HttpServlet {
             platosElegidos.add(cena);
             }catch(Exception e){
                 e.printStackTrace();
-            }
-            
+            }       
         }
         
         if(diaSemana.equals("7")){

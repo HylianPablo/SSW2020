@@ -4,6 +4,7 @@
     Author     : pablo
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -59,150 +60,38 @@
 		<br/>
 
         <h1 class="coolFontParagraph inlineBlock">Dieta generada.</h1>
-
         <div class="row">
+             
                 <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="false">
                     <div class="MultiCarousel-inner">
+                        <jsp:useBean id="platosElegidos" class="java.util.ArrayList" scope="session">  
+                        </jsp:useBean>
+                        <%
+                            String[] dias = new String[]{"Lunes","Martes","Miercoles","Jueves","Viernes","Sábado","Domingo"};
+                        for(int i=0;i<7;i++){
+                        ArrayList<String> pe = platosElegidos;
+                        %>
                         <div class="item">
                             <div id="Lunes" class="pad15">
-                                <h4 class="font-weight-bold">Lunes</h4>
+                                <h4 class="font-weight-bold"><%=dias[i]%></h4>
                                 <div class="my-4">
                                 <h5>Desayuno</h5>
-                                <p>Vaso de leche</p>
+                                <p><%=pe.get(0*(i+1))%></p>
                                 </div>
                                 <div class="my-4">
                                 <h5>Comida</h5>
-                                <p>Arroz</p>
-                                <p>Pollo con <br>tomate</p>
+                                <p><%=pe.get(1*(i+1))%></p>
+                                <p><%=pe.get(2*(i+1))%></p>
                                 <p>Postre</p>
                                 </div>
                                 <div class="my-4">
                                 <h5>Cena</h5>
-                                <p>Puré de Patata</p>
+                                <p><%=pe.get(3*(i+1))%></p>
                                 <p>Postre</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div id="Martes">
-                                <h4 class="font-weight-bold">Martes</h4>
-                                <div class="my-4">
-                                <h5>Desayuno</h5>
-                                <p>Café y tostadas</p>
-                                </div>
-                                <div class="my-4">
-                                <h5>Comida</h5>
-                                <p>Brócoli</p>
-                                <p>Dorada con patatas</p>
-                                <p>Postre</p>
-                                </div>
-                                <div class="my-4">
-                                <h5>Cena</h5>
-                                <p class="oneLine">Ensalada de <br>garbanzos</p>
-                                <p>Postre</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div id="Miercoles">
-                                <h4 class="font-weight-bold">Miércoles</h4>
-                                <div class="my-4">
-                                <h5>Desayuno</h5>
-                                <p>Gachas</p>
-                                </div>
-                                <div class="my-4">
-                                <h5>Comida</h5>
-                                <p>Crema de <br>verduras</p>
-                                <p>San Jacobo</p>
-                                <p>Postre</p>
-                                </div>
-                                <div class="my-4">
-                                <h5>Cena</h5>
-                                <p>Lentejas</p>
-                                <p>Postre</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div id="Jueves">
-                                <h4 class="font-weight-bold">Jueves</h4>
-                                <div class="my-4">
-                                <h5>Desayuno</h5>
-                                <p>Pan con aceite</p>
-                                </div>
-                                <div class="my-4">
-                                <h5>Comida</h5>
-                                <p>Ensalada de pasta</p>
-                                <p>Filete ruso</p>
-                                <p>Postre</p>
-                                </div>
-                                <div class="my-4">
-                                <h5>Cena</h5>
-                                <p>Huevos fritos con patatas</p>
-                                <p>Postre</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div id="Viernes">
-                                <h4 class="font-weight-bold">Viernes</h4>
-                               <div class="my-4">
-                                <h5>Desayuno</h5>
-                                <p>Café y tostadas</p>
-                                </div>
-                                <div class="my-4">
-                                <h5>Comida</h5>
-                                <p>Sopa de cocido</p>
-                                <p>Cocido completo</p>
-                                <p>Postre</p>
-                                </div>
-                                <div class="my-4">
-                                <h5>Cena</h5>
-                                <p>Melón con <br>jamón</p>
-                                <p>Postre</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div id="Sabado">
-                                <h4 class="font-weight-bold">Sábado</h4>
-                               <div class="my-4">
-                                <h5>Desayuno</h5>
-                                <p>Pan con aceite</p>
-                                </div>
-                                <div class="my-4">
-                                <h5>Comida</h5>
-                                <p>Judías verdes con patatas</p>
-                                <p>Bacalao al pilpil</p>
-                                <p>Postre</p>
-                                </div>
-                                <div class="my-4">
-                                <h5>Cena</h5>
-                                <p>Alubias a la jardinera</p>
-                                <p>Postre</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div id="Domingo">
-                                <h4 class="font-weight-bold">Domingo</h4>
-                                <div class="my-4">
-                                <h5>Desayuno</h5>
-                                <p>Tostadas de anchoa</p>
-                                </div>
-                                <div class="my-4">
-                                <h5>Comida</h5>
-                                <p>Ensaladilla rusa</p>
-                                <p>Conejo al ajillo</p>
-                                <p>Postre</p>
-                                </div>
-                                <div class="my-4">
-                                <h5>Cena</h5>
-                                <p>Huevos revueltos y ensalada</p>
-                                <p>Postre</p>
-                                </div>
-                            </div>
-                        </div>
+                        <%}%>
                     </div>
                     <button class="btn btn-success leftLst"><</button>
                     <button class="btn btn-success rightLst">></button>
