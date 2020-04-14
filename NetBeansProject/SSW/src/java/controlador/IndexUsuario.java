@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author alejandro
  */
-@WebServlet(name = "IndexUsuario", urlPatterns = {"/Frontend/paginaUsuario"})
+@WebServlet(name = "IndexUsuario", urlPatterns = {"/FrontEnd/paginaUsuario"})
 public class IndexUsuario extends HttpServlet {
 
     /**
