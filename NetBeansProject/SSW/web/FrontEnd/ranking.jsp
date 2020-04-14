@@ -84,7 +84,7 @@
             ArrayList<Dieta> dietasTemp = dietas;
             LocalDateTime fechaLimiteTemp = LocalDateTime.parse(fechaLimite);
         %>
-        <form action="ranking.jsp">
+        <form action="./ranking">
         <div class="row mb-5">
             <div class="col">
                 <div class="row">
