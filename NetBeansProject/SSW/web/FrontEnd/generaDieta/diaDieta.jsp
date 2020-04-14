@@ -84,6 +84,22 @@
                 Dias.add("Viernes");
                 Dias.add("Sabado");
                 Dias.add("Domingo");
+                
+                String desayuno1="desayuno1";
+                String desayuno2="desayuno2";
+                String desayuno3="desayuno3";
+                
+                String comida11="comida11";
+                String comida12="comida12";
+                String comida13="comida13";
+                String comida21="comida21";
+                String comida22="comida22";
+                String comida23="comida23";
+                
+                String cena1="cena1";
+                String cena2="cena2";
+                String cena3="cena3";
+                
                 Plato p = plato;
                 for (int i = 0; i < 7; i++) {
                     if (i == Integer.parseInt(diaSemana)) {
@@ -110,8 +126,10 @@
                                         </th>
                                         <td>
                                             <div class="custom-control custom-radio">
-                                                <input value="<%=p.getNombre()%>" type="radio" id="desayuno1" name="desayuno" class="custom-control-input">
-                                                <label class="custom-control-label" for="desayuno1">
+                                                <% desayuno1 = desayuno1 + Integer.toString(i);%>
+                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=desayuno1%>" name="desayuno" class="custom-control-input">
+                                                
+                                                <label class="custom-control-label" for="<%=desayuno1%>">
                                                     <%=p.getNombre()%>
                                                 </label>
                                             </div>
