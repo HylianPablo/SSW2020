@@ -37,10 +37,10 @@ public class diaDieta extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url;
-        String diaSem = request.getParameter("diaSemana");
+        String diaSemana = request.getParameter("diaSemana");
         
         ArrayList <String> platosElegidos=null;
-        if(diaSem.equals("0")){
+        if(diaSemana.equals("0")){
             platosElegidos = new ArrayList<>();
         }else{
             try{
@@ -59,7 +59,7 @@ public class diaDieta extends HttpServlet {
             
         }
         
-        if(diaSem.equals("7")){
+        if(diaSemana.equals("7")){
             url = "/FrontEnd/dietaGenerada.jsp";
         }else{
             url = "/FrontEnd/generaDieta/diaDieta.jsp";
@@ -67,7 +67,7 @@ public class diaDieta extends HttpServlet {
         Plato plato = DBConnection.getPlato();
         HttpSession session = request.getSession();
         session.setAttribute("platosElegidos",platosElegidos);
-        session.setAttribute("diaSem", diaSem);
+        session.setAttribute("diaSemana", diaSemana);
         session.setAttribute("plato",plato);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);

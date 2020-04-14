@@ -65,30 +65,34 @@
         <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
         <hr/>
         
-        <jsp:useBean id="favoritas" class="Boolean" scope="session">  
+        <jsp:useBean id="favoritas" class="java.lang.String" scope="session">  
         </jsp:useBean>
-        <jsp:useBean id="siempre" class="Boolean" scope="session">  
+        <jsp:useBean id="siempre" class="java.lang.String" scope="session">  
         </jsp:useBean>
-        <jsp:useBean id="fechaLimite" class="java.time.LocalDateTime" scope="session">  
+        <jsp:useBean id="fechaLimite" class="java.lang.String" scope="session">  
         </jsp:useBean>
-        <jsp:useBean id="selectTiempo" class="Integer" scope="session">  
+        <jsp:useBean id="selectTiempo" class="java.lang.String" scope="session">  
         </jsp:useBean>
-        <jsp:useBean id="tiempo" class="String" scope="session">  
+        <jsp:useBean id="tiempo" class="java.lang.String" scope="session">  
         </jsp:useBean>
         <jsp:useBean id="dietas" class="java.util.ArrayList" scope="session">  
         </jsp:useBean>
         <%
+            boolean favoritasTemp = Boolean.parseBoolean(favoritas);
+            boolean siempreTemp = Boolean.parseBoolean(siempre);
+            int selectTiempoTemp = Integer.parseInt(selectTiempo);
             ArrayList<Dieta> dietasTemp = dietas;
+            LocalDateTime fechaLimiteTemp = LocalDateTime.parse(fechaLimite);
         %>
-        <form action="rankingUsuario.jsp">
+        <form action="./rankingUsuario">
         <div class="row mb-5">
             <div class="col">
                 <div class="row">
                     <div class="col">
                         <h5 class="inlineBlock">Ordenar por:</h5>
                         <select class="inlineBlock botonEstandar btn btn-secondary" name="criterio" onchange="this.form.submit();">
-                            <option <%if(!favoritas){%>selected<%}%>>Guardadas</option>
-                            <option <%if(favoritas){%>selected<%}%>>Favoritas</option>
+                            <option <%if(!favoritasTemp){%>selected<%}%>>Guardadas</option>
+                            <option <%if(favoritasTemp){%>selected<%}%>>Favoritas</option>
                         </select>
                     </div>
                 </div>
@@ -100,10 +104,10 @@
                     <div class="col">
                         <h5 class="oneLine inlineBlock">Fecha de creación: </h5>
                         <select class="inlineBlock botonEstandar btn btn-secondary" name="tiempo" onchange="this.form.submit();">
-                            <option <%if(siempre){%>selected<%}%>>Siempre</option>
-                            <option <%if(selectTiempo==1){%>selected<%}%>>Última Semana</option>
-                            <option <%if(selectTiempo==2){%>selected<%}%>>Último Mes</option>
-                            <option <%if(selectTiempo==3){%>selected<%}%>>Último Año</option>
+                            <option <%if(siempreTemp){%>selected<%}%>>Siempre</option>
+                            <option <%if(selectTiempoTemp==1){%>selected<%}%>>Última Semana</option>
+                            <option <%if(selectTiempoTemp==2){%>selected<%}%>>Último Mes</option>
+                            <option <%if(selectTiempoTemp==3){%>selected<%}%>>Último Año</option>
                         </select>
                     </div>
                 </div>
@@ -115,7 +119,7 @@
             <%
                 for(int i = 0; i < dietas.size(); i++){
                     LocalDateTime fechaDieta = dietasTemp.get(i).getFecha();
-                    if(siempre || fechaDieta.compareTo(fechaLimite)>=0){
+                    if(siempreTemp || fechaDieta.compareTo(fechaLimiteTemp)>=0){
             %>
             <a class="text-decoration-none blackHref" href="dietaUsuario.jsp?cod=<%=dietasTemp.get(i).getCodigoDieta()%>">
                 <div class="card bg-transparent mx-3 my-4">

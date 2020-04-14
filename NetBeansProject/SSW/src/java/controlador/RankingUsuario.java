@@ -40,35 +40,35 @@ public class RankingUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Boolean favoritas;
+        Boolean favoritasTemp;
         String criterio = request.getParameter("criterio");
         if (criterio != null && criterio.equals("Favoritas")) {
-            favoritas = true;
+            favoritasTemp = true;
         } else {
-            favoritas = false;
+            favoritasTemp = false;
         }
-        Boolean siempre = false;
-        Integer selectTiempo = 5;
+        Boolean siempreTemp = false;
+        Integer selectTiempoTemp = 5;
         LocalDateTime hoy = LocalDateTime.of(2020, Month.APRIL, 03, 19, 30, 40);
-        LocalDateTime fechaLimite;
+        LocalDateTime fechaLimiteTemp;
         String tiempo = request.getParameter("tiempo");
         if (tiempo == null || tiempo.equals("Siempre")) {
-            siempre = true;
-            selectTiempo = 0;
-            fechaLimite = hoy;
+            siempreTemp = true;
+            selectTiempoTemp = 0;
+            fechaLimiteTemp = hoy;
         } else if (tiempo.equals("Última Semana")) {
-            selectTiempo = 1;
-            fechaLimite = hoy.minusDays(7);
+            selectTiempoTemp = 1;
+            fechaLimiteTemp = hoy.minusDays(7);
         } else if (tiempo.equals("Último Mes")) {
-            selectTiempo = 2;
-            fechaLimite = hoy.minusMonths(1);
+            selectTiempoTemp = 2;
+            fechaLimiteTemp = hoy.minusMonths(1);
         } else {
-            selectTiempo = 3;
-            fechaLimite = hoy.minusYears(1);
+            selectTiempoTemp = 3;
+            fechaLimiteTemp = hoy.minusYears(1);
         }
 
         ArrayList<Dieta> dietas;
-        if (favoritas) {
+        if (favoritasTemp) {
             dietas = DBConnection.getDietasFavoritas();
         } else {
             dietas = DBConnection.getDietasGuardadas();
@@ -77,6 +77,10 @@ public class RankingUsuario extends HttpServlet {
         //ArrayList<Comentario> comentarios = DBConnection.getComentarios(cod);
         String url = "/FrontEnd/rankingUsuario.jsp";
         HttpSession session = request.getSession();
+        String siempre = String.valueOf(siempreTemp);
+        String fechaLimite = fechaLimiteTemp.toString();
+        String selectTiempo = String.valueOf(selectTiempoTemp);
+        String favoritas = String.valueOf(favoritasTemp);
         session.setAttribute("siempre", siempre);
         session.setAttribute("dietas", dietas);
         session.setAttribute("favoritas", favoritas);
