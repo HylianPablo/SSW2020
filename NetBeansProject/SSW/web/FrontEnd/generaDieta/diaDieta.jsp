@@ -67,8 +67,7 @@
             <jsp:useBean id="diaSemana" class="java.lang.String" scope="session">  
             </jsp:useBean>
             <%
-                String visible;
-                ArrayList<String> Dias = new ArrayList<>();
+                
                 try{
                 request.setAttribute("platosElegidos", platosElegidos);
                 RequestDispatcher rd = request.getRequestDispatcher("diaDieta");
@@ -77,12 +76,14 @@
                     e.printStackTrace();
                 }
                 
+                String visible;
+                ArrayList<String> Dias = new ArrayList<>();
                 Dias.add("Lunes");
                 Dias.add("Martes");
-                Dias.add("Miercoles");
+                Dias.add("Miércoles");
                 Dias.add("Jueves");
                 Dias.add("Viernes");
-                Dias.add("Sabado");
+                Dias.add("Sábado");
                 Dias.add("Domingo");
                 
                 String desayuno1="desayuno1";
@@ -135,17 +136,19 @@
                                             </div>
                                         </td>
                                         <td>
+                                            <% desayuno2 = desayuno2 + Integer.toString(i);%>
                                             <div class="custom-control custom-radio">
-                                                <input value="<%=p.getNombre()%>" type="radio" id="desayuno2" name="desayuno" class="custom-control-input">
-                                                <label class="custom-control-label" for="desayuno2">
+                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=desayuno2%>" name="desayuno" class="custom-control-input">
+                                                <label class="custom-control-label" for="<%=desayuno2%>">
                                                     <%=p.getNombre()%>
                                                 </label>
                                             </div>
                                         </td>
                                         <td>
+                                             <% desayuno3 = desayuno3 + Integer.toString(i);%>
                                             <div class="custom-control custom-radio">
-                                                <input value="<%=p.getNombre()%>" type="radio" id="desayuno3" name="desayuno" class="custom-control-input">
-                                                <label class="custom-control-label" for="desayuno3">
+                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=desayuno3%>" name="desayuno" class="custom-control-input">
+                                                <label class="custom-control-label" for="<%=desayuno3%>">
                                                     <%=p.getNombre()%>
                                                 </label>
                                             </div>
@@ -167,25 +170,28 @@
                                             Primer Plato
                                         </th>
                                         <td>
+                                            <% comida11 = comida11 + Integer.toString(i);%>
                                             <div class="custom-control custom-radio">
-                                                <input value="<%=p.getNombre()%>" type="radio" id="comida11" name="comida1" class="custom-control-input">
-                                                <label class="custom-control-label" for="comida11">
+                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=comida11%>" name="comida1" class="custom-control-input">
+                                                <label class="custom-control-label" for="<%=comida11%>">
                                                     <%=p.getNombre()%>
                                                 </label>
                                             </div>
                                         </td>
                                         <td>
+                                            <% comida12 = comida12 + Integer.toString(i);%>
                                             <div class="custom-control custom-radio">
-                                                <input value="<%=p.getNombre()%>" type="radio" id="comida12" name="comida1" class="custom-control-input">
-                                                <label class="custom-control-label" for="comida12">
+                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=comida12%>" name="comida1" class="custom-control-input">
+                                                <label class="custom-control-label" for="<%=comida12%>">
                                                     <%=p.getNombre()%>
                                                 </label>
                                             </div>
                                         </td>
                                         <td>
+                                            <% comida13 = comida13 + Integer.toString(i);%>
                                             <div class="custom-control custom-radio">
-                                                <input value="<%=p.getNombre()%>" type="radio" id="comida13" name="comida1" class="custom-control-input">
-                                                <label class="custom-control-label" for="comida13">
+                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=comida13%>" name="comida1" class="custom-control-input">
+                                                <label class="custom-control-label" for="<%=comida13%>">
                                                     <%=p.getNombre()%>
                                                 </label>
                                             </div>
@@ -196,25 +202,28 @@
                                             Segundo Plato
                                         </th>
                                         <td>
+                                            <% comida21 = comida21 + Integer.toString(i);%>
                                             <div class="custom-control custom-radio">
-                                                <input value="<%=p.getNombre()%>" type="radio" id="comida21" name="comida2" class="custom-control-input">
-                                                <label class="custom-control-label" for="comida21">
+                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=comida21%>" name="comida2" class="custom-control-input">
+                                                <label class="custom-control-label" for="<%=comida21%>">
                                                     <%=p.getNombre()%>
                                                 </label>
                                             </div>
                                         </td>
                                         <td>
+                                            <% comida22 = comida22 + Integer.toString(i);%>
                                             <div class="custom-control custom-radio">
-                                                <input value="<%=p.getNombre()%>" type="radio" id="comida22" name="comida2" class="custom-control-input">
-                                                <label class="custom-control-label" for="comida22">
+                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=comida22%>" name="comida2" class="custom-control-input">
+                                                <label class="custom-control-label" for="<%=comida22%>">
                                                     <%=p.getNombre()%>
                                                 </label>
                                             </div>
                                         </td>
                                         <td>
+                                            <% comida23 = comida23 + Integer.toString(i);%>
                                             <div class="custom-control custom-radio">
-                                                <input value="<%=p.getNombre()%>" type="radio" id="comida23" name="comida2" class="custom-control-input">
-                                                <label class="custom-control-label" for="comida23">
+                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=comida23%>" name="comida2" class="custom-control-input">
+                                                <label class="custom-control-label" for="<%=comida23%>">
                                                     <%=p.getNombre()%>
                                                 </label>
                                             </div>
@@ -246,25 +255,28 @@
                                             Primer Plato
                                         </th>
                                         <td>
+                                            <% cena1 = cena1 + Integer.toString(i);%>
                                             <div class="custom-control custom-radio">
-                                                <input value=<%=p.getNombre()%> type="radio" id="cena1" name="cena" class="custom-control-input">
-                                                <label class="custom-control-label" for="cena1">
+                                                <input value=<%=p.getNombre()%> type="radio" id="<%=cena1%>" name="cena" class="custom-control-input">
+                                                <label class="custom-control-label" for="<%=cena1%>">
                                                     <%=p.getNombre()%>
                                                 </label>
                                             </div>
                                         </td>
                                         <td>
+                                            <% cena2 = cena2 + Integer.toString(i);%>
                                             <div class="custom-control custom-radio">
-                                                <input value=<%=p.getNombre()%> type="radio" id="cena2" name="cena" class="custom-control-input">
-                                                <label class="custom-control-label" for="cena2">
+                                                <input value=<%=p.getNombre()%> type="radio" id="<%=cena2%>" name="cena" class="custom-control-input">
+                                                <label class="custom-control-label" for="<%=cena2%>">
                                                     <%=p.getNombre()%>
                                                 </label>
                                             </div>
                                         </td>
                                         <td>
+                                            <% cena3 = cena3 + Integer.toString(i);%>
                                             <div class="custom-control custom-radio">
-                                                <input value=<%=p.getNombre()%> type="radio" id="cena3" name="cena" class="custom-control-input">
-                                                <label class="custom-control-label" for="cena3">
+                                                <input value=<%=p.getNombre()%> type="radio" id="<%=cena3%>" name="cena" class="custom-control-input">
+                                                <label class="custom-control-label" for="<%=cena3%>">
                                                     <%=p.getNombre()%>
                                                 </label>
                                             </div>

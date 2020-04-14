@@ -69,24 +69,23 @@
                         <%
                             String[] dias = new String[]{"Lunes","Martes","Miercoles","Jueves","Viernes","Sábado","Domingo"};
                         for(int i=0;i<7;i++){
-                        ArrayList<String> pe = platosElegidos;
                         %>
                         <div class="item">
                             <div id="Lunes" class="pad15">
                                 <h4 class="font-weight-bold"><%=dias[i]%></h4>
                                 <div class="my-4">
                                 <h5>Desayuno</h5>
-                                <p><%=pe.get(0*(i+1))%></p>
+                                <p><%=platosElegidos.get(0*(i+1))%></p>
                                 </div>
                                 <div class="my-4">
                                 <h5>Comida</h5>
-                                <p><%=pe.get(1*(i+1))%></p>
-                                <p><%=pe.get(2*(i+1))%></p>
+                                <p><%=platosElegidos.get(1*(i+1))%></p>
+                                <p><%=platosElegidos.get(2*(i+1))%></p>
                                 <p>Postre</p>
                                 </div>
                                 <div class="my-4">
                                 <h5>Cena</h5>
-                                <p><%=pe.get(3*(i+1))%></p>
+                                <p><%=platosElegidos.get(3*(i+1))%></p>
                                 <p>Postre</p>
                                 </div>
                             </div>

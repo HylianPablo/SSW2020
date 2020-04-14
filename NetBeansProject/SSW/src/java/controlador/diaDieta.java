@@ -46,6 +46,11 @@ public class diaDieta extends HttpServlet {
             try{
             platosElegidos = (ArrayList)request.getAttribute("platosElegidos");
             String desayuno = request.getParameter("desayuno");
+            //DEBUG-START
+            if(desayuno.equals("Garbanzos con espinacas")){
+                url="/FrontEnd/index.html";
+            }
+            //DEBUG-END
             String comida1 = request.getParameter("comida1");
             String comida2 = request.getParameter("comida2");
             String cena = request.getParameter("cena");
