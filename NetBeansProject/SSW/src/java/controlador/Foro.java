@@ -22,8 +22,8 @@ import modelo.Entrada;
  *
  * @author alejandro
  */
-@WebServlet(name = "ForoUsuario", urlPatterns = {"/FrontEnd/foroUsuario"})
-public class ForoUsuario extends HttpServlet {
+@WebServlet(name = "ForoUsuario", urlPatterns = {"/FrontEnd/foroS"})
+public class Foro extends HttpServlet {
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,7 +39,7 @@ public class ForoUsuario extends HttpServlet {
         
         response.setContentType("text/html;charset=UTF-8");
         ArrayList<Entrada> entradas = DBConnection.getAllEntradas();
-        String url = "/FrontEnd/foroUsuario.jsp";
+        String url = "/FrontEnd/foro.jsp";
         HttpSession session = request.getSession();
         session.setAttribute("entradas", entradas);
         
