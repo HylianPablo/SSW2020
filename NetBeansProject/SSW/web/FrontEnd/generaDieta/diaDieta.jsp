@@ -70,7 +70,6 @@
                 String visible;
                 ArrayList<String> Dias = new ArrayList<>();
                 try{
-                ArrayList<String> platosE = platosElegidos;
                 request.setAttribute("platosElegidos", platosElegidos);
                 RequestDispatcher rd = request.getRequestDispatcher("diaDieta");
                 rd.forward(request,response);
@@ -111,7 +110,7 @@
                                         </th>
                                         <td>
                                             <div class="custom-control custom-radio">
-                                                <input value=<%=p.getNombre()%>type="radio" id="desayuno1" name="desayuno" class="custom-control-input">
+                                                <input value="<%=p.getNombre()%>" type="radio" id="desayuno1" name="desayuno" class="custom-control-input">
                                                 <label class="custom-control-label" for="desayuno1">
                                                     <%=p.getNombre()%>
                                                 </label>
@@ -119,7 +118,7 @@
                                         </td>
                                         <td>
                                             <div class="custom-control custom-radio">
-                                                <input value=<%=p.getNombre()%> type="radio" id="desayuno2" name="desayuno" class="custom-control-input">
+                                                <input value="<%=p.getNombre()%>" type="radio" id="desayuno2" name="desayuno" class="custom-control-input">
                                                 <label class="custom-control-label" for="desayuno2">
                                                     <%=p.getNombre()%>
                                                 </label>
@@ -127,7 +126,7 @@
                                         </td>
                                         <td>
                                             <div class="custom-control custom-radio">
-                                                <input value=<%=p.getNombre()%> type="radio" id="desayuno3" name="desayuno" class="custom-control-input">
+                                                <input value="<%=p.getNombre()%>" type="radio" id="desayuno3" name="desayuno" class="custom-control-input">
                                                 <label class="custom-control-label" for="desayuno3">
                                                     <%=p.getNombre()%>
                                                 </label>
@@ -151,7 +150,7 @@
                                         </th>
                                         <td>
                                             <div class="custom-control custom-radio">
-                                                <input value=<%=p.getNombre()%> type="radio" id="comida11" name="comida1" class="custom-control-input">
+                                                <input value="<%=p.getNombre()%>" type="radio" id="comida11" name="comida1" class="custom-control-input">
                                                 <label class="custom-control-label" for="comida11">
                                                     <%=p.getNombre()%>
                                                 </label>
@@ -159,7 +158,7 @@
                                         </td>
                                         <td>
                                             <div class="custom-control custom-radio">
-                                                <input value=<%=p.getNombre()%> type="radio" id="comida12" name="comida1" class="custom-control-input">
+                                                <input value="<%=p.getNombre()%>" type="radio" id="comida12" name="comida1" class="custom-control-input">
                                                 <label class="custom-control-label" for="comida12">
                                                     <%=p.getNombre()%>
                                                 </label>
@@ -167,7 +166,7 @@
                                         </td>
                                         <td>
                                             <div class="custom-control custom-radio">
-                                                <input value=<%=p.getNombre()%> type="radio" id="comida13" name="comida1" class="custom-control-input">
+                                                <input value="<%=p.getNombre()%>" type="radio" id="comida13" name="comida1" class="custom-control-input">
                                                 <label class="custom-control-label" for="comida13">
                                                     <%=p.getNombre()%>
                                                 </label>
@@ -180,7 +179,7 @@
                                         </th>
                                         <td>
                                             <div class="custom-control custom-radio">
-                                                <input value=<%=p.getNombre()%> type="radio" id="comida21" name="comida2" class="custom-control-input">
+                                                <input value="<%=p.getNombre()%>" type="radio" id="comida21" name="comida2" class="custom-control-input">
                                                 <label class="custom-control-label" for="comida21">
                                                     <%=p.getNombre()%>
                                                 </label>
@@ -188,7 +187,7 @@
                                         </td>
                                         <td>
                                             <div class="custom-control custom-radio">
-                                                <input value=<%=p.getNombre()%> type="radio" id="comida22" name="comida2" class="custom-control-input">
+                                                <input value="<%=p.getNombre()%>" type="radio" id="comida22" name="comida2" class="custom-control-input">
                                                 <label class="custom-control-label" for="comida22">
                                                     <%=p.getNombre()%>
                                                 </label>
@@ -196,7 +195,7 @@
                                         </td>
                                         <td>
                                             <div class="custom-control custom-radio">
-                                                <input value=<%=p.getNombre()%> type="radio" id="comida23" name="comida2" class="custom-control-input">
+                                                <input value="<%=p.getNombre()%>" type="radio" id="comida23" name="comida2" class="custom-control-input">
                                                 <label class="custom-control-label" for="comida23">
                                                     <%=p.getNombre()%>
                                                 </label>
