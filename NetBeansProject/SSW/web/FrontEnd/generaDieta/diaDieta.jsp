@@ -60,10 +60,23 @@
             <h1 class="h1Size coolFontParagraph">Selección de Platos</h1>
             <hr/>
             <button type="button" id="dia" value="0" style="display:none"></button>
+            <jsp:useBean id="plato" class="modelo.Plato" scope="session">  
+            </jsp:useBean>
+            <jsp:useBean id="platosElegidos" class="java.util.ArrayList" scope="session">  
+            </jsp:useBean>
             <%
                 String diaSemana = request.getParameter("diaSemana");
                 String visible;
                 ArrayList<String> Dias = new ArrayList<>();
+                try{
+                ArrayList<String> platosE = platosElegidos;
+                request.setAttribute("platosElegidos", platosElegidos);
+                RequestDispatcher rd = request.getRequestDispatcher("diaDieta");
+                rd.forward(request,response);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                
                 Dias.add("Lunes");
                 Dias.add("Martes");
                 Dias.add("Miercoles");
@@ -71,8 +84,8 @@
                 Dias.add("Viernes");
                 Dias.add("Sabado");
                 Dias.add("Domingo");
+                Plato p = plato;
                 for (int i = 0; i < 7; i++) {
-                    Plato p = DBConnection.getPlato();
                     if (i == Integer.parseInt(diaSemana)) {
                         visible = "";
                     } else {
@@ -83,7 +96,7 @@
             <h1 class="text-center display-4 coolFontParagraph" <%=visible%>><%=Dias.get(i)%></h1>
             <div <%=visible%>>
                 <input type="hidden" value=<%=Integer.parseInt(diaSemana) + 1%>>
-                <form action="diaDieta.jsp" >
+                <form action="diaDieta" method ="POST" >
                     <div class="card bg-transparent mx-3 my-5">
                         <div class="entradaForoTitulo2 rounded-top p-2">
                             <div class="text-center font-weight-bold">Desayuno</div>
