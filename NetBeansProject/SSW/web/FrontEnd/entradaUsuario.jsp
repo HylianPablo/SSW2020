@@ -43,7 +43,7 @@
     <jsp:useBean id="entrada" class="modelo.Entrada" scope="session">  
     </jsp:useBean>
     <%
-        String codigoEntrada = request.getParameter("cod");
+        //String codigoEntrada = request.getParameter("cod");
         ArrayList<Comentario> comentariosTemp = comentarios;
         //entrada = (Entrada)session.getAttribute("entrada");
     %>
