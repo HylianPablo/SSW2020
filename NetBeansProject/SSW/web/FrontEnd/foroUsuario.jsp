@@ -65,20 +65,21 @@
         <br/>
         <hr/>
         <button class="botonEstandar btn btn-success botonesEntrada my-3" onclick="window.location.href = '/SSW/FrontEnd/nuevaEntrada.html';">Agregar nueva entrada</button>
+        <jsp:useBean id="entradas" class="java.util.ArrayList" scope="session">  
+        </jsp:useBean>
         <%
-            ArrayList<Entrada> entradas = DBConnection.getAllEntradas();
-            for (int i = 0; i < entradas.size(); i++) {
+            ArrayList<Entrada> entradasTemp = entradas;
+            for (int i = 0; i < entradasTemp.size(); i++) {
         %>
-
         <div class="card my-3">
             <div class="mx-3 mt-3 entradaForoTitulo">
-                <%= entradas.get(i).getTitulo()%>
+                <%= entradasTemp.get(i).getTitulo()%>
                 <form action="./EntradaUsuario" class="d-inline-block">
-                    <input name="cod" type="hidden" value="<%= entradas.get(i).getCodigoEntrada()%>"/>
+                    <input name="cod" type="hidden" value="<%= entradasTemp.get(i).getCodigoEntrada()%>"/>
                     <button class="botonEstandar btn btn-success botonesEntrada" type="submit">Ir al hilo</button>
                 </form>
                 <%
-                        String cuerpo = entradas.get(i).getCuerpo();
+                        String cuerpo = entradasTemp.get(i).getCuerpo();
                         if (cuerpo == null) {
                             cuerpo = "";
                         }
