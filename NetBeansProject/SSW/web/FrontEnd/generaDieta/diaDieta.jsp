@@ -64,8 +64,10 @@
             </jsp:useBean>
             <jsp:useBean id="platosElegidos" class="java.util.ArrayList" scope="session">  
             </jsp:useBean>
+            <jsp:useBean id="diaSem" class="String" scope="session">  
+            </jsp:useBean>
             <%
-                String diaSemana = request.getParameter("diaSemana");
+                String diaSemana = diaSem;
                 String visible;
                 ArrayList<String> Dias = new ArrayList<>();
                 try{
