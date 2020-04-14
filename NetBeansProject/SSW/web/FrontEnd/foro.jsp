@@ -43,7 +43,7 @@
         <div class="row text-center my-3">
             <div class="col"></div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./index.html" role="button">INICIO</a>
+                <a class="coolFont btn w-100" href="./index" role="button">INICIO</a>
             </div>
             <div class="col">
                 <a class="coolFont btn w-100 actualPage" href="./foro.jsp" role="button">FORO</a>
@@ -72,7 +72,7 @@
         <div class="card my-3">
             <div class="mx-3 mt-3 entradaForoTitulo">
                 <%= entradas.get(i).getTitulo()%>
-                <form action="entrada.jsp" class="d-inline-block">
+                <form action="./entrada" class="d-inline-block">
                     <input name="cod" type="hidden" value="<%= entradas.get(i).getCodigoEntrada()%>"/>
                     <button class="botonEstandar btn btn-success botonesEntrada" type="submit">Ir al hilo</button>
                 </form>

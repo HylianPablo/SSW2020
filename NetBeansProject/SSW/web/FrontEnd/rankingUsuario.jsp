@@ -46,7 +46,7 @@
         <div class="row text-center my-3">
             <div class="col"></div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./paginaUsuario.html" role="button">INICIO</a>
+                <a class="coolFont btn w-100" href="./paginaUsuario" role="button">INICIO</a>
             </div>
             <div class="col">
                 <a class="coolFont btn w-100" href="./foroUsuario.jsp" role="button">FORO</a>
@@ -65,34 +65,21 @@
         <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
         <hr/>
         
+        <jsp:useBean id="favoritas" class="Boolean" scope="session">  
+        </jsp:useBean>
+        <jsp:useBean id="siempre" class="Boolean" scope="session">  
+        </jsp:useBean>
+        <jsp:useBean id="fechaLimite" class="java.time.LocalDateTime" scope="session">  
+        </jsp:useBean>
+        <jsp:useBean id="selectTiempo" class="Integer" scope="session">  
+        </jsp:useBean>
+        <jsp:useBean id="tiempo" class="String" scope="session">  
+        </jsp:useBean>
+        <jsp:useBean id="dietas" class="java.util.ArrayList" scope="session">  
+        </jsp:useBean>
         <%
-                boolean favoritas;
-                String criterio = request.getParameter("criterio");
-                if(criterio!=null && criterio.equals("Favoritas")){
-                    favoritas=true;
-                }else{
-                    favoritas=false;
-                }
-                boolean siempre = false;
-                int selectTiempo = 5;
-                LocalDateTime hoy = LocalDateTime.of(2020,Month.APRIL,03, 19, 30, 40);
-                LocalDateTime fechaLimite;
-                String tiempo = request.getParameter("tiempo");
-                if(tiempo==null || tiempo.equals("Siempre")){
-                    siempre=true;
-                    selectTiempo = 0;
-                    fechaLimite = hoy;
-                }else if(tiempo.equals("Última Semana")){
-                    selectTiempo = 1;
-                    fechaLimite = hoy.minusDays(7);
-                }else if(tiempo.equals("Último Mes")){
-                    selectTiempo = 2;
-                    fechaLimite = hoy.minusMonths(1);
-                }else{
-                    selectTiempo = 3;
-                    fechaLimite = hoy.minusYears(1);
-                }
-            %>
+            ArrayList<Dieta> dietasTemp = dietas;
+        %>
         <form action="rankingUsuario.jsp">
         <div class="row mb-5">
             <div class="col">
@@ -126,30 +113,23 @@
 
         <div class="ScrollStyle p-2"> 
             <%
-                
-                ArrayList<Dieta> dietas;
-                if(favoritas){
-                    dietas = DBConnection.getDietasFavoritas();
-                }else{
-                    dietas = DBConnection.getDietasGuardadas();
-                }
                 for(int i = 0; i < dietas.size(); i++){
-                    LocalDateTime fechaDieta = dietas.get(i).getFecha();
+                    LocalDateTime fechaDieta = dietasTemp.get(i).getFecha();
                     if(siempre || fechaDieta.compareTo(fechaLimite)>=0){
             %>
-            <a class="text-decoration-none blackHref" href="dietaUsuario.jsp?cod=<%=dietas.get(i).getCodigoDieta()%>">
+            <a class="text-decoration-none blackHref" href="dietaUsuario.jsp?cod=<%=dietasTemp.get(i).getCodigoDieta()%>">
                 <div class="card bg-transparent mx-3 my-4">
                     <div class="entradaForoTitulo2 rounded-top p-2">
                         <div class="row">
-                            <div class="col font-weight-bold"><%= dietas.get(i).getTitulo()%></div>
+                            <div class="col font-weight-bold"><%= dietasTemp.get(i).getTitulo()%></div>
                             <div class="col row">
-                                <div class="col"><i class="fa fa-star text-warning"></i> Favorito: <%= dietas.get(i).getFavoritos()%></div>
-                                <div class="col"><i class="fa fa-heart text-danger"></i> Guardado: <%= dietas.get(i).getGuardados()%></div>
+                                <div class="col"><i class="fa fa-star text-warning"></i> Favorito: <%= dietasTemp.get(i).getFavoritos()%></div>
+                                <div class="col"><i class="fa fa-heart text-danger"></i> Guardado: <%= dietasTemp.get(i).getGuardados()%></div>
                             </div>
                         </div>
                     </div>
                     <div class="entradaForoCuerpo2 rounded-bottom p-2" id="entradaEjemplo">
-                        <p><%= dietas.get(i).getDescripcion()%></p>
+                        <p><%= dietasTemp.get(i).getDescripcion()%></p>
                     </div>
                 </div>
             </a>

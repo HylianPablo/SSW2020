@@ -37,17 +37,14 @@
             </div>
         </div>
     </header>
+    <jsp:useBean id="comentarios" class="java.util.ArrayList" scope="session">  
+    </jsp:useBean>
+    <jsp:useBean id="entrada" class="modelo.Entrada" scope="session">  
+    </jsp:useBean>
     <%
         String codigoEntrada = request.getParameter("cod");
-        if (codigoEntrada == null) {
-            String redirectURL = "foro.jsp";
-            response.sendRedirect(redirectURL);
-        }else{
-        Entrada entrada = DBConnection.selectEntrada(codigoEntrada);
-        if(entrada == null){
-            String redirectURL2 = "foro.jsp";
-            response.sendRedirect(redirectURL2);
-        }else{
+        ArrayList<Comentario> comentariosTemp = comentarios;
+        //entrada = (Entrada)session.getAttribute("entrada");
     %>
 
     <div class="container rounded" id="cuerpo">
@@ -93,19 +90,17 @@
             </form>
         </div>
         <%
-            ArrayList<Comentario> comentarios = DBConnection.getComentarios(codigoEntrada);
             for(int i = 0; i < comentarios.size(); i++){
         %>
         <div class="card m-3">
             <div class="m-2">
-                <p class="font-weight-bold"><%= comentarios.get(i).getNombreUsuario()%></p>
-                <p><%= comentarios.get(i).getCuerpo()%></p>
+                <p class="font-weight-bold"><%= comentariosTemp.get(i).getNombreUsuario()%></p>
+                <p><%= comentariosTemp.get(i).getCuerpo()%></p>
             </div>
         </div>
         <%}%>
         <br/>
     </div>
     <br/>
-    <%}}%>
 </body>
 </html>

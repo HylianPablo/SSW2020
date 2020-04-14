@@ -50,7 +50,7 @@
         <div class="row text-center my-3">
             <div class="col"></div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./index.html" role="button">INICIO</a>
+                <a class="coolFont btn w-100" href="./index" role="button">INICIO</a>
             </div>
             <div class="col">
                 <a class="coolFont btn w-100" href="./foro.jsp" role="button">FORO</a>
