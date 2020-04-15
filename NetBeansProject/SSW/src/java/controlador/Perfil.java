@@ -7,6 +7,7 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,13 +15,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.DBConnection;
+import modelo.Dieta;
+import modelo.Usuario;
 
 /**
  *
  * @author alejandro
  */
-@WebServlet(name = "IndexUsuario", urlPatterns = {"/FrontEnd/paginaUsuario"})
-public class IndexUsuario extends HttpServlet {
+@WebServlet(name = "Perfil", urlPatterns = {"/FrontEnd/perfil"})
+public class Perfil extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,9 +38,20 @@ public class IndexUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        String nombreUsuario = "pedsanz";
+        Usuario usuario = DBConnection.selectUsuario(nombreUsuario);
+        ArrayList<Dieta> dietas = DBConnection.selectDietasGuardadas(nombreUsuario);
+        Dieta dietaF = DBConnection.selectDietaFavorita(nombreUsuario);
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/FrontEnd/paginaUsuario.html";
+        String url = "/FrontEnd/perfil.jsp";
         HttpSession session = request.getSession();
+        session.setAttribute("usuario", usuario);
+        session.setAttribute("dietas", dietas);
+        session.setAttribute("dietaF", dietaF);
+        session.setAttribute("nombreUsuario", nombreUsuario);
+        
+
+        //Lo quito y pongo sendRedirect, asi si das F5 no peta
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
