@@ -105,7 +105,7 @@
                         <%if(dietaF == null){%>
                         No tienes ninguna dieta marcada como favorita
                         <%}else{%>
-                        <a class="alert-link" href="dietaUsuario.jsp?cod=<%=dietaF.getCodigoDieta()%>"><%=dietaF.getTitulo()%></a>
+                        <a class="alert-link" href="dietaUsuario?cod=<%=dietaF.getCodigoDieta()%>"><%=dietaF.getTitulo()%></a>
                         <%}%>
                     </div>
                     <div class="alert alert-danger">
@@ -116,7 +116,7 @@
                         <ul class="list-group">
                             <%for(int i = 0; i<dietas.size(); i++){%>
                             <li class="list-group-item">
-                                <a class="alert-link" href="dietaUsuario.jsp?cod=<%=dietas.get(i).getCodigoDieta()%>"><%=dietas.get(i).getTitulo()%></a>
+                                <a class="alert-link" href="dietaUsuario?cod=<%=dietas.get(i).getCodigoDieta()%>"><%=dietas.get(i).getTitulo()%></a>
                             </li>
                             <%}%>
                         </ul>
