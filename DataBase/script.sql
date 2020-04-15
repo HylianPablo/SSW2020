@@ -58,7 +58,7 @@ create table Comentario(
 
 create table Plato(
 	codigoPlato 				char(20) not null,
-	nombre					char(30) not null,
+	nombre					char(100) not null,
 	descripcion				text,
 	desayuno				boolean not null,
 	vegano					boolean not null,
@@ -124,7 +124,7 @@ insert into Entrada Values ('00001','Quiero ser vegana',NULL,'martsanro','2020-0
 insert into Entrada Values ('00002','Receta de cupcakes','Esta receta me la enseño mi abuela. Lleva harina y huevos','marmoyaga','2020-03-08');
 
 
-insert into Comentario Values ('00000','00000','Prueba a evitar demasiadas grasas saturadas y calorías vacias como las propocionadas por bebidas alcoholicas o la bolleria industrial','2020-04-05');
+insert into Comentario Values ('00000','00000','Prueba a evitar demasiadas grasas saturadas y calorías vacias como las propocionadas por bebidas alcoholicas o la bolleria industrial','pedsanz','2020-04-05');
 insert into Comentario Values ('00001','00000','El aguacate es un alimento muy sano, incluyelo en tus platos','marmoyaga','2020-04-06');
 insert into Comentario Values ('00002','00001','No comas carne','pedsanz','2020-03-25');
 
@@ -174,6 +174,7 @@ insert into Ingrediente Values('00000015','Merluza',FALSE,FALSE,FALSE,FALSE);
 insert into Ingrediente Values('00000016','Cebolla',TRUE,TRUE,FALSE,FALSE);
 insert into Ingrediente Values('00000017','Pimiento verde',TRUE,TRUE,FALSE,FALSE);
 insert into Ingrediente Values('00000018','Pimiento rojo',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente Values('00000028','Agua',TRUE,TRUE,FALSE,FALSE);
 insert into PertenenciaPlato Values('00000004','00000003');
 insert into PertenenciaPlato Values('00000028','00000003');
 insert into PertenenciaPlato Values('00000015','00000003');
@@ -209,7 +210,6 @@ insert into PertenenciaPlato Values('00000026','00000005');
 
 insert into Plato Values ('00000006','Espaguetis a la carbonara','Espaguetis con salsa carbonara',FALSE,FALSE,FALSE,FALSE,TRUE,141,7,12,11,5,13);
 insert into Ingrediente Values('00000027','Salsa carbonara',FALSE,FALSE,FALSE,FALSE);
-insert into Ingrediente Values('00000028','Agua',TRUE,TRUE,FALSE,FALSE);
 insert into Ingrediente Values('00000029','Nata',TRUE,FALSE,FALSE,FALSE);
 insert into Ingrediente Values('00000030','Queso',TRUE,FALSE,FALSE,FALSE);
 insert into Ingrediente Values('00000031','Espagueti',FALSE,FALSE,FALSE,TRUE);
@@ -265,11 +265,11 @@ insert into PertenenciaPlato Values('00000045','00000010');
 
 insert into Plato Values ('00000011','Lasania Boloniesa','Lasania Boloniesa con carne de cerdo',FALSE,FALSE,FALSE,FALSE,TRUE,148,7,15,17,7,15);
 insert into Ingrediente Values('00000046','Harina',TRUE,TRUE,FALSE,TRUE);
-insert into Ingrediente Values('00000065','Carne de cerdo',FALSE,FALSE,FALSE,FALSE);
+insert into Ingrediente Values('00000113','Carne de cerdo',FALSE,FALSE,FALSE,FALSE);
 insert into PertenenciaPlato Values('00000013','00000011');
 insert into PertenenciaPlato Values('00000040','00000011');
 insert into PertenenciaPlato Values('00000036','00000011');
-insert into PertenenciaPlato Values('00000065','00000011');
+insert into PertenenciaPlato Values('00000113','00000011');
 insert into PertenenciaPlato Values('00000046','00000011');
 insert into PertenenciaPlato Values('00000016','00000011');
 insert into PertenenciaPlato Values('00000004','00000011');
@@ -840,7 +840,144 @@ insert into PertenenciaPlato Values('00000025','00000060');
 insert into PertenenciaPlato Values('00000006','00000060');
 
 
+insert into Plato Values ('00000061','Ensalada de pasta','Ensalada de pasta con tomate, queso, chicharro y jamon cocido',FALSE,FALSE,FALSE,FALSE,FALSE,189,9,8,8,7,20);
+insert into PertenenciaPlato Values('00000097','00000061');
+insert into PertenenciaPlato Values('00000056','00000061');
+insert into PertenenciaPlato Values('00000016','00000061');
+insert into PertenenciaPlato Values('00000013','00000061');
+insert into PertenenciaPlato Values('00000060','00000061');
+insert into PertenenciaPlato Values('00000107','00000061');
+insert into PertenenciaPlato Values('00000042','00000061');
+insert into PertenenciaPlato Values('00000030','00000061');
 
 
+insert into Plato Values ('00000062','Ensalada de garbanzos','Ensalada de garbanzos cocidos, atun y aceitunas',FALSE,FALSE,FALSE,FALSE,FALSE,189,9,8,8,7,20);
+insert into PertenenciaPlato Values('00000002','00000062');
+insert into PertenenciaPlato Values('00000023','00000062');
+insert into PertenenciaPlato Values('00000013','00000062');
+insert into PertenenciaPlato Values('00000016','00000062');
+insert into PertenenciaPlato Values('00000023','00000062');
+insert into PertenenciaPlato Values('00000106','00000062');
+insert into PertenenciaPlato Values('00000044','00000062');
+insert into PertenenciaPlato Values('00000073','00000062');
 
+
+insert into Plato Values ('00000063','Pizza jamon y bacon','Pizza jamon y bacon con tomate, queso, jamon y almidon',FALSE,FALSE,FALSE,FALSE,FALSE,258,10,11,14,11,31);
+insert into PertenenciaPlato Values('00000046','00000063');
+insert into PertenenciaPlato Values('00000013','00000063');
+insert into PertenenciaPlato Values('00000042','00000063');
+insert into PertenenciaPlato Values('00000030','00000063');
+insert into PertenenciaPlato Values('00000045','00000063');
+insert into PertenenciaPlato Values('00000003','00000063');
+insert into PertenenciaPlato Values('00000006','00000063');
+insert into PertenenciaPlato Values('00000033','00000063');
+
+
+insert into Plato Values ('00000064','Vaso de leche con zumo de naranja','',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,8,11);
+insert into Ingrediente Values('00000113','Zumo de naranja',TRUE,TRUE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000036','00000064');
+insert into PertenenciaPlato Values('00000113','00000064');
+
+
+insert into Plato Values ('00000068','Vaso de leche con zumo de pinia','',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,8,11);
+insert into Ingrediente Values('00000114','Zumo de pinia',TRUE,TRUE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000036','00000068');
+insert into PertenenciaPlato Values('00000114','00000068');
+
+
+insert into Plato Values ('00000069','Vaso de leche con zumo de melocoton','',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,8,11);
+insert into Ingrediente Values('00000115','Zumo de melocoton',TRUE,TRUE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000036','00000069');
+insert into PertenenciaPlato Values('00000115','00000069');
+
+insert into Plato Values ('00000065','Cafe solo con zumo de naranja y tostada con mermelada de melocoton','',TRUE,TRUE,TRUE,FALSE,FALSE,2,0,0,0,0,0);
+insert into Ingrediente Values('00000108','Cafe',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente Values('00000109','Agua caliente',TRUE,TRUE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000108','00000065');
+insert into PertenenciaPlato Values('00000109','00000065');
+insert into PertenenciaPlato Values('00000113','00000065');
+insert into PertenenciaPlato Values('00000043','00000065');
+insert into PertenenciaPlato Values('00000120','00000065');
+
+insert into Plato Values ('00000066','Cafe con leche con zumo de mango y tostada con mermelada de frambuesa','',TRUE,FALSE,TRUE,FALSE,FALSE,135,6,7,10,9,12);
+insert into PertenenciaPlato Values('00000108','00000066');
+insert into PertenenciaPlato Values('00000109','00000066');
+insert into PertenenciaPlato Values('00000036','00000066');
+insert into PertenenciaPlato Values('00000043','00000066');
+insert into PertenenciaPlato Values('00000117','00000066');
+insert into PertenenciaPlato Values('00000118','00000066');
+
+insert into Plato Values ('00000067','Cafe cortado','',TRUE,FALSE,TRUE,FALSE,FALSE,28,2,1,1,2,2);
+insert into PertenenciaPlato Values('00000108','00000067');
+insert into PertenenciaPlato Values('00000036','00000067');
+
+insert into Plato Values ('00000068','Te','',TRUE,FALSE,TRUE,FALSE,FALSE,2,0,0,0,0,1);
+insert into Ingrediente Values('00000110','Te',TRUE,TRUE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000110','00000068');
+
+insert into Plato Values ('00000069','Menta poleo','',TRUE,FALSE,TRUE,FALSE,FALSE,0,0,0,0,0,0);
+insert into Ingrediente Values('00000111','Menta poleo',TRUE,TRUE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000111','00000069');
+
+insert into Plato Values ('00000070','Vaso de leche con zumo de pomelo y tostada con mermelada de fresa','',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,8,11);
+insert into Ingrediente Values('00000116','Zumo de pomelo',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente Values('00000121','Mermelada de frambuesa',TRUE,TRUE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000043','00000070');
+insert into PertenenciaPlato Values('00000036','00000070');
+insert into PertenenciaPlato Values('00000116','00000070');
+insert into PertenenciaPlato Values('00000121','00000070');
+
+
+insert into Plato Values ('00000071','Vaso de leche con zumo de mango y tostada con mermelada de manzana','',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,8,11);
+insert into Ingrediente Values('00000117','Zumo de mango',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente Values('00000118','Mermelada de manzana',TRUE,TRUE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000043','00000071');
+insert into PertenenciaPlato Values('00000036','00000071');
+insert into PertenenciaPlato Values('00000117','00000071');
+insert into PertenenciaPlato Values('00000118','00000071');
+
+
+insert into Plato Values ('00000072','Vaso de leche con zumo de manzana y tostada con mermelada de melocoton','',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,8,11);
+insert into Ingrediente Values('00000119','Zumo de manzana',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente Values('00000120','Mermelada de melocoton',TRUE,TRUE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000036','00000072');
+insert into PertenenciaPlato Values('00000043','00000072');
+insert into PertenenciaPlato Values('00000119','00000072');
+insert into PertenenciaPlato Values('00000120','00000072');
+
+insert into Plato Values ('00000073','Cafe con leche con zumo de manzana y tostada con mermelada de melocoton','',TRUE,FALSE,TRUE,FALSE,FALSE,135,6,7,10,9,12);
+insert into PertenenciaPlato Values('00000108','00000073');
+insert into PertenenciaPlato Values('00000109','00000073');
+insert into PertenenciaPlato Values('00000036','00000073');
+insert into PertenenciaPlato Values('00000043','00000073');
+insert into PertenenciaPlato Values('00000119','00000073');
+insert into PertenenciaPlato Values('00000120','00000073');
+
+insert into Plato Values ('00000074','Cafe cortado con zumo de pinia y tostada con mermelada de fresa','',TRUE,FALSE,TRUE,FALSE,FALSE,28,2,1,1,2,2);
+insert into PertenenciaPlato Values('00000108','00000074');
+insert into PertenenciaPlato Values('00000036','00000074');
+insert into PertenenciaPlato Values('00000114','00000074');
+insert into PertenenciaPlato Values('00000121','00000074');
+
+insert into Plato Values ('00000075','Menta poleo con zumo de pinia y tostada con mermelada de fresa','',TRUE,FALSE,TRUE,FALSE,FALSE,0,0,0,0,0,0);
+insert into PertenenciaPlato Values('00000111','00000075');
+insert into PertenenciaPlato Values('00000114','00000075');
+insert into PertenenciaPlato Values('00000121','00000075');
+
+insert into Plato Values ('00000076','Menta poleo con con zumo de pomelo y tostada con mermelada de fresa','',TRUE,FALSE,TRUE,FALSE,FALSE,0,0,0,0,0,0);
+insert into PertenenciaPlato Values('00000111','00000076');
+insert into PertenenciaPlato Values('00000116','00000076');
+insert into PertenenciaPlato Values('00000121','00000076');
+
+insert into Plato Values ('00000077','Colacao','',TRUE,TRUE,TRUE,FALSE,FALSE,158,3,6,7,8,26);
+insert into Ingrediente Values('00000112','Cacao',TRUE,TRUE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000036','00000077');
+insert into PertenenciaPlato Values('00000112','00000077');
+
+
+insert into Plato Values ('00000078','Colacao y zumo de naranja con tostada de mermelada de frambuesa','',TRUE,TRUE,TRUE,FALSE,FALSE,158,3,6,7,8,26);
+insert into PertenenciaPlato Values('00000036','00000078');
+insert into PertenenciaPlato Values('00000112','00000078');
+insert into PertenenciaPlato Values('00000113','00000078');
+insert into PertenenciaPlato Values('00000118','00000078');
 
