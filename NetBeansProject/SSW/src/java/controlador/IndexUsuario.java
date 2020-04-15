@@ -36,7 +36,6 @@ public class IndexUsuario extends HttpServlet {
         
         response.setContentType("text/html;charset=UTF-8");
         String url = "/FrontEnd/paginaUsuario.html";
-        response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
