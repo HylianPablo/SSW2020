@@ -115,7 +115,7 @@
                                                 %>
                                                 <td>
                                                     <div class="custom-control custom-radio">
-                                                        <input value="<%=p.getNombre()%>" type="radio" onclick="checkAllRadio(<%=i%>)" id="<%=nomComida + i%>" name="<%=nomComida%>" class="custom-control-input">
+                                                        <input value="<%=p.getNombre()%>" type="radio" onclick="checkAllRadio()" id="<%=nomComida + i%>" name="<%=nomComida%>" class="custom-control-input">
 
                                                         <label class="custom-control-label" for="<%=nomComida + i%>">
                                                             <%=p.getNombre()%>
@@ -162,14 +162,17 @@
         <br/>
     </body>
     <script>
-        function checkAllRadio(i){
-            var desayuno = document.getElementById("desayuno"+i);
-            var comida1 = document.getElementById("comida1"+i);
-            var comida2 = document.getElementById("comida2"+i);
-            var cena = document.getElementById("cena"+i);
+        function checkAllRadio(){
+            var flag = true;
+            $(':radio').each(function () {
+            name = $(this).attr('name');
+            if (flag && !$(':radio[name="' + name + '"]:checked').length) {
+                flag = false;
+            }
+            });
             var siguiente = document.getElementById("siguiente");
             
-            if (desayuno.style.checked && comida1.style.checked && comida2.style.checked && cena.style.checked)
+            if (flag)
                 siguiente.disabled=false;
             else
                 siguiente.disabled=true;
