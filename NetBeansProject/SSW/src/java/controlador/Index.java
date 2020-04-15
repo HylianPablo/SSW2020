@@ -35,7 +35,7 @@ public class Index extends HttpServlet {
             throws ServletException, IOException {
         
         String url = "/FrontEnd/index.html";
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
         HttpSession session = request.getSession();
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);

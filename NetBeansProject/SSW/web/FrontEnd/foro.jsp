@@ -46,10 +46,10 @@
                 <a class="coolFont btn w-100" href="./index" role="button">INICIO</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100 actualPage" href="./foro.jsp" role="button">FORO</a>
+                <a class="coolFont btn w-100 actualPage" href="./foro" role="button">FORO</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./ranking.jsp" role="button">TOP DIETAS</a>
+                <a class="coolFont btn w-100" href="./ranking" role="button">TOP DIETAS</a>
             </div>
             <div class="col"></div>
             <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
