@@ -38,19 +38,15 @@ public class diaDieta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url;
         String diaSemana = request.getParameter("diaSemana");
+        HttpSession session = request.getSession();
         
         ArrayList <String> platosElegidos=null;
         if(diaSemana.equals("0")){
             platosElegidos = new ArrayList<>();
         }else{
             try{
-            platosElegidos = (ArrayList)request.getAttribute("platosElegidos");
+            platosElegidos = (ArrayList)session.getAttribute("platosElegidos");
             String desayuno = request.getParameter("desayuno");
-            //DEBUG-START
-            if(desayuno.equals("Garbanzos con espinacas")){
-                url="/FrontEnd/index.html";
-            }
-            //DEBUG-END
             String comida1 = request.getParameter("comida1");
             String comida2 = request.getParameter("comida2");
             String cena = request.getParameter("cena");
@@ -69,7 +65,7 @@ public class diaDieta extends HttpServlet {
             url = "/FrontEnd/generaDieta/diaDieta.jsp";
         }
         Plato plato = DBConnection.getPlato();
-        HttpSession session = request.getSession();
+        
         session.setAttribute("platosElegidos",platosElegidos);
         session.setAttribute("diaSemana", diaSemana);
         session.setAttribute("plato",plato);

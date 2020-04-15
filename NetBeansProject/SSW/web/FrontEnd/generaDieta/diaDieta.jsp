@@ -68,13 +68,13 @@
             </jsp:useBean>
             <%
                 
-                try{
+                /*try{
                 request.setAttribute("platosElegidos", platosElegidos);
                 RequestDispatcher rd = request.getRequestDispatcher("diaDieta");
                 rd.forward(request,response);
                 }catch(Exception e){
                     e.printStackTrace();
-                }
+                }*/
                 
                 String visible;
                 ArrayList<String> Dias = new ArrayList<>();
@@ -112,8 +112,9 @@
             %>
             <h1 class="text-center display-4 coolFontParagraph" <%=visible%>><%=Dias.get(i)%></h1>
             <div <%=visible%>>
-                <input type="hidden" value=<%=Integer.parseInt(diaSemana) + 1%>>
+                <%int diaSem = Integer.parseInt(diaSemana) + 1;%>
                 <form action="diaDieta" method ="POST" >
+                    <input type="hidden" value="<%=Integer.toString(diaSem)%>" name="diaSemana">
                     <div class="card bg-transparent mx-3 my-5">
                         <div class="entradaForoTitulo2 rounded-top p-2">
                             <div class="text-center font-weight-bold">Desayuno</div>
@@ -310,8 +311,8 @@
                         <div class="col"></div>
                         <div class="col"></div>
                         <div class="col">
-                            <%int diaSem = Integer.parseInt(diaSemana) + 1;%>
-                            <button name="diaSemana" class="botonEstandar btn btn-success botonesEntrada" type="submit" value=<%=Integer.toString(diaSem)%>>Siguiente</button>
+                            
+                            <button class="botonEstandar btn btn-success botonesEntrada" type="submit">Siguiente</button>
                         </div>
                         <div class="col"></div>
                     </div>
