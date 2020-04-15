@@ -66,16 +66,7 @@
             </jsp:useBean>
             <jsp:useBean id="diaSemana" class="java.lang.String" scope="session">  
             </jsp:useBean>
-            <%
-                
-                /*try{
-                request.setAttribute("platosElegidos", platosElegidos);
-                RequestDispatcher rd = request.getRequestDispatcher("diaDieta");
-                rd.forward(request,response);
-                }catch(Exception e){
-                    e.printStackTrace();
-                }*/
-                
+            <% 
                 String visible;
                 ArrayList<String> Dias = new ArrayList<>();
                 Dias.add("Lunes");
@@ -130,7 +121,6 @@
                                             <div class="custom-control custom-radio">
                                                 <% desayuno1 = desayuno1 + Integer.toString(i);%>
                                                 <input value="<%=p.getNombre()%>" type="radio" id="<%=desayuno1%>" name="desayuno" class="custom-control-input">
-                                                
                                                 <label class="custom-control-label" for="<%=desayuno1%>">
                                                     <%=p.getNombre()%>
                                                 </label>

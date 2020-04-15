@@ -62,7 +62,7 @@ public class diaDieta extends HttpServlet {
         if(diaSemana.equals("7")){
             url = "/FrontEnd/dietaGenerada.jsp";
         }else{
-            url = "/FrontEnd/generaDieta/diaDieta.jsp";
+            url = "/FrontEnd/diaDieta.jsp";
         }
         Plato plato = DBConnection.getPlato();
         

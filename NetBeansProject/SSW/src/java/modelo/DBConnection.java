@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class DBConnection {
-    //EJEMPLO 
+    //USUARIO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
     public static int insertUsuario(Usuario user){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -32,6 +32,39 @@ public class DBConnection {
         }
     }
     
+    public static Usuario selectUsuario(String nombreUsuario){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT * FROM Usuario WHERE nombreUsuario = ?";
+        try{
+            ps = connection.prepareStatement(query);
+            ps.setString(1,nombreUsuario);
+            rs = ps.executeQuery();
+            Usuario usuario = null;
+            
+            if(rs.next()){
+                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
+                usuario = new Usuario();
+                usuario.setContrasena(rs.getString("contrasena"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setFavorito(rs.getString("favorito"));
+                usuario.setCorreo(rs.getString("correo"));
+                usuario.setNombreUsuario(rs.getString("nombreUsuario"));
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return usuario;
+        } catch(SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    //ENTRADA%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     public static int insertEntrada(Entrada entrada){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -44,29 +77,6 @@ public class DBConnection {
             ps.setString(3,entrada.getCuerpo());
             ps.setString(4,entrada.getNombreUsuario());
             ps.setTimestamp(5,Timestamp.valueOf(entrada.getFecha()));
-            int res = ps.executeUpdate();
-            ps.close();
-            pool.freeConnection(connection);
-            return res;
-        }catch (SQLException e){
-            pool.freeConnection(connection);
-            e.printStackTrace();
-            return 0;
-        }
-    }
-    
-    public static int insertComentario(Comentario comentario){
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-        String queryExample = "INSERT INTO Comentario (codigoComentario, codigoPadre, cuerpo, nombreUsuario, fecha) VALUES(?,?,?,?,?)";
-        try{
-            ps = connection.prepareStatement(queryExample);
-            ps.setString(1,comentario.getCodigoComentario());
-            ps.setString(2,comentario.getCodigoPadre());
-            ps.setString(3,comentario.getCuerpo());
-            ps.setString(4,comentario.getNombreUsuario());
-            ps.setTimestamp(5,Timestamp.valueOf(comentario.getFecha()));
             int res = ps.executeUpdate();
             ps.close();
             pool.freeConnection(connection);
@@ -105,6 +115,97 @@ public class DBConnection {
         }
     }
     
+    public static ArrayList<Entrada> getAllEntradas(){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT * FROM Entrada ORDER BY fecha DESC";
+        ArrayList<Entrada> retorno = new ArrayList<>();
+        try{
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            Entrada entrada;
+            
+            while(rs.next()){
+                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
+                entrada = new Entrada();
+                entrada.setCodigoEntrada(rs.getString("codigoEntrada"));
+                entrada.setTitulo(rs.getString("titulo"));
+                entrada.setCuerpo(rs.getString("cuerpo"));
+                entrada.setNombreUsuario(rs.getString("nombreUsuario"));
+                entrada.setFecha(rs.getTimestamp("fecha").toLocalDateTime());
+                retorno.add(entrada);
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return retorno;
+        } catch(SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public static ArrayList<Comentario> getComentarios(String codigoEntrada){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT * FROM Comentario WHERE codigoPadre = ?";
+        ArrayList<Comentario> retorno = new ArrayList<>();
+        try{
+            ps = connection.prepareStatement(query);
+            ps.setString(1,codigoEntrada);
+            rs = ps.executeQuery();
+            Comentario comentario;
+            
+            while(rs.next()){
+                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
+                comentario = new Comentario();
+                comentario.setCodigoComentario(rs.getString("codigoComentario"));
+                comentario.setCodigoPadre(rs.getString("codigoPadre"));
+                comentario.setCuerpo(rs.getString("cuerpo"));
+                comentario.setNombreUsuario(rs.getString("nombreUsuario"));
+                comentario.setFecha(rs.getTimestamp("fecha").toLocalDateTime());
+                retorno.add(comentario);
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return retorno;
+        } catch(SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    //COMENTARIO%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    public static int insertComentario(Comentario comentario){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String queryExample = "INSERT INTO Comentario (codigoComentario, codigoPadre, cuerpo, nombreUsuario, fecha) VALUES(?,?,?,?,?)";
+        try{
+            ps = connection.prepareStatement(queryExample);
+            ps.setString(1,comentario.getCodigoComentario());
+            ps.setString(2,comentario.getCodigoPadre());
+            ps.setString(3,comentario.getCuerpo());
+            ps.setString(4,comentario.getNombreUsuario());
+            ps.setTimestamp(5,Timestamp.valueOf(comentario.getFecha()));
+            int res = ps.executeUpdate();
+            ps.close();
+            pool.freeConnection(connection);
+            return res;
+        }catch (SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    
     public static String getLastCodigoComentario(){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -132,6 +233,8 @@ public class DBConnection {
         }
     }
     
+    
+    //DIETA%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     public static Dieta selectDieta(String codigoDieta){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -267,41 +370,6 @@ public class DBConnection {
         }
     }
     
-    public static ArrayList<Plato> getPlatosDieta(String codigoDieta){
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps;
-        ResultSet rs;
-        String query = "SELECT P.nombre, P.codigoPlato, P.descripcion FROM Plato P, PlatoMenu PM, Dieta D"
-                + " WHERE D.codigoDieta = ? AND D.codigoDieta = PM.codigoDieta AND PM.codigoPlato = P.codigoPlato "
-                + "ORDER BY FIELD(PM.diaSemana, 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo') ASC,"
-                + " FIELD(PM.momento, 'desayuno', 'comidaPrimero', 'comidaSegundo', 'cena') ASC";
-        ArrayList<Plato> retorno = new ArrayList<>();
-        try{
-            ps = connection.prepareStatement(query);
-            ps.setString(1,codigoDieta);
-            rs = ps.executeQuery();
-            Plato plato;
-            
-            while(rs.next()){
-                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
-                plato = new Plato();
-                plato.setNombre(rs.getString("nombre"));
-                plato.setCodigoPlato(rs.getString("codigoPlato"));
-                plato.setDescripcion(rs.getString("descripcion"));
-                retorno.add(plato);
-            }
-            rs.close();
-            ps.close();
-            pool.freeConnection(connection);
-            return retorno;
-        } catch(SQLException e){
-            pool.freeConnection(connection);
-            e.printStackTrace();
-            return null;
-        }
-    }
-    
     public static ArrayList<Dieta> getDietasGuardadas(){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -341,6 +409,84 @@ public class DBConnection {
             return null;
         }
     }
+    
+    public static int guardarDieta(String codigoDieta, String nombreUsuario){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String queryExample = "INSERT INTO Guardado (nombreUsuario, codigoDieta) VALUES(?,?)";
+        try{
+            ps = connection.prepareStatement(queryExample);
+            ps.setString(1,nombreUsuario);
+            ps.setString(2,codigoDieta);
+            int res = ps.executeUpdate();
+            ps.close();
+            pool.freeConnection(connection);
+            return res;
+        }catch (SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    
+    public static int noGuardarDieta(String codigoDieta, String nombreUsuario){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String queryExample = "DELETE FROM Guardado WHERE codigoDieta = ? AND nombreUsuario = ?";
+        try{
+            ps = connection.prepareStatement(queryExample);
+            ps.setString(1,codigoDieta);
+            ps.setString(2,nombreUsuario);
+            int res = ps.executeUpdate();
+            ps.close();
+            pool.freeConnection(connection);
+            return res;
+        }catch (SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    
+    //PLATO%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    public static ArrayList<Plato> getPlatosDieta(String codigoDieta){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT P.nombre, P.codigoPlato, P.descripcion FROM Plato P, PlatoMenu PM, Dieta D"
+                + " WHERE D.codigoDieta = ? AND D.codigoDieta = PM.codigoDieta AND PM.codigoPlato = P.codigoPlato "
+                + "ORDER BY FIELD(PM.diaSemana, 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo') ASC,"
+                + " FIELD(PM.momento, 'desayuno', 'comidaPrimero', 'comidaSegundo', 'cena') ASC";
+        ArrayList<Plato> retorno = new ArrayList<>();
+        try{
+            ps = connection.prepareStatement(query);
+            ps.setString(1,codigoDieta);
+            rs = ps.executeQuery();
+            Plato plato;
+            
+            while(rs.next()){
+                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
+                plato = new Plato();
+                plato.setNombre(rs.getString("nombre"));
+                plato.setCodigoPlato(rs.getString("codigoPlato"));
+                plato.setDescripcion(rs.getString("descripcion"));
+                retorno.add(plato);
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return retorno;
+        } catch(SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    
     
     public static Plato getPlato(){
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -384,38 +530,6 @@ public class DBConnection {
         }
     }
     
-    public static ArrayList<Entrada> getAllEntradas(){
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps;
-        ResultSet rs;
-        String query = "SELECT * FROM Entrada ORDER BY fecha DESC";
-        ArrayList<Entrada> retorno = new ArrayList<>();
-        try{
-            ps = connection.prepareStatement(query);
-            rs = ps.executeQuery();
-            Entrada entrada;
-            
-            while(rs.next()){
-                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
-                entrada = new Entrada();
-                entrada.setCodigoEntrada(rs.getString("codigoEntrada"));
-                entrada.setTitulo(rs.getString("titulo"));
-                entrada.setCuerpo(rs.getString("cuerpo"));
-                entrada.setNombreUsuario(rs.getString("nombreUsuario"));
-                entrada.setFecha(rs.getTimestamp("fecha").toLocalDateTime());
-                retorno.add(entrada);
-            }
-            rs.close();
-            ps.close();
-            pool.freeConnection(connection);
-            return retorno;
-        } catch(SQLException e){
-            pool.freeConnection(connection);
-            e.printStackTrace();
-            return null;
-        }
-    }
     
     public static Entrada selectEntrada(String codigoEntrada){
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -449,39 +563,7 @@ public class DBConnection {
         }
     }
     
-    public static ArrayList<Comentario> getComentarios(String codigoEntrada){
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps;
-        ResultSet rs;
-        String query = "SELECT * FROM Comentario WHERE codigoPadre = ?";
-        ArrayList<Comentario> retorno = new ArrayList<>();
-        try{
-            ps = connection.prepareStatement(query);
-            ps.setString(1,codigoEntrada);
-            rs = ps.executeQuery();
-            Comentario comentario;
-            
-            while(rs.next()){
-                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
-                comentario = new Comentario();
-                comentario.setCodigoComentario(rs.getString("codigoComentario"));
-                comentario.setCodigoPadre(rs.getString("codigoPadre"));
-                comentario.setCuerpo(rs.getString("cuerpo"));
-                comentario.setNombreUsuario(rs.getString("nombreUsuario"));
-                comentario.setFecha(rs.getTimestamp("fecha").toLocalDateTime());
-                retorno.add(comentario);
-            }
-            rs.close();
-            ps.close();
-            pool.freeConnection(connection);
-            return retorno;
-        } catch(SQLException e){
-            pool.freeConnection(connection);
-            e.printStackTrace();
-            return null;
-        }
-    }
+    
     
     public static boolean checkGuardado(String nombreUsuario, String codigoDieta){
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -537,45 +619,7 @@ public class DBConnection {
         }
     }
     
-    public static int guardarDieta(String codigoDieta, String nombreUsuario){
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-        String queryExample = "INSERT INTO Guardado (nombreUsuario, codigoDieta) VALUES(?,?)";
-        try{
-            ps = connection.prepareStatement(queryExample);
-            ps.setString(1,nombreUsuario);
-            ps.setString(2,codigoDieta);
-            int res = ps.executeUpdate();
-            ps.close();
-            pool.freeConnection(connection);
-            return res;
-        }catch (SQLException e){
-            pool.freeConnection(connection);
-            e.printStackTrace();
-            return 0;
-        }
-    }
     
-    public static int noGuardarDieta(String codigoDieta, String nombreUsuario){
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-        String queryExample = "DELETE FROM Guardado WHERE codigoDieta = ? AND nombreUsuario = ?";
-        try{
-            ps = connection.prepareStatement(queryExample);
-            ps.setString(1,codigoDieta);
-            ps.setString(2,nombreUsuario);
-            int res = ps.executeUpdate();
-            ps.close();
-            pool.freeConnection(connection);
-            return res;
-        }catch (SQLException e){
-            pool.freeConnection(connection);
-            e.printStackTrace();
-            return 0;
-        }
-    }
     
     public static int setFavorito(String codigoDieta, String nombreUsuario){
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -613,38 +657,6 @@ public class DBConnection {
             pool.freeConnection(connection);
             e.printStackTrace();
             return 0;
-        }
-    }
-    
-    public static Usuario selectUsuario(String nombreUsuario){
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps;
-        ResultSet rs;
-        String query = "SELECT * FROM Usuario WHERE nombreUsuario = ?";
-        try{
-            ps = connection.prepareStatement(query);
-            ps.setString(1,nombreUsuario);
-            rs = ps.executeQuery();
-            Usuario usuario = null;
-            
-            if(rs.next()){
-                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
-                usuario = new Usuario();
-                usuario.setContrasena(rs.getString("contrasena"));
-                usuario.setNombre(rs.getString("nombre"));
-                usuario.setFavorito(rs.getString("favorito"));
-                usuario.setCorreo(rs.getString("correo"));
-                usuario.setNombreUsuario(rs.getString("nombreUsuario"));
-            }
-            rs.close();
-            ps.close();
-            pool.freeConnection(connection);
-            return usuario;
-        } catch(SQLException e){
-            pool.freeConnection(connection);
-            e.printStackTrace();
-            return null;
         }
     }
 }
