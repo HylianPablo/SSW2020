@@ -74,17 +74,17 @@
                                 <h4 class="font-weight-bold"><%=dias[i]%></h4>
                                 <div class="my-4">
                                 <h5>Desayuno</h5>
-                                <p><%=platosElegidos.get(0*(i+1))%></p>
+                                <p><%=platosElegidos.get((i*4))%></p>
                                 </div>
                                 <div class="my-4">
                                 <h5>Comida</h5>
-                                <p><%=platosElegidos.get(1*(i+1))%></p>
-                                <p><%=platosElegidos.get(2*(i+1))%></p>
+                                <p><%=platosElegidos.get((i*4)+1)%></p>
+                                <p><%=platosElegidos.get((i*4)+2)%></p>
                                 <p>Postre</p>
                                 </div>
                                 <div class="my-4">
                                 <h5>Cena</h5>
-                                <p><%=platosElegidos.get(3*(i+1))%></p>
+                                <p><%=platosElegidos.get((i*4)+3)%></p>
                                 <p>Postre</p>
                                 </div>
                             </div>
