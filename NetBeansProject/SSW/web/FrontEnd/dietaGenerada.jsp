@@ -61,7 +61,6 @@
 
         <h1 class="coolFontParagraph inlineBlock">Dieta generada.</h1>
         <div class="row">
-             
                 <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="false">
                     <div class="MultiCarousel-inner">
                         <jsp:useBean id="platosElegidos" class="java.util.ArrayList" scope="session">  

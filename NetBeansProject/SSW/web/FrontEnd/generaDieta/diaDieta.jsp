@@ -67,16 +67,6 @@
                 <jsp:useBean id="diaSemana" class="java.lang.String" scope="session">  
                 </jsp:useBean>
                 <%
-
-                    try {
-                        request.setAttribute("platosElegidos", platosElegidos);
-                        RequestDispatcher rd = request.getRequestDispatcher("diaDieta");
-                        rd.forward(request, response);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-                    String visible;
                     ArrayList<String> Dias = new ArrayList<>();
                     Dias.add("Lunes");
                     Dias.add("Martes");
@@ -89,7 +79,7 @@
                     Plato p = plato;
                 %>
                 <h1 class="text-center display-4 coolFontParagraph" ><%=Dias.get(diaActual)%></h1>
-                <form action="diaDieta">
+                <form action="diaDieta" method="POST">
                     <div>
                         <input type="hidden" name="diaSemana" value=<%=diaActual + 1%>>
                         <form action="diaDieta" method ="POST" >
