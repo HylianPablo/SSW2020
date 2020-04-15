@@ -44,13 +44,13 @@
                 <div class="row text-center my-3">
                     <div class="col"></div>
                     <div class="col">
-                        <a class="coolFont btn w-100" href="../index" role="button">INICIO</a>
+                        <a class="coolFont btn w-100" href="index" role="button">INICIO</a>
                     </div>
                     <div class="col">
-                        <a class="coolFont btn w-100" href="../foro" role="button">FORO</a>
+                        <a class="coolFont btn w-100" href="foro" role="button">FORO</a>
                     </div>
                     <div class="col">
-                        <a class="coolFont btn w-100" href="../ranking" role="button">TOP DIETAS</a>
+                        <a class="coolFont btn w-100" href="ranking" role="button">TOP DIETAS</a>
                     </div>
                     <div class="col"></div>
                     <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
@@ -59,7 +59,7 @@
                 <h1 class="h1Size coolFontParagraph">Selección de Platos</h1>
                 <hr/>
                 <button type="button" id="dia" value="0" style="display:none"></button>
-                <jsp:useBean id="plato" class="modelo.Plato" scope="session">  
+                <jsp:useBean id="platos" class="java.util.ArrayList" scope="session">  
                 </jsp:useBean>
                 <jsp:useBean id="platosElegidos" class="java.util.ArrayList" scope="session">  
                 </jsp:useBean>
@@ -75,7 +75,7 @@
                     Dias.add("Sábado");
                     Dias.add("Domingo");
                     int diaActual = Integer.parseInt(diaSemana);
-                    Plato p = plato;
+                    ArrayList<Plato> ps = platos;
                 %>
                 <h1 class="text-center display-4 coolFontParagraph" ><%=Dias.get(diaActual)%></h1>
                 <form action="diaDieta" method="POST">
@@ -84,7 +84,7 @@
                         <form action="diaDieta" method ="POST" >
                             <%
                                 String nomComida;
-
+                                int numPlato = 0;
                                 int cantComidas = 3;
                                 String titulos[] = {"Desayuno", "Comida", "Cena"};
                                 int cantPlatos[] = {1, 3, 2};
@@ -95,12 +95,12 @@
                             %>
                             <div class="card bg-transparent mx-3 my-5">
                                 <div class="entradaForoTitulo2 rounded-top p-2">
-                                    <div class="text-center font-weight-bold">Desayuno</div>
+                                    <div class="text-center font-weight-bold"><%=titulos[c]%></div>
                                 </div>
                                 <div class="entradaForoCuerpo2 rounded-bottom p-2">
                                     <table class="table table-borderless">
                                         <tbody>
-                                            <%for (int m = 0; m < cantPlatos[c]; m++) {%>
+                                        <%for (int m = 0; m < cantPlatos[c]; m++) {%>
                                             <tr>
                                                 <th scope="row">
                                                     <%=subtitulos[c][m]%>
@@ -110,6 +110,8 @@
                                                     nomComida = menus[c][m];
                                                     if (!nomComida.equals("postre")) {
                                                         for (int i = 0; i < NUM_OPC; i++) { 
+                                                            Plato p = ps.get(numPlato);
+                                                            numPlato++;
                                                 %>
                                                 <td>
                                                     <div class="custom-control custom-radio">

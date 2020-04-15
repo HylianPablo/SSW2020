@@ -64,11 +64,22 @@ public class diaDieta extends HttpServlet {
         }else{
             url = "/FrontEnd/diaDieta.jsp";
         }
-        Plato plato = DBConnection.getPlato();
+        String codigoPlato ="00000000";
+        int codigoInt = 0;
+        Plato plato = DBConnection.selectPlato(codigoPlato);
+        ArrayList<Plato> platos = new ArrayList<>();
+        for(int i = 0; i < 4; i++){
+            for(int j = 0; j < 3; j++){
+                codigoInt++;
+                codigoPlato = String.format("%08d",codigoInt);
+                plato =  DBConnection.selectPlato(codigoPlato);
+                platos.add(plato);
+            }
+        }
         
         session.setAttribute("platosElegidos",platosElegidos);
         session.setAttribute("diaSemana", diaSemana);
-        session.setAttribute("plato",plato);
+        session.setAttribute("platos",platos);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

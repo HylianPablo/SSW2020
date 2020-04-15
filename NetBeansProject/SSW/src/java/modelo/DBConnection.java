@@ -488,15 +488,16 @@ public class DBConnection {
     
     
     
-    public static Plato getPlato(){
+    public static Plato selectPlato(String codigoPlato){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps;
         ResultSet rs;
-        String query = "SELECT * FROM Plato p WHERE p.codigoPlato=00000000";
+        String query = "SELECT * FROM Plato p WHERE p.codigoPlato=?";
         //ArrayList<Plato> retorno = new ArrayList<>();
         try{
             ps = connection.prepareStatement(query);
+            ps.setString(1,codigoPlato);
             rs = ps.executeQuery();
             Plato plato = null;
             
