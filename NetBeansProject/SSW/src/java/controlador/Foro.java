@@ -22,7 +22,7 @@ import modelo.Entrada;
  *
  * @author alejandro
  */
-@WebServlet(name = "ForoUsuario", urlPatterns = {"/FrontEnd/foroS"})
+@WebServlet(name = "ForoUsuario", urlPatterns = {"/FrontEnd/foro"})
 public class Foro extends HttpServlet {
     
     /**

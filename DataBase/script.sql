@@ -1,3 +1,109 @@
+drop table if exists PertenenciaPlato;
+drop table if exists Ingrediente;
+drop table if exists PlatoMenu;
+drop table if exists Plato;
+drop table if exists Comentario;
+drop table if exists Entrada;
+drop table if exists Guardado;
+drop table if exists Usuario;
+drop table if exists Dieta;
+
+create table Dieta(
+	codigoDieta	char(20) not null,
+	titulo		char(20) not null,
+	descripcion	text not null,
+	fecha		date not null,
+	primary key(codigoDieta)
+);
+
+create table Usuario(
+	nombre					char(50) not null,
+	nombreUsuario				char(20) not null,
+	contrasena				char(20) not null,
+	correo					char(40) not null,
+	favorito				char(20),
+	foreign key(favorito) references Dieta(codigoDieta),
+	primary key(nombreUsuario)
+);
+
+
+create table Guardado(
+	nombreUsuario				char(20) not null,
+	codigoDieta				char(20) not null,
+	foreign key(nombreUsuario) references Usuario(nombreUsuario),
+	foreign key(codigoDieta) references Dieta(codigoDieta),
+	primary key(nombreUsuario, codigoDieta)
+);
+
+create table Entrada(
+	codigoEntrada				char(20) not null,
+	titulo					char(50) not null,
+	cuerpo					text,
+	nombreUsuario				char(20) not null,
+	fecha					date not null,
+	foreign key(nombreUsuario) references Usuario(nombreUsuario),
+	primary key(codigoEntrada)
+);
+
+create table Comentario(
+	codigoComentario			char(20) not null,
+	codigoPadre				char(20) not null,
+	cuerpo					text not null,
+	nombreUsuario				char(20) not null,
+	fecha					date not null,
+	foreign key(codigoPadre) references Entrada(codigoEntrada),
+	foreign key(nombreUsuario) references Usuario(nombreUsuario),
+	primary key(codigoComentario)
+);	
+
+create table Plato(
+	codigoPlato 				char(20) not null,
+	nombre					char(30) not null,
+	descripcion				text,
+	desayuno				boolean not null,
+	vegano					boolean not null,
+	vegetariano				boolean not null,
+	frutosSecos				boolean not null,
+	gluten					boolean not null,
+	kcal					integer not null,
+	glucidosSimples				integer not null,
+	polisacaridos 				integer not null,
+	aminoacidos				integer not null,
+	proteinas				integer not null,
+	hidratosDeCarbono			integer not null,
+	primary key(codigoPlato)
+);
+
+create table PlatoMenu(
+	codigoPlato				char(20) not null,
+	codigoDieta				char(20) not null,
+	diaSemana				char(20) not null,
+	check (diaSemana in ('lunes','martes','miercoles','jueves','viernes','sabado','domingo')),
+	momento					char(30) not null,
+	check (momento in ('desayuno','comidaPrimero','comidaSegundo','cena')),
+	foreign key(codigoPlato) references Plato(codigoPlato), 
+	foreign key(codigoDieta) references Dieta(codigoDieta),
+	primary key(codigoPlato, codigoDieta)
+);
+
+create table Ingrediente(
+	codigoIngrediente			char(20) not null,
+	nombre 					char(30) not null,
+	vegano 					boolean	 not null,
+	vegetariano				boolean  not null,
+	frutosSecos         			boolean  not null,
+	gluten		         		boolean  not null,
+	primary key(codigoIngrediente)
+);
+
+create table PertenenciaPlato(
+	codigoIngrediente		char(20) not null,
+	codigoPlato 			char(20) not null,
+	foreign key(codigoIngrediente) references Ingrediente(codigoIngrediente),
+	foreign key(codigoPlato) references Plato(codigoPlato),
+	primary key(codigoIngrediente, codigoPlato)
+);
+
 insert into Dieta Values ('00000000','Dieta vegeteriana','Una dieta que no lleva animales, salvo ovolácteos','2018-01-01');
 insert into Dieta Values ('00000001','Dieta mediterranea','Una dieta basada en la comida tradicional de la costa mediterranea','2020-04-10');
 insert into Dieta Values ('00000002','Dieta de deportistas','Una dieta orientada a personas que realizan mucho deporte a diario','2020-03-01');
@@ -90,7 +196,7 @@ insert into Ingrediente Values('00000022','Pinia',TRUE,TRUE,FALSE,FALSE);
 insert into Ingrediente Values('00000023','Lechuga',TRUE,TRUE,FALSE,FALSE);
 insert into Ingrediente Values('00000024','Mayonesa',TRUE,FALSE,FALSE,FALSE);
 insert into Ingrediente Values('00000025','Vinagre',TRUE,TRUE,FALSE,FALSE);
-insert into Ingrediente Values('00000026','Pimienta',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente Values('00000026','Pimienta negra',TRUE,TRUE,FALSE,FALSE);
 insert into PertenenciaPlato Values('00000006','00000005');
 insert into PertenenciaPlato Values('00000020','00000005');
 insert into PertenenciaPlato Values('00000021','00000005');
@@ -470,7 +576,7 @@ insert into PertenenciaPlato Values('00000025','00000036');
 
 
 insert into Plato Values ('00000037','Hamburguesa de espinacas','Hamburguesa de espinacas',FALSE,FALSE,FALSE,FALSE,TRUE,226,23,12,14,7,22);
-insert into PertenenciaPlato Values('00000046','00000037');
+insert into PertenenciaPlato Values('00000043','00000037');
 insert into PertenenciaPlato Values('00000001','00000037');
 insert into PertenenciaPlato Values('00000023','00000037');
 insert into PertenenciaPlato Values('00000013','00000037');
@@ -497,7 +603,7 @@ insert into Ingrediente Values('00000091','Pechuga de pollo',FALSE,FALSE,FALSE,F
 insert into PertenenciaPlato Values('00000006','00000040');
 insert into PertenenciaPlato Values('00000090','00000040');
 insert into PertenenciaPlato Values('00000091','00000040');
-insert into PertenenciaPlato Values('00000046','00000040');
+insert into PertenenciaPlato Values('00000043','00000040');
 insert into PertenenciaPlato Values('00000030','00000040');
 
 
@@ -559,5 +665,182 @@ insert into PertenenciaPlato Values('00000064','00000045');
 insert into PertenenciaPlato Values('00000013','00000045');
 insert into PertenenciaPlato Values('00000006','00000045');
 insert into PertenenciaPlato Values('00000003','00000045');
+
+
+insert into Plato Values ('00000046','Patatas con carne','Patatas con carne picada, cebolla y pimiento',FALSE,FALSE,FALSE,FALSE,FALSE,60,2,1,2,4,7);
+insert into PertenenciaPlato Values('00000012','00000046');
+insert into PertenenciaPlato Values('00000016','00000046');
+insert into PertenenciaPlato Values('00000018','00000046');
+insert into PertenenciaPlato Values('00000003','00000046');
+insert into PertenenciaPlato Values('00000006','00000046');
+insert into PertenenciaPlato Values('00000004','00000046');
+insert into PertenenciaPlato Values('00000062','00000046');
+insert into PertenenciaPlato Values('00000026','00000046');
+
+
+insert into Plato Values ('00000047','Salmon al horno','Patatas con carne picada, cebolla y pimiento',FALSE,FALSE,FALSE,FALSE,FALSE,227,16,15,14,22,0);
+insert into Ingrediente Values('00000098','Salmon',FALSE,FALSE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000098','00000047');
+insert into PertenenciaPlato Values('00000060','00000047');
+insert into PertenenciaPlato Values('00000017','00000047');
+insert into PertenenciaPlato Values('00000013','00000047');
+insert into PertenenciaPlato Values('00000098','00000047');
+insert into PertenenciaPlato Values('00000016','00000047');
+insert into PertenenciaPlato Values('00000067','00000047');
+insert into PertenenciaPlato Values('00000026','00000047');
+insert into PertenenciaPlato Values('00000006','00000047');
+
+
+insert into Plato Values ('00000048','Escalivada de verduras','Escalivada de verduras',FALSE,TRUE,TRUE,FALSE,FALSE,68,5,0,1,1,3);
+insert into PertenenciaPlato Values('00000085','00000048');
+insert into PertenenciaPlato Values('00000018','00000048');
+insert into PertenenciaPlato Values('00000016','00000048');
+insert into PertenenciaPlato Values('00000013','00000048');
+insert into PertenenciaPlato Values('00000003','00000048');
+insert into PertenenciaPlato Values('00000004','00000048');
+insert into PertenenciaPlato Values('00000006','00000048');
+
+
+insert into Plato Values ('00000049','Arroz con sepia','Arroz con sepia con pisto y cebolla',FALSE,FALSE,FALSE,FALSE,FALSE,101,2,9,11,4,17);
+insert into Ingrediente Values('00000099','Sepia',FALSE,FALSE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000065','00000049');
+insert into PertenenciaPlato Values('00000015','00000049');
+insert into PertenenciaPlato Values('00000028','00000049');
+insert into PertenenciaPlato Values('00000099','00000049');
+insert into PertenenciaPlato Values('00000017','00000049');
+insert into PertenenciaPlato Values('00000018','00000049');
+insert into PertenenciaPlato Values('00000016','00000049');
+insert into PertenenciaPlato Values('00000006','00000049');
+insert into PertenenciaPlato Values('00000004','00000049');
+
+
+insert into Plato Values ('00000050','Filete de lomo al ajillo','',FALSE,FALSE,FALSE,FALSE,FALSE,117,4,9,8,20,1);
+insert into Ingrediente Values('00000100','Filete de lomo de cerdo',FALSE,FALSE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000100','00000050');
+insert into PertenenciaPlato Values('00000004','00000050');
+insert into PertenenciaPlato Values('00000061','00000050');
+insert into PertenenciaPlato Values('00000028','00000050');
+insert into PertenenciaPlato Values('00000062','00000050');
+insert into PertenenciaPlato Values('00000006','00000050');
+insert into PertenenciaPlato Values('00000026','00000050');
+insert into PertenenciaPlato Values('00000006','00000050');
+insert into PertenenciaPlato Values('00000067','00000050');
+
+
+insert into Plato Values ('00000051','Merluza en salsa verde','Merluza en rodajas con salsa verde',FALSE,FALSE,FALSE,FALSE,TRUE,133,8,14,10,15,1);
+insert into Ingrediente Values('00000101','Salsa verde',TRUE,TRUE,FALSE,TRUE);
+insert into PertenenciaPlato Values('00000101','00000051');
+insert into PertenenciaPlato Values('00000015','00000051');
+insert into PertenenciaPlato Values('00000016','00000051');
+insert into PertenenciaPlato Values('00000004','00000051');
+insert into PertenenciaPlato Values('00000067','00000051');
+
+
+insert into Plato Values ('00000052','Filete de pavo','Filete de pavo a la plancha',FALSE,FALSE,FALSE,FALSE,FALSE,145,2,15,12,29,0);
+insert into Ingrediente Values('00000102','Filete de pavo',FALSE,FALSE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000102','00000052');
+insert into PertenenciaPlato Values('00000003','00000052');
+insert into PertenenciaPlato Values('00000006','00000052');
+insert into PertenenciaPlato Values('00000026','00000052');
+
+
+insert into Plato Values ('00000053','Sopa de verduras','Sopa de verduras con tomate',FALSE,TRUE,TRUE,FALSE,FALSE,59,1,3,12,2,10);
+insert into Ingrediente Values('00000103','Repollo',TRUE,TRUE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000103','00000053');
+insert into PertenenciaPlato Values('00000013','00000053');
+insert into PertenenciaPlato Values('00000016','00000053');
+insert into PertenenciaPlato Values('00000066','00000053');
+insert into PertenenciaPlato Values('00000003','00000053');
+insert into PertenenciaPlato Values('00000005','00000053');
+insert into PertenenciaPlato Values('00000006','00000053');
+insert into PertenenciaPlato Values('00000062','00000053');
+insert into PertenenciaPlato Values('00000026','00000053');
+
+
+insert into Plato Values ('00000054','Bacalao con tomate','Bacalao fresco o desalatado con tomate',FALSE,FALSE,FALSE,FALSE,FALSE,240,1,1,0,1,1);
+insert into Ingrediente Values('00000103','Bacalao',FALSE,FALSE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000103','00000054');
+insert into PertenenciaPlato Values('00000016','00000054');
+insert into PertenenciaPlato Values('00000004','00000054');
+insert into PertenenciaPlato Values('00000013','00000054');
+insert into PertenenciaPlato Values('00000006','00000054');
+insert into PertenenciaPlato Values('00000003','00000054');
+
+
+insert into Plato Values ('00000055','Negrito rebozado','Negrito fileteado rebozado con huevos y pan',FALSE,FALSE,FALSE,FALSE,TRUE,240,1,1,0,1,1);
+insert into Ingrediente Values('00000104','Negrito',FALSE,FALSE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000043','00000055');
+insert into PertenenciaPlato Values('00000064','00000055');
+insert into PertenenciaPlato Values('00000004','00000055');
+insert into PertenenciaPlato Values('00000062','00000055');
+insert into PertenenciaPlato Values('00000003','00000055');
+insert into PertenenciaPlato Values('00000006','00000055');
+insert into PertenenciaPlato Values('00000104','00000055');
+
+insert into Plato Values ('00000056','Rape al horno','Rape al horno con patatas y cebolla',FALSE,FALSE,FALSE,FALSE,FALSE,240,1,1,0,1,1);
+insert into PertenenciaPlato Values('00000079','00000056');
+insert into PertenenciaPlato Values('00000060','00000056');
+insert into PertenenciaPlato Values('00000016','00000056');
+insert into PertenenciaPlato Values('00000003','00000056');
+insert into PertenenciaPlato Values('00000025','00000056');
+insert into PertenenciaPlato Values('00000006','00000056');
+insert into PertenenciaPlato Values('00000062','00000056');
+
+
+insert into Plato Values ('00000057','Pure de verduras','Pure de verduras con cebolla, calabacin, cebolla, acelgas,...',FALSE,TRUE,TRUE,FALSE,FALSE,81,3,10,12,2,13);
+insert into Ingrediente Values('00000105','Acelga',TRUE,TRUE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000066','00000057');
+insert into PertenenciaPlato Values('00000016','00000057');
+insert into PertenenciaPlato Values('00000048','00000057');
+insert into PertenenciaPlato Values('00000051','00000057');
+insert into PertenenciaPlato Values('00000105','00000057');
+insert into PertenenciaPlato Values('00000060','00000057');
+insert into PertenenciaPlato Values('00000067','00000057');
+insert into PertenenciaPlato Values('00000003','00000057');
+insert into PertenenciaPlato Values('00000006','00000057');
+
+
+insert into Plato Values ('00000058','Guisantes con jamon','Guisantes con jamon en tacos',FALSE,FALSE,FALSE,FALSE,FALSE,81,3,10,12,2,13);
+insert into PertenenciaPlato Values('00000050','00000058');
+insert into PertenenciaPlato Values('00000042','00000058');
+insert into PertenenciaPlato Values('00000016','00000058');
+insert into PertenenciaPlato Values('00000042','00000058');
+insert into PertenenciaPlato Values('00000004','00000058');
+insert into PertenenciaPlato Values('00000003','00000058');
+insert into PertenenciaPlato Values('00000006','00000058');
+insert into PertenenciaPlato Values('00000013','00000058');
+insert into PertenenciaPlato Values('00000026','00000058');
+
+
+insert into Plato Values ('00000059','Ensalada de alubias','Ensalada de alubias cocidas con pimiento asado',FALSE,TRUE,TRUE,FALSE,FALSE,81,3,10,12,2,13);
+insert into Ingrediente Values('00000106','Pepinillo',TRUE,TRUE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000093','00000059');
+insert into PertenenciaPlato Values('00000016','00000059');
+insert into PertenenciaPlato Values('00000017','00000059');
+insert into PertenenciaPlato Values('00000018','00000059');
+insert into PertenenciaPlato Values('00000106','00000059');
+insert into PertenenciaPlato Values('00000013','00000059');
+insert into PertenenciaPlato Values('00000044','00000059');
+insert into PertenenciaPlato Values('00000003','00000059');
+insert into PertenenciaPlato Values('00000025','00000059');
+insert into PertenenciaPlato Values('00000006','00000059');
+
+
+insert into Plato Values ('00000060','Ensalada de escabeche','Ensalada de escabeche con aceitunas, huevos cocidos y chicharro',FALSE,FALSE,FALSE,FALSE,FALSE,81,3,10,12,2,13);
+insert into Ingrediente Values('00000107','Chicharro',FALSE,FALSE,FALSE,FALSE);
+insert into PertenenciaPlato Values('00000073','00000060');
+insert into PertenenciaPlato Values('00000064','00000060');
+insert into PertenenciaPlato Values('00000016','00000060');
+insert into PertenenciaPlato Values('00000013','00000060');
+insert into PertenenciaPlato Values('00000060','00000060');
+insert into PertenenciaPlato Values('00000107','00000060');
+insert into PertenenciaPlato Values('00000005','00000060');
+insert into PertenenciaPlato Values('00000003','00000060');
+insert into PertenenciaPlato Values('00000025','00000060');
+insert into PertenenciaPlato Values('00000006','00000060');
+
+
+
+
 
 
