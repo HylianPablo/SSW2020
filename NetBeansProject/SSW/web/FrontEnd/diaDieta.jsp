@@ -38,254 +38,102 @@
                 </div>
             </div>
         </header>
+        <div>
+            <div class="container rounded" id="cuerpo">
 
-        <div class="container rounded" id="cuerpo">
-
-            <div class="row text-center my-3">
-                <div class="col"></div>
-                <div class="col">
-                    <a class="coolFont btn w-100" href="../index" role="button">INICIO</a>
-                </div>
-                <div class="col">
-                    <a class="coolFont btn w-100" href="../foro" role="button">FORO</a>
-                </div>
-                <div class="col">
-                    <a class="coolFont btn w-100" href="../ranking" role="button">TOP DIETAS</a>
-                </div>
-                <div class="col"></div>
-                <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
-            </div>
-            <br/>
-
-            <h1 class="h1Size coolFontParagraph">Selección de Platos</h1>
-            <hr/>
-            <button type="button" id="dia" value="0" style="display:none"></button>
-            <jsp:useBean id="plato" class="modelo.Plato" scope="session">  
-            </jsp:useBean>
-            <jsp:useBean id="platosElegidos" class="java.util.ArrayList" scope="session">  
-            </jsp:useBean>
-            <jsp:useBean id="diaSemana" class="java.lang.String" scope="session">  
-            </jsp:useBean>
-            <% 
-                String visible;
-                ArrayList<String> Dias = new ArrayList<>();
-                Dias.add("Lunes");
-                Dias.add("Martes");
-                Dias.add("Miércoles");
-                Dias.add("Jueves");
-                Dias.add("Viernes");
-                Dias.add("Sábado");
-                Dias.add("Domingo");
-                
-                String desayuno1="desayuno1";
-                String desayuno2="desayuno2";
-                String desayuno3="desayuno3";
-                
-                String comida11="comida11";
-                String comida12="comida12";
-                String comida13="comida13";
-                String comida21="comida21";
-                String comida22="comida22";
-                String comida23="comida23";
-                
-                String cena1="cena1";
-                String cena2="cena2";
-                String cena3="cena3";
-                
-                Plato p = plato;
-                for (int i = 0; i < 7; i++) {
-                    if (i == Integer.parseInt(diaSemana)) {
-                        visible = "";
-                    } else {
-                        visible = "hidden";
-                    }
-
-            %>
-            <h1 class="text-center display-4 coolFontParagraph" <%=visible%>><%=Dias.get(i)%></h1>
-            <div <%=visible%>>
-                <%int diaSem = Integer.parseInt(diaSemana) + 1;%>
-                <form action="diaDieta" method ="POST" >
-                    <input type="hidden" value="<%=Integer.toString(diaSem)%>" name="diaSemana">
-                    <div class="card bg-transparent mx-3 my-5">
-                        <div class="entradaForoTitulo2 rounded-top p-2">
-                            <div class="text-center font-weight-bold">Desayuno</div>
-                        </div>
-                        <div class="entradaForoCuerpo2 rounded-bottom p-2">
-                            <table class="table table-borderless">
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">
-                                            Plato único
-                                        </th>
-                                        <td>
-                                            <div class="custom-control custom-radio">
-                                                <% desayuno1 = desayuno1 + Integer.toString(i);%>
-                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=desayuno1%>" name="desayuno" class="custom-control-input">
-                                                <label class="custom-control-label" for="<%=desayuno1%>">
-                                                    <%=p.getNombre()%>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <% desayuno2 = desayuno2 + Integer.toString(i);%>
-                                            <div class="custom-control custom-radio">
-                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=desayuno2%>" name="desayuno" class="custom-control-input">
-                                                <label class="custom-control-label" for="<%=desayuno2%>">
-                                                    <%=p.getNombre()%>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                             <% desayuno3 = desayuno3 + Integer.toString(i);%>
-                                            <div class="custom-control custom-radio">
-                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=desayuno3%>" name="desayuno" class="custom-control-input">
-                                                <label class="custom-control-label" for="<%=desayuno3%>">
-                                                    <%=p.getNombre()%>
-                                                </label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                <div class="row text-center my-3">
+                    <div class="col"></div>
+                    <div class="col">
+                        <a class="coolFont btn w-100" href="../index" role="button">INICIO</a>
                     </div>
-                    <div class="card bg-transparent mx-3 my-5">
-                        <div class="entradaForoTitulo2 rounded-top p-2">
-                            <div class="text-center font-weight-bold"<%=visible%>>Comida</div>
-                        </div>
-                        <div class="entradaForoCuerpo2 rounded-bottom p-2">
-                            <table class="table table-borderless">
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">
-                                            Primer Plato
-                                        </th>
-                                        <td>
-                                            <% comida11 = comida11 + Integer.toString(i);%>
-                                            <div class="custom-control custom-radio">
-                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=comida11%>" name="comida1" class="custom-control-input">
-                                                <label class="custom-control-label" for="<%=comida11%>">
-                                                    <%=p.getNombre()%>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <% comida12 = comida12 + Integer.toString(i);%>
-                                            <div class="custom-control custom-radio">
-                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=comida12%>" name="comida1" class="custom-control-input">
-                                                <label class="custom-control-label" for="<%=comida12%>">
-                                                    <%=p.getNombre()%>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <% comida13 = comida13 + Integer.toString(i);%>
-                                            <div class="custom-control custom-radio">
-                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=comida13%>" name="comida1" class="custom-control-input">
-                                                <label class="custom-control-label" for="<%=comida13%>">
-                                                    <%=p.getNombre()%>
-                                                </label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            Segundo Plato
-                                        </th>
-                                        <td>
-                                            <% comida21 = comida21 + Integer.toString(i);%>
-                                            <div class="custom-control custom-radio">
-                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=comida21%>" name="comida2" class="custom-control-input">
-                                                <label class="custom-control-label" for="<%=comida21%>">
-                                                    <%=p.getNombre()%>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <% comida22 = comida22 + Integer.toString(i);%>
-                                            <div class="custom-control custom-radio">
-                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=comida22%>" name="comida2" class="custom-control-input">
-                                                <label class="custom-control-label" for="<%=comida22%>">
-                                                    <%=p.getNombre()%>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <% comida23 = comida23 + Integer.toString(i);%>
-                                            <div class="custom-control custom-radio">
-                                                <input value="<%=p.getNombre()%>" type="radio" id="<%=comida23%>" name="comida2" class="custom-control-input">
-                                                <label class="custom-control-label" for="<%=comida23%>">
-                                                    <%=p.getNombre()%>
-                                                </label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            Postre
-                                        </th>
-                                        <td></td>
-                                        <td>
-                                            Pieza de fruta o lácteo
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="col">
+                        <a class="coolFont btn w-100" href="../foro" role="button">FORO</a>
                     </div>
-                    <div class="card bg-transparent mx-3 my-5">
-                        <div class="entradaForoTitulo2 rounded-top p-2">
-                            <div class="text-center font-weight-bold">Cena</div>
-                        </div>
-                        <div class="entradaForoCuerpo2 rounded-bottom p-2">
-                            <table class="table table-borderless">
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">
-                                            Primer Plato
-                                        </th>
-                                        <td>
-                                            <% cena1 = cena1 + Integer.toString(i);%>
-                                            <div class="custom-control custom-radio">
-                                                <input value=<%=p.getNombre()%> type="radio" id="<%=cena1%>" name="cena" class="custom-control-input">
-                                                <label class="custom-control-label" for="<%=cena1%>">
-                                                    <%=p.getNombre()%>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <% cena2 = cena2 + Integer.toString(i);%>
-                                            <div class="custom-control custom-radio">
-                                                <input value=<%=p.getNombre()%> type="radio" id="<%=cena2%>" name="cena" class="custom-control-input">
-                                                <label class="custom-control-label" for="<%=cena2%>">
-                                                    <%=p.getNombre()%>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <% cena3 = cena3 + Integer.toString(i);%>
-                                            <div class="custom-control custom-radio">
-                                                <input value=<%=p.getNombre()%> type="radio" id="<%=cena3%>" name="cena" class="custom-control-input">
-                                                <label class="custom-control-label" for="<%=cena3%>">
-                                                    <%=p.getNombre()%>
-                                                </label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            Postre
-                                        </th>
-                                        <td></td>
-                                        <td>
-                                            Pieza de fruta o lácteo
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="col">
+                        <a class="coolFont btn w-100" href="../ranking" role="button">TOP DIETAS</a>
+                    </div>
+                    <div class="col"></div>
+                    <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+                </div>
+                <br/>
+                <h1 class="h1Size coolFontParagraph">Selección de Platos</h1>
+                <hr/>
+                <button type="button" id="dia" value="0" style="display:none"></button>
+                <jsp:useBean id="plato" class="modelo.Plato" scope="session">  
+                </jsp:useBean>
+                <jsp:useBean id="platosElegidos" class="java.util.ArrayList" scope="session">  
+                </jsp:useBean>
+                <jsp:useBean id="diaSemana" class="java.lang.String" scope="session">  
+                </jsp:useBean>
+                <%
+                    ArrayList<String> Dias = new ArrayList<>();
+                    Dias.add("Lunes");
+                    Dias.add("Martes");
+                    Dias.add("Miércoles");
+                    Dias.add("Jueves");
+                    Dias.add("Viernes");
+                    Dias.add("Sábado");
+                    Dias.add("Domingo");
+                    int diaActual = Integer.parseInt(diaSemana);
+                    Plato p = plato;
+                %>
+                <h1 class="text-center display-4 coolFontParagraph" ><%=Dias.get(diaActual)%></h1>
+                <form action="diaDieta" method="POST">
+                    <div>
+                        <input type="hidden" name="diaSemana" value=<%=diaActual + 1%>>
+                        <form action="diaDieta" method ="POST" >
+                            <%
+                                String nomComida;
+
+                                int cantComidas = 3;
+                                String titulos[] = {"Desayuno", "Comida", "Cena"};
+                                int cantPlatos[] = {1, 3, 2};
+                                String menus[][] = {{"desayuno"}, {"comida1", "comida2", "postre"}, {"cena", "postre"}};
+                                String subtitulos[][] = {{"Plato único"}, {"Primer plato", "Segundo plato", "Postre"}, {"Primer plato", "Postre"}};
+                                for (int c = 0; c < cantComidas; c++) {
+
+                            %>
+                            <div class="card bg-transparent mx-3 my-5">
+                                <div class="entradaForoTitulo2 rounded-top p-2">
+                                    <div class="text-center font-weight-bold">Desayuno</div>
+                                </div>
+                                <div class="entradaForoCuerpo2 rounded-bottom p-2">
+                                    <table class="table table-borderless">
+                                        <tbody>
+                                            <%for (int m = 0; m < cantPlatos[c]; m++) {%>
+                                            <tr>
+                                                <th scope="row">
+                                                    <%=subtitulos[c][m]%>
+                                                </th>
+                                                <%
+                                                    int NUM_OPC = 3;
+                                                    nomComida = menus[c][m];
+                                                    if (!nomComida.equals("postre")) {
+                                                        for (int i = 0; i < NUM_OPC; i++) { 
+                                                %>
+                                                <td>
+                                                    <div class="custom-control custom-radio">
+                                                        <input value="<%=p.getNombre()%>" type="radio" id="<%=nomComida + i%>" name="<%=nomComida%>" class="custom-control-input">
+
+                                                        <label class="custom-control-label" for="<%=nomComida + i%>">
+                                                            <%=p.getNombre()%>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <%  }} else {   %>
+                                                <td></td>
+                                                <td>
+                                                    Pieza de fruta o lácteo
+                                                </td>
+                                                <td></td>
+                                                <%  }   %>
+                                            </tr>
+                                            <%  }   %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <%  }%>
                     </div>
                     <div class="row text-center my-3">
                         <div class="col"></div>
@@ -301,15 +149,13 @@
                         <div class="col"></div>
                         <div class="col"></div>
                         <div class="col">
-                            
                             <button class="botonEstandar btn btn-success botonesEntrada" type="submit">Siguiente</button>
                         </div>
                         <div class="col"></div>
                     </div>
                 </form>
-            </div>
             <br/>
-            <%}%>
+            </div>
         </div>
         <br/>
     </body>
