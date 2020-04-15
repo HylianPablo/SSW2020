@@ -66,11 +66,16 @@
         <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
         <hr/>
         <p>Por favor, actualize su información personal si ésta ha cambiado</p>
+        <jsp:useBean id="usuario" class="modelo.Usuario" scope="session">  
+        </jsp:useBean>
+        <jsp:useBean id="dietas" class="java.util.ArrayList" scope="session">  
+        </jsp:useBean>
+        <jsp:useBean id="dietaF" class="modelo.Dieta" scope="session">  
+        </jsp:useBean>
+        <jsp:useBean id="nombreUsuario" class="java.lang.String" scope="session">  
+        </jsp:useBean>
         <%
-            String nombreUsuario = "pedsanz";
-            Usuario usuario = DBConnection.selectUsuario(nombreUsuario);
-            ArrayList<Dieta> dietas = DBConnection.selectDietasGuardadas(nombreUsuario);
-            Dieta dietaF = DBConnection.selectDietaFavorita(nombreUsuario);
+            ArrayList<Dieta> dietasTemp = dietas;
         %>
         <div class="container rounded" id="cuadroPerfil">
             <div class="imagen" align="center">
@@ -116,7 +121,7 @@
                         <ul class="list-group">
                             <%for(int i = 0; i<dietas.size(); i++){%>
                             <li class="list-group-item">
-                                <a class="alert-link" href="dietaUsuario?cod=<%=dietas.get(i).getCodigoDieta()%>"><%=dietas.get(i).getTitulo()%></a>
+                                <a class="alert-link" href="dietaUsuario?cod=<%=dietasTemp.get(i).getCodigoDieta()%>"><%=dietasTemp.get(i).getTitulo()%></a>
                             </li>
                             <%}%>
                         </ul>
