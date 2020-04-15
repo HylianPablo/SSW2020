@@ -95,7 +95,7 @@
                             %>
                             <div class="card bg-transparent mx-3 my-5">
                                 <div class="entradaForoTitulo2 rounded-top p-2">
-                                    <div class="text-center font-weight-bold">Desayuno</div>
+                                    <div class="text-center font-weight-bold"><%=titulos[c]%></div>
                                 </div>
                                 <div class="entradaForoCuerpo2 rounded-bottom p-2">
                                     <table class="table table-borderless">
@@ -113,7 +113,7 @@
                                                 %>
                                                 <td>
                                                     <div class="custom-control custom-radio">
-                                                        <input value="<%=p.getNombre()%>" type="radio" id="<%=nomComida + i%>" name="<%=nomComida%>" class="custom-control-input">
+                                                        <input value="<%=p.getNombre()%>" type="radio" onclick="checkAllRadio(<%=i%>)" id="<%=nomComida + i%>" name="<%=nomComida%>" class="custom-control-input">
 
                                                         <label class="custom-control-label" for="<%=nomComida + i%>">
                                                             <%=p.getNombre()%>
@@ -149,7 +149,7 @@
                         <div class="col"></div>
                         <div class="col"></div>
                         <div class="col">
-                            <button class="botonEstandar btn btn-success botonesEntrada" type="submit">Siguiente</button>
+                            <button id="siguiente" class="botonEstandar btn btn-success botonesEntrada" type="submit" disabled>Siguiente</button>
                         </div>
                         <div class="col"></div>
                     </div>
@@ -159,4 +159,18 @@
         </div>
         <br/>
     </body>
+    <script>
+        function checkAllRadio(i){
+            var desayuno = document.getElementById("desayuno"+i);
+            var comida1 = document.getElementById("comida1"+i);
+            var comida2 = document.getElementById("comida2"+i);
+            var cena = document.getElementById("cena"+i);
+            var siguiente = document.getElementById("siguiente");
+            
+            if (desayuno.style.checked && comida1.style.checked && comida2.style.checked && cena.style.checked)
+                siguiente.disabled=false;
+            else
+                siguiente.disabled=true;
+        }
+        </script>
 </html>
