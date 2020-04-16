@@ -1,30 +1,28 @@
-package control;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import data.DBConnection;
+package controlador;
+
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import data.Entrada;
-import java.time.LocalDateTime;
-import java.time.Month;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
+import modelo.DBConnection;
+import modelo.Plato;
 
 /**
  *
  * @author pablo
  */
-@WebServlet(name = "Foro", urlPatterns = {"/FrontEnd/foroUpdate"})
-public class ForoUpdate extends HttpServlet {
+@WebServlet(name = "diaDieta", urlPatterns = {"/FrontEnd/diaDieta", "/FrontEnd/generaDieta/diaDieta"})
+public class diaDieta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,29 +36,52 @@ public class ForoUpdate extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        String codigo = DBConnection.getLastCodigoEntrada();
-        codigo = String.format("%05d",Integer.parseInt(codigo)+1);
-        String titulo = request.getParameter("tituloNuevaEntrada");
-        String cuerpo = request.getParameter("cuerpoNuevaEntrada");
-        String usuario = request.getParameter("usuario");
-        LocalDateTime date = LocalDateTime.of(2019,Month.APRIL,03, 19, 30, 40);//request.getParameter("fechaNuevaEntrada");
-        Entrada entrada = new Entrada();
-        entrada.setCodigoEntrada(codigo);
-        entrada.setTitulo(titulo);
-        entrada.setCuerpo(cuerpo);
-        entrada.setNombreUsuario(usuario);
-        entrada.setFecha(date);
-        DBConnection.insertEntrada(entrada);
-        String url = "/SSW/FrontEnd/foroUsuario.jsp"; //ahora la url tiene SSW
-        response.sendRedirect(url);
-        /*//HttpSession session = request.getSession();
-        //session.setAttribute("entrada", entrada);
+        String url;
+        String diaSemana = request.getParameter("diaSemana");
+        HttpSession session = request.getSession();
         
-        //Lo quito y pongo sendRedirect, asi si das F5 no peta
-        //RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-        //dispatcher.forward(request, response);*/
-
+        ArrayList <String> platosElegidos=null;
+        if(diaSemana.equals("0")){
+            platosElegidos = new ArrayList<>();
+        }else{
+            try{
+            platosElegidos = (ArrayList)session.getAttribute("platosElegidos");
+            String desayuno = request.getParameter("desayuno");
+            String comida1 = request.getParameter("comida1");
+            String comida2 = request.getParameter("comida2");
+            String cena = request.getParameter("cena");
+            platosElegidos.add(desayuno);
+            platosElegidos.add(comida1);
+            platosElegidos.add(comida2);
+            platosElegidos.add(cena);
+            }catch(Exception e){
+                e.printStackTrace();
+            }       
+        }
+        
+        if(diaSemana.equals("7")){
+            url = "/FrontEnd/dietaGenerada.jsp";
+        }else{
+            url = "/FrontEnd/diaDieta.jsp";
+        }
+        String codigoPlato ="00000000";
+        int codigoInt = 0;
+        Plato plato = DBConnection.selectPlato(codigoPlato);
+        ArrayList<Plato> platos = new ArrayList<>();
+        for(int i = 0; i < 4; i++){
+            for(int j = 0; j < 3; j++){
+                codigoInt++;
+                codigoPlato = String.format("%08d",codigoInt);
+                plato =  DBConnection.selectPlato(codigoPlato);
+                platos.add(plato);
+            }
+        }
+        
+        session.setAttribute("platosElegidos",platosElegidos);
+        session.setAttribute("diaSemana", diaSemana);
+        session.setAttribute("platos",platos);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

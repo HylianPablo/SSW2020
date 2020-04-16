@@ -4,13 +4,13 @@
     Author     : pablo y el javgatto
 --%>
 
-<%@page import="data.DiaSemana"%>
-<%@page import="data.Plato"%>
+<%@page import="modelo.DiaSemana"%>
+<%@page import="modelo.Plato"%>
 <%@page import="java.time.Month"%>
 <%@page import="java.time.LocalDateTime"%>
-<%@page import="data.Dieta"%>
-<%@page import="data.DBConnection"%>
-<%@page import="data.Entrada"%>
+<%@page import="modelo.Dieta"%>
+<%@page import="modelo.DBConnection"%>
+<%@page import="modelo.Entrada"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -50,7 +50,7 @@
         <div class="row text-center my-3">
             <div class="col"></div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./index.html" role="button">INICIO</a>
+                <a class="coolFont btn w-100" href="./index" role="button">INICIO</a>
             </div>
             <div class="col">
                 <a class="coolFont btn w-100" href="./foro.jsp" role="button">FORO</a>

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package control;
+package controlador;
 
-import data.Comentario;
-import data.DBConnection;
+import modelo.Comentario;
+import modelo.DBConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;

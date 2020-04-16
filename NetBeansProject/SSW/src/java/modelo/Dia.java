@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data;
+package modelo;
 
 import java.util.ArrayList;
 
@@ -11,19 +11,19 @@ import java.util.ArrayList;
  *
  * @author alejandro
  */
-public class CreacionDieta {
+public class Dia {
     
-    ArrayList<Dia> dias;
+    ArrayList<Plato> platos;
     
-    public CreacionDieta(){
-        dias = new ArrayList<>();
+    public Dia(){
+        platos = new ArrayList<>();
     }
     
-    public Dia getDia(int i){
-        return dias.get(i);
+    public Plato getPlato(int i){
+        return platos.get(i);
     }
     
-    public void clear(){
-        dias.clear();
+    public void addPlato(Plato plato){
+        platos.add(plato);
     }
 }

@@ -4,9 +4,9 @@
     Author     : pablo y el javgatto
 --%>
 
-<%@page import="data.Comentario"%>
-<%@page import="data.DBConnection"%>
-<%@page import="data.Entrada"%>
+<%@page import="modelo.Comentario"%>
+<%@page import="modelo.DBConnection"%>
+<%@page import="modelo.Entrada"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -37,17 +37,15 @@
             </div>
         </div>
     </header>
+    
+    <jsp:useBean id="comentarios" class="java.util.ArrayList" scope="session">  
+    </jsp:useBean>
+    <jsp:useBean id="entrada" class="modelo.Entrada" scope="session">  
+    </jsp:useBean>
     <%
-        String codigoEntrada = request.getParameter("cod");
-        if (codigoEntrada == null) {
-            String redirectURL = "foroUsuario.jsp";
-            response.sendRedirect(redirectURL);
-        }else{
-        Entrada entrada = DBConnection.selectEntrada(codigoEntrada);
-        if(entrada == null){
-            String redirectURL2 = "foroUsuario.jsp";
-            response.sendRedirect(redirectURL2);
-        }else{
+        //String codigoEntrada = request.getParameter("cod");
+        ArrayList<Comentario> comentariosTemp = comentarios;
+        //entrada = (Entrada)session.getAttribute("entrada");
     %>
 
     <div class="container rounded" id="cuerpo">
@@ -71,7 +69,7 @@
         </div>
         <br/>
 
-        <h1 class="coolFontParagraph inlineBlock"><%= entrada.getTitulo()%></h1>
+        <h1 class="coolFontParagraph inlineBlock"><%=entrada.getTitulo()%></h1>
         <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
 
         <div class="card my-3" id="entradaEjemplo">
@@ -96,19 +94,19 @@
             </form>
         </div>
         <%
-            ArrayList<Comentario> comentarios = DBConnection.getComentarios(codigoEntrada);
+            //ArrayList<Comentario> comentarios = (ArrayList<Comentario>)request.getAttribute("comentarios");     
+            //ArrayList<Comentario> comentarios = DBConnection.getComentarios(codigoEntrada);        
             for(int i = 0; i < comentarios.size(); i++){
         %>
         <div class="card m-3">
             <div class="m-2">
-                <p class="font-weight-bold"><%= comentarios.get(i).getNombreUsuario()%></p>
-                <p><%= comentarios.get(i).getCuerpo()%></p>
+                <p class="font-weight-bold"><%= comentariosTemp.get(i).getNombreUsuario()%></p>
+                <p><%= comentariosTemp.get(i).getCuerpo()%></p>
             </div>
         </div>
         <%}%>
         <br/>
     </div>
     <br/>
-    <%}}%>
 </body>
 </html>

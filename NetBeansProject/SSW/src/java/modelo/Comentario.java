@@ -1,31 +1,31 @@
-package data;
+package modelo;
 
 import java.io.Serializable;
 
 import java.time.LocalDateTime;
 
-public class Entrada implements Serializable{
-	private String codigoEntrada, titulo, cuerpo, nombreUsuario;
+public class Comentario implements Serializable{
+	private String codigoComentario, codigoPadre, cuerpo, nombreUsuario;
         private LocalDateTime fecha;
         
-	public Entrada(){
+        public Comentario(){
             
-	}
+        }
 
-	public String getCodigoEntrada(){
-		return codigoEntrada;
+	public String getCodigoComentario(){
+		return codigoComentario;
 	}
         
-        public void setCodigoEntrada(String codigo){
-		codigoEntrada = codigo;
+        public void setCodigoComentario(String codigo){
+		codigoComentario = codigo;
 	}
 
-	public String getTitulo(){
-		return titulo;
+	public String getCodigoPadre(){
+		return codigoPadre;
 	}
         
-        public void setTitulo(String titulo){
-		this.titulo = titulo;
+        public void setCodigoPadre(String codigo){
+		codigoPadre = codigo;
 	}
 
 	public String getCuerpo(){

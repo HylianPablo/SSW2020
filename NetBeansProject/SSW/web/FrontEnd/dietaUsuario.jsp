@@ -4,13 +4,13 @@
     Author     : pablo y el javgatto
 --%>
 
-<%@page import="data.DiaSemana"%>
-<%@page import="data.Plato"%>
+<%@page import="modelo.DiaSemana"%>
+<%@page import="modelo.Plato"%>
 <%@page import="java.time.Month"%>
 <%@page import="java.time.LocalDateTime"%>
-<%@page import="data.Dieta"%>
-<%@page import="data.DBConnection"%>
-<%@page import="data.Entrada"%>
+<%@page import="modelo.Dieta"%>
+<%@page import="modelo.DBConnection"%>
+<%@page import="modelo.Entrada"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -51,7 +51,7 @@
         <div class="row text-center my-3">
             <div class="col"></div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./paginaUsuario.html" role="button">INICIO</a>
+                <a class="coolFont btn w-100" href="./paginaUsuario" role="button">INICIO</a>
             </div>
             <div class="col">
                 <a class="coolFont btn w-100" href="./foroUsuario.jsp" role="button">FORO</a>
@@ -66,34 +66,44 @@
             <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
         </div>
         <br/>
+        <jsp:useBean id="cod" class="java.lang.String" scope="session">  
+        </jsp:useBean>
+        <jsp:useBean id="platos" class="java.util.ArrayList" scope="session">  
+        </jsp:useBean>
+        <jsp:useBean id="dieta" class="modelo.Dieta" scope="session">  
+        </jsp:useBean>
+        <jsp:useBean id="favorito" class="java.lang.String" scope="session">  
+        </jsp:useBean>
+        <jsp:useBean id="guardado" class="java.lang.String" scope="session">  
+        </jsp:useBean>
+        <jsp:useBean id="nombreUsuario" class="java.lang.String" scope="session">  
+        </jsp:useBean>
         <%
-            String codigoDieta = request.getParameter("cod");
-            if(codigoDieta == null){
+            boolean guardadoTemp = Boolean.parseBoolean(guardado);
+            boolean favoritoTemp = Boolean.parseBoolean(favorito);
+            ArrayList<Plato> platosTemp = platos;
+            String[] diaSemana = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
+            int nPlato = 0;
+            if(cod == null){
                 String redirectURL = "rankingUsuario.jsp";
                 response.sendRedirect(redirectURL);
             }else{
-                ArrayList<Plato> platos = DBConnection.getPlatosDieta(codigoDieta);
                 if(platos==null){
                     String redirectURL = "rankingUsuario.jsp";
                     response.sendRedirect(redirectURL);
                 }else{
-                    Dieta dieta = DBConnection.selectDieta(codigoDieta);
-                    String[] diaSemana = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
-                    int nPlato = 0;
-                    String nombreUsuario = "pedsanz";
-                    boolean guardado = DBConnection.checkGuardado(nombreUsuario, codigoDieta);
-                    boolean favorito = DBConnection.checkFavorito(nombreUsuario, codigoDieta);
+                
         %>
         <h1 class="coolFontParagraph inlineBlock"><%=dieta.getTitulo()%>. </h1>
-            <button class="<%if(!favorito){%>uncheckedButton<%}%> btn btn-success inlineBlock" data-toggle="modal" href="#confirmarFav">
+            <button class="<%if(!favoritoTemp){%>uncheckedButton<%}%> btn btn-success inlineBlock" data-toggle="modal" href="#confirmarFav">
                 <i class="fa fa-star text-warning"></i> Favorito
             </button>
         <form method="post" class="d-inline-block" action="guardarDieta">
-            <input type="hidden" name="guardado" value="<%=!guardado%>"/>
+            <input type="hidden" name="guardadoTemp" value="<%=!guardadoTemp%>"/>
             <input type="hidden" name="nombreUsuario" value="<%=nombreUsuario%>"/>
-            <input type="hidden" name="codigoDieta" value="<%=codigoDieta%>"/>
-            <button type="submit" class="<%if(!guardado){%>uncheckedButton<%}%> btn btn-success inlineBlock">
-                <i class="fa fa-heart text-rosa"></i><%if(!guardado){%> Guardar<%}else{%> Guardado<%}%>
+            <input type="hidden" name="codigoDieta" value="<%=cod%>"/>
+            <button type="submit" class="<%if(!guardadoTemp){%>uncheckedButton<%}%> btn btn-success inlineBlock">
+                <i class="fa fa-heart text-rosa"></i><%if(!guardadoTemp){%> Guardar<%}else{%> Guardado<%}%>
             </button>
         </form>
         <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
@@ -107,17 +117,17 @@
                             <h4 class="font-weight-bold"><%=diaSemana[i]%></h4>
                             <div class="my-4">
                                 <h5>Desayuno</h5>
-                                <p><%=platos.get(nPlato).getNombre()%></p>
+                                <p><%=platosTemp.get(nPlato).getNombre()%></p>
                             </div>
                             <div class="my-4">
                                 <h5>Comida</h5>
-                                <p><%=platos.get(nPlato+1).getNombre()%></p>
-                                <p><%=platos.get(nPlato/*+2*/).getNombre()%></p>
+                                <p><%=platosTemp.get(nPlato+1).getNombre()%></p>
+                                <p><%=platosTemp.get(nPlato/*+2*/).getNombre()%></p>
                                 <p>Postre</p>
                             </div>
                             <div class="my-4">
                                 <h5>Cena</h5>
-                                <p><%=platos.get(nPlato/*+3*/).getNombre()%></p>
+                                <p><%=platosTemp.get(nPlato/*+3*/).getNombre()%></p>
                                 <p>Postre</p>
                             </div>
                         </div>
@@ -153,7 +163,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">
-                        <%if(favorito){%>¿Eliminar favorito?<%}else{%>
+                        <%if(favoritoTemp){%>¿Eliminar favorito?<%}else{%>
                         ¿Confirmar favorito?<%}%>
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -161,7 +171,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <%if(!favorito){%>
+                    <%if(!favoritoTemp){%>
                     <p>Sólo puedes tener una dieta como favorita</p>
                     <p>Si marcas esta dieta como favorita cualquier otra dieta que tengas marcada se desmarcará.</p>
                     <%}else{%>
@@ -170,8 +180,8 @@
                 </div>
                 <div class="modal-footer">
                     <form method="post" action="favoritoDieta">
-                        <input type="hidden" name="codigoDieta" value="<%=codigoDieta%>"/>
-                        <input type="hidden" name="favorito" value="<%=!favorito%>"/>
+                        <input type="hidden" name="codigoDieta" value="<%=cod%>"/>
+                        <input type="hidden" name="favorito" value="<%=!favoritoTemp%>"/>
                         <input type="hidden" name="nombreUsuario" value="<%=nombreUsuario%>"/>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Confirmar</button>
