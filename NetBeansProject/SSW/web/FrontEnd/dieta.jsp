@@ -80,7 +80,7 @@
         <h1 class="coolFontParagraph inlineBlock"><%=dieta.getTitulo()%>. </h1>
         <button disabled class="uncheckedButton btn btn-success inlineBlock"><i class="fa fa-star text-warning"></i> Favorito</button>
         <button disabled class="uncheckedButton btn btn-success inlineBlock"><i class="fa fa-heart text-danger"></i> Guardado</button>
-        <a class="m-2 btn btn-warning inlineBlock rightAligned" href="./registro.html" role="button">Regístrate</a>
+        <a class="m-2 btn btn-warning inlineBlock rightAligned" href="./registro" role="button">Regístrate</a>
         <a class="m-2 btn btn-primary inlineBlock rightAligned" href="./iniciarSesion.html" role="button">Inicia sesión</a>
 
         <div class="row">

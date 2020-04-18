@@ -59,7 +59,7 @@
             <h1 class="entradillaInicio coolFontParagraph">¡Bienvenido a HealthyBowl!</h1>
             <p class="coolFont">Estás a un par de clicks de empezar a comer saludablemente de forma sencilla.</p>
             <a class="m-1 btn btn-primary" href="./iniciarSesion" role="button">Inicia sesión</a>
-            <a class="m-1 btn btn-warning" href="./registro.html" role="button">Regístrate</a>
+            <a class="m-1 btn btn-warning" href="./registro" role="button">Regístrate</a>
         </div>
 		<br/>
 		<hr/>

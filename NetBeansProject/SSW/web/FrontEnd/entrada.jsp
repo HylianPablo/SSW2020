@@ -66,7 +66,7 @@
         <br/>
 
         <h1 class="coolFontParagraph inlineBlock"><%= entrada.getTitulo()%></h1>
-        <a class="m-2 btn btn-warning inlineBlock rightAligned" href="./registro.html" role="button">Regístrate</a>
+        <a class="m-2 btn btn-warning inlineBlock rightAligned" href="./registro" role="button">Regístrate</a>
 	<a class="m-2 btn btn-primary inlineBlock rightAligned" href="./iniciarSesion.html" role="button">Inicia sesión</a>
 
         <div class="card my-3" id="entradaEjemplo">

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.Entrada;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
@@ -23,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author pablo
  */
-@WebServlet(name = "Foro", urlPatterns = {"/FrontEnd/foroUpdate"})
+@WebServlet(name = "ForoUpdate", urlPatterns = {"/FrontEnd/foroUpdate"})
 public class ForoUpdate extends HttpServlet {
 
     /**
@@ -52,14 +53,15 @@ public class ForoUpdate extends HttpServlet {
         entrada.setNombreUsuario(usuario);
         entrada.setFecha(date);
         DBConnection.insertEntrada(entrada);
-        String url = "/SSW/FrontEnd/foroUsuario.jsp"; //ahora la url tiene SSW
-        response.sendRedirect(url);
-        /*//HttpSession session = request.getSession();
+        String url = "/FrontEnd/foroUsuario.jsp"; //ahora la url tiene SSW
+        HttpSession session = request.getSession();
         session.setAttribute("entrada", entrada);
+        ArrayList<Entrada> entradas = DBConnection.getAllEntradas();
+        session.setAttribute("entradas", entradas);
         
         //Lo quito y pongo sendRedirect, asi si das F5 no peta
-        //RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request, response);*/
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
 
     }
 

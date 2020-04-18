@@ -19,8 +19,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author alejandro
  */
-@WebServlet(name = "IniciarSesion", urlPatterns = {"/FrontEnd/iniciarSesion"})
-public class IniciarSesion extends HttpServlet {
+@WebServlet(name = "Registro", urlPatterns = {"/FrontEnd/registro"})
+public class Registro extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +35,7 @@ public class IniciarSesion extends HttpServlet {
             throws ServletException, IOException {
         
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/FrontEnd/iniciarSesion.jsp";
+        String url = "/FrontEnd/registro.jsp";
         HttpSession session = request.getSession();
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);

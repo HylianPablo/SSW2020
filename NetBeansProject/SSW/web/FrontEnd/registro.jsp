@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="icon" href="img/logo.png">
-
+	
 </head>
 
 <body id="page-top">
@@ -42,44 +42,55 @@
         <div class="row text-center my-3">
             <div class="col"></div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./index" role="button">INICIO</a>
+                <a class="coolFont btn w-100" href="./index.html" role="button">INICIO</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./foro" role="button">FORO</a>
+                <a class="coolFont btn w-100" href="./foro.html" role="button">FORO</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./ranking" role="button">TOP DIETAS</a>
+                <a class="coolFont btn w-100" href="./ranking.html" role="button">TOP DIETAS</a>
             </div>
             <div class="col"></div>
             <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
         </div>
         <br/>
 
-        <h1 class="h1Size text-center coolFontParagraph">Iniciar Sesión</h1>
+        <h1 class="h1Size coolFontParagraph center">Registro</h1>
 		<br/>
 		<hr/>
-		
-		<div class="container">
-			<form class="m-5" role="form">
-				<div class="m-3 form-group">
-					<label for="usuario">Correo electrónico o usuario</label>
-					<input type="text" id="usuario" class="form-control" placeholder="Correo electrónico o contraseña">
-				</div>
-				<div class="m-3 form-group">
-					<label for="password">Contraseña</label>
-					<input type="password" id="password" class="form-control" placeholder="Contraseña">
-				</div>
-			</form>
-			<div class="m-3 form-group text-center">
-				<button type="button" onclick="window.location.href='./paginaUsuario';" class="btn btn-primary btn-lg">Iniciar sesion</button>
-			</div>
-			<div class="m-3 form-group text-center">
-				<h7>¿No tienes una cuenta aún?<h7>
-				<a href="registro">Regístrate ya</a>
-			</div>
-		</div>
+        <div class="container" id="cuadroPerfil">
+            <div class="m-3">
+                <form role="form">
+                    <div class="form-group w-70">
+                        <label for="usuario">Usuario (*):</label>
+                        <input type="text" class="form-control" placeholder="--obligatorio--">
+                    </div>
+                    <div class="form-group w-70">
+                        <label for="password">Contraseña (*):</label>
+                        <input type="password" id="password" class="form-control" placeholder="--obligatorio--">
+                    </div>
+                    <div class="form-group w-70">
+                        <label for="npassword">Repita la contraseña (*):</label>
+                        <input type="password" id="npassword" class="form-control" placeholder="--obligatorio--">
+                    </div>
+                    <div class="form-group w-70">
+                        <label for="correo">Correo (*):</label>
+                        <input type="text" id="correo" class="form-control" placeholder="--obligatorio--">
+                    </div>
+                    <div class="form-group">
+                        <label for="archivo">Adjuntar una imagen para tu perfil:</label>
+                        </br>
+                        <input type="file" id="imagen">
+                    </div>
+					<p>Los campos marcados con (*) son obligatorios.</p>
+                    <div class="contenedor text-center">
+                        <button id="guardar" type="button" class="btn btn-primary btn-lg" onclick="window.location.href='iniciarSesion.html';">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 		<br/>
-	</div>
+    </div>
 	<br/>
 </body>
 
