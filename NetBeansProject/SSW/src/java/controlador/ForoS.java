@@ -7,6 +7,7 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,14 +15,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.DBConnection;
+import modelo.Entrada;
 
 /**
  *
  * @author alejandro
  */
-@WebServlet(name = "IndexUsuario", urlPatterns = {"/FrontEnd/paginaUsuario"})
-public class IndexUsuario extends HttpServlet {
-
+@WebServlet(name = "Foro", urlPatterns = {"/FrontEnd/foro"})
+public class ForoS extends HttpServlet {
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,10 +38,14 @@ public class IndexUsuario extends HttpServlet {
             throws ServletException, IOException {
         
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/FrontEnd/paginaUsuario.html";
+        ArrayList<Entrada> entradas = DBConnection.getAllEntradas();
+        String url = "/FrontEnd/foro.jsp";
         HttpSession session = request.getSession();
+        session.setAttribute("entradas", entradas);
+        
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

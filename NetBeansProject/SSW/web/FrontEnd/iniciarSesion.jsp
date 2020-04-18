@@ -45,10 +45,10 @@
                 <a class="coolFont btn w-100" href="./index" role="button">INICIO</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./foro.jsp" role="button">FORO</a>
+                <a class="coolFont btn w-100" href="./foro" role="button">FORO</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./ranking.jsp" role="button">TOP DIETAS</a>
+                <a class="coolFont btn w-100" href="./ranking" role="button">TOP DIETAS</a>
             </div>
             <div class="col"></div>
             <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
@@ -71,7 +71,7 @@
 				</div>
 			</form>
 			<div class="m-3 form-group text-center">
-				<button type="button" onclick="window.location.href='./paginaUsuario.html';" class="btn btn-primary btn-lg">Iniciar sesion</button>
+				<button type="button" onclick="window.location.href='./paginaUsuario';" class="btn btn-primary btn-lg">Iniciar sesion</button>
 			</div>
 			<div class="m-3 form-group text-center">
 				<h7>¿No tienes una cuenta aún?<h7>

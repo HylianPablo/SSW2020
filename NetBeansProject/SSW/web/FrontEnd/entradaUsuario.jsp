@@ -53,16 +53,16 @@
         <div class="row text-center my-3">
             <div class="col"></div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./paginaUsuario.html" role="button">INICIO</a>
+                <a class="coolFont btn w-100" href="./paginaUsuario" role="button">INICIO</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100 actualPage" href="./foroUsuario.jsp" role="button">FORO</a>
+                <a class="coolFont btn w-100 actualPage" href="./foroUsuario" role="button">FORO</a>
             </div>
             <div class="col">
-                <a class="oneLine coolFont btn w-100" href="./rankingUsuario.jsp" role="button">TOP DIETAS</a>
+                <a class="oneLine coolFont btn w-100" href="./rankingUsuario" role="button">TOP DIETAS</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./perfil.jsp" role="button">MI PERFIL</a>
+                <a class="coolFont btn w-100" href="./perfil" role="button">MI PERFIL</a>
             </div>
             <div class="col"></div>
             <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
@@ -70,7 +70,7 @@
         <br/>
 
         <h1 class="coolFontParagraph inlineBlock"><%=entrada.getTitulo()%></h1>
-        <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
+        <a class="btn btn-warning inlineBlock rightAligned" href="./index" role="button">Cerrar sesión</a>
 
         <div class="card my-3" id="entradaEjemplo">
             <div class="m-2">

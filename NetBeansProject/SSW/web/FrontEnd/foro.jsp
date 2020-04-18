@@ -58,7 +58,7 @@
 
         <h1 class="h1Size coolFontParagraph inlineBlock">Foro principal</h1>
         <a class="m-2 btn btn-warning inlineBlock rightAligned" href="./registro.html" role="button">Regístrate</a>
-        <a class="m-2 btn btn-primary inlineBlock rightAligned" href="./iniciarSesion.html" role="button">Inicia sesión</a>
+        <a class="m-2 btn btn-primary inlineBlock rightAligned" href="./iniciarSesion" role="button">Inicia sesión</a>
         <br/>
         <hr/>
 
