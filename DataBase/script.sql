@@ -975,3 +975,4 @@ insert into PertenenciaPlato Values (36,78);
 insert into PertenenciaPlato Values (125,78);
 insert into PertenenciaPlato Values (113,78);
 insert into PertenenciaPlato Values (118,78);
+
