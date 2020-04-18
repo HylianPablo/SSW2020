@@ -244,15 +244,16 @@
 
 
 
-        <h2 class="coolFontParagraph text-center">Crea tu dieta personalizada</h2><br/>
-        <div id="carouselCreaDieta" class="carousel slide mx-5 rounded" data-ride="carousel">
+        <h2 class="entradillaInicio text-center coolFontParagraph">Crea tu dieta personalizada</h2><br/>
+        <div id="carouselCreaDieta" class="carousel slide mx-5 rounded" data-ride="carousel" data-interval="true">
             <ol class="carousel-indicators">
                 <li data-target="#carouselCreaDieta" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselCreaDieta" data-slide-to="1"></li>
                 <li data-target="#carouselCreaDieta" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
-                <form action="generaDietaUsuario/lunes.html">
+                <form action="diaDieta" method="POST">
+                    <input type="hidden" name="diaSemana" value="0">
                     <div class="carousel-item active bg-transparent p-5">
                         <div class="formulario">
                             <div class="container text-center">
@@ -264,7 +265,7 @@
                                     <input class="form-control" type="number" id="ageForm" name="ageForm">
                                 </div>
                                 <div class="form-group">
-                                    <label for="heigthForm">Altura:</label>
+                                    <label for="heigthForm">Altura (cm):</label>
                                     <input class="form-control" type="number" id="heigthForm" name="heigthForm">
                                 </div>
                                 <div class="form-group">
@@ -392,7 +393,7 @@
                     </div>
                     <div class="carousel-item bg-transparent p-5">
                         <div class="formulario">
-							<div class="container text-center">
+                            <div class="container text-center">
                                 <h4 class="coolFont">Últimos ajustes</h4>
                             </div>
 							<br/>
@@ -413,15 +414,15 @@
 								</div>
 								<br/>
 							</div>
-                            <div class="mr-auto text-center">
-                                <button type="button" class="btn submitDiet" onclick="window.location.href='generaDietaUsuario/lunes.html';">Generar Dieta</button>
+							<div class="mr-auto text-center">
+                                <button type="submit" class="btn submitDiet">Generar Dieta</button>
                             </div>
                             <div class="text-left">
                                 <a class="btn btn-success" href="#carouselCreaDieta" role="button" data-slide="prev">&lt; Volver</a>
                             </div>
                         </div>
                     </div>
-                </form>
+				</form>
             </div>
         </div>
         <br/>
