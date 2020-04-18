@@ -34,7 +34,7 @@ public class PaginaUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String url = "/FrontEnd/paginaUsuario.html";
+        String url = "/FrontEnd/paginaUsuario.jsp";
         response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
         HttpSession session = request.getSession();
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
