@@ -69,12 +69,14 @@ public class diaDieta extends HttpServlet {
         int codigoInt = Integer.parseInt(codigoPlato);
         Plato plato = DBConnection.selectPlato(codigoPlato);
         ArrayList<Plato> platos = new ArrayList<>();
+        ArrayList<Plato> platosDesayuno = new ArrayList<>();
         for(int i = 0; i < 4; i++){
             for(int j = 0; j < 3; j++){
                 codigoInt++;
                 codigoPlato = String.format("%08d",codigoInt);
                 plato =  DBConnection.selectPlato(codigoPlato);
                 platos.add(plato);
+                
             }
         }
         
@@ -82,6 +84,7 @@ public class diaDieta extends HttpServlet {
         session.setAttribute("diaSemana", diaSemana);
         session.setAttribute("codigoPlat", codigoPlato);
         session.setAttribute("platos",platos);
+        session.setAttribute("platosDesayuno",platosDesayuno);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

@@ -67,7 +67,8 @@
                 </jsp:useBean>
                 <jsp:useBean id="codigoPlat" class="java.lang.String" scope="session">  
                 </jsp:useBean>
-            
+                <jsp:useBean id="platosDesayuno" class="java.util.ArrayList" scope="session">  
+                </jsp:useBean>
                 <%
                     ArrayList<String> Dias = new ArrayList<>();
                     Dias.add("Lunes");
@@ -80,6 +81,7 @@
                     int diaActual = Integer.parseInt(diaSemana);
                     int codigoPlato = Integer.parseInt(codigoPlat);
                     ArrayList<Plato> ps = platos;
+                    ArrayList<Plato> psD = platosDesayuno;
                 %>
                 <h1 class="text-center display-4 coolFontParagraph" ><%=Dias.get(diaActual)%></h1>
                 <form action="diaDieta" method="POST">
