@@ -22,8 +22,8 @@ import modelo.Entrada;
  *
  * @author alejandro
  */
-@WebServlet(name = "ForoUsuario", urlPatterns = {"/FrontEnd/foro"})
-public class Foro extends HttpServlet {
+@WebServlet(name = "Foro", urlPatterns = {"/FrontEnd/foro"})
+public class ForoS extends HttpServlet {
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

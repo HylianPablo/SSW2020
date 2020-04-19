@@ -54,13 +54,13 @@
                 <a class="coolFont btn w-100" href="./paginaUsuario" role="button">INICIO</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./foroUsuario.jsp" role="button">FORO</a>
+                <a class="coolFont btn w-100" href="./foroUsuario" role="button">FORO</a>
             </div>
             <div class="col">
-                <a class="oneLine coolFont btn w-100" href="./rankingUsuario.jsp" role="button">TOP DIETAS</a>
+                <a class="oneLine coolFont btn w-100" href="./rankingUsuario" role="button">TOP DIETAS</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./perfil.jsp" role="button">MI PERFIL</a>
+                <a class="coolFont btn w-100" href="./perfil" role="button">MI PERFIL</a>
             </div>
             <div class="col"></div>
             <hr style="width: 100%; color: black; height: 1px; background-color:black;" />

@@ -1,5 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
+<%-- 
+    Document   : iniciarSesion
+    Created on : Apr 14, 2020, 12:44:53 PM
+    Author     : alejandro
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<html>
 
 <head>
     <meta charset="utf-8">

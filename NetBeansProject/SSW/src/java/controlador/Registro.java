@@ -1,31 +1,26 @@
-package controlador;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import modelo.DBConnection;
+package controlador;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Entrada;
-import java.time.LocalDateTime;
-import java.time.Month;
-import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author pablo
+ * @author alejandro
  */
-@WebServlet(name = "ForoUpdate", urlPatterns = {"/FrontEnd/foroUpdate"})
-public class ForoUpdate extends HttpServlet {
+@WebServlet(name = "Registro", urlPatterns = {"/FrontEnd/registro"})
+public class Registro extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,31 +33,12 @@ public class ForoUpdate extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-
-        String codigo = DBConnection.getLastCodigoEntrada();
-        codigo = String.format("%05d",Integer.parseInt(codigo)+1);
-        String titulo = request.getParameter("tituloNuevaEntrada");
-        String cuerpo = request.getParameter("cuerpoNuevaEntrada");
-        String usuario = request.getParameter("usuario");
-        LocalDateTime date = LocalDateTime.of(2019,Month.APRIL,03, 19, 30, 40);//request.getParameter("fechaNuevaEntrada");
-        Entrada entrada = new Entrada();
-        entrada.setCodigoEntrada(codigo);
-        entrada.setTitulo(titulo);
-        entrada.setCuerpo(cuerpo);
-        entrada.setNombreUsuario(usuario);
-        entrada.setFecha(date);
-        DBConnection.insertEntrada(entrada);
-        String url = "/FrontEnd/foroUsuario.jsp"; //ahora la url tiene SSW
-        HttpSession session = request.getSession();
-        session.setAttribute("entrada", entrada);
-        ArrayList<Entrada> entradas = DBConnection.getAllEntradas();
-        session.setAttribute("entradas", entradas);
         
-        //Lo quito y pongo sendRedirect, asi si das F5 no peta
+        response.setContentType("text/html;charset=UTF-8");
+        String url = "/FrontEnd/registro.jsp";
+        HttpSession session = request.getSession();
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -11,11 +11,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import modelo.Entrada;
 
 /**
  *
@@ -49,8 +53,16 @@ public class NuevoComentario extends HttpServlet {
         comentario.setFecha(date);
         comentario.setNombreUsuario(usuario);
         DBConnection.insertComentario(comentario);
-        String url = "/SSW/FrontEnd/entradaUsuario.jsp?cod="+codigoEntrada; //ahora la url tiene SSW
-        response.sendRedirect(url);
+        String url = "/FrontEnd/entradaUsuario.jsp"; //ahora la url tiene SSW
+        HttpSession session = request.getSession();
+        ArrayList<Comentario> comentarios = DBConnection.getComentarios(codigoEntrada);
+        Entrada entrada = DBConnection.selectEntrada(codigoEntrada);
+        session.setAttribute("codigoEntrada", codigoEntrada);
+        session.setAttribute("entrada", entrada);
+        session.setAttribute("comentarios", comentarios);
+        //Lo quito y pongo sendRedirect, asi si das F5 no peta
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

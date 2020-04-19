@@ -52,13 +52,13 @@
         <div class="row text-center my-3">
             <div class="col"></div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./index.html" role="button">INICIO</a>
+                <a class="coolFont btn w-100" href="./index" role="button">INICIO</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100 actualPage" href="./foro.jsp" role="button">FORO</a>
+                <a class="coolFont btn w-100 actualPage" href="./foro" role="button">FORO</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./ranking.jsp" role="button">TOP DIETAS</a>
+                <a class="coolFont btn w-100" href="./ranking" role="button">TOP DIETAS</a>
             </div>
             <div class="col"></div>
             <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
@@ -66,7 +66,7 @@
         <br/>
 
         <h1 class="coolFontParagraph inlineBlock"><%= entrada.getTitulo()%></h1>
-        <a class="m-2 btn btn-warning inlineBlock rightAligned" href="./registro.html" role="button">Regístrate</a>
+        <a class="m-2 btn btn-warning inlineBlock rightAligned" href="./registro" role="button">Regístrate</a>
 	<a class="m-2 btn btn-primary inlineBlock rightAligned" href="./iniciarSesion.html" role="button">Inicia sesión</a>
 
         <div class="card my-3" id="entradaEjemplo">

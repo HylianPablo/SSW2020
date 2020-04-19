@@ -53,10 +53,10 @@
                 <a class="coolFont btn w-100" href="./index" role="button">INICIO</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./foro.jsp" role="button">FORO</a>
+                <a class="coolFont btn w-100" href="./foro" role="button">FORO</a>
             </div>
             <div class="col">
-                <a class="oneLine coolFont btn w-100" href="./ranking.jsp" role="button">TOP DIETAS</a>
+                <a class="oneLine coolFont btn w-100" href="./ranking" role="button">TOP DIETAS</a>
             </div>
             <div class="col"></div>
             <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
@@ -65,12 +65,12 @@
         <%
             String codigoDieta = request.getParameter("cod");
             if(codigoDieta == null){
-                String redirectURL = "rankingUsuario.jsp";
+                String redirectURL = "./rankingUsuario";
                 response.sendRedirect(redirectURL);
             }else{
                 ArrayList<Plato> platos = DBConnection.getPlatosDieta(codigoDieta);
                 if(platos==null){
-                    String redirectURL = "rankingUsuario.jsp";
+                    String redirectURL = "./rankingUsuario";
                     response.sendRedirect(redirectURL);
                 }else{
                     Dieta dieta = DBConnection.selectDieta(codigoDieta);
@@ -80,7 +80,7 @@
         <h1 class="coolFontParagraph inlineBlock"><%=dieta.getTitulo()%>. </h1>
         <button disabled class="uncheckedButton btn btn-success inlineBlock"><i class="fa fa-star text-warning"></i> Favorito</button>
         <button disabled class="uncheckedButton btn btn-success inlineBlock"><i class="fa fa-heart text-danger"></i> Guardado</button>
-        <a class="m-2 btn btn-warning inlineBlock rightAligned" href="./registro.html" role="button">Regístrate</a>
+        <a class="m-2 btn btn-warning inlineBlock rightAligned" href="./registro" role="button">Regístrate</a>
         <a class="m-2 btn btn-primary inlineBlock rightAligned" href="./iniciarSesion.html" role="button">Inicia sesión</a>
 
         <div class="row">
