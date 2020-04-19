@@ -9,7 +9,7 @@
 <%@page import="modelo.Entrada"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
     <head>
         <meta charset="utf-8">
@@ -65,6 +65,9 @@
                 </jsp:useBean>
                 <jsp:useBean id="diaSemana" class="java.lang.String" scope="session">  
                 </jsp:useBean>
+                <jsp:useBean id="codigoPlat" class="java.lang.String" scope="session">  
+                </jsp:useBean>
+            
                 <%
                     ArrayList<String> Dias = new ArrayList<>();
                     Dias.add("Lunes");
@@ -75,12 +78,14 @@
                     Dias.add("Sábado");
                     Dias.add("Domingo");
                     int diaActual = Integer.parseInt(diaSemana);
+                    int codigoPlato = Integer.parseInt(codigoPlat);
                     ArrayList<Plato> ps = platos;
                 %>
                 <h1 class="text-center display-4 coolFontParagraph" ><%=Dias.get(diaActual)%></h1>
                 <form action="diaDieta" method="POST">
                     <div>
                         <input type="hidden" name="diaSemana" value=<%=diaActual + 1%>>
+                        <input type="hidden" name="codigoPlato" value=<%=codigoPlato + 1%>>
                         <form action="diaDieta" method ="POST" >
                             <%
                                 String nomComida;

@@ -38,6 +38,7 @@ public class diaDieta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url;
         String diaSemana = request.getParameter("diaSemana");
+        String codigoPlato = request.getParameter("codigoPlato");
         HttpSession session = request.getSession();
         
         ArrayList <String> platosElegidos=null;
@@ -64,8 +65,8 @@ public class diaDieta extends HttpServlet {
         }else{
             url = "/FrontEnd/diaDieta.jsp";
         }
-        String codigoPlato ="00000000";
-        int codigoInt = 0;
+        
+        int codigoInt = Integer.parseInt(codigoPlato);
         Plato plato = DBConnection.selectPlato(codigoPlato);
         ArrayList<Plato> platos = new ArrayList<>();
         for(int i = 0; i < 4; i++){
@@ -79,6 +80,7 @@ public class diaDieta extends HttpServlet {
         
         session.setAttribute("platosElegidos",platosElegidos);
         session.setAttribute("diaSemana", diaSemana);
+        session.setAttribute("codigoPlat", codigoPlato);
         session.setAttribute("platos",platos);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);

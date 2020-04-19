@@ -72,6 +72,7 @@
             </ol>
             <div class="carousel-inner">
                 <form action="diaDieta" method="POST">
+                    <input type="hidden" name="codigoPlato" value="00000000">
                     <input type="hidden" name="diaSemana" value="0">
                     <div class="carousel-item active bg-transparent p-5">
                         <div class="formulario">
