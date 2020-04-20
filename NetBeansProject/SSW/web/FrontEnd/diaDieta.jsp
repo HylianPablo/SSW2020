@@ -67,6 +67,8 @@
                 </jsp:useBean>
                 <jsp:useBean id="codigoPlat" class="java.lang.String" scope="session">  
                 </jsp:useBean>
+                <jsp:useBean id="alergias" class="java.util.ArrayList" scope="session">  
+                </jsp:useBean>
             
                 <%
                     ArrayList<String> Dias = new ArrayList<>();
@@ -120,7 +122,7 @@
                                                 %>
                                                 <td>
                                                     <div class="custom-control custom-radio">
-                                                        <input value="<%=p.getNombre()%>" type="radio" onclick="checkAllRadio()" id="<%=nomComida + i%>" name="<%=nomComida%>" class="custom-control-input">
+                                                        <input value="<%=p.getCodigoPlato()%>" type="radio" onclick="checkAllRadio()" id="<%=nomComida + i%>" name="<%=nomComida%>" class="custom-control-input">
 
                                                         <label class="custom-control-label" for="<%=nomComida + i%>">
                                                             <%=p.getNombre()%>

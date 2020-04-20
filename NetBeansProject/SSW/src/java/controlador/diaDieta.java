@@ -41,11 +41,59 @@ public class diaDieta extends HttpServlet {
         String codigoPlato = request.getParameter("codigoPlato");
         HttpSession session = request.getSession();
         
-        ArrayList <String> platosElegidos=null;
+        ArrayList <String> platosElegidos=null; //Array de codigos de platos elegidos hasta esta iteracion
+        ArrayList <Boolean> alergias=null;  //Alergias elegidas al principio, no se modifican
+        ArrayList <Plato> platos=null; //Platos que se podrán elegir el siguiente día
         if(diaSemana.equals("0")){
             platosElegidos = new ArrayList<>();
+            alergias = new ArrayList<>();
+            try{
+                boolean cerdo = Boolean.parseBoolean(request.getParameter("cerdo"));
+                alergias.add(cerdo);
+                boolean marisco = Boolean.parseBoolean(request.getParameter("marisco"));
+                alergias.add(marisco);
+                boolean huevo = Boolean.parseBoolean(request.getParameter("huevo"));
+                alergias.add(huevo);
+                boolean frutosSecos = Boolean.parseBoolean(request.getParameter("frutosSecos"));
+                alergias.add(frutosSecos);
+                boolean pescado = Boolean.parseBoolean(request.getParameter("pescado"));
+                alergias.add(pescado);
+                boolean cacahuetes = Boolean.parseBoolean(request.getParameter("cacahuetes"));
+                alergias.add(cacahuetes);
+                boolean soja = Boolean.parseBoolean(request.getParameter("soja"));
+                alergias.add(soja);
+                boolean melocoton = Boolean.parseBoolean(request.getParameter("melocoton"));
+                alergias.add(melocoton);
+                boolean pera = Boolean.parseBoolean(request.getParameter("pera"));
+                alergias.add(pera);
+                boolean manzana = Boolean.parseBoolean(request.getParameter("manzana"));
+                alergias.add(manzana);
+                boolean melon = Boolean.parseBoolean(request.getParameter("melon"));
+                alergias.add(melon);
+                boolean kiwi = Boolean.parseBoolean(request.getParameter("kiwi"));
+                alergias.add(kiwi);
+                boolean piña = Boolean.parseBoolean(request.getParameter("piña"));
+                alergias.add(piña);
+                boolean fresa = Boolean.parseBoolean(request.getParameter("fresa"));
+                alergias.add(fresa);
+                boolean celiaco = Boolean.parseBoolean(request.getParameter("celiaco"));
+                alergias.add(celiaco);
+                boolean lactosa = Boolean.parseBoolean(request.getParameter("lactosa"));
+                alergias.add(lactosa);
+                boolean vegetariano = Boolean.parseBoolean(request.getParameter("vegetariano"));
+                alergias.add(vegetariano);
+                boolean vegano = Boolean.parseBoolean(request.getParameter("vegano"));
+                alergias.add(vegano);
+                boolean musulman = Boolean.parseBoolean(request.getParameter("musulman"));
+                alergias.add(musulman);
+                boolean hindu = Boolean.parseBoolean(request.getParameter("hindu"));
+                alergias.add(hindu);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }else{
             try{
+            alergias = (ArrayList) session.getAttribute("alergias");
             platosElegidos = (ArrayList)session.getAttribute("platosElegidos");
             String desayuno = request.getParameter("desayuno");
             String comida1 = request.getParameter("comida1");
@@ -66,27 +114,16 @@ public class diaDieta extends HttpServlet {
             url = "/FrontEnd/diaDieta.jsp";
         }
         
-        int codigoInt=0;
-        try{
-        codigoInt = Integer.parseInt(codigoPlato);
-        }catch(Exception e){
-            
-        }
-        Plato plato = DBConnection.selectPlato(codigoPlato);
-        ArrayList<Plato> platos = new ArrayList<>();
-        for(int i = 0; i < 4; i++){
-            for(int j = 0; j < 3; j++){
-                codigoInt++;
-                codigoPlato = String.format("%08d",codigoInt);
-                plato =  DBConnection.selectPlato(codigoPlato);
-                platos.add(plato);
-            }
-        }
+        //SE TRANSFORMA ARRAY DE CODIGOS(STRING) A ARRAY DE PLATOS
+        ArrayList<Plato> platosDATOS = DBConnection.selectPlatosFromCodigo(platosElegidos);
+        //AQUI SE CALCULAN LAS VARIABLES DE MACROMOLECULAS, ARRAY PLATOSELEGIDOS ES DE STRINGS
+        platos = DBConnection.selectPlatosDias(platosElegidos,alergias);
         
         session.setAttribute("platosElegidos",platosElegidos);
         session.setAttribute("diaSemana", diaSemana);
         session.setAttribute("codigoPlat", codigoPlato);
         session.setAttribute("platos",platos);
+        session.setAttribute("alergias",alergias);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
