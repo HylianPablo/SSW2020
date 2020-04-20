@@ -75,8 +75,8 @@ create table Plato(
 );
 
 create table PlatoMenu(
-	codigoPlato				integer not null,
-	codigoDieta				integer not null,
+	codigoPlato				integer not null auto_increment,
+	codigoDieta				integer,
 	diaSemana				char(20) not null,
 	check (diaSemana in ('lunes','martes','miercoles','jueves','viernes','sabado','domingo')),
 	momento					char(30) not null,
@@ -112,7 +112,6 @@ insert into Dieta (titulo,descripcion,fecha) Values ('Dieta de deportistas','Una
 insert into Usuario (nombre,nombreUsuario,contrasena,correo,favorito) Values ('Pedro Sanz Lopez', 'pedsanz', '12345pedro','pedrosanzl@gmail.com',1);
 insert into Usuario (nombre,nombreUsuario,contrasena,correo,favorito) Values ('Marta Sanchez Rojo', 'martsanro', 'farola4','marta1912@gmail.com',2);
 insert into Usuario (nombre,nombreUsuario,contrasena,correo,favorito) Values ('Marcos Moya Gallo', 'marmoyaga', 'tirabuzon89','marcos.mg@yahoo.com',3);
-
 
 insert into Guardado (nombreUsuario,codigoDieta) Values ('pedsanz',1);
 insert into Guardado (nombreUsuario,codigoDieta) Values ('martsanro',2);
@@ -974,3 +973,32 @@ insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (111,80);
 insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,aminoacidos,proteinas,hidratosDeCarbono) Values ('Vaso de leche con zumo de melocoton','',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,8,11);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,81);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (112,81);
+
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'lunes','desayuno');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'lunes','comidaPrimero');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'lunes','comidaSegundo');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'lunes','cena');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'martes','desayuno');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'martes','comidaPrimero');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'martes','comidaSegundo');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'martes','cena');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'miercoles','desayuno');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'miercoles','comidaPrimero');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'miercoles','comidaSegundo');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'miercoles','cena');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'jueves','desayuno');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'jueves','comidaPrimero');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'jueves','comidaSegundo');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'jueves','cena');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'viernes','desayuno');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'viernes','comidaPrimero');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'viernes','comidaSegundo');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'viernes','cena');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'sabado','desayuno');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'sabado','comidaPrimero');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'sabado','comidaSegundo');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'sabado','cena');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'domingo','desayuno');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'domingo','comidaPrimero');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'domingo','comidaSegundo');
+insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'domingo','cena');
