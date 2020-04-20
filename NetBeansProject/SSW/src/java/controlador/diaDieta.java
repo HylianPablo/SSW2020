@@ -66,7 +66,12 @@ public class diaDieta extends HttpServlet {
             url = "/FrontEnd/diaDieta.jsp";
         }
         
-        int codigoInt = Integer.parseInt(codigoPlato);
+        int codigoInt=0;
+        try{
+        codigoInt = Integer.parseInt(codigoPlato);
+        }catch(Exception e){
+            
+        }
         Plato plato = DBConnection.selectPlato(codigoPlato);
         ArrayList<Plato> platos = new ArrayList<>();
         ArrayList<Plato> platosDesayuno = new ArrayList<>();
