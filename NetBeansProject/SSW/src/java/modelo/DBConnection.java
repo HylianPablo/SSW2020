@@ -8,6 +8,10 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class DBConnection {
+    
+    private double maxLimit = 30.0;
+    private double minLimit = 30.0;
+    
     //USUARIO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
     public static int insertUsuario(Usuario user){
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -450,7 +454,7 @@ public class DBConnection {
         }
     }
     
-    //PLATO%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    //PLATO%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fg%%%%%%%%%%%%%%%%
     public static ArrayList<Plato> getPlatosDieta(String codigoDieta){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -485,8 +489,6 @@ public class DBConnection {
             return null;
         }
     }
-    
-    
     
     public static Plato selectPlato(String codigoPlato){
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -531,16 +533,102 @@ public class DBConnection {
         }
     }
     
-    public static Plato selectDesayuno(String codigoPlato){
+
+    //ESTE METODO ESTA MAL / INUTILIZADO
+    public static ArrayList<String> selectPlato(ArrayList<String> codigosPlatos){ 
+
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps;
         ResultSet rs;
-        String query = "SELECT * FROM Plato p WHERE p.codigoPlato=? AND p.desayuno=TRUE" ;
+        ArrayList<String> nombresPlatos = new ArrayList<>();
+        String query = "SELECT p.nombre FROM Plato p WHERE p.codigoPlato=?";
+        //ArrayList<Plato> retorno = new ArrayList<>();
+        try{
+            for(int i=0;i<codigosPlatos.size();i++){
+            ps = connection.prepareStatement(query);
+            ps.setString(1,codigosPlatos.get(i));
+            rs = ps.executeQuery();
+            String plato = null;
+            
+            if(rs.next()){
+                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
+                plato = rs.getString("nombre");
+                nombresPlatos.add(plato);
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            }
+            return nombresPlatos;
+        } catch(SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public static ArrayList<Plato> selectPlatosFromCodigo(ArrayList<String> codigosPlatos){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        ArrayList<Plato> nombresPlatos = new ArrayList<>();
+        String query = "SELECT * FROM Plato p WHERE p.codigoPlato=?";
+        try{
+            for(int i=0;i<codigosPlatos.size();i++){
+                ps = connection.prepareStatement(query);
+                ps.setString(1,codigosPlatos.get(i));
+                rs = ps.executeQuery();
+                Plato plato = null;
+            
+                if(rs.next()){
+                    //Igual es mejor tener las clases vacías y usar setters en vez de constructor
+                    plato = new Plato();
+                    plato.setCodigoPlato(rs.getString("codigoPlato"));
+                    plato.setNombre(rs.getString("nombre"));
+                    plato.setDescripcion(rs.getString("descripcion"));
+                    plato.setDesayuno(rs.getBoolean("desayuno"));
+                    plato.setVegano(rs.getBoolean("vegano"));
+                    plato.setVegetariano(rs.getBoolean("vegetariano"));
+                    plato.setFrutosSecos(rs.getBoolean("frutosSecos"));
+                    plato.setGluten(rs.getBoolean("gluten"));
+                    plato.setKcal(rs.getInt("kcal"));
+                    plato.setGlucidosSimples(rs.getInt("glucidosSimples"));
+                    plato.setPolisacaridos(rs.getInt("polisacaridos"));
+                    plato.setAminoacidos(rs.getInt("aminoacidos"));
+                    plato.setProteinas(rs.getInt("proteinas"));
+                    plato.setHidratosDeCarbono(rs.getInt("hidratosDeCarbono"));
+                    nombresPlatos.add(plato);
+                }
+                rs.close();
+                ps.close();
+                pool.freeConnection(connection);
+            }
+            return nombresPlatos;
+        } catch(SQLException e){
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public static ArrayList<Plato> selectPlatosDias(ArrayList<String> platosElegidos, ArrayList<Boolean> alergias){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        double glucidosSimplesActuales;
+        double polisacaridosActuales;
+        double animoacidosActuales;
+        double proteinasActuales;
+        double hidratosDeCarbonoActuales;
+        ArrayList<Plato> platosFinal = new ArrayList<>();
+        String query = "SELECT * FROM Plato p WHERE p.codigoPlato=?";
         //ArrayList<Plato> retorno = new ArrayList<>();
         try{
             ps = connection.prepareStatement(query);
-            ps.setString(1,codigoPlato);
+           // ps.setString(1,codigoPlato);
             rs = ps.executeQuery();
             Plato plato = null;
             
@@ -566,7 +654,7 @@ public class DBConnection {
             rs.close();
             ps.close();
             pool.freeConnection(connection);
-            return plato;
+            return platosFinal;
         } catch(SQLException e){
             pool.freeConnection(connection);
             e.printStackTrace();
