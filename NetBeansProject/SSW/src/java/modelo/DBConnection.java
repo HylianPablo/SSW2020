@@ -454,7 +454,7 @@ public class DBConnection {
         }
     }
     
-    //PLATO%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%fg%%%%%%%%%%%%%%%%
+    //PLATO%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     public static ArrayList<Plato> getPlatosDieta(String codigoDieta){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();

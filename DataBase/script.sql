@@ -1002,15 +1002,3 @@ insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'domingo','des
 insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'domingo','comidaPrimero');
 insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'domingo','comidaSegundo');
 insert into PlatoMenu (codigoDieta, diaSemana, momento) Values (1,'domingo','cena');
-
-create table PlatoMenu(
-	codigoPlato				integer not null auto_increment,
-	codigoDieta				integer,
-	diaSemana				char(20) not null,
-	check (diaSemana in ('lunes','martes','miercoles','jueves','viernes','sabado','domingo')),
-	momento					char(30) not null,
-	check (momento in ('desayuno','comidaPrimero','comidaSegundo','cena')),
-	foreign key(codigoPlato) references Plato(codigoPlato), 
-	foreign key(codigoDieta) references Dieta(codigoDieta),
-	primary key(codigoPlato, codigoDieta)
-);
