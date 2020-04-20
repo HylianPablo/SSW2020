@@ -108,7 +108,7 @@
                         </div>
                     </div>
                     <%
-                        //nPlato=nPlato+4;
+                        nPlato=nPlato+4;
                         }
                     %>
                 </div>
