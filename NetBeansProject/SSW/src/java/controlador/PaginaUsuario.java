@@ -7,6 +7,7 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.DBConnection;
+import modelo.Dieta;
+import modelo.Plato;
 
 /**
  *
@@ -35,8 +39,13 @@ public class PaginaUsuario extends HttpServlet {
             throws ServletException, IOException {
         
         String url = "/FrontEnd/paginaUsuario.jsp";
+        Dieta dieta = DBConnection.selectDietaFavorita("pedsanz");
+        ArrayList<Plato> platos = DBConnection.getPlatosDieta(dieta.getCodigoDieta());
+
         response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
         HttpSession session = request.getSession();
+        session.setAttribute("dieta", dieta);
+        session.setAttribute("platos", platos);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

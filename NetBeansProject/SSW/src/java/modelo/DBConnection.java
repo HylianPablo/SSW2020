@@ -35,7 +35,7 @@ public class DBConnection {
             return 0;
         }
     }
-    
+        
     public static Usuario selectUsuario(String nombreUsuario){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -495,7 +495,7 @@ public class DBConnection {
         Connection connection = pool.getConnection();
         PreparedStatement ps;
         ResultSet rs;
-        String query = "SELECT * FROM Plato p WHERE p.codigoPlato=?";
+        String query = "SELECT * FROM Plato p WHERE p.codigoPlato=? AND p.desayuno=FALSE";
         //ArrayList<Plato> retorno = new ArrayList<>();
         try{
             ps = connection.prepareStatement(query);
@@ -533,8 +533,10 @@ public class DBConnection {
         }
     }
     
+
     //ESTE METODO ESTA MAL / INUTILIZADO
     public static ArrayList<String> selectPlato(ArrayList<String> codigosPlatos){ 
+
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps;
@@ -659,7 +661,6 @@ public class DBConnection {
             return null;
         }
     }
-    
     
     public static Entrada selectEntrada(String codigoEntrada){
         ConnectionPool pool = ConnectionPool.getInstance();

@@ -38,7 +38,7 @@ public class diaDieta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url;
         String diaSemana = request.getParameter("diaSemana");
-        String codigoPlato = request.getParameter("codigoPlato");
+        //String codigoPlato = request.getParameter("codigoPlato");
         HttpSession session = request.getSession();
         
         ArrayList <String> platosElegidos=null; //Array de codigos de platos elegidos hasta esta iteracion
@@ -114,16 +114,19 @@ public class diaDieta extends HttpServlet {
             url = "/FrontEnd/diaDieta.jsp";
         }
         
+
         //SE TRANSFORMA ARRAY DE CODIGOS(STRING) A ARRAY DE PLATOS
         ArrayList<Plato> platosDATOS = DBConnection.selectPlatosFromCodigo(platosElegidos);
         //AQUI SE CALCULAN LAS VARIABLES DE MACROMOLECULAS, ARRAY PLATOSELEGIDOS ES DE STRINGS
         platos = DBConnection.selectPlatosDias(platosElegidos,alergias);
+        //Da mal generar dieta hasta que se haga esta consulta
         
         session.setAttribute("platosElegidos",platosElegidos);
         session.setAttribute("diaSemana", diaSemana);
-        session.setAttribute("codigoPlat", codigoPlato);
+        //session.setAttribute("codigoPlat", codigoPlato);
         session.setAttribute("platos",platos);
         session.setAttribute("alergias",alergias);
+
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
