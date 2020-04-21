@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class DBConnection {
 
-    private double maxLimit = 30.0;
-    private double minLimit = 30.0;
+    private static int maxLimit = 30;
+    private static int minLimit = 30;
 
     //USUARIO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
     public static int insertUsuario(Usuario user) {
@@ -617,17 +617,42 @@ public class DBConnection {
         Connection connection = pool.getConnection();
         PreparedStatement ps;
         ResultSet rs;
-        double glucidosSimplesActuales;
-        double polisacaridosActuales;
-        double animoacidosActuales;
-        double proteinasActuales;
-        double hidratosDeCarbonoActuales;
+        String[] alergiasIngredientesValues = new String[]{"cerdo","marisco","pescado","huevo","cacahuetes",
+        "soja","melocoton","pera","manzana","melon","kiwi","piña","fresa","lactosa"};
+        String[] alergiasEspValues = new String[]{"vegano","vegetariano","frutosSecos","gluten"};
+        String[] alergiasReligiones = new String[]{"musulman","hindu"};
         ArrayList<Plato> platosFinal = new ArrayList<>();
-        String query = "SELECT * FROM Plato p WHERE p.codigoPlato=?";
-        //ArrayList<Plato> retorno = new ArrayList<>();
+        //Seleccionar todos y luego tomar 3 aleatorios
+        String query = "SELECT * FROM Plato p WHERE p.glucidosSimples<= ? AND p.glucidosSimples>= ?"
+                + "AND p.polisacaridos<= ? AND p.polisacaridos>= ?"
+                + "AND p.aminoacidos <= ? AND p.aminoacidos>= ?"
+                + "AND p.proteinas <= ? AND p.proteinas >= ?"
+                + "AND p.hidratosDeCarbono <= ? AND p.proteinas>= ?";
+        String queryAlergias="";
+        for(int i=0;i<4;i++){
+            if(i==0 && alergias.get(i)){
+                queryAlergias+=" AND p.vegano = TRUE ";
+            }else if(i==1 && alergias.get(i)){
+                queryAlergias+=" AND p.vegetariano = TRUE ";
+            }else if(i==2 && alergias.get(i)){
+                queryAlergias+=" AND p.frutosSecos = TRUE ";
+            }else if(i==3 && alergias.get(i)){
+                queryAlergias+=" AND p.gluten = TRUE ";
+            }
+        }
+        query+=queryAlergias;
         try {
             ps = connection.prepareStatement(query);
-            // ps.setString(1,codigoPlato);
+            ps.setString(1,Integer.toString(glucidosSimples-minLimit));
+            ps.setString(2,Integer.toString(glucidosSimples+maxLimit));
+            ps.setString(3,Integer.toString(polisacaridos-minLimit));
+            ps.setString(4,Integer.toString(polisacaridos+maxLimit));
+            ps.setString(5,Integer.toString(aminoacidos-minLimit));
+            ps.setString(6,Integer.toString(aminoacidos+maxLimit));
+            ps.setString(7,Integer.toString(proteinas-minLimit));
+            ps.setString(8,Integer.toString(proteinas+maxLimit));
+            ps.setString(9,Integer.toString(hidratosDeCarbono-minLimit));
+            ps.setString(10,Integer.toString(hidratosDeCarbono+maxLimit));
             rs = ps.executeQuery();
             Plato plato = null;
 

@@ -54,14 +54,20 @@ public class diaDieta extends HttpServlet {
             platosElegidos = new ArrayList<>();
             alergias = new ArrayList<>();
             try{
+                boolean vegano = Boolean.parseBoolean(request.getParameter("vegano"));
+                alergias.add(vegano);
+                boolean vegetariano = Boolean.parseBoolean(request.getParameter("vegetariano"));
+                alergias.add(vegetariano);
+                boolean frutosSecos = Boolean.parseBoolean(request.getParameter("frutosSecos"));
+                alergias.add(frutosSecos);
+                boolean celiaco = Boolean.parseBoolean(request.getParameter("celiaco"));
+                alergias.add(celiaco);
                 boolean cerdo = Boolean.parseBoolean(request.getParameter("cerdo"));
                 alergias.add(cerdo);
                 boolean marisco = Boolean.parseBoolean(request.getParameter("marisco"));
                 alergias.add(marisco);
                 boolean huevo = Boolean.parseBoolean(request.getParameter("huevo"));
                 alergias.add(huevo);
-                boolean frutosSecos = Boolean.parseBoolean(request.getParameter("frutosSecos"));
-                alergias.add(frutosSecos);
                 boolean pescado = Boolean.parseBoolean(request.getParameter("pescado"));
                 alergias.add(pescado);
                 boolean cacahuetes = Boolean.parseBoolean(request.getParameter("cacahuetes"));
@@ -82,14 +88,8 @@ public class diaDieta extends HttpServlet {
                 alergias.add(piña);
                 boolean fresa = Boolean.parseBoolean(request.getParameter("fresa"));
                 alergias.add(fresa);
-                boolean celiaco = Boolean.parseBoolean(request.getParameter("celiaco"));
-                alergias.add(celiaco);
                 boolean lactosa = Boolean.parseBoolean(request.getParameter("lactosa"));
                 alergias.add(lactosa);
-                boolean vegetariano = Boolean.parseBoolean(request.getParameter("vegetariano"));
-                alergias.add(vegetariano);
-                boolean vegano = Boolean.parseBoolean(request.getParameter("vegano"));
-                alergias.add(vegano);
                 boolean musulman = Boolean.parseBoolean(request.getParameter("musulman"));
                 alergias.add(musulman);
                 boolean hindu = Boolean.parseBoolean(request.getParameter("hindu"));
