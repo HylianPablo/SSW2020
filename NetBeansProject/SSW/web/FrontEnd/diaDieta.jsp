@@ -85,7 +85,7 @@
                 <h1 class="text-center display-4 coolFontParagraph" ><%=Dias.get(diaActual)%></h1>
                 <form action="diaDieta" method="POST">
                     <div>
-                        <input type="hidden" name="diaSemana" value=<%=diaActual + 1%>>
+                        <input type="hidden" name="diaSemana" value="<%=diaActual + 1%>">
                         <form action="diaDieta" method ="POST" >
                             <%
                                 String nomComida;
