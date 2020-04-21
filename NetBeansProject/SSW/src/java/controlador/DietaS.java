@@ -41,35 +41,24 @@ public class DietaS extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String cod = request.getParameter("cod");
         String url = "/FrontEnd/dieta.jsp";
-        Dieta dieta = null;
-        boolean guardadoTemp = false;
-        boolean favoritoTemp = false;
-        String nombreUsuario = null;
-        ArrayList<Plato> platos = DBConnection.getPlatosDieta(cod);
-        if(cod == null){
-        }else{
-            if(platos != null){
-                nombreUsuario = "pedsanz";
+        Dieta dieta;
+        ArrayList<Plato> platos = null;
+        if(cod != null){
+            platos = DBConnection.getPlatosDieta(cod);
+            if(platos != null && !platos.isEmpty()){
                 dieta = DBConnection.selectDieta(cod);
-                guardadoTemp = DBConnection.checkGuardado(nombreUsuario, cod);
-                favoritoTemp = DBConnection.checkFavorito(nombreUsuario, cod);
-            }           
+                
+                HttpSession session = request.getSession();
+                session.setAttribute("platos", platos);
+                session.setAttribute("cod", cod);
+                session.setAttribute("dieta", dieta);
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+                dispatcher.forward(request, response);
+            }
         }
-        
-        String guardado = String.valueOf(guardadoTemp);
-        String favorito = String.valueOf(favoritoTemp);
-        HttpSession session = request.getSession();
-        session.setAttribute("platos", platos);
-        session.setAttribute("cod", cod);
-        session.setAttribute("dieta", dieta);
-        session.setAttribute("guardado", guardado);
-        session.setAttribute("favorito", favorito);
-        session.setAttribute("nombreUsuario", nombreUsuario);
-        
-
-        //Lo quito y pongo sendRedirect, asi si das F5 no peta
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request, response);
+        if(platos == null || platos.isEmpty()){
+            response.sendRedirect("/SSW/FrontEnd/ranking");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

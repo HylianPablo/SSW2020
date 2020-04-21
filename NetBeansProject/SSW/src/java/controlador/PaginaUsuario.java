@@ -7,6 +7,7 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -56,6 +57,7 @@ public class PaginaUsuario extends HttpServlet {
             }
         }
         
+        
         for (int i = 0; i<dietasGuardadas.size();i++){
             if(Integer.parseInt(dietasGuardadas.get(i).getCodigoDieta()) == criterio){
                 escogida = i;
@@ -63,7 +65,6 @@ public class PaginaUsuario extends HttpServlet {
         }
         
         ArrayList<Plato> platos = DBConnection.getPlatosDieta(dietasGuardadas.get(escogida).getCodigoDieta());
-        
         response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
         HttpSession session = request.getSession();
         session.setAttribute("platos", platos);

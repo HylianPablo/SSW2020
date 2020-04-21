@@ -68,15 +68,7 @@
             </jsp:useBean>
             <jsp:useBean id="dieta" class="modelo.Dieta" scope="session">  
             </jsp:useBean>
-            <jsp:useBean id="favorito" class="java.lang.String" scope="session">  
-            </jsp:useBean>
-            <jsp:useBean id="guardado" class="java.lang.String" scope="session">  
-            </jsp:useBean>
-            <jsp:useBean id="nombreUsuario" class="java.lang.String" scope="session">  
-            </jsp:useBean>
             <%
-                boolean guardadoTemp = Boolean.parseBoolean(guardado);
-                boolean favoritoTemp = Boolean.parseBoolean(favorito);
                 ArrayList<String> Dias = new ArrayList<>();
                 ArrayList<Plato> platosTemp = platos;
                 Dias.add("Lunes");
@@ -98,19 +90,19 @@
 
             %>
             <h1 class="coolFontParagraph inlineBlock"><%=dieta.getTitulo()%>. </h1>
-            <button class="<%if (!favoritoTemp) {%>uncheckedButton<%}%> btn btn-success inlineBlock" data-toggle="modal" href="#confirmarFav">
+            <button class=" btn btn-success inlineBlock uncheckedButton" disabled>
                 <i class="fa fa-star text-warning"></i> Favorito
             </button>
             <form method="post" class="d-inline-block" action="guardarDieta">
-                <input type="hidden" name="guardadoTemp" value="<%=!guardadoTemp%>"/>
-                <input type="hidden" name="nombreUsuario" value="<%=nombreUsuario%>"/>
                 <input type="hidden" name="codigoDieta" value="<%=cod%>"/>
-                <button type="submit" class="<%if (!guardadoTemp) {%>uncheckedButton<%}%> btn btn-success inlineBlock">
-                    <i class="fa fa-heart text-rosa"></i><%if (!guardadoTemp) {%> Guardar<%} else {%> Guardado<%}%>
+                <button disabled class="uncheckedButton btn btn-success inlineBlock">
+                    <i class="fa fa-heart text-rosa"></i> Guardar
                 </button>
             </form>
-            <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
-
+            
+        <a class="m-2 btn btn-warning inlineBlock rightAligned" href="./registro" role="button">Regístrate</a>
+        <a class="m-2 btn btn-primary inlineBlock rightAligned" href="./iniciarSesion" role="button">Inicia sesión</a>
+                
             <div class="row">
                 <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="false">
                     <div class="MultiCarousel-inner">
@@ -161,39 +153,7 @@
         </div>
         <br/>
 
-        <!-- Modal -->
-        <div class="modal fade" id="confirmarFav" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">
-                            <%if (favoritoTemp) {%>¿Eliminar favorito?<%} else {%>
-                            ¿Confirmar favorito?<%}%>
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <%if (!favoritoTemp) {%>
-                        <p>Sólo puedes tener una dieta como favorita</p>
-                        <p>Si marcas esta dieta como favorita cualquier otra dieta que tengas marcada se desmarcará.</p>
-                        <%} else {%>
-                        <p>¿Seguro que quieres desmarcar esta dieta como favorita?</p>
-                        <%}%>
-                    </div>
-                    <div class="modal-footer">
-                        <form method="post" action="favoritoDieta">
-                            <input type="hidden" name="codigoDieta" value="<%=cod%>"/>
-                            <input type="hidden" name="favorito" value="<%=!favoritoTemp%>"/>
-                            <input type="hidden" name="nombreUsuario" value="<%=nombreUsuario%>"/>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Confirmar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <%}
             }%>
     </body>
