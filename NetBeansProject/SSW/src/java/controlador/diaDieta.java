@@ -41,6 +41,12 @@ public class diaDieta extends HttpServlet {
         //String codigoPlato = request.getParameter("codigoPlato");
         HttpSession session = request.getSession();
         
+        int glucidosSimples=0;
+        int polisacaridos=0;
+        int aminoacidos=0;
+        int proteinas=0;
+        int hidratosDeCarbono=0;
+        
         ArrayList <String> platosElegidos=null; //Array de codigos de platos elegidos hasta esta iteracion
         ArrayList <Boolean> alergias=null;  //Alergias elegidas al principio, no se modifican
         ArrayList <Plato> platos=null; //Platos que se podrán elegir el siguiente día
@@ -114,13 +120,21 @@ public class diaDieta extends HttpServlet {
             url = "/FrontEnd/diaDieta.jsp";
         }
         
-
-        //SE TRANSFORMA ARRAY DE CODIGOS(STRING) A ARRAY DE PLATOS
-        ArrayList<Plato> platosDATOS = DBConnection.selectPlatosFromCodigo(platosElegidos);
-        //AQUI SE CALCULAN LAS VARIABLES DE MACROMOLECULAS, ARRAY PLATOSELEGIDOS ES DE STRINGS
-        platos = DBConnection.selectPlatosDias(platosElegidos,alergias);
-        //Da mal generar dieta hasta que se haga esta consulta
-        
+        if(!diaSemana.equals("0")){
+            //SE TRANSFORMA ARRAY DE CODIGOS(STRING) A ARRAY DE PLATOS
+            ArrayList<Plato> platosDATOS = DBConnection.selectPlatosFromCodigo(platosElegidos);
+            for(int i=0;i<platosDATOS.size();i++){
+                glucidosSimples+=platosDATOS.get(i).getGlucidosSimples();
+                polisacaridos+=platosDATOS.get(i).getPolisacaridos();
+                aminoacidos+=platosDATOS.get(i).getAminoacidos();
+                proteinas+=platosDATOS.get(i).getProteinas();
+                hidratosDeCarbono+=platosDATOS.get(i).getHidratosDeCarbono();
+            }
+            //AQUI SE CALCULAN LAS VARIABLES DE MACROMOLECULAS, ARRAY PLATOSELEGIDOS ES DE STRINGS
+            platos = DBConnection.selectPlatosDias(platosElegidos,alergias,
+                    glucidosSimples,polisacaridos,aminoacidos,proteinas,hidratosDeCarbono);
+            //Da mal generar dieta hasta que se haga esta consulta
+        }
         session.setAttribute("platosElegidos",platosElegidos);
         session.setAttribute("diaSemana", diaSemana);
         //session.setAttribute("codigoPlat", codigoPlato);
