@@ -105,7 +105,7 @@
             <button class="<%if (!favoritoTemp) {%>uncheckedButton<%}%> btn btn-success inlineBlock" data-toggle="modal" href="#confirmarFav">
                 <i class="fa fa-star text-warning"></i> Favorito
             </button>
-            <form method="post" class="d-inline-block" action="guardarDieta">
+            <form method="post" class="d-inline-block" action="./guardarDieta">
                 <input type="hidden" name="guardadoTemp" value="<%=!guardadoTemp%>"/>
                 <input type="hidden" name="nombreUsuario" value="<%=nombreUsuario%>"/>
                 <input type="hidden" name="codigoDieta" value="<%=cod%>"/>
@@ -187,7 +187,7 @@
                         <%}%>
                     </div>
                     <div class="modal-footer">
-                        <form method="post" action="favoritoDieta">
+                        <form method="post" action="./favoritoDieta">
                             <input type="hidden" name="codigoDieta" value="<%=cod%>"/>
                             <input type="hidden" name="favorito" value="<%=!favoritoTemp%>"/>
                             <input type="hidden" name="nombreUsuario" value="<%=nombreUsuario%>"/>

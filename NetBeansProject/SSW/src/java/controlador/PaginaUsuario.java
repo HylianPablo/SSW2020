@@ -47,10 +47,12 @@ public class PaginaUsuario extends HttpServlet {
             criterio=Integer.parseInt(cri);
         }
         ArrayList<Dieta> dietasGuardadas = DBConnection.selectDietasGuardadas("pedsanz");
-        dietasGuardadas.add(0, dieta);
-        for (int r = 1; r<dietasGuardadas.size(); r++){
-            if(dietasGuardadas.get(r).getCodigoDieta().equals(dietasGuardadas.get(0).getCodigoDieta())){
-                dietasGuardadas.remove(r);
+        if(dieta!=null){
+            dietasGuardadas.add(0, dieta);
+            for (int r = 1; r<dietasGuardadas.size(); r++){
+                if(dietasGuardadas.get(r).getCodigoDieta().equals(dietasGuardadas.get(0).getCodigoDieta())){
+                    dietasGuardadas.remove(r);
+                }
             }
         }
         

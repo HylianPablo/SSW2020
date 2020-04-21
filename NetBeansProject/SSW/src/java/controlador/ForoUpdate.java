@@ -45,7 +45,7 @@ public class ForoUpdate extends HttpServlet {
         String titulo = request.getParameter("tituloNuevaEntrada");
         String cuerpo = request.getParameter("cuerpoNuevaEntrada");
         String usuario = request.getParameter("usuario");
-        LocalDateTime date = LocalDateTime.of(2019,Month.APRIL,03, 19, 30, 40);//request.getParameter("fechaNuevaEntrada");
+        LocalDateTime date = LocalDateTime.now();
         Entrada entrada = new Entrada();
         entrada.setCodigoEntrada(codigo);
         entrada.setTitulo(titulo);
@@ -53,13 +53,11 @@ public class ForoUpdate extends HttpServlet {
         entrada.setNombreUsuario(usuario);
         entrada.setFecha(date);
         DBConnection.insertEntrada(entrada);
-        String url = "/FrontEnd/foroUsuario.jsp"; //ahora la url tiene SSW
+        String url = "/FrontEnd/foroUsuario.jsp";
         HttpSession session = request.getSession();
-        session.setAttribute("entrada", entrada);
         ArrayList<Entrada> entradas = DBConnection.getAllEntradas();
         session.setAttribute("entradas", entradas);
         
-        //Lo quito y pongo sendRedirect, asi si das F5 no peta
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
 

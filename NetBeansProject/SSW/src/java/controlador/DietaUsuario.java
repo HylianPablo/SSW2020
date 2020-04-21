@@ -41,35 +41,34 @@ public class DietaUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String cod = request.getParameter("cod");
         String url = "/FrontEnd/dietaUsuario.jsp";
-        Dieta dieta = null;
-        boolean guardadoTemp = false;
-        boolean favoritoTemp = false;
-        String nombreUsuario = null;
-        ArrayList<Plato> platos = DBConnection.getPlatosDieta(cod);
-        if(cod == null){
-        }else{
-            if(platos != null){
+        Dieta dieta;
+        String nombreUsuario;
+        ArrayList<Plato> platos = null;
+        if(cod != null){
+            platos = DBConnection.getPlatosDieta(cod);
+            if(platos != null && !platos.isEmpty()){
                 nombreUsuario = "pedsanz";
                 dieta = DBConnection.selectDieta(cod);
-                guardadoTemp = DBConnection.checkGuardado(nombreUsuario, cod);
-                favoritoTemp = DBConnection.checkFavorito(nombreUsuario, cod);
-            }           
+                boolean guardadoTemp = DBConnection.checkGuardado(nombreUsuario, cod);
+                boolean favoritoTemp = DBConnection.checkFavorito(nombreUsuario, cod);
+        
+                String guardado = String.valueOf(guardadoTemp);
+                String favorito = String.valueOf(favoritoTemp);
+                HttpSession session = request.getSession();
+                session.setAttribute("platos", platos);
+                session.setAttribute("cod", cod);
+                session.setAttribute("dieta", dieta);
+                session.setAttribute("guardado", guardado);
+                session.setAttribute("favorito", favorito);
+                session.setAttribute("nombreUsuario", nombreUsuario);
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+                dispatcher.forward(request, response);
+            }
+        }
+        if(platos == null || platos.isEmpty()){
+            response.sendRedirect("/SSW/FrontEnd/rankingUsuario");
         }
         
-        String guardado = String.valueOf(guardadoTemp);
-        String favorito = String.valueOf(favoritoTemp);
-        HttpSession session = request.getSession();
-        session.setAttribute("platos", platos);
-        session.setAttribute("cod", cod);
-        session.setAttribute("dieta", dieta);
-        session.setAttribute("guardado", guardado);
-        session.setAttribute("favorito", favorito);
-        session.setAttribute("nombreUsuario", nombreUsuario);
-        
-
-        //Lo quito y pongo sendRedirect, asi si das F5 no peta
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

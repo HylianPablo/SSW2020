@@ -70,11 +70,14 @@
         </jsp:useBean>
         <jsp:useBean id="dietas" class="java.util.ArrayList" scope="session">  
         </jsp:useBean>
+        <jsp:useBean id="hayDietaF" class="java.lang.String" scope="session">  
+        </jsp:useBean>
         <jsp:useBean id="dietaF" class="modelo.Dieta" scope="session">  
         </jsp:useBean>
         <jsp:useBean id="nombreUsuario" class="java.lang.String" scope="session">  
         </jsp:useBean>
         <%
+            boolean hayFav = Boolean.parseBoolean(hayDietaF);
             ArrayList<Dieta> dietasTemp = dietas;
         %>
         <div class="container rounded" id="cuadroPerfil">
@@ -107,7 +110,7 @@
                     </div>
                     <div class="alert alert-warning">
                         Dieta Favorita <i class="fa fa-star text-warning"> </i> :
-                        <%if(dietaF == null){%>
+                        <%if(hayFav){%>
                         No tienes ninguna dieta marcada como favorita
                         <%}else{%>
                         <a class="alert-link" href="dietaUsuario?cod=<%=dietaF.getCodigoDieta()%>"><%=dietaF.getTitulo()%></a>

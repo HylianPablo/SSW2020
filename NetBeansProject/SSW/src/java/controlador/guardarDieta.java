@@ -34,12 +34,13 @@ public class guardarDieta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String codigoDieta = request.getParameter("codigoDieta");
         String nombreUsuario = request.getParameter("nombreUsuario");
-        boolean guardado = Boolean.parseBoolean(request.getParameter("guardado"));
+        boolean guardado = Boolean.parseBoolean(request.getParameter("guardadoTemp"));
         if(guardado)
             DBConnection.guardarDieta(codigoDieta, nombreUsuario);
         else
             DBConnection.noGuardarDieta(codigoDieta, nombreUsuario);
-        String url = "/SSW/FrontEnd/dietaUsuario.jsp?cod="+codigoDieta;
+        String url = "/SSW/FrontEnd/dietaUsuario?cod="+codigoDieta;
+        
         response.sendRedirect(url);
     }
 

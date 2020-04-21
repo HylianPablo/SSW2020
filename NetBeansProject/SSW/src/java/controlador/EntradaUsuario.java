@@ -44,27 +44,25 @@ public class EntradaUsuario extends HttpServlet {
         String url = null;
         Entrada entrada = null;
         String cod = request.getParameter("cod");
-        if (cod == null) {
-            url = "/FrontEnd/foroUsuario.jsp";
-        } else {
+        if (cod!=null){
             entrada = DBConnection.selectEntrada(cod);
-            if (entrada == null) {
-                url = "/FrontEnd/foroUsuario.jsp";
-            } else {
-                url = "/FrontEnd/entradaUsuario.jsp"; //ahora la url tiene SSW
+            if (entrada != null) {
+                url = "/FrontEnd/entradaUsuario.jsp";
             }
         }
-        
-        ArrayList<Comentario> comentarios = DBConnection.getComentarios(cod);
+        if (url == null){
+            url = "/SSW/FrontEnd/foroUsuario";
+            response.sendRedirect(url);
+        }else{
+            ArrayList<Comentario> comentarios = DBConnection.getComentarios(cod);
 
-        HttpSession session = request.getSession();
-        session.setAttribute("cod", cod);
-        session.setAttribute("entrada", entrada);
-        session.setAttribute("comentarios", comentarios);
-
-        //Lo quito y pongo sendRedirect, asi si das F5 no peta
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request, response);
+            HttpSession session = request.getSession();
+            session.setAttribute("cod", cod);
+            session.setAttribute("entrada", entrada);
+            session.setAttribute("comentarios", comentarios);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+            dispatcher.forward(request, response);
+        }
 
     }
 
