@@ -72,18 +72,24 @@
             <a class="btn btn-warning inlineBlock rightAligned" href="./index" role="button">Cerrar sesión</a>
             <br>
             <hr/>
+            <jsp:useBean id="dietasGuardadas" class="java.util.ArrayList" scope="session">  
+            </jsp:useBean>
+            <jsp:useBean id="escogida" class="java.lang.String" scope="session">  
+            </jsp:useBean>
+            <%
+                int escogidaT = Integer.parseInt(escogida);
+                ArrayList<Dieta> dietasG = dietasGuardadas;
+            %>
             <div class="m-3 dropdown">
-                <button class="botonEstandar btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dietas guardadas
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item active" href="#">Dieta mediterránea</a>
-                    <a class="dropdown-item" href="#">Dieta vegana</a>
-                </div>
+                <form action="./paginaUsuario">
+                    <select class="inlineBlock botonEstandar btn btn-secondary" name="criterio" onchange="this.form.submit();">
+                        <%for (int s = 0; s < dietasG.size(); s++) {%>
+                        <option <%if(escogidaT==s){%> selected <%}%> value="<%=dietasG.get(s).getCodigoDieta()%>"><%=dietasG.get(s).getTitulo()%></option>
+                        <%}%>
+                    </select>
+                </form>
             </div>
             <br/>
-            <jsp:useBean id="dieta" class="modelo.Dieta" scope="session">  
-            </jsp:useBean>
             <jsp:useBean id="platos" class="java.util.ArrayList" scope="session">  
             </jsp:useBean>
             <%
@@ -97,7 +103,7 @@
                 Dias.add("Sábado");
                 Dias.add("Domingo");
             %>
-            <h2 class="inlineBlock m-2 coolFontParagraph">Dieta Mediterránea</h2>	
+            <h2 class="inlineBlock m-2 coolFontParagraph"><%=dietasG.get(escogidaT).getTitulo()%></h2>	
             <div class="inlineBlock">
             </div>
             <%

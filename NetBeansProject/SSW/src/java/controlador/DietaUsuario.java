@@ -45,13 +45,10 @@ public class DietaUsuario extends HttpServlet {
         boolean guardadoTemp = false;
         boolean favoritoTemp = false;
         String nombreUsuario = null;
-        ArrayList<Plato> platos = null;
+        ArrayList<Plato> platos = DBConnection.getPlatosDieta(cod);
         if(cod == null){
         }else{
-            platos = DBConnection.getPlatosDieta(cod);
-            if(platos == null){
-            }
-            else{
+            if(platos != null){
                 nombreUsuario = "pedsanz";
                 dieta = DBConnection.selectDieta(cod);
                 guardadoTemp = DBConnection.checkGuardado(nombreUsuario, cod);

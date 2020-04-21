@@ -40,12 +40,33 @@ public class PaginaUsuario extends HttpServlet {
         
         String url = "/FrontEnd/paginaUsuario.jsp";
         Dieta dieta = DBConnection.selectDietaFavorita("pedsanz");
-        ArrayList<Plato> platos = DBConnection.getPlatosDieta(dieta.getCodigoDieta());
-
+        String cri = request.getParameter("criterio");
+        int criterio = 0;
+        int escogida = 0;
+        if(cri != null){
+            criterio=Integer.parseInt(cri);
+        }
+        ArrayList<Dieta> dietasGuardadas = DBConnection.selectDietasGuardadas("pedsanz");
+        dietasGuardadas.add(0, dieta);
+        for (int r = 1; r<dietasGuardadas.size(); r++){
+            if(dietasGuardadas.get(r).getCodigoDieta().equals(dietasGuardadas.get(0).getCodigoDieta())){
+                dietasGuardadas.remove(r);
+            }
+        }
+        
+        for (int i = 0; i<dietasGuardadas.size();i++){
+            if(Integer.parseInt(dietasGuardadas.get(i).getCodigoDieta()) == criterio){
+                escogida = i;
+            }
+        }
+        
+        ArrayList<Plato> platos = DBConnection.getPlatosDieta(dietasGuardadas.get(escogida).getCodigoDieta());
+        
         response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
         HttpSession session = request.getSession();
-        session.setAttribute("dieta", dieta);
         session.setAttribute("platos", platos);
+        session.setAttribute("escogida", Integer.toString(escogida));
+        session.setAttribute("dietasGuardadas", dietasGuardadas);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
