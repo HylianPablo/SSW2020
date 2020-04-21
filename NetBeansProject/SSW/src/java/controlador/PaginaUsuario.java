@@ -7,6 +7,7 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +15,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.DBConnection;
+import modelo.Dieta;
+import modelo.Plato;
 
 /**
  *
@@ -35,8 +39,34 @@ public class PaginaUsuario extends HttpServlet {
             throws ServletException, IOException {
         
         String url = "/FrontEnd/paginaUsuario.jsp";
+        Dieta dieta = DBConnection.selectDietaFavorita("pedsanz");
+        String cri = request.getParameter("criterio");
+        int criterio = 0;
+        int escogida = 0;
+        if(cri != null){
+            criterio=Integer.parseInt(cri);
+        }
+        ArrayList<Dieta> dietasGuardadas = DBConnection.selectDietasGuardadas("pedsanz");
+        dietasGuardadas.add(0, dieta);
+        for (int r = 1; r<dietasGuardadas.size(); r++){
+            if(dietasGuardadas.get(r).getCodigoDieta().equals(dietasGuardadas.get(0).getCodigoDieta())){
+                dietasGuardadas.remove(r);
+            }
+        }
+        
+        for (int i = 0; i<dietasGuardadas.size();i++){
+            if(Integer.parseInt(dietasGuardadas.get(i).getCodigoDieta()) == criterio){
+                escogida = i;
+            }
+        }
+        
+        ArrayList<Plato> platos = DBConnection.getPlatosDieta(dietasGuardadas.get(escogida).getCodigoDieta());
+        
         response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
         HttpSession session = request.getSession();
+        session.setAttribute("platos", platos);
+        session.setAttribute("escogida", Integer.toString(escogida));
+        session.setAttribute("dietasGuardadas", dietasGuardadas);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

@@ -23,8 +23,8 @@ import modelo.Plato;
  *
  * @author alejandro
  */
-@WebServlet(name = "DietaUsuario", urlPatterns = {"/FrontEnd/dietaUsuario"})
-public class DietaUsuario extends HttpServlet {
+@WebServlet(name = "Dieta", urlPatterns = {"/FrontEnd/dieta"})
+public class DietaS extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,7 +40,7 @@ public class DietaUsuario extends HttpServlet {
         
         response.setContentType("text/html;charset=UTF-8");
         String cod = request.getParameter("cod");
-        String url = "/FrontEnd/dietaUsuario.jsp";
+        String url = "/FrontEnd/dieta.jsp";
         Dieta dieta = null;
         boolean guardadoTemp = false;
         boolean favoritoTemp = false;

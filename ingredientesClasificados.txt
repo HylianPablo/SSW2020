@@ -1,0 +1,64 @@
+MARISCO
+%%%%%%%%%%%%%%%%%%%%%%%
+Langostinos
+Palitos de Cangrejo
+Gamba
+Mejillon
+Marisco
+Sepia
+
+
+PESCADO
+%%%%%%%%%%%%%%%%%%%%%%
+Pez Espada
+Merluza
+Atún
+Lenguado
+Rape
+Lubina
+Salmon
+Negrito
+Bacalao
+
+CERDO == MUSULMAN
+%%%%%%%%%%%%%%%%%
+Costillas de cerdo
+Salsa barbacoa
+Jamon
+Chorizo
+Solomillo de cerdo
+Codillo de cerdo
+Tocino
+Morcillo
+Filete de Lomo de Cerdo
+Chicharro
+Panceta
+Salsa carbonara
+Carne picada
+Carne de cerdo
+
+
+LACTOSA
+%%%%%%%%%%%%%%%%%%
+Salsa carbonara
+Nata
+Queso
+Leche entera
+Queso azul
+Mantequilla
+Salsa cesar
+
+
+HUEVO
+%%%%%%%%%%%%%%%%%
+Huevo
+Mayosena
+Salsa carbonara
+
+HINDU
+%%%%%%%%%%%%%%%%
+Carne picada
+Salsa barbacoa
+Ternera
+Filete de Ternera
+

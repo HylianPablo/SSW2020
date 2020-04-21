@@ -62,107 +62,139 @@
             <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
         </div>
         <br/>
-        <%
-            String codigoDieta = request.getParameter("cod");
-            if(codigoDieta == null){
-                String redirectURL = "./rankingUsuario";
-                response.sendRedirect(redirectURL);
-            }else{
-                ArrayList<Plato> platos = DBConnection.getPlatosDieta(codigoDieta);
-                if(platos==null){
-                    String redirectURL = "./rankingUsuario";
+        <jsp:useBean id="cod" class="java.lang.String" scope="session">  
+            </jsp:useBean>
+            <jsp:useBean id="platos" class="java.util.ArrayList" scope="session">  
+            </jsp:useBean>
+            <jsp:useBean id="dieta" class="modelo.Dieta" scope="session">  
+            </jsp:useBean>
+            <jsp:useBean id="favorito" class="java.lang.String" scope="session">  
+            </jsp:useBean>
+            <jsp:useBean id="guardado" class="java.lang.String" scope="session">  
+            </jsp:useBean>
+            <jsp:useBean id="nombreUsuario" class="java.lang.String" scope="session">  
+            </jsp:useBean>
+            <%
+                boolean guardadoTemp = Boolean.parseBoolean(guardado);
+                boolean favoritoTemp = Boolean.parseBoolean(favorito);
+                ArrayList<String> Dias = new ArrayList<>();
+                ArrayList<Plato> platosTemp = platos;
+                Dias.add("Lunes");
+                Dias.add("Martes");
+                Dias.add("Miércoles");
+                Dias.add("Jueves");
+                Dias.add("Viernes");
+                Dias.add("Sábado");
+                Dias.add("Domingo");
+                int numPlato = 0;
+                if (cod == null) {
+                    String redirectURL = "rankingUsuario.jsp";
                     response.sendRedirect(redirectURL);
-                }else{
-                    Dieta dieta = DBConnection.selectDieta(codigoDieta);
-                    String[] diaSemana = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
-                    int nPlato = 0;
-        %>
-        <h1 class="coolFontParagraph inlineBlock"><%=dieta.getTitulo()%>. </h1>
-        <button disabled class="uncheckedButton btn btn-success inlineBlock"><i class="fa fa-star text-warning"></i> Favorito</button>
-        <button disabled class="uncheckedButton btn btn-success inlineBlock"><i class="fa fa-heart text-danger"></i> Guardado</button>
-        <a class="m-2 btn btn-warning inlineBlock rightAligned" href="./registro" role="button">Regístrate</a>
-        <a class="m-2 btn btn-primary inlineBlock rightAligned" href="./iniciarSesion.html" role="button">Inicia sesión</a>
+                } else {
+                    if (platos == null) {
+                        String redirectURL = "rankingUsuario.jsp";
+                        response.sendRedirect(redirectURL);
+                    } else {
 
-        <div class="row">
-            <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="false">
-                <div class="MultiCarousel-inner">
-                    <%for(int i = 0; i<diaSemana.length; i++){%>
-                    <div class="item">
-                        <div id="Lunes" class="pad15">
-                            <h4 class="font-weight-bold"><%=diaSemana[i]%></h4>
-                            <div class="my-4">
-                                <h5>Desayuno</h5>
-                                <p><%=platos.get(nPlato).getNombre()%></p>
-                            </div>
-                            <div class="my-4">
-                                <h5>Comida</h5>
-                                <p><%=platos.get(nPlato+1).getNombre()%></p>
-                                <p><%=platos.get(nPlato/*+2*/).getNombre()%></p>
-                                <p>Postre</p>
-                            </div>
-                            <div class="my-4">
-                                <h5>Cena</h5>
-                                <p><%=platos.get(nPlato/*+3*/).getNombre()%></p>
-                                <p>Postre</p>
+            %>
+            <h1 class="coolFontParagraph inlineBlock"><%=dieta.getTitulo()%>. </h1>
+            <button class="<%if (!favoritoTemp) {%>uncheckedButton<%}%> btn btn-success inlineBlock" data-toggle="modal" href="#confirmarFav">
+                <i class="fa fa-star text-warning"></i> Favorito
+            </button>
+            <form method="post" class="d-inline-block" action="guardarDieta">
+                <input type="hidden" name="guardadoTemp" value="<%=!guardadoTemp%>"/>
+                <input type="hidden" name="nombreUsuario" value="<%=nombreUsuario%>"/>
+                <input type="hidden" name="codigoDieta" value="<%=cod%>"/>
+                <button type="submit" class="<%if (!guardadoTemp) {%>uncheckedButton<%}%> btn btn-success inlineBlock">
+                    <i class="fa fa-heart text-rosa"></i><%if (!guardadoTemp) {%> Guardar<%} else {%> Guardado<%}%>
+                </button>
+            </form>
+            <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
+
+            <div class="row">
+                <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="false">
+                    <div class="MultiCarousel-inner">
+                        <%for (int c = 0; c < Dias.size(); c++) {%>
+                        <div class="item">
+                            <div id<%=Dias.get(c)%> class="pad15">
+                                <h4 class="font-weight-bold"><%=Dias.get(c)%></h4>
+                                <div class="my-4">
+                                    <h5>Desayuno</h5>
+                                    <p><%=platosTemp.get(numPlato).getNombre()%></p>
+                                    <%numPlato++;%>
+                                </div>
+                                <div class="my-4">
+                                    <h5>Comida</h5>
+                                    <p><%=platosTemp.get(numPlato).getNombre()%></p>
+                                    <%numPlato++;%>
+                                    <p><%=platosTemp.get(numPlato).getNombre()%></p>
+                                    <%numPlato++;%>
+                                    <p>Postre</p>
+                                </div>
+                                <div class="my-4">
+                                    <h5>Cena</h5>
+                                    <p><%=platosTemp.get(numPlato).getNombre()%></p>
+                                    <%numPlato++;%>
+                                    <p>Postre</p>
+                                </div>
                             </div>
                         </div>
+                        <%}%>
                     </div>
-                    <%
-                        //nPlato=nPlato+4;
-                        }
-                    %>
+                    <button class="btn btn-success leftLst"><</button>
+                    <button class="btn btn-success rightLst">></button>
                 </div>
-                <button class="btn btn-success leftLst"><</button>
-                <button class="btn btn-success rightLst">></button>
             </div>
+            <br/>
+            <hr>
+            <br>
+            <h2 class="coolFontParagraph">Descripción de la dieta</h2>
+
+            <div class="card my-3" id="entradaEjemplo">
+                <div class="m-2">
+                    <p>
+                        <%=dieta.getDescripcion()%>
+                    </p>
+                </div>
+            </div>
+            <br/>
         </div>
         <br/>
-        <hr>
-        <br>
-        <h2 class="coolFontParagraph">Descripción de la dieta</h2>
 
-        <div class="card my-3" id="entradaEjemplo">
-            <div class="m-2">
-                <p>
-                    <%=dieta.getDescripcion()%>
-                </p>
+        <!-- Modal -->
+        <div class="modal fade" id="confirmarFav" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <%if (favoritoTemp) {%>¿Eliminar favorito?<%} else {%>
+                            ¿Confirmar favorito?<%}%>
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <%if (!favoritoTemp) {%>
+                        <p>Sólo puedes tener una dieta como favorita</p>
+                        <p>Si marcas esta dieta como favorita cualquier otra dieta que tengas marcada se desmarcará.</p>
+                        <%} else {%>
+                        <p>¿Seguro que quieres desmarcar esta dieta como favorita?</p>
+                        <%}%>
+                    </div>
+                    <div class="modal-footer">
+                        <form method="post" action="favoritoDieta">
+                            <input type="hidden" name="codigoDieta" value="<%=cod%>"/>
+                            <input type="hidden" name="favorito" value="<%=!favoritoTemp%>"/>
+                            <input type="hidden" name="nombreUsuario" value="<%=nombreUsuario%>"/>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Confirmar</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-        <br/>
-    </div>
-    <br/>
-
-    <script>
-        var countHeart=0;
-            function changeHeart() {  
-                var but = document.getElementById("like");
-                if (countHeart == 1) {
-                    but.style.color = '#28A745';
-                    but.style.backgroundColor = '#FFFFFF';
-                    countHeart=0;
-                } else {
-                        but.style.color = '#FFFFFF';
-                        but.style.backgroundColor = '#28A745';
-                        countHeart=1;
-                }
-            }
-    </script>
-
-    <script>
-    var countStar=0;
-        function changeStar() {
-            var but = document.getElementById("fav");
-            if (countStar == 1) {
-                but.style.color = '#28A745';
-                but.style.backgroundColor = '#FFFFFF';
-                countStar=0;
-            } else {
-                    but.style.color = '#FFFFFF';
-                    but.style.backgroundColor = '#28A745';
-                    countStar=1;
-            }
-        }
-    </script>
-    <%}}%>
-</body>
+        <%}
+            }%>
+    </body>
 </html>
