@@ -117,37 +117,37 @@
 
             <div class="row">
                 <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="false">
-                        <div class="MultiCarousel-inner">
-                            <%for (int c = 0; c < Dias.size(); c++) {%>
-                            <div class="item">
-                                <div id<%=Dias.get(c)%> class="pad15">
-                                    <h4 class="font-weight-bold"><%=Dias.get(c)%></h4>
-                                    <div class="my-4">
-                                        <h5>Desayuno</h5>
-                                        <p><%=platosTemp.get(numPlato).getNombre()%></p>
-                                        <%numPlato++;%>
-                                    </div>
-                                    <div class="my-4">
-                                        <h5>Comida</h5>
-                                        <p><%=platosTemp.get(numPlato).getNombre()%></p>
-                                        <%numPlato++;%>
-                                        <p><%=platosTemp.get(numPlato).getNombre()%></p>
-                                        <%numPlato++;%>
-                                        <p>Postre</p>
-                                    </div>
-                                    <div class="my-4">
-                                        <h5>Cena</h5>
-                                        <p><%=platosTemp.get(numPlato).getNombre()%></p>
-                                        <%numPlato++;%>
-                                        <p>Postre</p>
-                                    </div>
+                    <div class="MultiCarousel-inner">
+                        <%for (int c = 0; c < Dias.size(); c++) {%>
+                        <div class="item">
+                            <div id<%=Dias.get(c)%> class="pad15">
+                                <h4 class="font-weight-bold"><%=Dias.get(c)%></h4>
+                                <div class="my-4">
+                                    <h5>Desayuno</h5>
+                                    <p><%=platosTemp.get(numPlato).getNombre()%></p>
+                                    <%numPlato++;%>
+                                </div>
+                                <div class="my-4">
+                                    <h5>Comida</h5>
+                                    <p><%=platosTemp.get(numPlato).getNombre()%></p>
+                                    <%numPlato++;%>
+                                    <p><%=platosTemp.get(numPlato).getNombre()%></p>
+                                    <%numPlato++;%>
+                                    <p>Postre</p>
+                                </div>
+                                <div class="my-4">
+                                    <h5>Cena</h5>
+                                    <p><%=platosTemp.get(numPlato).getNombre()%></p>
+                                    <%numPlato++;%>
+                                    <p>Postre</p>
                                 </div>
                             </div>
-                            <%}%>
                         </div>
-                        <button class="btn btn-success leftLst"><</button>
-                        <button class="btn btn-success rightLst">></button>
+                        <%}%>
                     </div>
+                    <button class="btn btn-success leftLst"><</button>
+                    <button class="btn btn-success rightLst">></button>
+                </div>
             </div>
             <br/>
             <hr>
@@ -199,6 +199,6 @@
             </div>
         </div>
         <%}
-        }%>
+            }%>
     </body>
 </html>

@@ -121,7 +121,7 @@
                     LocalDateTime fechaDieta = dietasTemp.get(i).getFecha();
                     if(siempreTemp || fechaDieta.compareTo(fechaLimiteTemp)>=0){
             %>
-            <a class="text-decoration-none blackHref" href="dieta.jsp?cod=<%=dietasTemp.get(i).getCodigoDieta()%>">
+            <a class="text-decoration-none blackHref" href="./dieta?cod=<%=dietasTemp.get(i).getCodigoDieta()%>">
                 <div class="card bg-transparent mx-3 my-4">
                     <div class="entradaForoTitulo2 rounded-top p-2">
                         <div class="row">
