@@ -114,6 +114,7 @@ insert into Usuario (nombre,nombreUsuario,contrasena,correo,favorito) Values ('M
 insert into Usuario (nombre,nombreUsuario,contrasena,correo,favorito) Values ('Marcos Moya Gallo', 'marmoyaga', 'tirabuzon89','marcos.mg@yahoo.com',3);
 
 insert into Guardado (nombreUsuario,codigoDieta) Values ('pedsanz',1);
+insert into Guardado (nombreUsuario,codigoDieta) Values ('pedsanz',2);
 insert into Guardado (nombreUsuario,codigoDieta) Values ('martsanro',2);
 insert into Guardado (nombreUsuario,codigoDieta) Values ('marmoyaga',3);
 
