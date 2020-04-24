@@ -611,16 +611,12 @@ public class DBConnection {
         }
     }
 
-    public static ArrayList<Plato> selectPlatosDias(ArrayList<String> platosElegidos, ArrayList<Boolean> alergias, 
+    public static ArrayList<Plato> selectPlatosDias(ArrayList<Boolean> alergias, 
             int glucidosSimples, int polisacaridos, int aminoacidos, int proteinas, int hidratosDeCarbono) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps;
         ResultSet rs;
-        String[] alergiasIngredientesValues = new String[]{"cerdo","marisco","pescado","huevo","cacahuetes",
-        "soja","melocoton","pera","manzana","melon","kiwi","piña","fresa","lactosa"};
-        String[] alergiasEspValues = new String[]{"vegano","vegetariano","frutosSecos","gluten"};
-        String[] alergiasReligiones = new String[]{"musulman","hindu"};
         ArrayList<Plato> platosFinal = new ArrayList<>();
         //Seleccionar todos y luego tomar 3 aleatorios
         String query = "SELECT * FROM Plato p WHERE p.glucidosSimples<= ? AND p.glucidosSimples>= ?"
@@ -640,6 +636,73 @@ public class DBConnection {
                 queryAlergias+=" AND p.gluten = TRUE ";
             }
         }
+        for(int i=4;i<alergias.size();i++){
+            if(i==4 && alergias.get(i)){
+                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
+                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
+                        + "AND i.codigoIngrediente IN (SELECT c.codigoIngrediente FROM Cerdo c)=0)";
+            }else if(i==5 && alergias.get(i)){
+                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
+                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
+                        + "AND i.codigoIngrediente IN (SELECT m.codigoIngrediente FROM Marisco m)=0)";
+            }else if(i==6 && alergias.get(i)){
+                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
+                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
+                        + "AND i.codigoIngrediente IN (SELECT p.codigoIngrediente FROM Pescado p)=0)";
+            }else if(i==7 && alergias.get(i)){
+                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
+                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
+                        + "AND i.codigoIngrediente IN (SELECT h.codigoIngrediente FROM Huevo h)=0)";
+            }else if(i==8 && alergias.get(i)){
+                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
+                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
+                        + "AND i.codigoIngrediente<> cacahuetes";
+            }else if(i==9 && alergias.get(i)){
+                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
+                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
+                        + "AND i.codigoIngrediente<> soja";
+            }else if(i==10 && alergias.get(i)){
+                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
+                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
+                        + "AND i.codigoIngrediente<> melocotón";
+            }else if(i==11 && alergias.get(i)){
+                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
+                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
+                        + "AND i.codigoIngrediente<> pera";
+            }else if(i==12 && alergias.get(i)){
+                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
+                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
+                        + "AND i.codigoIngrediente<> manzana";
+            }else if(i==13 && alergias.get(i)){
+                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
+                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
+                        + "AND i.codigoIngrediente<> melón";
+            }else if(i==14 && alergias.get(i)){
+                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
+                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
+                        + "AND i.codigoIngrediente<> kiwi";
+            }else if(i==15 && alergias.get(i)){
+                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
+                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
+                        + "AND i.codigoIngrediente<> piña";
+            }else if(i==16 && alergias.get(i)){
+                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
+                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
+                        + "AND i.codigoIngrediente<> fresa";
+            }else if(i==17 && alergias.get(i)){
+                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
+                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
+                        + "AND i.codigoIngrediente IN (SELECT l.codigoIngrediente FROM Lactoso l)=0)";
+            }else if(i==18 && alergias.get(i)){
+                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
+                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
+                        + "AND i.codigoIngrediente IN (SELECT c.codigoIngrediente FROM Cerdo c)=0)";
+            }else if(i==19 && alergias.get(i)){
+                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
+                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
+                        + "AND i.codigoIngrediente IN (SELECT h.codigoIngrediente FROM Hindu h)=0)";
+            }
+        }
         query+=queryAlergias;
         try {
             ps = connection.prepareStatement(query);
@@ -656,7 +719,7 @@ public class DBConnection {
             rs = ps.executeQuery();
             Plato plato = null;
 
-            if (rs.next()) {
+            while (rs.next()) {
                 //Igual es mejor tener las clases vacías y usar setters en vez de constructor
                 plato = new Plato();
                 plato.setCodigoPlato(rs.getString("codigoPlato"));
@@ -673,7 +736,7 @@ public class DBConnection {
                 plato.setAminoacidos(rs.getInt("aminoacidos"));
                 plato.setProteinas(rs.getInt("proteinas"));
                 plato.setHidratosDeCarbono(rs.getInt("hidratosDeCarbono"));
-                //retorno.add(entrada);
+                platosFinal.add(plato);
             }
             rs.close();
             ps.close();
