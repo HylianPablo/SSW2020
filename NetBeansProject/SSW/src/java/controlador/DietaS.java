@@ -7,8 +7,6 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDateTime;
-import java.time.Month;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,16 +15,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import modelo.Comentario;
 import modelo.DBConnection;
-import modelo.Entrada;
+import modelo.Dieta;
+import modelo.Plato;
 
 /**
  *
  * @author alejandro
  */
-@WebServlet(name = "EntradaUsuario", urlPatterns = {"/FrontEnd/EntradaUsuario"})
-public class EntradaUsuario extends HttpServlet {
+@WebServlet(name = "Dieta", urlPatterns = {"/FrontEnd/dieta"})
+public class DietaS extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,31 +37,28 @@ public class EntradaUsuario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         response.setContentType("text/html;charset=UTF-8");
-        String url = null;
-        Entrada entrada = null;
         String cod = request.getParameter("cod");
-        if (cod!=null){
-            entrada = DBConnection.selectEntrada(cod);
-            if (entrada != null) {
-                url = "/FrontEnd/entradaUsuario.jsp";
+        String url = "/FrontEnd/dieta.jsp";
+        Dieta dieta;
+        ArrayList<Plato> platos = null;
+        if(cod != null){
+            platos = DBConnection.getPlatosDieta(cod);
+            if(platos != null && !platos.isEmpty()){
+                dieta = DBConnection.selectDieta(cod);
+                
+                HttpSession session = request.getSession();
+                session.setAttribute("platos", platos);
+                session.setAttribute("cod", cod);
+                session.setAttribute("dieta", dieta);
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+                dispatcher.forward(request, response);
             }
         }
-        if (url == null){
-            url = "/SSW/FrontEnd/foroUsuario";
-            response.sendRedirect(url);
-        }else{
-            ArrayList<Comentario> comentarios = DBConnection.getComentarios(cod);
-
-            HttpSession session = request.getSession();
-            session.setAttribute("cod", cod);
-            session.setAttribute("entrada", entrada);
-            session.setAttribute("comentarios", comentarios);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-            dispatcher.forward(request, response);
+        if(platos == null || platos.isEmpty()){
+            response.sendRedirect("/SSW/FrontEnd/ranking");
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

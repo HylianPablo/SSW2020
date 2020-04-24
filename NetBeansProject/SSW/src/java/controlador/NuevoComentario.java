@@ -45,7 +45,7 @@ public class NuevoComentario extends HttpServlet {
         String cuerpo = request.getParameter("cuerpoComentario");
         String usuario = request.getParameter("usuario");
         String codigoEntrada = request.getParameter("codigoEntrada");
-        LocalDateTime date = LocalDateTime.of(2019,Month.APRIL,03, 19, 30, 40);//request.getParameter("fechaNuevaEntrada");
+        LocalDateTime date = LocalDateTime.now();
         Comentario comentario = new Comentario();
         comentario.setCodigoComentario(codigoComentario);
         comentario.setCodigoPadre(codigoEntrada);
@@ -53,7 +53,7 @@ public class NuevoComentario extends HttpServlet {
         comentario.setFecha(date);
         comentario.setNombreUsuario(usuario);
         DBConnection.insertComentario(comentario);
-        String url = "/FrontEnd/entradaUsuario.jsp"; //ahora la url tiene SSW
+        String url = "/FrontEnd/entradaUsuario.jsp"; 
         HttpSession session = request.getSession();
         ArrayList<Comentario> comentarios = DBConnection.getComentarios(codigoEntrada);
         Entrada entrada = DBConnection.selectEntrada(codigoEntrada);

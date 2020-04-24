@@ -7,7 +7,6 @@ package controlador;
 
 import modelo.DBConnection;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,7 +39,8 @@ public class favoritoDieta extends HttpServlet {
             DBConnection.setFavorito(codigoDieta, nombreUsuario);
         else
             DBConnection.borrarFavorito(nombreUsuario);
-        String url = "/SSW/FrontEnd/dietaUsuario.jsp?cod="+codigoDieta;
+        String url = "/SSW/FrontEnd/dietaUsuario?cod="+codigoDieta;
+        
         response.sendRedirect(url);
     }
 

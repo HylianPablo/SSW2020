@@ -47,6 +47,8 @@ public class Perfil extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("usuario", usuario);
         session.setAttribute("dietas", dietas);
+        String hayDietaF = String.valueOf(dietaF==null);
+        session.setAttribute("hayDietaF", hayDietaF);
         session.setAttribute("dietaF", dietaF);
         session.setAttribute("nombreUsuario", nombreUsuario);
         
