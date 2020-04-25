@@ -578,11 +578,12 @@ public class DBConnection {
                 ps = connection.prepareStatement(query);
                 ps.setString(1, codigosPlatos.get(i));
                 rs = ps.executeQuery();
-                Plato plato = null;
+                Plato plato;
 
                 if (rs.next()) {
                     //Igual es mejor tener las clases vacías y usar setters en vez de constructor
                     plato = new Plato();
+                    
                     plato.setCodigoPlato(rs.getString("codigoPlato"));
                     plato.setNombre(rs.getString("nombre"));
                     plato.setDescripcion(rs.getString("descripcion"));
@@ -597,6 +598,7 @@ public class DBConnection {
                     plato.setAminoacidos(rs.getInt("aminoacidos"));
                     plato.setProteinas(rs.getInt("proteinas"));
                     plato.setHidratosDeCarbono(rs.getInt("hidratosDeCarbono"));
+                    
                     nombresPlatos.add(plato);
                 }
                 rs.close();
@@ -706,16 +708,18 @@ public class DBConnection {
         query+=queryAlergias;
         try {
             ps = connection.prepareStatement(query);
-            ps.setString(1,Integer.toString(glucidosSimples-minLimit));
-            ps.setString(2,Integer.toString(glucidosSimples+maxLimit));
-            ps.setString(3,Integer.toString(polisacaridos-minLimit));
-            ps.setString(4,Integer.toString(polisacaridos+maxLimit));
-            ps.setString(5,Integer.toString(aminoacidos-minLimit));
-            ps.setString(6,Integer.toString(aminoacidos+maxLimit));
-            ps.setString(7,Integer.toString(proteinas-minLimit));
-            ps.setString(8,Integer.toString(proteinas+maxLimit));
-            ps.setString(9,Integer.toString(hidratosDeCarbono-minLimit));
-            ps.setString(10,Integer.toString(hidratosDeCarbono+maxLimit));
+           
+            ps.setString(1,Integer.toString(glucidosSimples-maxLimit));
+            ps.setString(2,Integer.toString(glucidosSimples+minLimit));
+            ps.setString(3,Integer.toString(polisacaridos-maxLimit));
+            ps.setString(4,Integer.toString(polisacaridos+minLimit));
+            ps.setString(5,Integer.toString(aminoacidos-maxLimit));
+            ps.setString(6,Integer.toString(aminoacidos+minLimit));
+            ps.setString(7,Integer.toString(proteinas-maxLimit));
+            ps.setString(8,Integer.toString(proteinas+minLimit));
+            ps.setString(9,Integer.toString(hidratosDeCarbono-maxLimit));
+            ps.setString(10,Integer.toString(hidratosDeCarbono+minLimit));
+            
             rs = ps.executeQuery();
             Plato plato = null;
 

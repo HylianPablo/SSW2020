@@ -131,11 +131,14 @@ public class diaDieta extends HttpServlet {
                 hidratosDeCarbono+=platosDATOS.get(i).getHidratosDeCarbono();
             }
             //AQUI SE CALCULAN LAS VARIABLES DE MACROMOLECULAS, ARRAY PLATOSELEGIDOS ES DE STRINGS
-            platos = DBConnection.selectPlatosDias(alergias,
-                    glucidosSimples,polisacaridos,aminoacidos,proteinas,hidratosDeCarbono);
-            //Da mal generar dieta hasta que se haga esta consulta
-            System.out.println("TAMAÑO DE PLATOS ELEGIDOS: "+platos.size());
+            platos = DBConnection.selectPlatosDias(alergias,10,10,10,10,10);
+        }else{
+            platos = DBConnection.selectPlatosDias(alergias,10,10,10,10,10);
         }
+        //glucidosSimples,polisacaridos,aminoacidos,proteinas,hidratosDeCarbono);
+        //Da mal generar dieta hasta que se haga esta consulta
+        System.out.println("TAMAÑO DE PLATOS ELEGIDOS: "+platos.size());
+        
         session.setAttribute("platosElegidos",platosElegidos);
         session.setAttribute("diaSemana", diaSemana);
         session.setAttribute("platos",platos);

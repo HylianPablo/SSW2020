@@ -80,7 +80,7 @@
                     Dias.add("Domingo");
                     int diaActual = Integer.parseInt(diaSemana);
                     ArrayList<Plato> ps = platos;
-                    ArrayList<Plato> psD = platosDesayuno;
+                    //ArrayList<Plato> psD = platosDesayuno;
                 %>
                 <h1 class="text-center display-4 coolFontParagraph" ><%=Dias.get(diaActual)%></h1>
                 <form action="diaDieta" method="POST">
