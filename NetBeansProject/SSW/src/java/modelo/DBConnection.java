@@ -640,9 +640,10 @@ public class DBConnection {
         }
         for(int i=4;i<alergias.size();i++){
             if(i==4 && alergias.get(i)){
-                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
-                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
-                        + "AND i.codigoIngrediente IN (SELECT c.codigoIngrediente FROM Cerdo c)=0)";
+                queryAlergias+=" AND (SELECT count(*) FROM  (SELECT pp2.codigoPlato, pp2.codigoIngrediente FROM Ingrediente i, PertenenciaPlato pp2, "
+                        + "Plato p2 WHERE p2.codigoPlato = pp2.codigoPlato AND pp2.codigoIngrediente = i.codigoIngrediente) igr, "
+                        + "Ingrediente i , Cerdo c WHERE p.codigoPlato = igr.codigoPlato AND i.codigoIngrediente = igr.codigoIngrediente "
+                        + "AND igr.codigoIngrediente = c.codigoIngrediente)=0";
             }else if(i==5 && alergias.get(i)){
                 queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
                         + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
@@ -709,16 +710,16 @@ public class DBConnection {
         try {
             ps = connection.prepareStatement(query);
            
-            ps.setString(1,Integer.toString(glucidosSimples-maxLimit));
-            ps.setString(2,Integer.toString(glucidosSimples+minLimit));
-            ps.setString(3,Integer.toString(polisacaridos-maxLimit));
-            ps.setString(4,Integer.toString(polisacaridos+minLimit));
-            ps.setString(5,Integer.toString(aminoacidos-maxLimit));
-            ps.setString(6,Integer.toString(aminoacidos+minLimit));
-            ps.setString(7,Integer.toString(proteinas-maxLimit));
-            ps.setString(8,Integer.toString(proteinas+minLimit));
-            ps.setString(9,Integer.toString(hidratosDeCarbono-maxLimit));
-            ps.setString(10,Integer.toString(hidratosDeCarbono+minLimit));
+            ps.setString(1,Integer.toString(glucidosSimples+maxLimit));
+            ps.setString(2,Integer.toString(glucidosSimples-minLimit));
+            ps.setString(3,Integer.toString(polisacaridos+maxLimit));
+            ps.setString(4,Integer.toString(polisacaridos-minLimit));
+            ps.setString(5,Integer.toString(aminoacidos+maxLimit));
+            ps.setString(6,Integer.toString(aminoacidos-minLimit));
+            ps.setString(7,Integer.toString(proteinas+maxLimit));
+            ps.setString(8,Integer.toString(proteinas-minLimit));
+            ps.setString(9,Integer.toString(hidratosDeCarbono+maxLimit));
+            ps.setString(10,Integer.toString(hidratosDeCarbono-minLimit));
             
             rs = ps.executeQuery();
             Plato plato = null;

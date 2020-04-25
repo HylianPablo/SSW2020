@@ -601,8 +601,8 @@ insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (62,31);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (17,31);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (18,31);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (65,32);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (83,32);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (65,32);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (16,32);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (17,32);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (18,32);

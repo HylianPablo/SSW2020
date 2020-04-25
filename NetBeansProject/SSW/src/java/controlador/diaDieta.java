@@ -50,50 +50,21 @@ public class diaDieta extends HttpServlet {
         ArrayList <String> platosElegidos=null; //Array de codigos de platos elegidos hasta esta iteracion
         ArrayList <Boolean> alergias=null;  //Alergias elegidas al principio, no se modifican
         ArrayList <Plato> platos=null; //Platos que se podrán elegir el siguiente día
+        String holaPablo = request.getParameter("vegano");
+        boolean vegano = false;
+        System.out.println(holaPablo);
         if(diaSemana.equals("0")){
             platosElegidos = new ArrayList<>();
             alergias = new ArrayList<>();
             try{
-                boolean vegano = Boolean.parseBoolean(request.getParameter("vegano"));
+                System.out.println("wdwqdqwdwqdwqdwqdwqdwqdwqd");
+                if(holaPablo.equals("on")){
+                    vegano = true;
+                }
+                System.out.println("wdwqdqwdwqdwqdwqdwqdwqdwqd" + alergias.size());
                 alergias.add(vegano);
-                boolean vegetariano = Boolean.parseBoolean(request.getParameter("vegetariano"));
-                alergias.add(vegetariano);
-                boolean frutosSecos = Boolean.parseBoolean(request.getParameter("frutosSecos"));
-                alergias.add(frutosSecos);
-                boolean celiaco = Boolean.parseBoolean(request.getParameter("celiaco"));
-                alergias.add(celiaco);
-                boolean cerdo = Boolean.parseBoolean(request.getParameter("cerdo"));
-                alergias.add(cerdo);
-                boolean marisco = Boolean.parseBoolean(request.getParameter("marisco"));
-                alergias.add(marisco);
-                boolean huevo = Boolean.parseBoolean(request.getParameter("huevo"));
-                alergias.add(huevo);
-                boolean pescado = Boolean.parseBoolean(request.getParameter("pescado"));
-                alergias.add(pescado);
-                boolean cacahuetes = Boolean.parseBoolean(request.getParameter("cacahuetes"));
-                alergias.add(cacahuetes);
-                boolean soja = Boolean.parseBoolean(request.getParameter("soja"));
-                alergias.add(soja);
-                boolean melocoton = Boolean.parseBoolean(request.getParameter("melocoton"));
-                alergias.add(melocoton);
-                boolean pera = Boolean.parseBoolean(request.getParameter("pera"));
-                alergias.add(pera);
-                boolean manzana = Boolean.parseBoolean(request.getParameter("manzana"));
-                alergias.add(manzana);
-                boolean melon = Boolean.parseBoolean(request.getParameter("melon"));
-                alergias.add(melon);
-                boolean kiwi = Boolean.parseBoolean(request.getParameter("kiwi"));
-                alergias.add(kiwi);
-                boolean piña = Boolean.parseBoolean(request.getParameter("piña"));
-                alergias.add(piña);
-                boolean fresa = Boolean.parseBoolean(request.getParameter("fresa"));
-                alergias.add(fresa);
-                boolean lactosa = Boolean.parseBoolean(request.getParameter("lactosa"));
-                alergias.add(lactosa);
-                boolean musulman = Boolean.parseBoolean(request.getParameter("musulman"));
-                alergias.add(musulman);
-                boolean hindu = Boolean.parseBoolean(request.getParameter("hindu"));
-                alergias.add(hindu);
+                System.out.println("wdwqdqwdwqdwqdwqdwqdwqdwqd" + alergias.size());
+ 
             }catch(Exception e){
                 e.printStackTrace();
             }
@@ -109,6 +80,7 @@ public class diaDieta extends HttpServlet {
             platosElegidos.add(comida1);
             platosElegidos.add(comida2);
             platosElegidos.add(cena);
+            System.out.println("TAMAÑO DE PLATOS ELEGIDOS de verdad: "+platos.size());
             }catch(Exception e){
                 e.printStackTrace();
             }       
@@ -131,8 +103,11 @@ public class diaDieta extends HttpServlet {
                 hidratosDeCarbono+=platosDATOS.get(i).getHidratosDeCarbono();
             }
             //AQUI SE CALCULAN LAS VARIABLES DE MACROMOLECULAS, ARRAY PLATOSELEGIDOS ES DE STRINGS
+            //System.out.println("hola");
+            
             platos = DBConnection.selectPlatosDias(alergias,10,10,10,10,10);
         }else{
+            System.out.println("hola"  + alergias.size());
             platos = DBConnection.selectPlatosDias(alergias,10,10,10,10,10);
         }
         //glucidosSimples,polisacaridos,aminoacidos,proteinas,hidratosDeCarbono);
