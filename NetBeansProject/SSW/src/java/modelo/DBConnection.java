@@ -569,8 +569,8 @@ public class DBConnection {
     public static ArrayList<Plato> selectPlatosFromCodigo(ArrayList<String> codigosPlatos) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps=null;
+        ResultSet rs=null;
         ArrayList<Plato> nombresPlatos = new ArrayList<>();
         String query = "SELECT * FROM Plato p WHERE p.codigoPlato=?";
         try {
@@ -601,10 +601,11 @@ public class DBConnection {
                     
                     nombresPlatos.add(plato);
                 }
+            }
                 rs.close();
                 ps.close();
                 pool.freeConnection(connection);
-            }
+            
             return nombresPlatos;
         } catch (SQLException e) {
             pool.freeConnection(connection);

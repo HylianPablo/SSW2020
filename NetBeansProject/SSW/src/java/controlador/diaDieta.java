@@ -7,6 +7,7 @@ package controlador;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -64,7 +65,6 @@ public class diaDieta extends HttpServlet {
                 alergias.add(celiaco);
                 boolean cerdo = (request.getParameter("cerdo") != null);
                 alergias.add(cerdo);
-                System.out.println(alergias.get(4));
                 boolean marisco = (request.getParameter("marisco") != null);
                 alergias.add(marisco);
                 boolean huevo = (request.getParameter("huevo") != null);
@@ -123,6 +123,7 @@ public class diaDieta extends HttpServlet {
         
         if(!diaSemana.equals("0")){
             //SE TRANSFORMA ARRAY DE CODIGOS(STRING) A ARRAY DE PLATOS
+            //Tiene utilidad para sacar los valores de las macromoleculas
             ArrayList<Plato> platosDATOS = DBConnection.selectPlatosFromCodigo(platosElegidos);
             for(int i=0;i<platosDATOS.size();i++){
                 glucidosSimples+=platosDATOS.get(i).getGlucidosSimples();
@@ -133,10 +134,12 @@ public class diaDieta extends HttpServlet {
             }
             //AQUI SE CALCULAN LAS VARIABLES DE MACROMOLECULAS, ARRAY PLATOSELEGIDOS ES DE STRINGS
             //System.out.println("hola");
+            platos = DBConnection.selectPlatosDias(alergias,0,0,0,0,0);
+            Collections.shuffle(platos);
             
-            platos = DBConnection.selectPlatosDias(alergias,10,10,10,10,10);
         }else{
             platos = DBConnection.selectPlatosDias(alergias,0,0,0,0,0);
+            
         }
         //glucidosSimples,polisacaridos,aminoacidos,proteinas,hidratosDeCarbono);
         //Da mal generar dieta hasta que se haga esta consulta

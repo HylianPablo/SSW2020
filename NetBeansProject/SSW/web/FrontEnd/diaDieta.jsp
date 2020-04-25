@@ -86,6 +86,7 @@
                 <form action="diaDieta" method="POST">
                     <div>
                         <input type="hidden" name="diaSemana" value="<%=diaActual + 1%>">
+                        <input type="hidden" name="diaSemana" value="<%=alergias%>">
                         <form action="diaDieta" method ="POST" >
                             <%
                                 String nomComida;
