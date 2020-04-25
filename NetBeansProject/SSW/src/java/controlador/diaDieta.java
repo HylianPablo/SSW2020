@@ -64,6 +64,7 @@ public class diaDieta extends HttpServlet {
                 alergias.add(celiaco);
                 boolean cerdo = (request.getParameter("cerdo") != null);
                 alergias.add(cerdo);
+                System.out.println(alergias.get(4));
                 boolean marisco = (request.getParameter("marisco") != null);
                 alergias.add(marisco);
                 boolean huevo = (request.getParameter("huevo") != null);
@@ -135,7 +136,7 @@ public class diaDieta extends HttpServlet {
             
             platos = DBConnection.selectPlatosDias(alergias,10,10,10,10,10);
         }else{
-            platos = DBConnection.selectPlatosDias(alergias,10,10,10,10,10);
+            platos = DBConnection.selectPlatosDias(alergias,0,0,0,0,0);
         }
         //glucidosSimples,polisacaridos,aminoacidos,proteinas,hidratosDeCarbono);
         //Da mal generar dieta hasta que se haga esta consulta

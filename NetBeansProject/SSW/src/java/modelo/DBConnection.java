@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class DBConnection {
 
-    private static int maxLimit = 30;
-    private static int minLimit = 30;
+    private static int maxLimit = 100;
+    private static int minLimit = 0;
 
     //USUARIO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
     public static int insertUsuario(Usuario user) {
@@ -645,17 +645,20 @@ public class DBConnection {
                         + "Ingrediente i , Cerdo c WHERE p.codigoPlato = igr.codigoPlato AND i.codigoIngrediente = igr.codigoIngrediente "
                         + "AND igr.codigoIngrediente = c.codigoIngrediente)=0";
             }else if(i==5 && alergias.get(i)){
-                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
-                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
-                        + "AND i.codigoIngrediente IN (SELECT m.codigoIngrediente FROM Marisco m)=0)";
+                queryAlergias+=" AND (SELECT count(*) FROM  (SELECT pp2.codigoPlato, pp2.codigoIngrediente FROM Ingrediente i, PertenenciaPlato pp2, "
+                        + "Plato p2 WHERE p2.codigoPlato = pp2.codigoPlato AND pp2.codigoIngrediente = i.codigoIngrediente) igr, "
+                        + "Ingrediente i , Marisco m WHERE p.codigoPlato = igr.codigoPlato AND i.codigoIngrediente = igr.codigoIngrediente "
+                        + "AND igr.codigoIngrediente = m.codigoIngrediente)=0";
             }else if(i==6 && alergias.get(i)){
-                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
-                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
-                        + "AND i.codigoIngrediente IN (SELECT p.codigoIngrediente FROM Pescado p)=0)";
+                queryAlergias+=" AND (SELECT count(*) FROM  (SELECT pp2.codigoPlato, pp2.codigoIngrediente FROM Ingrediente i, PertenenciaPlato pp2, "
+                        + "Plato p2 WHERE p2.codigoPlato = pp2.codigoPlato AND pp2.codigoIngrediente = i.codigoIngrediente) igr, "
+                        + "Ingrediente i , Huevo h WHERE p.codigoPlato = igr.codigoPlato AND i.codigoIngrediente = igr.codigoIngrediente "
+                        + "AND igr.codigoIngrediente = h.codigoIngrediente)=0";
             }else if(i==7 && alergias.get(i)){
-                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
-                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
-                        + "AND i.codigoIngrediente IN (SELECT h.codigoIngrediente FROM Huevo h)=0)";
+                queryAlergias+=" AND (SELECT count(*) FROM  (SELECT pp2.codigoPlato, pp2.codigoIngrediente FROM Ingrediente i, PertenenciaPlato pp2, "
+                        + "Plato p2 WHERE p2.codigoPlato = pp2.codigoPlato AND pp2.codigoIngrediente = i.codigoIngrediente) igr, "
+                        + "Ingrediente i , Pescado x WHERE p.codigoPlato = igr.codigoPlato AND i.codigoIngrediente = igr.codigoIngrediente "
+                        + "AND igr.codigoIngrediente = x.codigoIngrediente)=0";
             }else if(i==8 && alergias.get(i)){
                 queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
                         + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
@@ -697,13 +700,15 @@ public class DBConnection {
                         + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
                         + "AND i.codigoIngrediente IN (SELECT l.codigoIngrediente FROM Lactoso l)=0)";
             }else if(i==18 && alergias.get(i)){
-                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
-                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
-                        + "AND i.codigoIngrediente IN (SELECT c.codigoIngrediente FROM Cerdo c)=0)";
+                queryAlergias+=" AND (SELECT count(*) FROM  (SELECT pp2.codigoPlato, pp2.codigoIngrediente FROM Ingrediente i, PertenenciaPlato pp2, "
+                        + "Plato p2 WHERE p2.codigoPlato = pp2.codigoPlato AND pp2.codigoIngrediente = i.codigoIngrediente) igr, "
+                        + "Ingrediente i , Cerdo c WHERE p.codigoPlato = igr.codigoPlato AND i.codigoIngrediente = igr.codigoIngrediente "
+                        + "AND igr.codigoIngrediente = c.codigoIngrediente)=0";
             }else if(i==19 && alergias.get(i)){
-                queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
-                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
-                        + "AND i.codigoIngrediente IN (SELECT h.codigoIngrediente FROM Hindu h)=0)";
+                queryAlergias+=" AND (SELECT count(*) FROM  (SELECT pp2.codigoPlato, pp2.codigoIngrediente FROM Ingrediente i, PertenenciaPlato pp2, "
+                        + "Plato p2 WHERE p2.codigoPlato = pp2.codigoPlato AND pp2.codigoIngrediente = i.codigoIngrediente) igr, "
+                        + "Ingrediente i , Hindu h WHERE p.codigoPlato = igr.codigoPlato AND i.codigoIngrediente = igr.codigoIngrediente "
+                        + "AND igr.codigoIngrediente = h.codigoIngrediente)=0";
             }
         }
         query+=queryAlergias;
