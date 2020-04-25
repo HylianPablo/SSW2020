@@ -50,21 +50,50 @@ public class diaDieta extends HttpServlet {
         ArrayList <String> platosElegidos=null; //Array de codigos de platos elegidos hasta esta iteracion
         ArrayList <Boolean> alergias=null;  //Alergias elegidas al principio, no se modifican
         ArrayList <Plato> platos=null; //Platos que se podrán elegir el siguiente día
-        String holaPablo = request.getParameter("vegano");
-        boolean vegano = false;
-        System.out.println(holaPablo);
         if(diaSemana.equals("0")){
             platosElegidos = new ArrayList<>();
             alergias = new ArrayList<>();
             try{
-                System.out.println("wdwqdqwdwqdwqdwqdwqdwqdwqd");
-                if(holaPablo.equals("on")){
-                    vegano = true;
-                }
-                System.out.println("wdwqdqwdwqdwqdwqdwqdwqdwqd" + alergias.size());
+                boolean vegano = (request.getParameter("vegano") != null);
                 alergias.add(vegano);
-                System.out.println("wdwqdqwdwqdwqdwqdwqdwqdwqd" + alergias.size());
- 
+                boolean vegetariano = (request.getParameter("vegetariano") != null);
+                alergias.add(vegetariano);
+                boolean frutosSecos = (request.getParameter("frutosSecos") != null);
+                alergias.add(frutosSecos);
+                boolean celiaco = (request.getParameter("celiaco") != null);
+                alergias.add(celiaco);
+                boolean cerdo = (request.getParameter("cerdo") != null);
+                alergias.add(cerdo);
+                boolean marisco = (request.getParameter("marisco") != null);
+                alergias.add(marisco);
+                boolean huevo = (request.getParameter("huevo") != null);
+                alergias.add(huevo);
+                boolean pescado = (request.getParameter("pescado") != null);
+                alergias.add(pescado);
+                boolean  cacahuetes = (request.getParameter("cacahuetes") != null);
+                alergias.add(cacahuetes);
+                boolean soja = (request.getParameter("soja") != null);
+                alergias.add(soja);
+                boolean melocoton = (request.getParameter("melocoton") != null);
+                alergias.add(melocoton);
+                boolean pera = (request.getParameter("pera") != null);
+                alergias.add(pera);
+                boolean manzana = (request.getParameter("manzana") != null);
+                alergias.add(manzana);
+                boolean melon = (request.getParameter("melon") != null);
+                alergias.add(melon);
+                boolean kiwi = (request.getParameter("kiwi") != null);
+                alergias.add(kiwi);
+                boolean piña = (request.getParameter("piña") != null);
+                alergias.add(piña);
+                boolean fresa = (request.getParameter("fresa") != null);
+                alergias.add(fresa);
+                boolean lactosa = (request.getParameter("lactosa") != null);
+                alergias.add(lactosa);
+                boolean musulman = (request.getParameter("musulman") != null);
+                alergias.add(musulman);
+                boolean hindu = (request.getParameter("hindu") != null);
+                alergias.add(hindu);
             }catch(Exception e){
                 e.printStackTrace();
             }
@@ -80,7 +109,6 @@ public class diaDieta extends HttpServlet {
             platosElegidos.add(comida1);
             platosElegidos.add(comida2);
             platosElegidos.add(cena);
-            System.out.println("TAMAÑO DE PLATOS ELEGIDOS de verdad: "+platos.size());
             }catch(Exception e){
                 e.printStackTrace();
             }       
@@ -107,12 +135,10 @@ public class diaDieta extends HttpServlet {
             
             platos = DBConnection.selectPlatosDias(alergias,10,10,10,10,10);
         }else{
-            System.out.println("hola"  + alergias.size());
             platos = DBConnection.selectPlatosDias(alergias,10,10,10,10,10);
         }
         //glucidosSimples,polisacaridos,aminoacidos,proteinas,hidratosDeCarbono);
         //Da mal generar dieta hasta que se haga esta consulta
-        System.out.println("TAMAÑO DE PLATOS ELEGIDOS: "+platos.size());
         
         session.setAttribute("platosElegidos",platosElegidos);
         session.setAttribute("diaSemana", diaSemana);
