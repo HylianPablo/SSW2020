@@ -50,7 +50,8 @@ public class diaDieta extends HttpServlet {
         
         ArrayList <String> platosElegidos=null; //Array de codigos de platos elegidos hasta esta iteracion
         ArrayList <Boolean> alergias=null;  //Alergias elegidas al principio, no se modifican
-        ArrayList <Plato> platos=null; //Platos que se podrán elegir el siguiente día
+        ArrayList <Plato> platos=null; //Platos que se podrán elegir el siguiente día comidas generales
+        ArrayList <Plato> platosDesayuno=null; //Platos que se podrán elegir el siguiente día desayuno
         if(diaSemana.equals("0")){
             platosElegidos = new ArrayList<>();
             alergias = new ArrayList<>();
@@ -135,10 +136,15 @@ public class diaDieta extends HttpServlet {
             //AQUI SE CALCULAN LAS VARIABLES DE MACROMOLECULAS, ARRAY PLATOSELEGIDOS ES DE STRINGS
             //System.out.println("hola");
             platos = DBConnection.selectPlatosDias(alergias,0,0,0,0,0);
+            platosDesayuno = DBConnection.selectPlatosDiasDesayuno(alergias,0,0,0,0,0);
             Collections.shuffle(platos);
+            Collections.shuffle(platosDesayuno);
             
         }else{
             platos = DBConnection.selectPlatosDias(alergias,0,0,0,0,0);
+            platosDesayuno = DBConnection.selectPlatosDiasDesayuno(alergias,0,0,0,0,0);
+            Collections.shuffle(platos);
+            Collections.shuffle(platosDesayuno);
             
         }
         //glucidosSimples,polisacaridos,aminoacidos,proteinas,hidratosDeCarbono);
@@ -147,6 +153,7 @@ public class diaDieta extends HttpServlet {
         session.setAttribute("platosElegidos",platosElegidos);
         session.setAttribute("diaSemana", diaSemana);
         session.setAttribute("platos",platos);
+        session.setAttribute("platosDesayuno",platosDesayuno);
         session.setAttribute("alergias",alergias);
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);

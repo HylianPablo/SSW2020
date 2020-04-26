@@ -80,7 +80,7 @@
                     Dias.add("Domingo");
                     int diaActual = Integer.parseInt(diaSemana);
                     ArrayList<Plato> ps = platos;
-                    //ArrayList<Plato> psD = platosDesayuno;
+                    ArrayList<Plato> psD = platosDesayuno;
                 %>
                 <h1 class="text-center display-4 coolFontParagraph" ><%=Dias.get(diaActual)%></h1>
                 <form action="diaDieta" method="POST">
@@ -91,6 +91,7 @@
                             <%
                                 String nomComida;
                                 int numPlato = 0;
+                                int numPlatoD = 0;
                                 int cantComidas = 3;
                                 String titulos[] = {"Desayuno", "Comida", "Cena"};
                                 int cantPlatos[] = {1, 3, 2};
@@ -114,10 +115,24 @@
                                                 <%
                                                     int NUM_OPC = 3;
                                                     nomComida = menus[c][m];
-                                                    if (!nomComida.equals("postre")) {
+                                                    if(menus[c][m]=="desayuno"){
                                                         for (int i = 0; i < NUM_OPC; i++) { 
-                                                            Plato p = ps.get(numPlato);
-                                                            numPlato++;
+                                                                Plato p = psD.get(numPlatoD);
+                                                                numPlatoD++;%>
+                                                        <td>
+                                                    <div class="custom-control custom-radio">
+                                                        <input value="<%=p.getCodigoPlato()%>" type="radio" onclick="checkAllRadio()" id="<%=nomComida + i%>" name="<%=nomComida%>" class="custom-control-input">
+
+                                                        <label class="custom-control-label" for="<%=nomComida + i%>">
+                                                            <%=p.getNombre()%>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <%    }}else{
+                                                        if (!nomComida.equals("postre")) {
+                                                            for (int i = 0; i < NUM_OPC; i++) { 
+                                                                Plato p = ps.get(numPlato);
+                                                                numPlato++;
                                                 %>
                                                 <td>
                                                     <div class="custom-control custom-radio">
@@ -136,7 +151,7 @@
                                                 <td></td>
                                                 <%  }   %>
                                             </tr>
-                                            <%  }   %>
+                                            <%  }}  %>
                                         </tbody>
                                     </table>
                                 </div>
