@@ -617,13 +617,13 @@ public class DBConnection {
         ResultSet rs;
         ArrayList<Plato> platosFinal = new ArrayList<>();
         //Seleccionar todos y luego tomar 3 aleatorios
-        String query = "SELECT * FROM Plato p WHERE p.desayuno=? "
-                + "AND (p.glucidosSimples+p.polisacaridos) <= ? AND (p.glucidosSimples+p.polisacaridos)>= ?"
-                + "AND p.lipidos <= ? AND p.lipidos>= ?"
-                + "AND p.proteinas <= ? AND p.proteinas >= ?";
+        String query = "SELECT * FROM Plato p WHERE p.desayuno = ? "
+                + "AND (p.glucidosSimples+p.polisacaridos) <= ? AND (p.glucidosSimples+p.polisacaridos)>= ? "
+                + "AND p.lipidos <= ? AND p.lipidos>= ? "
+                + "AND p.proteinas <= ? AND p.proteinas >= ? ";
         String queryAlergias="";
-        String subqueryIngredienteIndividual=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
-                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
+        String subAlergiaIndiv=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
+                        + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente "
                         + "AND i.nombre<> ";
         for(int i=0;i<4;i++){
             if(i==0 && alergias.get(i)){
@@ -636,6 +636,7 @@ public class DBConnection {
                 queryAlergias+=" AND p.gluten = TRUE ";
             }
         }
+        String subAlerg;
         for(int i=4;i<alergias.size();i++){
             if(i==4 && alergias.get(i)){
                 queryAlergias+=" AND (SELECT count(*) FROM  (SELECT pp2.codigoPlato, pp2.codigoIngrediente FROM Ingrediente i, PertenenciaPlato pp2, "
@@ -658,32 +659,32 @@ public class DBConnection {
                         + "Ingrediente i , Pescado x WHERE p.codigoPlato = igr.codigoPlato AND i.codigoIngrediente = igr.codigoIngrediente "
                         + "AND igr.codigoIngrediente = x.codigoIngrediente)=0";
             }else if(i==8 && alergias.get(i)){
-                subqueryIngredienteIndividual+="cacahuetes";
-                queryAlergias+=subqueryIngredienteIndividual;
+                subAlerg = subAlergiaIndiv + "cacahuetes";
+                queryAlergias+=subAlerg;
             }else if(i==9 && alergias.get(i)){
-                 subqueryIngredienteIndividual+="soja";
-                queryAlergias+=subqueryIngredienteIndividual;
+                subAlerg = subAlergiaIndiv+"soja";
+                queryAlergias+=subAlerg;
             }else if(i==10 && alergias.get(i)){
-                 subqueryIngredienteIndividual+="melocoton";
-                queryAlergias+=subqueryIngredienteIndividual;
+                subAlerg = subAlergiaIndiv+"melocoton";
+                queryAlergias+=subAlerg;
             }else if(i==11 && alergias.get(i)){
-                 subqueryIngredienteIndividual+="pera";
-                queryAlergias+=subqueryIngredienteIndividual;
+                subAlerg = subAlergiaIndiv+"pera";
+                queryAlergias+=subAlerg;
             }else if(i==12 && alergias.get(i)){
-                 subqueryIngredienteIndividual+="manzana";
-                queryAlergias+=subqueryIngredienteIndividual;
+                subAlerg = subAlergiaIndiv+"manzana";
+                queryAlergias+=subAlerg;
             }else if(i==13 && alergias.get(i)){
-                 subqueryIngredienteIndividual+="melon";
-                queryAlergias+=subqueryIngredienteIndividual;
+                subAlerg = subAlergiaIndiv+"melon";
+                queryAlergias+=subAlerg;
             }else if(i==14 && alergias.get(i)){
-                 subqueryIngredienteIndividual+="kiwi";
-                queryAlergias+=subqueryIngredienteIndividual;
+                subAlerg = subAlergiaIndiv+"kiwi";
+                queryAlergias+=subAlerg;
             }else if(i==15 && alergias.get(i)){
-                 subqueryIngredienteIndividual+="piña";
-                queryAlergias+=subqueryIngredienteIndividual;
+                subAlerg = subAlergiaIndiv+"piña";
+                queryAlergias+=subAlerg;
             }else if(i==16 && alergias.get(i)){
-                 subqueryIngredienteIndividual+="fresa";
-                queryAlergias+=subqueryIngredienteIndividual;
+                subAlerg = subAlergiaIndiv+"fresa";
+                queryAlergias+=subAlerg;
             }else if(i==17 && alergias.get(i)){
                 queryAlergias+=" AND (SELECT COUNT(*) FROM Ingrediente i, PertenenciaPlato pp "
                         + "WHERE p.codigoPlato = pp.codigoPlato AND pp.codigoIngrediente = i.codigoIngrediente"
@@ -704,13 +705,13 @@ public class DBConnection {
         try {
             ps = connection.prepareStatement(query);
            
-            ps.setString(1,Boolean.toString(desayuno));
-            ps.setString(2,Integer.toString(glucidos+rango));
-            ps.setString(3,Integer.toString(glucidos-rango));
-            ps.setString(4,Integer.toString(lipidos+rango));
-            ps.setString(5,Integer.toString(lipidos-rango));
-            ps.setString(6,Integer.toString(proteinas+rango));
-            ps.setString(7,Integer.toString(proteinas-rango));
+            ps.setBoolean(1,desayuno);
+            ps.setInt(2,glucidos+rango);
+            ps.setInt(3,glucidos-rango);
+            ps.setInt(4,lipidos+rango);
+            ps.setInt(5,lipidos-rango);
+            ps.setInt(6,proteinas+rango);
+            ps.setInt(7,proteinas-rango);
             
             rs = ps.executeQuery();
             Plato plato = null;

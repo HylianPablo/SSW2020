@@ -130,20 +130,24 @@ public class diaDieta extends HttpServlet {
                 proteinas = 100 + Integer.parseInt(diaSemana)*100 - proteinas;
                 //AQUI SE CALCULAN LAS VARIABLES DE MACROMOLECULAS, ARRAY PLATOSELEGIDOS ES DE STRINGS
                 //System.out.println("hola");
-                platosComida1 = DBConnection.selectPlatosDias(alergias,(int)(0.4*(glucidos)),(int)(0.3*(lipidos)),(int)(0.2*(proteinas)),20,false);
-                platosComida2 = DBConnection.selectPlatosDias(alergias,(int)(0.25*(glucidos)),(int)(0.3*(lipidos)),(int)(0.6*(proteinas)),20,false);
-                platosCena = DBConnection.selectPlatosDias(alergias,(int)(0.25*(glucidos)),(int)(0.3*(lipidos)),(int)(0.2*(proteinas)),20,false);
-                platosDesayuno = DBConnection.selectPlatosDias(alergias,(int)(0.1*(glucidos)),(int)(0.3*(lipidos)),(int)(0.0*(proteinas)),20,true);
-                Collections.shuffle(platos);
+                platosComida1 = DBConnection.selectPlatosDias(alergias,(int)(0.4*(glucidos)),(int)(0.3*(lipidos)),(int)(0.2*(proteinas)),100,false);
+                platosComida2 = DBConnection.selectPlatosDias(alergias,(int)(0.25*(glucidos)),(int)(0.3*(lipidos)),(int)(0.6*(proteinas)),100,false);
+                platosCena = DBConnection.selectPlatosDias(alergias,(int)(0.25*(glucidos)),(int)(0.3*(lipidos)),(int)(0.2*(proteinas)),100,false);
+                platosDesayuno = DBConnection.selectPlatosDias(alergias,(int)(0.1*(glucidos)),(int)(0.3*(lipidos)),(int)(0.0*(proteinas)),100,true);
+                Collections.shuffle(platosComida1);
+                Collections.shuffle(platosComida2);
+                Collections.shuffle(platosCena);
                 Collections.shuffle(platosDesayuno);
 
             }else{
 
-                platosComida1 = DBConnection.selectPlatosDias(alergias,40,30,20,20,false);
-                platosComida2 = DBConnection.selectPlatosDias(alergias,25,30,60,20,false);
-                platosCena = DBConnection.selectPlatosDias(alergias,25,30,20,20,false);
-                platosDesayuno = DBConnection.selectPlatosDias(alergias,10,30,0,20,true);
-                Collections.shuffle(platos);
+                platosComida1 = DBConnection.selectPlatosDias(alergias,40,30,20,50,false);
+                platosComida2 = DBConnection.selectPlatosDias(alergias,25,30,60,50,false);
+                platosCena = DBConnection.selectPlatosDias(alergias,25,30,20,50,false);
+                platosDesayuno = DBConnection.selectPlatosDias(alergias,10,30,0,50,true);
+                Collections.shuffle(platosComida1);
+                Collections.shuffle(platosComida2);
+                Collections.shuffle(platosCena);
                 Collections.shuffle(platosDesayuno);
 
             }
