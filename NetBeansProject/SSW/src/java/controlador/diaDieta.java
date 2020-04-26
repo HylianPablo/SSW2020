@@ -42,11 +42,7 @@ public class diaDieta extends HttpServlet {
         //String codigoPlato = request.getParameter("codigoPlato");
         HttpSession session = request.getSession();
         
-        int glucidosSimples=0;
-        int polisacaridos=0;
-        int aminoacidos=0;
-        int proteinas=0;
-        int hidratosDeCarbono=0;
+        int glucidos=0, lipidos=0, proteinas=0;
         
         ArrayList <String> platosElegidos=null; //Array de codigos de platos elegidos hasta esta iteracion
         ArrayList <Boolean> alergias=null;  //Alergias elegidas al principio, no se modifican
@@ -127,11 +123,9 @@ public class diaDieta extends HttpServlet {
             //Tiene utilidad para sacar los valores de las macromoleculas
             ArrayList<Plato> platosDATOS = DBConnection.selectPlatosFromCodigo(platosElegidos);
             for(int i=0;i<platosDATOS.size();i++){
-                glucidosSimples+=platosDATOS.get(i).getGlucidosSimples();
-                polisacaridos+=platosDATOS.get(i).getPolisacaridos();
-                aminoacidos+=platosDATOS.get(i).getAminoacidos();
-                proteinas+=platosDATOS.get(i).getProteinas();
-                hidratosDeCarbono+=platosDATOS.get(i).getHidratosDeCarbono();
+                glucidos+=platosDATOS.get(i).getGlucidosP100();
+                lipidos+=platosDATOS.get(i).getLipidosP100();
+                proteinas+=platosDATOS.get(i).getProteinasP100();
             }
             //AQUI SE CALCULAN LAS VARIABLES DE MACROMOLECULAS, ARRAY PLATOSELEGIDOS ES DE STRINGS
             //System.out.println("hola");

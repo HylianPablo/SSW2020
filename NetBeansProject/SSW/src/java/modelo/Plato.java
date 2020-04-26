@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Plato implements Serializable{
 	private String codigoPlato, nombre, descripcion;
 	private boolean desayuno, vegano, vegetariano, frutosSecos, gluten;
-	private int kcal, glucidosSimples, polisacaridos, aminoacidos, proteinas, hidratosDeCarbono;
+	private int kcal, glucidosSimples, polisacaridos, lipidos, proteinas;
 
 	public Plato(){
 
@@ -87,6 +87,14 @@ public class Plato implements Serializable{
 		return glucidosSimples;
 	}
         
+        public int getGlucidosSimplesP100(){
+                return (int)(glucidosSimples*100/130.0);
+        }
+        
+        public int getGlucidosP100(){
+            return getGlucidosSimplesP100()+getPolisacaridosP100();
+        }
+        
     	public void setGlucidosSimples(int glucidosSimples){
 		this.glucidosSimples=glucidosSimples;
 	}
@@ -95,31 +103,35 @@ public class Plato implements Serializable{
 		return polisacaridos;
 	}
         
+        public int getPolisacaridosP100(){
+            return (int)(polisacaridos*100/130.0);
+        }
+        
     	public void setPolisacaridos(int polisacaridos){
 		this.polisacaridos=polisacaridos;
 	}
 
-	public int getAminoacidos(){
-		return aminoacidos;
+	public int getLipidos(){
+		return lipidos;
 	}
         
-    	public void setAminoacidos(int aminoacidos){
-		this.aminoacidos=aminoacidos;
+        public int getLipidosP100(){
+            return (int)(lipidos*100/59.0);
+        }
+        
+    	public void setLipidos(int lipidos){
+		this.lipidos=lipidos;
 	}
 
 	public int getProteinas(){
 		return proteinas;
 	}
         
+        public int getProteinasP100(){
+            return (int)(proteinas*100/56.0);
+        }
+        
     	public void setProteinas(int proteinas){
 		this.proteinas=proteinas;
-	}
-
-	public int getHidratosDeCarbono(){
-		return hidratosDeCarbono;
-	}
-        
-    	public void setHidratosDeCarbono(int hidratosDeCarbono){
-		this.hidratosDeCarbono= hidratosDeCarbono;
 	}
 }

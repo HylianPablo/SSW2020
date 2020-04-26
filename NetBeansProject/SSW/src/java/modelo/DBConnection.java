@@ -513,9 +513,8 @@ public class DBConnection {
                 plato.setKcal(rs.getInt("kcal"));
                 plato.setGlucidosSimples(rs.getInt("glucidosSimples"));
                 plato.setPolisacaridos(rs.getInt("polisacaridos"));
-                plato.setAminoacidos(rs.getInt("aminoacidos"));
+                plato.setLipidos(rs.getInt("lipidos"));
                 plato.setProteinas(rs.getInt("proteinas"));
-                plato.setHidratosDeCarbono(rs.getInt("hidratosDeCarbono"));
                 //retorno.add(entrada);
             }
             rs.close();
@@ -592,9 +591,8 @@ public class DBConnection {
                     plato.setKcal(rs.getInt("kcal"));
                     plato.setGlucidosSimples(rs.getInt("glucidosSimples"));
                     plato.setPolisacaridos(rs.getInt("polisacaridos"));
-                    plato.setAminoacidos(rs.getInt("aminoacidos"));
+                    plato.setLipidos(rs.getInt("lipidos"));
                     plato.setProteinas(rs.getInt("proteinas"));
-                    plato.setHidratosDeCarbono(rs.getInt("hidratosDeCarbono"));
                     
                     nombresPlatos.add(plato);
                 }
