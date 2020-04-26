@@ -135,14 +135,14 @@ public class diaDieta extends HttpServlet {
             }
             //AQUI SE CALCULAN LAS VARIABLES DE MACROMOLECULAS, ARRAY PLATOSELEGIDOS ES DE STRINGS
             //System.out.println("hola");
-            platos = DBConnection.selectPlatosDias(alergias,0,0,0,0,0);
-            platosDesayuno = DBConnection.selectPlatosDiasDesayuno(alergias,0,0,0,0,0);
+            platos = DBConnection.selectPlatosDias(alergias,0,0,0,0,50,false);
+            platosDesayuno = DBConnection.selectPlatosDias(alergias,0,0,0,0,50,true);
             Collections.shuffle(platos);
             Collections.shuffle(platosDesayuno);
             
         }else{
-            platos = DBConnection.selectPlatosDias(alergias,0,0,0,0,0);
-            platosDesayuno = DBConnection.selectPlatosDiasDesayuno(alergias,0,0,0,0,0);
+            platos = DBConnection.selectPlatosDias(alergias,0,0,0,0,50,false);
+            platosDesayuno = DBConnection.selectPlatosDias(alergias,0,0,0,0,50,true);
             Collections.shuffle(platos);
             Collections.shuffle(platosDesayuno);
             
