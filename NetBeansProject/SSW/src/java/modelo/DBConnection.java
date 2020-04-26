@@ -610,7 +610,7 @@ public class DBConnection {
     }
 
     public static ArrayList<Plato> selectPlatosDias(ArrayList<Boolean> alergias, 
-            int glucidosSimples, int polisacaridos, int lipidos, int proteinas, int rango, boolean desayuno) {
+            int glucidos, int lipidos, int proteinas, int rango, boolean desayuno) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps;
@@ -618,7 +618,7 @@ public class DBConnection {
         ArrayList<Plato> platosFinal = new ArrayList<>();
         //Seleccionar todos y luego tomar 3 aleatorios
         String query = "SELECT * FROM Plato p WHERE p.desayuno=? "
-                + "AND (p.glucidosSimples+p.polisacaridos) <= ? AND p.glucidosSimples+p.polisacaridos>= ?"
+                + "AND (p.glucidosSimples+p.polisacaridos) <= ? AND (p.glucidosSimples+p.polisacaridos)>= ?"
                 + "AND p.lipidos <= ? AND p.lipidos>= ?"
                 + "AND p.proteinas <= ? AND p.proteinas >= ?";
         String queryAlergias="";
@@ -705,12 +705,12 @@ public class DBConnection {
             ps = connection.prepareStatement(query);
            
             ps.setString(1,Boolean.toString(desayuno));
-            ps.setString(2,Integer.toString(rango));
-            ps.setString(3,Integer.toString(rango));
-            ps.setString(4,Integer.toString(rango));
-            ps.setString(5,Integer.toString(rango));
-            ps.setString(6,Integer.toString(rango));
-            ps.setString(7,Integer.toString(rango));
+            ps.setString(2,Integer.toString(glucidos+rango));
+            ps.setString(3,Integer.toString(glucidos-rango));
+            ps.setString(4,Integer.toString(lipidos+rango));
+            ps.setString(5,Integer.toString(lipidos-rango));
+            ps.setString(6,Integer.toString(proteinas+rango));
+            ps.setString(7,Integer.toString(proteinas-rango));
             
             rs = ps.executeQuery();
             Plato plato = null;

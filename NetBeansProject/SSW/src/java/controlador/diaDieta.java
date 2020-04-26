@@ -47,7 +47,7 @@ public class diaDieta extends HttpServlet {
         ArrayList <String> platosElegidos=null; //Array de codigos de platos elegidos hasta esta iteracion
         ArrayList <Boolean> alergias=null;  //Alergias elegidas al principio, no se modifican
         ArrayList <Plato> platos=null; //Platos que se podrán elegir el siguiente día comidas generales
-        ArrayList <Plato> platosDesayuno=null; //Platos que se podrán elegir el siguiente día desayuno
+        ArrayList <Plato> platosComida1, platosComida2, platosCena, platosDesayuno=null; //Platos que se podrán elegir el siguiente día desayuno
         if(diaSemana.equals("0")){
             platosElegidos = new ArrayList<>();
             alergias = new ArrayList<>();
@@ -116,39 +116,54 @@ public class diaDieta extends HttpServlet {
             url = "/FrontEnd/dietaGenerada.jsp";
         }else{
             url = "/FrontEnd/diaDieta.jsp";
-        }
-        
-        if(!diaSemana.equals("0")){
-            //SE TRANSFORMA ARRAY DE CODIGOS(STRING) A ARRAY DE PLATOS
-            //Tiene utilidad para sacar los valores de las macromoleculas
-            ArrayList<Plato> platosDATOS = DBConnection.selectPlatosFromCodigo(platosElegidos);
-            for(int i=0;i<platosDATOS.size();i++){
-                glucidos+=platosDATOS.get(i).getGlucidosP100();
-                lipidos+=platosDATOS.get(i).getLipidosP100();
-                proteinas+=platosDATOS.get(i).getProteinasP100();
+            if(!diaSemana.equals("0")){
+                //SE TRANSFORMA ARRAY DE CODIGOS(STRING) A ARRAY DE PLATOS
+                //Tiene utilidad para sacar los valores de las macromoleculas
+                ArrayList<Plato> platosDATOS = DBConnection.selectPlatosFromCodigo(platosElegidos);
+                for(int i=0;i<platosDATOS.size();i++){
+                    glucidos+=platosDATOS.get(i).getGlucidosP100();
+                    lipidos+=platosDATOS.get(i).getLipidosP100();
+                    proteinas+=platosDATOS.get(i).getProteinasP100();
+                }
+                glucidos = 100 + Integer.parseInt(diaSemana)*100 - glucidos;
+                lipidos = 100 + Integer.parseInt(diaSemana)*100 - lipidos;
+                proteinas = 100 + Integer.parseInt(diaSemana)*100 - proteinas;
+                //AQUI SE CALCULAN LAS VARIABLES DE MACROMOLECULAS, ARRAY PLATOSELEGIDOS ES DE STRINGS
+                //System.out.println("hola");
+                platosComida1 = DBConnection.selectPlatosDias(alergias,(int)(0.4*(glucidos)),(int)(0.3*(lipidos)),(int)(0.2*(proteinas)),20,false);
+                platosComida2 = DBConnection.selectPlatosDias(alergias,(int)(0.25*(glucidos)),(int)(0.3*(lipidos)),(int)(0.6*(proteinas)),20,false);
+                platosCena = DBConnection.selectPlatosDias(alergias,(int)(0.25*(glucidos)),(int)(0.3*(lipidos)),(int)(0.2*(proteinas)),20,false);
+                platosDesayuno = DBConnection.selectPlatosDias(alergias,(int)(0.1*(glucidos)),(int)(0.3*(lipidos)),(int)(0.0*(proteinas)),20,true);
+                Collections.shuffle(platos);
+                Collections.shuffle(platosDesayuno);
+
+            }else{
+
+                platosComida1 = DBConnection.selectPlatosDias(alergias,40,30,20,20,false);
+                platosComida2 = DBConnection.selectPlatosDias(alergias,25,30,60,20,false);
+                platosCena = DBConnection.selectPlatosDias(alergias,25,30,20,20,false);
+                platosDesayuno = DBConnection.selectPlatosDias(alergias,10,30,0,20,true);
+                Collections.shuffle(platos);
+                Collections.shuffle(platosDesayuno);
+
             }
-            //AQUI SE CALCULAN LAS VARIABLES DE MACROMOLECULAS, ARRAY PLATOSELEGIDOS ES DE STRINGS
-            //System.out.println("hola");
-            platos = DBConnection.selectPlatosDias(alergias,0,0,0,0,50,false);
-            platosDesayuno = DBConnection.selectPlatosDias(alergias,0,0,0,0,50,true);
-            Collections.shuffle(platos);
-            Collections.shuffle(platosDesayuno);
+            platos = new ArrayList<>();
+            for(int i=0; i<3;i++)
+                platos.add(platosComida1.get(i));
+            for(int i=0; i<3;i++)
+                platos.add(platosComida2.get(i));
+            for(int i=0; i<3;i++)
+                platos.add(platosCena.get(i));
             
-        }else{
-            platos = DBConnection.selectPlatosDias(alergias,0,0,0,0,50,false);
-            platosDesayuno = DBConnection.selectPlatosDias(alergias,0,0,0,0,50,true);
-            Collections.shuffle(platos);
-            Collections.shuffle(platosDesayuno);
-            
+            session.setAttribute("platos",platos);
+            session.setAttribute("platosDesayuno",platosDesayuno);
+            session.setAttribute("diaSemana", diaSemana);
+            session.setAttribute("alergias",alergias);
         }
         //glucidosSimples,polisacaridos,aminoacidos,proteinas,hidratosDeCarbono);
         //Da mal generar dieta hasta que se haga esta consulta
         
         session.setAttribute("platosElegidos",platosElegidos);
-        session.setAttribute("diaSemana", diaSemana);
-        session.setAttribute("platos",platos);
-        session.setAttribute("platosDesayuno",platosDesayuno);
-        session.setAttribute("alergias",alergias);
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
