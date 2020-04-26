@@ -70,7 +70,6 @@ create table Plato(
 	polisacaridos 			integer not null,
 	lipidos				integer not null ,
 	proteinas				integer not null,
-			integer not null,
 	primary key(codigoPlato)
 );
 
