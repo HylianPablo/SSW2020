@@ -159,12 +159,12 @@ create table Soja(
 	primary key(codigoIngrediente)
 );
 
-insert into Dieta (titulo,descripcion,fecha) Values ('Dieta mediterranea','Una dieta basada en la comida tradicional de la costa mediterranea','2020-04-10');
-insert into Dieta (titulo,descripcion,fecha) Values ('Dieta de deportistas','Una dieta orientada a personas que realizan mucho deporte a diario','2020-03-01');
-insert into Dieta (titulo,descripcion,fecha) Values ('Dieta vegeteriana','Una dieta que no lleva animales, salvo ovolácteos','2018-01-01');
+insert into Dieta (titulo,descripcion,fecha) Values ('Dieta mediterranea','Una dieta basada en la comida tradicional de la costa mediterránea.','2020-04-10');
+insert into Dieta (titulo,descripcion,fecha) Values ('Dieta de deportistas','Una dieta orientada a personas que realizan mucho deporte a diario.','2020-03-01');
+insert into Dieta (titulo,descripcion,fecha) Values ('Dieta vegeteriana','Una dieta que no lleva animales, salvo ovolácteos.','2018-01-01');
 
 
-insert into Usuario (nombre,nombreUsuario,contrasena,correo,favorito) Values ('Pedro Sanz Lopez', 'pedsanz', '12345pedro','pedrosanzl@gmail.com',1);
+insert into Usuario (nombre,nombreUsuario,contrasena,correo,favorito) Values ('Pedro Sanz López', 'pedsanz', '12345pedro','pedrosanzl@gmail.com',1);
 insert into Usuario (nombre,nombreUsuario,contrasena,correo,favorito) Values ('Marta Sanchez Rojo', 'martsanro', 'farola4','marta1912@gmail.com',2);
 insert into Usuario (nombre,nombreUsuario,contrasena,correo,favorito) Values ('Marcos Moya Gallo', 'marmoyaga', 'tirabuzon89','marcos.mg@yahoo.com',3);
 
@@ -174,13 +174,13 @@ insert into Guardado (nombreUsuario,codigoDieta) Values ('martsanro',2);
 insert into Guardado (nombreUsuario,codigoDieta) Values ('marmoyaga',3);
 
 
-insert into Entrada (titulo,cuerpo,nombreUsuario,fecha) Values ('Quiero comer bien','Quiero tener una alimentacion sana y no se cocinar','pedsanz','2020-04-03');
-insert into Entrada (titulo,cuerpo,nombreUsuario,fecha) Values ('Quiero ser vegana',NULL,'martsanro','2020-03-23');
-insert into Entrada (titulo,cuerpo,nombreUsuario,fecha) Values ('Receta de cupcakes','Esta receta me la enseño mi abuela. Lleva harina y huevos','marmoyaga','2020-03-08');
+insert into Entrada (titulo,cuerpo,nombreUsuario,fecha) Values ('Quiero comer bien','Quiero tener una alimentación sana y no se cocinar.','pedsanz','2020-04-03');
+insert into Entrada (titulo,cuerpo,nombreUsuario,fecha) Values ('Quiero ser vegana.','Me he dado cuenta de que los animales merecen vivir','martsanro','2020-03-23');
+insert into Entrada (titulo,cuerpo,nombreUsuario,fecha) Values ('Receta de cupcakes.','Esta receta me la enseño mi abuela. Lleva harina y huevos.','marmoyaga','2020-03-08');
 
 
-insert into Comentario (codigoPadre,cuerpo,nombreUsuario,fecha) Values (1,'Prueba a evitar demasiadas grasas saturadas y calorías vacias como las propocionadas por bebidas alcoholicas o la bolleria industrial','pedsanz','2020-04-05');
-insert into Comentario (codigoPadre,cuerpo,nombreUsuario,fecha) Values (1,'El aguacate es un alimento muy sano, incluyelo en tus platos','marmoyaga','2020-04-06');
+insert into Comentario (codigoPadre,cuerpo,nombreUsuario,fecha) Values (1,'Prueba a evitar demasiadas grasas saturadas y calorías vacías como las propocionadas por bebidas alcohólicas o la bollería industrial.','pedsanz','2020-04-05');
+insert into Comentario (codigoPadre,cuerpo,nombreUsuario,fecha) Values (1,'El aguacate es un alimento muy sano, inclúyelo en tus platos.','marmoyaga','2020-04-06');
 insert into Comentario (codigoPadre,cuerpo,nombreUsuario,fecha) Values (2,'No comas carne','pedsanz','2020-03-25');
 
 insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Espinacas',TRUE,TRUE,FALSE,FALSE);
