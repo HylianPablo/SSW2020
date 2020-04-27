@@ -288,6 +288,20 @@ insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('
 insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Mermelada de manzana',TRUE,TRUE,FALSE,FALSE);
 insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Zumo de manzana',TRUE,TRUE,FALSE,FALSE);
 insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Cacao',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Galletas',TRUE,TRUE,FALSE,TRUE);
+insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('MantequillaCacahuete',TRUE,TRUE,TRUE,FALSE);
+insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Mango',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Sandía',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Lima',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Anchoa',FALSE,FALSE,FALSE,FALSE);
+insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Aguacate',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Campurrinas',TRUE,TRUE,FALSE,TRUE);
+insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Membrillo',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Yogur',FALSE,TRUE,FALSE,FALSE);
+insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Fresa',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Avena',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Ricota',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Tofu',TRUE,TRUE,FALSE,FALSE);
 
 
 insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Garbanzos con espinacas','Garbanzos de la huerta cocinados con espinaca y aceite de oliva',FALSE,TRUE,TRUE,FALSE,FALSE,350,10,10,10,50);
@@ -354,23 +368,23 @@ insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gl
 insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Ensalada de pasta','Ensalada de pasta con tomate, queso, chicharro y jamón cocido',FALSE,FALSE,FALSE,FALSE,FALSE,189,9,8,8,7);
 insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Ensalada de garbanzos','Ensalada de garbanzos cocidos, atún y aceitunas',FALSE,FALSE,FALSE,FALSE,FALSE,189,9,8,8,7);
 insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Pizza de jamón y bacon','Pizza de jamon y bacon con tomate, queso, jamón y almidón',FALSE,FALSE,FALSE,FALSE,FALSE,258,10,11,14,11);
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Vaso de leche con zumo de naranja','',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,8);
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Café solo con zumo de naranja','Café solo con zumo de naranja y tostada con mermelada de melocotón',TRUE,TRUE,TRUE,FALSE,FALSE,2,0,0,0,0);
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Café con leche con zumo de mango','Café con leche con zumo de mango y tostada con mermelada de frambuesa',TRUE,FALSE,TRUE,FALSE,FALSE,135,6,7,10,92);
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Café cortado','',TRUE,FALSE,TRUE,FALSE,FALSE,28,2,1,1,2);
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Té rojo','',TRUE,FALSE,TRUE,FALSE,FALSE,2,0,0,0,0);
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Menta poleo','',TRUE,FALSE,TRUE,FALSE,FALSE,0,0,0,0,0);
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Vaso de leche con zumo de pomelo','Vaso de leche con zumo de pomelo y tostada con mermelada de fresa',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,8);
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Vaso de leche con zumo de mango','Vaso de leche con zumo de mango y tostada con mermelada de manzana',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,8);
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Vaso de leche con zumo de manzana','Vaso de leche con zumo de manzana y tostada con mermelada de melocoton',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,8);
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Café con leche con zumo de manzana','Café con leche con zumo de manzana y tostada con mermelada de melocoton',TRUE,FALSE,TRUE,FALSE,FALSE,135,6,7,10,9);
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Café cortado con zumo de piña','Café cortado con zumo de piña y tostada con mermelada de fresa',TRUE,FALSE,TRUE,FALSE,FALSE,28,2,1,1,2);
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Menta poleo con zumo de piña','Menta poleo con zumo de piña y tostada con mermelada de fresa',TRUE,FALSE,TRUE,FALSE,FALSE,0,0,0,0,0);
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Menta poleo con con zumo de pomelo','Menta poleo con con zumo de pomelo y tostada con mermelada de fresa',TRUE,FALSE,TRUE,FALSE,FALSE,0,0,0,0,0);
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Colacao','',TRUE,TRUE,TRUE,FALSE,FALSE,158,3,6,7,8);
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Colacao y zumo de naranja','Colacao y zumo de naranja con tostada de mermelada de frambuesa',TRUE,TRUE,TRUE,FALSE,FALSE,158,3,6,7,8);
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Vaso de leche con zumo de piña','',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,8);
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Vaso de leche con zumo de melocoton','',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,8);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Vaso de leche con cacao y galletas','Vaso de leche con cacao puro y galletas integrales',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,8);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Gachas de plátano y mantequilla de cacahuete','Gachas con platano fresco y mantequilla de cacahuete con copos de avena',TRUE,FALSE,TRUE,TRUE,FALSE,2,0,0,0,0);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Zumo de mango y tostada','Zumo de mango y tostada con mermelada de frambuesa',TRUE,TRUE,TRUE,FALSE,TRUE,135,6,7,10,92);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Sandía aliñada con lima','Sandía aliñada con lima y azúcar moreno',TRUE,TRUE,TRUE,FALSE,FALSE,28,2,1,1,2);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Hummus y crudités','Hummus de garbanzos con palitos de zanahoria',TRUE,TRUE,TRUE,FALSE,FALSE,2,0,0,0,0);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Tostadas de anchoa y tomate','Tostadas de tomate triturado con anchoas',TRUE,FALSE,FALSE,FALSE,FALSE,0,0,0,0,0);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Huevos y aguacate','Huevos revueltos con aguacate',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,8);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Café y campurrianas','Café con pastas tradicionales',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,8);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Queso con membrillo','Queso fresco con membrillo y pan',TRUE,FALSE,TRUE,FALSE,TRUE,146,8,7,10,8);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Tostadas con aceite y tomate','Tostadas de aceite de oliva y sal con tomate',TRUE,TRUE,TRUE,FALSE,TRUE,135,6,7,10,9);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Bizcocho de zanahoria y café','Café cortado y bizcocho tradicional de zanahoria',TRUE,FALSE,TRUE,FALSE,FALSE,28,2,1,1,2);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Yogur con fresas','Yogur con fresas y copos de avena',TRUE,FALSE,TRUE,FALSE,FALSE,0,0,0,0,0);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Batido de espinacas y aguacate','Batido de espinacas, aguacate y leche',TRUE,FALSE,TRUE,FALSE,FALSE,0,0,0,0,0);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Baguel de salmón','Baguel de salmón con ricota',TRUE,FALSE,FALSE,FALSE,TRUE,158,3,6,7,8);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Pan de leche con mantequilla','Bollo tradicional de leche con mantequilla',TRUE,FALSE,TRUE,FALSE,FALSE,158,3,6,7,8);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Tortitas de avena y yogur','Tortillas de avena acompañadas de yogur',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,8);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Sandwich vegetal','Sandwich de tomate, lechuga y tofu',TRUE,TRUE,TRUE,FALSE,TRUE,146,8,7,10,8);
 
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (1,1);
@@ -877,78 +891,71 @@ insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (6,64);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (33,64);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,65);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (110,65); 
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (125,65); 
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (126,65); 
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (110,66);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (116,66);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (114,66);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,66);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (115,66);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (127,66);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (128,66);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (114,67);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (117,67);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,67);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,67);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (129,67);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (42,67);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (118,67);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (115,67);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (114,68);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,68);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (28,68);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (130,68);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (131,68);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (119,69);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (2,69);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (51,69);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (120,70);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,70);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (132,70);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (13,70);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,71);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,71);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (121,71);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (122,71);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (64,71);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (13,71);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,72);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,72);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (117,72);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (123,72);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (114,72);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (136,72);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,73);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (29,73);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (137,73);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,73);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (116,73);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (124,73);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (124,74);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (116,74);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,74);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (13,74);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,74);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (114,74);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (115,74);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (3,74);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (114,75);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,75);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (111,75);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (122,75);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (115,75);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (51,75);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (63,75);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (111,76);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (122,76);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (120,76);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (120,77);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (121,77);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (122,77);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (138,77);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (139,77);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (140,77);
 
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (1,78);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (135,78);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,78);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (125,78);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,79);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (125,79);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (113,79);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (118,79);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (42,79);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (98,79);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (141,79);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,80);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (111,80);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,80);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (72,80);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,81);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (112,81);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (140,81);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (138,81);
+
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,81);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (13,81);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (23,81);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (142,81);
 
 
 insert into PlatoMenu (codigoPlato, codigoDieta, diaSemana, momento) Values (65,1,'lunes','desayuno');
@@ -1025,6 +1032,7 @@ insert into Pescado (codigoIngrediente) Values (87);
 insert into Pescado (codigoIngrediente) Values (98);
 insert into Pescado (codigoIngrediente) Values (104);
 insert into Pescado (codigoIngrediente) Values (109);
+insert into Pescado (codigoIngrediente) Values (132);
 
 insert into Cerdo (codigoIngrediente) Values (32);
 insert into Cerdo (codigoIngrediente) Values (35);
@@ -1057,3 +1065,7 @@ insert into Hindu (codigoIngrediente) Values (12);
 insert into Hindu (codigoIngrediente) Values (27);
 insert into Hindu (codigoIngrediente) Values (71);
 insert into Hindu (codigoIngrediente) Values (76);
+
+insert into Soja (codigoIngrediente) Values (142);
+
+insert into Cacahuete (codigoIngrediente) Values (128);

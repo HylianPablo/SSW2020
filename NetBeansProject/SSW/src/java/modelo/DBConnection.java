@@ -660,11 +660,15 @@ public class DBConnection {
                         + "Ingrediente i , Pescado x WHERE p.codigoPlato = igr.codigoPlato AND i.codigoIngrediente = igr.codigoIngrediente "
                         + "AND igr.codigoIngrediente = x.codigoIngrediente)=0";
             }else if(i==8 && alergias.get(i)){
-                subAlerg = subAlergiaIndiv + "cacahuetes";
-                queryAlergias+=subAlerg;
+                queryAlergias+=" AND (SELECT count(*) FROM  (SELECT pp2.codigoPlato, pp2.codigoIngrediente FROM Ingrediente i, PertenenciaPlato pp2, "
+                        + "Plato p2 WHERE p2.codigoPlato = pp2.codigoPlato AND pp2.codigoIngrediente = i.codigoIngrediente) igr, "
+                        + "Ingrediente i , Cacahuete x WHERE p.codigoPlato = igr.codigoPlato AND i.codigoIngrediente = igr.codigoIngrediente "
+                        + "AND igr.codigoIngrediente = x.codigoIngrediente)=0";
             }else if(i==9 && alergias.get(i)){
-                subAlerg = subAlergiaIndiv+"soja";
-                queryAlergias+=subAlerg;
+                queryAlergias+=" AND (SELECT count(*) FROM  (SELECT pp2.codigoPlato, pp2.codigoIngrediente FROM Ingrediente i, PertenenciaPlato pp2, "
+                        + "Plato p2 WHERE p2.codigoPlato = pp2.codigoPlato AND pp2.codigoIngrediente = i.codigoIngrediente) igr, "
+                        + "Ingrediente i , Soja x WHERE p.codigoPlato = igr.codigoPlato AND i.codigoIngrediente = igr.codigoIngrediente "
+                        + "AND igr.codigoIngrediente = x.codigoIngrediente)=0";
             }else if(i==10 && alergias.get(i)){
                 subAlerg = subAlergiaIndiv+"melocoton";
                 queryAlergias+=subAlerg;

@@ -259,11 +259,10 @@
                     var age = document.getElementById("ageForm");
                     var height = document.getElementById("heightForm");
                     var weigth = document.getElementById("weigthForm");
-                    var ideal = document.getElementById("idealWeigthForm");
                     
                     var siguiente = document.getElementById("siguiente1");
             
-                    if(age.value.length == 0 || height.value.length == 0 || weigth.value.length==0 || ideal.value.length==0)
+                    if(age.value.length == 0 || height.value.length == 0 || weigth.value.length==0)
                         flag=false;
                     if (flag)
                         siguiente.disabled=false;
