@@ -1,3 +1,11 @@
+drop table if exists Huevo;
+drop table if exists Cerdo;
+drop table if exists Pescado;
+drop table if exists Marisco;
+drop table if exists Lactosa;
+drop table if exists Hindu;
+drop table if exists Cacahuete;
+drop table if exists Soja;
 drop table if exists PertenenciaPlato;
 drop table if exists Ingrediente;
 drop table if exists PlatoMenu;
@@ -134,6 +142,18 @@ create table Huevo(
 );
 
 create table Hindu(
+	codigoIngrediente		integer not null,
+	foreign key(codigoIngrediente) references Ingrediente(codigoIngrediente),
+	primary key(codigoIngrediente)
+);
+
+create table Cacahuete(
+	codigoIngrediente		integer not null,
+	foreign key(codigoIngrediente) references Ingrediente(codigoIngrediente),
+	primary key(codigoIngrediente)
+);
+
+create table Soja(
 	codigoIngrediente		integer not null,
 	foreign key(codigoIngrediente) references Ingrediente(codigoIngrediente),
 	primary key(codigoIngrediente)
@@ -915,10 +935,10 @@ insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (64,71);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (13,71);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (114,72);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (136,72);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (132,72);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (29,73);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (137,73);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (133,73);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,73);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (13,74);
@@ -933,29 +953,29 @@ insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (111,76);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (122,76);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (120,76);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (138,77);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (139,77);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (140,77);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (134,77);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (135,77);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (136,77);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (1,78);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (135,78);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (131,78);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,78);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (42,79);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (98,79);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (141,79);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (137,79);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,80);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,80);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (72,80);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (140,81);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (138,81);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (136,81);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (134,81);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,81);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (13,81);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (23,81);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (142,81);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (138,81);
 
 
 insert into PlatoMenu (codigoPlato, codigoDieta, diaSemana, momento) Values (65,1,'lunes','desayuno');
@@ -1066,6 +1086,7 @@ insert into Hindu (codigoIngrediente) Values (27);
 insert into Hindu (codigoIngrediente) Values (71);
 insert into Hindu (codigoIngrediente) Values (76);
 
-insert into Soja (codigoIngrediente) Values (142);
+insert into Soja (codigoIngrediente) Values (138);
 
 insert into Cacahuete (codigoIngrediente) Values (128);
+
