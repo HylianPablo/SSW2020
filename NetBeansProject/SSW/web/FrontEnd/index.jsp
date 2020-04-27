@@ -20,11 +20,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-        <script type="text/javascript" src="check.js"></script>
+        <!--<script type="text/javascript" src="check.js"></script>-->
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="styles.css">
-        <link rel="icon" href="img/logo.png">
+        <link rel="stylesheet" type="text/css" href="/SSW/FrontEnd/styles.css"><link>
+        <link rel="icon" href="/SSW/FrontEnd/img/logo.png">
     </head>
 
     <body id="page-top">
@@ -83,23 +83,23 @@
                                 <div class="container my-5">
                                     <div class="form-group">
                                         <label for="ageForm">Edad:</label>
-                                        <input class="form-control" type="number" id="ageForm" name="ageForm">
+                                        <input class="form-control" type="text" pattern="[0-9]*" id="ageForm" name="ageForm" oninput="checkAllForms()">
                                     </div>
                                     <div class="form-group">
                                         <label for="heigthForm">Altura (cm):</label>
-                                        <input class="form-control" type="number" id="heigthForm" name="heigthForm">
+                                        <input class="form-control" type="text" pattern="[0-9]*" id="heightForm" name="heigthForm" oninput="checkAllForms()">
                                     </div>
                                     <div class="form-group">
                                         <label for="weigthForm">Peso actual:</label>
-                                        <input class="form-control" type="number" id="weigthForm" name="weigthForm">
+                                        <input class="form-control" type="text" pattern="[0-9]*" id="weigthForm" name="weightForm" oninput="checkAllForms()">
                                     </div>
                                     <div class="form-group">
                                         <label for="idealWeigthForm">Peso ideal (opcional):</label>
-                                        <input class="form-control" type="number" id="idealWeigthForm" name="idealWeigthForm">
+                                        <input class="form-control" type="text" patterm="[0-9]*" id="idealWeigthForm" name="idealWeightForm" oninput="checkAllForms()">
                                     </div>
                                 </div>
                                 <div class="float-right">
-                                    <a class="btn btn-success" href="#carouselCreaDieta" role="button" data-slide="next">Siguiente ></a>
+                                    <button class="btn btn-success" href="#carouselCreaDieta" role="button" data-slide="next" id="siguiente1" disabled>Siguiente ></button>
                                 </div>
                             </div>
                         </div>
@@ -252,6 +252,24 @@
                 $('.carousel').carousel({
                     interval: false
                 });
+                </script>
+                <script>
+                 function checkAllForms(){
+                    var flag = true;
+                    var age = document.getElementById("ageForm");
+                    var height = document.getElementById("heightForm");
+                    var weigth = document.getElementById("weigthForm");
+                    var ideal = document.getElementById("idealWeigthForm");
+                    
+                    var siguiente = document.getElementById("siguiente1");
+            
+                    if(age.value.length == 0 || height.value.length == 0 || weigth.value.length==0 || ideal.value.length==0)
+                        flag=false;
+                    if (flag)
+                        siguiente.disabled=false;
+                    else
+                        siguiente.disabled=true;
+                    }
             </script>
 
         </div>

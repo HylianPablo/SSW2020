@@ -601,6 +601,7 @@ public class DBConnection {
                 ps.close();
                 pool.freeConnection(connection);
             
+                
             return nombresPlatos;
         } catch (SQLException e) {
             pool.freeConnection(connection);
@@ -737,6 +738,41 @@ public class DBConnection {
             rs.close();
             ps.close();
             pool.freeConnection(connection);
+            int numMinimo;
+            if(desayuno){
+                numMinimo=3;
+            }else{
+                numMinimo=9;
+            }
+            if(desayuno && platosFinal.size()< numMinimo){
+                if(platosFinal.isEmpty()){
+                    Plato platoGen = new Plato();
+                    platoGen.setCodigoPlato("99999999");
+                    platoGen.setNombre("NONE");
+                    platoGen.setDescripcion("NONE");
+                    platoGen.setDesayuno(desayuno);
+                    platoGen.setVegano(false);
+                    platoGen.setVegetariano(false);
+                    platoGen.setFrutosSecos(false);
+                    platoGen.setGluten(false);
+                    platoGen.setKcal(0);
+                    platoGen.setGlucidosSimples(0);
+                    platoGen.setPolisacaridos(0);
+                    platoGen.setProteinas(0);
+                    platoGen.setLipidos(0);
+                    for(int i=0;i<numMinimo;i++){
+                        platosFinal.add(platoGen);
+                    }
+                }else{
+                    int iterator = 0;
+                    int initialSize = platosFinal.size();
+                    for(int i=platosFinal.size();i<numMinimo;i++){
+                        platosFinal.add(platosFinal.get(iterator));
+                        iterator = (iterator +1) % initialSize;
+                    }
+                } 
+                
+            }
             return platosFinal;
         } catch (SQLException e) {
             pool.freeConnection(connection);
