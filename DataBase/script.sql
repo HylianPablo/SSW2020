@@ -322,6 +322,7 @@ insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('
 insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Avena',TRUE,TRUE,FALSE,FALSE);
 insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Ricota',TRUE,TRUE,FALSE,FALSE);
 insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Tofu',TRUE,TRUE,FALSE,FALSE);
+insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Plátano',TRUE,TRUE,FALSE,FALSE);
 
 
 insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Garbanzos con espinacas','Garbanzos de la huerta cocinados con espinaca y aceite de oliva',FALSE,TRUE,TRUE,FALSE,FALSE,350,10,10,10,50);
@@ -915,30 +916,30 @@ insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (125,65);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (126,65); 
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (127,66);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (128,66);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (141,66);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (129,67);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (42,67);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (128,67);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,67);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (118,67);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (130,68);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (131,68);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (129,68);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (2,69);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (51,69);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,70);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (132,70);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (131,70);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (13,70);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (64,71);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (13,71);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (132,71);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (114,72);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (132,72);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (133,72);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (29,73);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (133,73);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (30,73);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (134,73);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,73);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (13,74);
@@ -947,35 +948,32 @@ insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (3,74);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (114,75);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (51,75);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (63,75);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (64,75);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (111,76);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (122,76);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (120,76);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (135,76);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (136,76);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (137,76);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (134,77);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (135,77);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (136,77);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (1,77);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,77);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (132,77);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (1,78);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (131,78);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,78);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,78);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (98,78);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (138,78);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (42,79);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (98,79);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (137,79);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,79);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,79);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (72,79);
 
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (36,80);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,80);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (72,80);
-
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (136,81);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (134,81);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (135,80);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (137,80);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,81);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (13,81);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (23,81);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (138,81);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (140,81);
+
 
 
 insert into PlatoMenu (codigoPlato, codigoDieta, diaSemana, momento) Values (65,1,'lunes','desayuno');
@@ -1057,6 +1055,7 @@ insert into Pescado (codigoIngrediente) Values (132);
 insert into Cerdo (codigoIngrediente) Values (32);
 insert into Cerdo (codigoIngrediente) Values (35);
 insert into Cerdo (codigoIngrediente) Values (42);
+insert into Cerdo (codigoIngrediente) Values (45);
 insert into Cerdo (codigoIngrediente) Values (74);
 insert into Cerdo (codigoIngrediente) Values (83);
 insert into Cerdo (codigoIngrediente) Values (89);
