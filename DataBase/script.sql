@@ -916,7 +916,7 @@ insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (125,65);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (126,65); 
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (127,66);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (141,66);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (140,66);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (128,67);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,67);
@@ -972,7 +972,7 @@ insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (137,80);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,81);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (13,81);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (23,81);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (140,81);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (139,81);
 
 
 
