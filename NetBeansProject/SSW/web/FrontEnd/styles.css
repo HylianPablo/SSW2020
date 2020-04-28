@@ -484,3 +484,8 @@ header.masthead {
     border-color: #487540;
     outline-color: #487540;
 }
+
+.selfmadeCenter{
+    text-align: center;
+    margin: 0px auto;
+}

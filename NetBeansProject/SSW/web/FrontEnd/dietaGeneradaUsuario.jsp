@@ -69,6 +69,8 @@
                     <div class="MultiCarousel-inner">
                         <jsp:useBean id="platosDATOS" class="java.util.ArrayList" scope="session">  
                         </jsp:useBean>
+                        <jsp:useBean id="usuario" class="java.lang.String" scope="session">  
+                        </jsp:useBean>
                         <%
                             ArrayList<Plato> platosElegidos = platosDATOS;
                             String[] dias = new String[]{"Lunes","Martes","Miercoles","Jueves","Viernes","Sábado","Domingo"};
@@ -102,7 +104,8 @@
             </div>
             <br>
             <form action="./dietaGenerada" method="POST">
-            <input type="hidden" name="platosElegidos" value="<%=platosElegidos%>">
+            <input type="hidden" name="platosDATOS" value="<%=platosDATOS%>">
+            <input type="hidden" name="usuario" value="<%=usuario%>">
             <div class="mr-auto text-center">
                 <button type="submit" class="btn submitDiet" onclick="window.location.href='paginaUsuario.jsp';">Guardar Dieta</button>
             </div>

@@ -82,25 +82,26 @@
                                 </div>
                                 <div class="container my-5">
                                     <div class="form-group">
-                                        <label for="ageForm">Edad:</label>
+                                        <label class="actualPage" for="ageForm">Edad: (*)</label>
                                         <input class="form-control" type="number" id="ageForm" name="ageForm" oninput="checkAllForms()">
                                     </div>
                                     <div class="form-group">
-                                        <label for="heigthForm">Altura (cm):</label>
+                                        <label class="actualPage" for="heigthForm">Altura (cm): (*)</label>
                                         <input class="form-control" type="number" id="heightForm" name="heigthForm" oninput="checkAllForms()">
                                     </div>
                                     <div class="form-group">
-                                        <label for="weigthForm">Peso actual:</label>
+                                        <label class="actualPage" for="weigthForm">Peso actual: (*)</label>
                                         <input class="form-control" type="number" id="weigthForm" name="weightForm" oninput="checkAllForms()">
                                     </div>
                                     <div class="form-group">
-                                        <label for="idealWeigthForm">Peso ideal (opcional):</label>
+                                        <label class="actualPage" for="idealWeigthForm">Peso ideal:</label>
                                         <input class="form-control" type="number" id="idealWeigthForm" name="idealWeightForm" oninput="checkAllForms()">
                                     </div>
                                 </div>
                                 <div class="float-right">
                                     <button class="btn btn-success" href="#carouselCreaDieta" role="button" data-slide="next" id="siguiente1" disabled>Siguiente ></button>
                                 </div>
+                                <p class="actualPage">Los campos marcados con (*) son obligatorios.<p>
                             </div>
                         </div>
                         <div class="carousel-item bg-transparent p-5">

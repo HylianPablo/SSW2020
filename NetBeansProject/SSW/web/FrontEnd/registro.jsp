@@ -56,10 +56,12 @@
         <br/>
 
         <h1 class="h1Size coolFontParagraph center">Registro</h1>
-		<br/>
+		<br/>   
 		<hr/>
+                <h2 class="coolFontParagraph selfmadeCenter">¡En proceso de implementación!</h2>
         <div class="container" id="cuadroPerfil">
             <div class="m-3">
+                
                 <form role="form">
                     <div class="form-group w-70">
                         <label for="usuario">Usuario (*):</label>

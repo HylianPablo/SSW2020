@@ -76,6 +76,8 @@
             </jsp:useBean>
             <jsp:useBean id="escogida" class="java.lang.String" scope="session">  
             </jsp:useBean>
+            <jsp:useBean id="titulo" class="java.lang.String" scope="session">  
+            </jsp:useBean>
             <%
                 int escogidaT = Integer.parseInt(escogida);
                 ArrayList<Dieta> dietasG = dietasGuardadas;
@@ -102,8 +104,15 @@
                 Dias.add("Viernes");
                 Dias.add("Sábado");
                 Dias.add("Domingo");
+                String title;
+                System.out.println(titulo);
+                if(titulo==null || titulo.equals("")){
+                    title=dietasG.get(escogidaT).getTitulo();
+                }else{
+                    title=titulo;
+                }
             %>
-            <h2 class="inlineBlock m-2 coolFontParagraph"><%=dietasG.get(escogidaT).getTitulo()%></h2>	
+            <h2 class="inlineBlock m-2 coolFontParagraph"><%=title%></h2>	
             <div class="inlineBlock">
             </div>
             <%
@@ -165,32 +174,28 @@
                     <form action="./diaDieta" method="POST">
                         <input type="hidden" name="diaSemana" value="0">
                         <input type="hidden" name="usuario" value="1">
-                        <div class="carousel-item active bg-transparent p-5">
-                            <div class="formulario">
-                                <div class="container text-center">
-                                    <h4 class="coolFont">Datos personales</h4>
-                                </div>
-                                <div class="container my-5">
+                        <div class="container my-5">
                                     <div class="form-group">
-                                        <label for="ageForm">Edad:</label>
+                                        <label class="actualPage" for="ageForm">Edad: (*)</label>
                                         <input class="form-control" type="number" id="ageForm" name="ageForm" oninput="checkAllForms()">
                                     </div>
                                     <div class="form-group">
-                                        <label for="heigthForm">Altura (cm):</label>
+                                        <label class="actualPage" for="heigthForm">Altura (cm): (*)</label>
                                         <input class="form-control" type="number" id="heightForm" name="heigthForm" oninput="checkAllForms()">
                                     </div>
                                     <div class="form-group">
-                                        <label for="weigthForm">Peso actual:</label>
-                                        <input class="form-control" type="number" id="weigthForm" name="weigthForm" oninput="checkAllForms()">
+                                        <label class="actualPage" for="weigthForm">Peso actual: (*)</label>
+                                        <input class="form-control" type="number" id="weigthForm" name="weightForm" oninput="checkAllForms()">
                                     </div>
                                     <div class="form-group">
-                                        <label for="idealWeigthForm">Peso ideal (opcional):</label>
-                                        <input class="form-control" type="number" id="idealWeigthForm" name="idealWeigthForm">
+                                        <label class="actualPage" for="idealWeigthForm">Peso ideal:</label>
+                                        <input class="form-control" type="number" id="idealWeigthForm" name="idealWeightForm" oninput="checkAllForms()">
                                     </div>
                                 </div>
                                 <div class="float-right">
-                                    <a class="btn btn-success" href="#carouselCreaDieta" role="button" data-slide="next" id="siguiente1 disabled">Siguiente ></a>
+                                    <button class="btn btn-success" href="#carouselCreaDieta" role="button" data-slide="next" id="siguiente1" disabled>Siguiente ></button>
                                 </div>
+                                <p class="actualPage">Los campos marcados con (*) son obligatorios.<p>
                             </div>
                         </div>
                         <div class="carousel-item bg-transparent p-5">
@@ -387,7 +392,7 @@
                     
                     var siguiente = document.getElementById("siguiente1");
             
-                    if(age.value.length == 0 || height.value.length == 0 || weigth.value.length==0)
+                    if(age.value.length === 0 || height.value.length === 0 || weigth.value.length ===0)
                         flag=false;
                     if (flag)
                         siguiente.disabled=false;
