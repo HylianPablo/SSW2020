@@ -173,8 +173,13 @@
                 <div class="carousel-inner">
                     <form action="./diaDieta" method="POST">
                         <input type="hidden" name="diaSemana" value="0">
-                        <input type="hidden" name="usuario" value="1">
-                        <div class="container my-5">
+                        <input type="hidden" name="usuario" value="0">
+                        <div class="carousel-item active bg-transparent p-5">
+                            <div class="formulario">
+                                <div class="container text-center">
+                                    <h4 class="coolFont">Datos personales</h4>
+                                </div>
+                                <div class="container my-5">
                                     <div class="form-group">
                                         <label class="actualPage" for="ageForm">Edad: (*)</label>
                                         <input class="form-control" type="number" id="ageForm" name="ageForm" oninput="checkAllForms()">
@@ -202,6 +207,7 @@
                             <div class="formulario">
                                 <div class="container text-center">
                                     <h4 class="coolFont">Incompatibilidades de alimentos</h4>
+
                                 </div>
                                 <div class="row">
                                     <div class="col container my-5">
@@ -340,7 +346,6 @@
                         </div>
                     </form>
                 </div>
-            </div>
             <br/>
             <!-- Carousel -->
             <footer class="footer">
