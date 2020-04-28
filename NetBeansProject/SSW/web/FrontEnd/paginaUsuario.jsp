@@ -173,7 +173,7 @@
                 <div class="carousel-inner">
                     <form action="./diaDieta" method="POST">
                         <input type="hidden" name="diaSemana" value="0">
-                        <input type="hidden" name="usuario" value="0">
+                        <input type="hidden" name="usuario" value="1">
                         <div class="carousel-item active bg-transparent p-5">
                             <div class="formulario">
                                 <div class="container text-center">
