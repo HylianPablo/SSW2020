@@ -25,6 +25,79 @@ import modelo.Plato;
 @WebServlet(name = "diaDieta", urlPatterns = {"/FrontEnd/diaDieta", "/FrontEnd/generaDieta/diaDieta"})
 public class diaDieta extends HttpServlet {
 
+    
+    
+    
+    private ArrayList<Plato> tresPlatos(ArrayList<Boolean> alergias, int glucidos, 
+            int lipidos, int proteinas, int rangoIni, int rangoAumento, boolean desayuno){
+        ArrayList<Plato> respuesta, temp;
+        int rango = rangoIni;
+        do{ 
+            respuesta = DBConnection.selectPlatosDias(alergias, glucidos, lipidos, proteinas, rango, desayuno);
+            rango += rangoAumento;
+            if(rango > 200)
+                break;
+        }while(respuesta.size()<3);
+        if(respuesta.size()<3){
+            for(int i = respuesta.size(); i < 3; i++)
+                respuesta.add(respuesta.get(0));
+        }else if(respuesta.size()>3){
+            Collections.shuffle(respuesta);
+            temp = respuesta;
+            respuesta = new ArrayList<>();
+            for(int i = 0; i < 3; i++)
+                respuesta.add(temp.get(i));
+        }
+        return respuesta;
+    }
+    
+    private void addAlergias(ArrayList<Boolean> alergias, HttpServletRequest request){
+        try{
+            boolean vegano = (request.getParameter("vegano") != null);
+            alergias.add(vegano);
+            boolean vegetariano = (request.getParameter("vegetariano") != null);
+            alergias.add(vegetariano);
+            boolean frutosSecos = (request.getParameter("frutosSecos") != null);
+            alergias.add(frutosSecos);
+            boolean celiaco = (request.getParameter("celiaco") != null);
+            alergias.add(celiaco);
+            boolean cerdo = (request.getParameter("cerdo") != null);
+            alergias.add(cerdo);
+            boolean marisco = (request.getParameter("marisco") != null);
+            alergias.add(marisco);
+            boolean huevo = (request.getParameter("huevo") != null);
+            alergias.add(huevo);
+            boolean pescado = (request.getParameter("pescado") != null);
+            alergias.add(pescado);
+            boolean  cacahuetes = (request.getParameter("cacahuetes") != null);
+            alergias.add(cacahuetes);
+            boolean soja = (request.getParameter("soja") != null);
+            alergias.add(soja);
+            boolean melocoton = (request.getParameter("melocoton") != null);
+            alergias.add(melocoton);
+            boolean pera = (request.getParameter("pera") != null);
+            alergias.add(pera);
+            boolean manzana = (request.getParameter("manzana") != null);
+            alergias.add(manzana);
+            boolean melon = (request.getParameter("melon") != null);
+            alergias.add(melon);
+            boolean kiwi = (request.getParameter("kiwi") != null);
+            alergias.add(kiwi);
+            boolean piña = (request.getParameter("piña") != null);
+            alergias.add(piña);
+            boolean fresa = (request.getParameter("fresa") != null);
+            alergias.add(fresa);
+            boolean lactosa = (request.getParameter("lactosa") != null);
+            alergias.add(lactosa);
+            boolean musulman = (request.getParameter("musulman") != null);
+            alergias.add(musulman);
+            boolean hindu = (request.getParameter("hindu") != null);
+            alergias.add(hindu);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -51,50 +124,7 @@ public class diaDieta extends HttpServlet {
         if(diaSemana.equals("0")){
             platosElegidos = new ArrayList<>();
             alergias = new ArrayList<>();
-            try{
-                boolean vegano = (request.getParameter("vegano") != null);
-                alergias.add(vegano);
-                boolean vegetariano = (request.getParameter("vegetariano") != null);
-                alergias.add(vegetariano);
-                boolean frutosSecos = (request.getParameter("frutosSecos") != null);
-                alergias.add(frutosSecos);
-                boolean celiaco = (request.getParameter("celiaco") != null);
-                alergias.add(celiaco);
-                boolean cerdo = (request.getParameter("cerdo") != null);
-                alergias.add(cerdo);
-                boolean marisco = (request.getParameter("marisco") != null);
-                alergias.add(marisco);
-                boolean huevo = (request.getParameter("huevo") != null);
-                alergias.add(huevo);
-                boolean pescado = (request.getParameter("pescado") != null);
-                alergias.add(pescado);
-                boolean  cacahuetes = (request.getParameter("cacahuetes") != null);
-                alergias.add(cacahuetes);
-                boolean soja = (request.getParameter("soja") != null);
-                alergias.add(soja);
-                boolean melocoton = (request.getParameter("melocoton") != null);
-                alergias.add(melocoton);
-                boolean pera = (request.getParameter("pera") != null);
-                alergias.add(pera);
-                boolean manzana = (request.getParameter("manzana") != null);
-                alergias.add(manzana);
-                boolean melon = (request.getParameter("melon") != null);
-                alergias.add(melon);
-                boolean kiwi = (request.getParameter("kiwi") != null);
-                alergias.add(kiwi);
-                boolean piña = (request.getParameter("piña") != null);
-                alergias.add(piña);
-                boolean fresa = (request.getParameter("fresa") != null);
-                alergias.add(fresa);
-                boolean lactosa = (request.getParameter("lactosa") != null);
-                alergias.add(lactosa);
-                boolean musulman = (request.getParameter("musulman") != null);
-                alergias.add(musulman);
-                boolean hindu = (request.getParameter("hindu") != null);
-                alergias.add(hindu);
-            }catch(Exception e){
-                e.printStackTrace();
-            }
+            addAlergias(alergias, request);
         }else{
             try{
             alergias = (ArrayList) session.getAttribute("alergias");
@@ -116,9 +146,8 @@ public class diaDieta extends HttpServlet {
             url = "/FrontEnd/dietaGenerada.jsp";
         }else{
             url = "/FrontEnd/diaDieta.jsp";
+            int rango = 10, rangoAum = 10;
             if(!diaSemana.equals("0")){
-                //SE TRANSFORMA ARRAY DE CODIGOS(STRING) A ARRAY DE PLATOS
-                //Tiene utilidad para sacar los valores de las macromoleculas
                 ArrayList<Plato> platosDATOS = DBConnection.selectPlatosFromCodigo(platosElegidos);
                 for(int i=0;i<platosDATOS.size();i++){
                     glucidos+=platosDATOS.get(i).getGlucidosP100();
@@ -128,35 +157,22 @@ public class diaDieta extends HttpServlet {
                 glucidos = 100 + Integer.parseInt(diaSemana)*100 - glucidos;
                 lipidos = 100 + Integer.parseInt(diaSemana)*100 - lipidos;
                 proteinas = 100 + Integer.parseInt(diaSemana)*100 - proteinas;
-                //AQUI SE CALCULAN LAS VARIABLES DE MACROMOLECULAS, ARRAY PLATOSELEGIDOS ES DE STRINGS
-                //System.out.println("hola");
-                platosComida1 = DBConnection.selectPlatosDias(alergias,(int)(0.4*(glucidos)),(int)(0.3*(lipidos)),(int)(0.2*(proteinas)),100,false);
-                platosComida2 = DBConnection.selectPlatosDias(alergias,(int)(0.25*(glucidos)),(int)(0.3*(lipidos)),(int)(0.6*(proteinas)),100,false);
-                platosCena = DBConnection.selectPlatosDias(alergias,(int)(0.25*(glucidos)),(int)(0.3*(lipidos)),(int)(0.2*(proteinas)),100,false);
-                platosDesayuno = DBConnection.selectPlatosDias(alergias,(int)(0.1*(glucidos)),(int)(0.3*(lipidos)),(int)(0.0*(proteinas)),100,true);
-                Collections.shuffle(platosComida1);
-                Collections.shuffle(platosComida2);
-                Collections.shuffle(platosCena);
-                Collections.shuffle(platosDesayuno);
-
             }else{
-
-                platosComida1 = DBConnection.selectPlatosDias(alergias,40,30,20,50,false);
-                platosComida2 = DBConnection.selectPlatosDias(alergias,25,30,60,50,false);
-                platosCena = DBConnection.selectPlatosDias(alergias,25,30,20,50,false);
-                platosDesayuno = DBConnection.selectPlatosDias(alergias,10,30,0,50,true);
-                Collections.shuffle(platosComida1);
-                Collections.shuffle(platosComida2);
-                Collections.shuffle(platosCena);
-                Collections.shuffle(platosDesayuno);
-
+                glucidos = 100;
+                lipidos = 100;
+                proteinas = 100;
             }
+            platosComida1 = tresPlatos(alergias,(int)(0.4*(glucidos)),(int)(0.3*(lipidos)),(int)(0.2*(proteinas)), rango, rangoAum, false);
+            platosComida2 = tresPlatos(alergias,(int)(0.25*(glucidos)),(int)(0.3*(lipidos)),(int)(0.6*(proteinas)),rango, rangoAum, false);
+            platosCena = tresPlatos(alergias,(int)(0.25*(glucidos)),(int)(0.3*(lipidos)),(int)(0.2*(proteinas)), rango, rangoAum, false);
+            platosDesayuno = tresPlatos(alergias,(int)(0.1*(glucidos)),(int)(0.3*(lipidos)),(int)(0.0*(proteinas)), rango, rangoAum, true);
+
             platos = new ArrayList<>();
-            for(int i=0; i<3;i++)
+            for(int i=0; i<Math.min(platosComida1.size(), 3);i++)
                 platos.add(platosComida1.get(i));
-            for(int i=0; i<3;i++)
+            for(int i=0; i<Math.min(platosComida2.size(), 3);i++)
                 platos.add(platosComida2.get(i));
-            for(int i=0; i<3;i++)
+            for(int i=0; i<Math.min(platosCena.size(), 3);i++)
                 platos.add(platosCena.get(i));
             
             session.setAttribute("platos",platos);
@@ -164,8 +180,6 @@ public class diaDieta extends HttpServlet {
             session.setAttribute("diaSemana", diaSemana);
             session.setAttribute("alergias",alergias);
         }
-        //glucidosSimples,polisacaridos,aminoacidos,proteinas,hidratosDeCarbono);
-        //Da mal generar dieta hasta que se haga esta consulta
         
         session.setAttribute("platosElegidos",platosElegidos);
 

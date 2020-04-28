@@ -116,6 +116,7 @@
                                                     int NUM_OPC = 3;
                                                     nomComida = menus[c][m];
                                                     if(menus[c][m]=="desayuno"){
+                                                        NUM_OPC = psD.size();
                                                         for (int i = 0; i < NUM_OPC; i++) { 
                                                                 Plato p = psD.get(numPlatoD);
                                                                 numPlatoD++;%>

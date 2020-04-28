@@ -83,19 +83,19 @@
                                 <div class="container my-5">
                                     <div class="form-group">
                                         <label for="ageForm">Edad:</label>
-                                        <input class="form-control" type="text" pattern="[0-9]*" id="ageForm" name="ageForm" oninput="checkAllForms()">
+                                        <input class="form-control" type="number" id="ageForm" name="ageForm" oninput="checkAllForms()">
                                     </div>
                                     <div class="form-group">
                                         <label for="heigthForm">Altura (cm):</label>
-                                        <input class="form-control" type="text" pattern="[0-9]*" id="heightForm" name="heigthForm" oninput="checkAllForms()">
+                                        <input class="form-control" type="number" id="heightForm" name="heigthForm" oninput="checkAllForms()">
                                     </div>
                                     <div class="form-group">
                                         <label for="weigthForm">Peso actual:</label>
-                                        <input class="form-control" type="text" pattern="[0-9]*" id="weigthForm" name="weightForm" oninput="checkAllForms()">
+                                        <input class="form-control" type="number" id="weigthForm" name="weightForm" oninput="checkAllForms()">
                                     </div>
                                     <div class="form-group">
                                         <label for="idealWeigthForm">Peso ideal (opcional):</label>
-                                        <input class="form-control" type="text" patterm="[0-9]*" id="idealWeigthForm" name="idealWeightForm" oninput="checkAllForms()">
+                                        <input class="form-control" type="number" id="idealWeigthForm" name="idealWeightForm" oninput="checkAllForms()">
                                     </div>
                                 </div>
                                 <div class="float-right">
