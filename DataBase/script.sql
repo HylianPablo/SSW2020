@@ -1050,7 +1050,7 @@ insert into Pescado (codigoIngrediente) Values (87);
 insert into Pescado (codigoIngrediente) Values (98);
 insert into Pescado (codigoIngrediente) Values (104);
 insert into Pescado (codigoIngrediente) Values (109);
-insert into Pescado (codigoIngrediente) Values (132);
+insert into Pescado (codigoIngrediente) Values (131);
 
 insert into Cerdo (codigoIngrediente) Values (32);
 insert into Cerdo (codigoIngrediente) Values (35);
@@ -1076,6 +1076,8 @@ insert into Lactosa (codigoIngrediente) Values (58);
 insert into Lactosa (codigoIngrediente) Values (30);
 insert into Lactosa (codigoIngrediente) Values (72);
 insert into Lactosa (codigoIngrediente) Values (90);
+insert into Lactosa (codigoIngrediente) Values (135);
+insert into Lactosa (codigoIngrediente) Values (138);
 
 insert into Huevo (codigoIngrediente) Values (64);
 insert into Huevo (codigoIngrediente) Values (24);
