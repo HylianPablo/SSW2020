@@ -112,7 +112,7 @@ public class diaDieta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url;
         String diaSemana = request.getParameter("diaSemana");
-        //String codigoPlato = request.getParameter("codigoPlato");
+        String usuario = request.getParameter("usuario");
         HttpSession session = request.getSession();
         
         int glucidos=0, lipidos=0, proteinas=0;
@@ -120,6 +120,7 @@ public class diaDieta extends HttpServlet {
         ArrayList <String> platosElegidos=null; //Array de codigos de platos elegidos hasta esta iteracion
         ArrayList <Boolean> alergias=null;  //Alergias elegidas al principio, no se modifican
         ArrayList <Plato> platos=null; //Platos que se podrán elegir el siguiente día comidas generales
+        ArrayList <Plato> platosDATOS=null; //Arraylist de platos (objetos) elegidos hasta el momento
         ArrayList <Plato> platosComida1, platosComida2, platosCena, platosDesayuno=null; //Platos que se podrán elegir el siguiente día desayuno
         if(diaSemana.equals("0")){
             platosElegidos = new ArrayList<>();
@@ -143,12 +144,20 @@ public class diaDieta extends HttpServlet {
         }
         
         if(diaSemana.equals("7")){
-            url = "/FrontEnd/dietaGenerada.jsp";
+            if(usuario.equals("0")){
+                url = "/FrontEnd/dietaGenerada.jsp";
+            }else{
+                url = "/FrontEnd/dietaGeneradaUsuario.jsp";
+            }
         }else{
-            url = "/FrontEnd/diaDieta.jsp";
+            if(usuario.equals("0")){
+                url = "/FrontEnd/diaDieta.jsp";
+            }else{
+                url = "/FrontEnd/diaDietaUsuario.jsp";
+            }
             int rango = 10, rangoAum = 10;
             if(!diaSemana.equals("0")){
-                ArrayList<Plato> platosDATOS = DBConnection.selectPlatosFromCodigo(platosElegidos);
+                platosDATOS = DBConnection.selectPlatosFromCodigo(platosElegidos);
                 for(int i=0;i<platosDATOS.size();i++){
                     glucidos+=platosDATOS.get(i).getGlucidosP100();
                     lipidos+=platosDATOS.get(i).getLipidosP100();
@@ -175,7 +184,11 @@ public class diaDieta extends HttpServlet {
             for(int i=0; i<Math.min(platosCena.size(), 3);i++)
                 platos.add(platosCena.get(i));
             
+            if(diaSemana.equals("7")){
+                session.setAttribute("platosDATOS",platosDATOS);
+            }
             session.setAttribute("platos",platos);
+            session.setAttribute("usuario",usuario);
             session.setAttribute("platosDesayuno",platosDesayuno);
             session.setAttribute("diaSemana", diaSemana);
             session.setAttribute("alergias",alergias);

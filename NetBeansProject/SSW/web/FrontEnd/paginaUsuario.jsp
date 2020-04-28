@@ -162,8 +162,9 @@
                     <li data-target="#carouselCreaDieta" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <form action="diaDieta" method="POST">
+                    <form action="./diaDieta" method="POST">
                         <input type="hidden" name="diaSemana" value="0">
+                        <input type="hidden" name="usuario" value="1">
                         <div class="carousel-item active bg-transparent p-5">
                             <div class="formulario">
                                 <div class="container text-center">
@@ -172,15 +173,15 @@
                                 <div class="container my-5">
                                     <div class="form-group">
                                         <label for="ageForm">Edad:</label>
-                                        <input class="form-control" type="number" id="ageForm" name="ageForm">
+                                        <input class="form-control" type="number" id="ageForm" name="ageForm" oninput="checkAllForms()">
                                     </div>
                                     <div class="form-group">
                                         <label for="heigthForm">Altura (cm):</label>
-                                        <input class="form-control" type="number" id="heigthForm" name="heigthForm">
+                                        <input class="form-control" type="number" id="heightForm" name="heigthForm" oninput="checkAllForms()">
                                     </div>
                                     <div class="form-group">
                                         <label for="weigthForm">Peso actual:</label>
-                                        <input class="form-control" type="number" id="weigthForm" name="weigthForm">
+                                        <input class="form-control" type="number" id="weigthForm" name="weigthForm" oninput="checkAllForms()">
                                     </div>
                                     <div class="form-group">
                                         <label for="idealWeigthForm">Peso ideal (opcional):</label>
@@ -188,7 +189,7 @@
                                     </div>
                                 </div>
                                 <div class="float-right">
-                                    <a class="btn btn-success" href="#carouselCreaDieta" role="button" data-slide="next">Siguiente ></a>
+                                    <a class="btn btn-success" href="#carouselCreaDieta" role="button" data-slide="next" id="siguiente1 disabled">Siguiente ></a>
                                 </div>
                             </div>
                         </div>
@@ -201,62 +202,62 @@
                                     <div class="col container my-5">
                                         <h5>Alergias</h5>
                                         <div class="custom-control custom-checkbox checkbox-xl">
-                                            <input type="checkbox" class="custom-control-input" id="cerdoCheck">
+                                            <input type="checkbox" class="custom-control-input" name="cerdo" id="cerdoCheck">
                                             <label class="custom-control-label" for="cerdoCheck"> Cerdo</label>
                                         </div>
                                         <div class="custom-control custom-checkbox checkbox-xl">
-                                            <input type="checkbox" class="custom-control-input" id="mariscoCheck">
+                                            <input type="checkbox" class="custom-control-input" name="marisco" id="mariscoCheck">
                                             <label class="custom-control-label" for="mariscoCheck"> Marisco</label>
                                         </div>
                                         <div class="custom-control custom-checkbox checkbox-xl">
-                                            <input type="checkbox" class="custom-control-input" id="pescadoCheck">
+                                            <input type="checkbox" class="custom-control-input" name="pescado" id="pescadoCheck">
                                             <label class="custom-control-label" for="pescadoCheck"> Pescado</label>
                                         </div>
                                         <div class="custom-control custom-checkbox checkbox-xl">
-                                            <input type="checkbox" class="custom-control-input" id="huevoCheck">
+                                            <input type="checkbox" class="custom-control-input" name="huevo" id="huevoCheck">
                                             <label class="custom-control-label" for="huevoCheck"> Huevo</label>
                                         </div>
                                         <div class="custom-control custom-checkbox checkbox-xl">
-                                            <input type="checkbox" class="custom-control-input" id="frutosSecosCheck">
+                                            <input type="checkbox" class="custom-control-input" name="frutosSecos" id="frutosSecosCheck">
                                             <label class="custom-control-label" for="frutosSecosCheck"> Frutos secos (no cacahuetes)</label>
                                         </div>
                                         <div class="custom-control custom-checkbox checkbox-xl">
-                                            <input type="checkbox" class="custom-control-input" id="cacahuetesCheck">
+                                            <input type="checkbox" class="custom-control-input" name="cacahuetes" id="cacahuetesCheck">
                                             <label class="custom-control-label" for="cacahuetesCheck"> Cacahuetes</label>
                                         </div>
                                         <div class="custom-control custom-checkbox checkbox-xl">
-                                            <input type="checkbox" class="custom-control-input" id="sojaCheck">
+                                            <input type="checkbox" class="custom-control-input" name="soja" id="sojaCheck">
                                             <label class="custom-control-label" for="sojaCheck"> Soja</label>
                                         </div>
                                     </div>
                                     <div class="col container my-5">
                                         <h5>Alergias a frutas</h5>
                                         <div class="custom-control custom-checkbox checkbox-xl">
-                                            <input type="checkbox" class="custom-control-input" id="melocotonCheck">
+                                            <input type="checkbox" class="custom-control-input" name="melocoton" id="melocotonCheck">
                                             <label class="custom-control-label" for="melocotonCheck"> Melocotón</label>
                                         </div>
                                         <div class="custom-control custom-checkbox checkbox-xl">
-                                            <input type="checkbox" class="custom-control-input" id="peraCheck">
+                                            <input type="checkbox" class="custom-control-input" name="pera" id="peraCheck">
                                             <label class="custom-control-label" for="peraCheck"> Pera</label>
                                         </div>
                                         <div class="custom-control custom-checkbox checkbox-xl">
-                                            <input type="checkbox" class="custom-control-input" id="manzanaCheck">
+                                            <input type="checkbox" class="custom-control-input" name="manzana" id="manzanaCheck">
                                             <label class="custom-control-label" for="manzanaCheck"> Manzana</label>
                                         </div>
                                         <div class="custom-control custom-checkbox checkbox-xl">
-                                            <input type="checkbox" class="custom-control-input" id="melonCheck">
+                                            <input type="checkbox" class="custom-control-input" name="melon" id="melonCheck">
                                             <label class="custom-control-label" for="melonCheck"> Melón</label>
                                         </div>
                                         <div class="custom-control custom-checkbox checkbox-xl">
-                                            <input type="checkbox" class="custom-control-input" id="kiwiCheck">
+                                            <input type="checkbox" class="custom-control-input" name="kiwi" id="kiwiCheck">
                                             <label class="custom-control-label" for="kiwiCheck"> Kiwi</label>
                                         </div>
                                         <div class="custom-control custom-checkbox checkbox-xl">
-                                            <input type="checkbox" class="custom-control-input" id="pinaCheck">
+                                            <input type="checkbox" class="custom-control-input" name="piña" id="pinaCheck">
                                             <label class="custom-control-label" for="pinaCheck"> Piña</label>
                                         </div>
                                         <div class="custom-control custom-checkbox checkbox-xl">
-                                            <input type="checkbox" class="custom-control-input" id="fresaCheck">
+                                            <input type="checkbox" class="custom-control-input" name="fresa" id="fresaCheck">
                                             <label class="custom-control-label" for="fresaCheck"> Fresa</label>
                                         </div>
                                     </div>
@@ -264,30 +265,30 @@
                                         <div class="container my-5">
                                             <h5>Intolerancias</h5>
                                             <div class="custom-control custom-checkbox checkbox-xl">
-                                                <input type="checkbox" class="custom-control-input" id="celicacoCheck">
+                                                <input type="checkbox" class="custom-control-input" name="celiaco" id="celicacoCheck">
                                                 <label class="custom-control-label" for="celicacoCheck"> Celíaco (Gluten)</label>
                                             </div>
                                             <div class="custom-control custom-checkbox checkbox-xl">
-                                                <input type="checkbox" class="custom-control-input" id="lactosaCheck">
+                                                <input type="checkbox" class="custom-control-input" name="lactosa" id="lactosaCheck">
                                                 <label class="custom-control-label" for="lactosaCheck"> Lactosa</label>
                                             </div>
                                         </div>
                                         <div class="container my-5">
                                             <h5>Otras incompatibilidades</h5>
                                             <div class="custom-control custom-checkbox checkbox-xl">
-                                                <input type="checkbox" class="custom-control-input" id="vegetarianoCheck">
+                                                <input type="checkbox" class="custom-control-input" name="vegetariano" id="vegetarianoCheck">
                                                 <label class="custom-control-label" for="vegetarianoCheck"> Vegetariano</label>
                                             </div>
                                             <div class="custom-control custom-checkbox checkbox-xl">
-                                                <input type="checkbox" class="custom-control-input" id="veganoCheck">
+                                                <input type="checkbox" class="custom-control-input" name="vegano" id="veganoCheck">
                                                 <label class="custom-control-label" for="veganoCheck"> Vegano</label>
                                             </div>
                                             <div class="custom-control custom-checkbox checkbox-xl">
-                                                <input type="checkbox" class="custom-control-input" id="musulmanCheck">
+                                                <input type="checkbox" class="custom-control-input" name="musulman" id="musulmanCheck">
                                                 <label class="custom-control-label" for="musulmanCheck"> Musulmán</label>
                                             </div>
                                             <div class="custom-control custom-checkbox checkbox-xl">
-                                                <input type="checkbox" class="custom-control-input" id="hinduCheck">
+                                                <input type="checkbox" class="custom-control-input" name="hindu" id="hinduCheck">
                                                 <label class="custom-control-label" for="hinduCheck"> Hindú</label>
                                             </div>
                                         </div>
@@ -376,6 +377,23 @@
                 $('.carousel').carousel({
                     interval: false
                 });
+            </script>
+            <script>
+                 function checkAllForms(){
+                    var flag = true;
+                    var age = document.getElementById("ageForm");
+                    var height = document.getElementById("heightForm");
+                    var weigth = document.getElementById("weigthForm");
+                    
+                    var siguiente = document.getElementById("siguiente1");
+            
+                    if(age.value.length == 0 || height.value.length == 0 || weigth.value.length==0)
+                        flag=false;
+                    if (flag)
+                        siguiente.disabled=false;
+                    else
+                        siguiente.disabled=true;
+                    }
             </script>
 
         </div>

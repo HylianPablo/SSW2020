@@ -45,19 +45,22 @@
     <div class="container rounded" id="cuerpo">
 
         <div class="row text-center my-3">
-			<div class="col"></div>
-			<div class="col">
-				<a class="coolFont btn w-100" href="./index" role="button">INICIO</a>
-			</div>
-			<div class="col">
-				<a class="coolFont btn w-100" href="./foro" role="button">FORO</a>
-			</div>
-			<div class="col">
-				<a class="oneLine coolFont btn w-100" href="./ranking" role="button">TOP DIETAS</a>
-			</div>
-			<div class="col"></div>
-			<hr style="width: 100%; color: black; height: 1px; background-color:black;" />
-		</div>
+                <div class="col"></div>
+                <div class="col">
+                    <a class="coolFont btn w-100 actualPage" href="./paginaUsuario" role="button">INICIO</a>
+                </div>
+                <div class="col">
+                    <a class="coolFont btn w-100" href="./foroUsuario" role="button">FORO</a>
+                </div>
+                <div class="col">
+                    <a class="oneLine coolFont btn w-100" href="./rankingUsuario" role="button">TOP DIETAS</a>
+                </div>
+                <div class="col">
+                    <a class="coolFont btn w-100" href="./perfil" role="button">MI PERFIL</a>
+                </div>
+                <div class="col"></div>
+                <hr style="width: 100%; color: black; height: 0px; background-color:black;" />
+            </div>
 		<br/>
 
         <h1 class="coolFontParagraph inlineBlock">Dieta generada.</h1>
@@ -99,7 +102,7 @@
             </div>
             <br>
             <div class="mr-auto text-center">
-                <button type="submit" class="btn submitDiet" onclick="window.location.href='iniciarSesion.html';">Guardar Dieta</button>
+                <button type="submit" class="btn submitDiet" onclick="window.location.href='paginaUsuario.jsp';">Guardar Dieta</button>
             </div>
         <br/>
         <br/>
