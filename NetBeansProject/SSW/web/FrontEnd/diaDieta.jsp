@@ -190,6 +190,9 @@
         <br/>
     </body>
     <script>
+        window.onload = function() {
+            checkAllRadio();
+        };
         function checkAllRadio(){
             var flag = true;
             $(':radio').each(function () {

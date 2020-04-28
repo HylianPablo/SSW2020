@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-04-27T09:16:44.781Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36" etag="rpqEXDUyFQPpXG2m2KAR" version="12.9.4" type="github">
+<mxfile host="app.diagrams.net" modified="2020-04-28T15:24:00.442Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36" etag="EHilCjrrYVC4WWc3_eWV" version="13.0.1" type="github">
   <diagram id="29hRNnKXACexP1v_duyr" name="Page-1">
     <mxGraphModel dx="2249" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -13,8 +13,8 @@
         <mxCell id="Ck8MsScD6dfkMRM8H-GI-3" value="Ingrediente(&lt;u&gt;códigoIngrediente&lt;/u&gt;, nombre, vegano, vegetariano, frutosSecos, gluten)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="75" y="610" width="580" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-4" value="Dieta(&lt;u&gt;códigoDieta&lt;/u&gt;, titulo, descripción)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="440" y="240" width="220" height="20" as="geometry" />
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-4" value="Dieta(&lt;u&gt;códigoDieta&lt;/u&gt;, titulo, descripción, fecha)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="440" y="240" width="250" height="20" as="geometry" />
         </mxCell>
         <mxCell id="Ck8MsScD6dfkMRM8H-GI-5" value="Guardado(&lt;u&gt;nombreUsuario&lt;/u&gt;, &lt;u&gt;codigoDieta)&lt;/u&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="-20" y="260" width="370" height="20" as="geometry" />

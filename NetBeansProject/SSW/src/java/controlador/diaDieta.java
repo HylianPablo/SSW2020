@@ -114,7 +114,6 @@ public class diaDieta extends HttpServlet {
         String diaSemana = request.getParameter("diaSemana");
         String usuario = request.getParameter("usuario");
         HttpSession session = request.getSession();
-        
         int glucidos=0, lipidos=0, proteinas=0;
         
         ArrayList <String> platosElegidos=null; //Array de codigos de platos elegidos hasta esta iteracion
@@ -140,7 +139,7 @@ public class diaDieta extends HttpServlet {
             platosElegidos.add(cena);
             }catch(Exception e){
                 e.printStackTrace();
-            }       
+            }
         }
         
         if(diaSemana.equals("7")){
