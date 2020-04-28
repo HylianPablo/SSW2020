@@ -439,7 +439,7 @@ public class DBConnection {
             ps = connection.prepareStatement(queryExample);
             ps.setString(1, titulo);
             ps.setString(2, desc);
-            ps.setTimestamp(2, ld);
+            ps.setTimestamp(3, ld);
             int res = ps.executeUpdate();
             ps.close();
             pool.freeConnection(connection);
@@ -509,7 +509,7 @@ public class DBConnection {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         String queryExample = "SELECT d.codigoDieta FROM Dieta d WHERE d.codigoDieta >= "
-                + "(SELECT COUNT(*) FROM Dieta d2 WHERE d2.codigoDieta > d.codigoDieta)";
+                + " ALL(SELECT d2.codigoDieta FROM Dieta d2)";
         String resultado = null;
         ResultSet rs;
         try {

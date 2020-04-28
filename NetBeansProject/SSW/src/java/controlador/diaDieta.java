@@ -32,12 +32,19 @@ public class diaDieta extends HttpServlet {
             int lipidos, int proteinas, int rangoIni, int rangoAumento, boolean desayuno){
         ArrayList<Plato> respuesta, temp;
         int rango = rangoIni;
+        glucidos = Plato.glucidosGram(glucidos);
+        lipidos = Plato.lipidosGram(lipidos);
+        proteinas = Plato.proteinasGram(proteinas);
         do{ 
             respuesta = DBConnection.selectPlatosDias(alergias, glucidos, lipidos, proteinas, rango, desayuno);
             rango += rangoAumento;
-            if(rango > 200)
+            if(rango > 220)
                 break;
         }while(respuesta.size()<3);
+        if(respuesta.size()==0){
+            Plato platoEmergencia = DBConnection.selectPlato("33");
+            respuesta.add(platoEmergencia);
+        }
         if(respuesta.size()<3){
             for(int i = respuesta.size(); i < 3; i++)
                 respuesta.add(respuesta.get(0));
@@ -154,7 +161,7 @@ public class diaDieta extends HttpServlet {
             }else{
                 url = "/FrontEnd/diaDietaUsuario.jsp";
             }
-            int rango = 10, rangoAum = 10;
+            int rango = 10, rangoAum = 20;
             if(!diaSemana.equals("0")){
                 platosDATOS = DBConnection.selectPlatosFromCodigo(platosElegidos);
                 for(int i=0;i<platosDATOS.size();i++){
@@ -170,10 +177,10 @@ public class diaDieta extends HttpServlet {
                 lipidos = 100;
                 proteinas = 100;
             }
-            platosComida1 = tresPlatos(alergias,(int)(0.4*(glucidos)),(int)(0.3*(lipidos)),(int)(0.2*(proteinas)), rango, rangoAum, false);
-            platosComida2 = tresPlatos(alergias,(int)(0.25*(glucidos)),(int)(0.3*(lipidos)),(int)(0.6*(proteinas)),rango, rangoAum, false);
-            platosCena = tresPlatos(alergias,(int)(0.25*(glucidos)),(int)(0.3*(lipidos)),(int)(0.2*(proteinas)), rango, rangoAum, false);
-            platosDesayuno = tresPlatos(alergias,(int)(0.1*(glucidos)),(int)(0.3*(lipidos)),(int)(0.0*(proteinas)), rango, rangoAum, true);
+            platosComida1 = tresPlatos(alergias,(int)(0.4*(glucidos)),(int)(0.3*(lipidos)),(int)(0.1*(proteinas)), rango, rangoAum, false);
+            platosComida2 = tresPlatos(alergias,(int)(0.25*(glucidos)),(int)(0.3*(lipidos)),(int)(0.8*(proteinas)),rango, rangoAum, false);
+            platosCena = tresPlatos(alergias,(int)(0.25*(glucidos)),(int)(0.3*(lipidos)),(int)(0.1*(proteinas)), rango, rangoAum, false);
+            platosDesayuno = tresPlatos(alergias,(int)(0.1*(glucidos)),(int)(0.1*(lipidos)),(int)(0.0*(proteinas)), rango, rangoAum, true);
 
             platos = new ArrayList<>();
             for(int i=0; i<Math.min(platosComida1.size(), 3);i++)
@@ -191,10 +198,9 @@ public class diaDieta extends HttpServlet {
             session.setAttribute("alergias",alergias);
         }
         if(diaSemana.equals("7")){
-                platosDATOS = DBConnection.selectPlatosFromCodigo(platosElegidos);
-                session.setAttribute("platosDATOS",platosDATOS);
-                System.out.println(platosDATOS.size());
-            }
+            platosDATOS = DBConnection.selectPlatosFromCodigo(platosElegidos);
+            session.setAttribute("platosDATOS",platosDATOS);
+        }
         
         session.setAttribute("platosElegidos",platosElegidos);
 

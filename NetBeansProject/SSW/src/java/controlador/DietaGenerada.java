@@ -53,6 +53,7 @@ public class DietaGenerada extends HttpServlet {
             String descripcion = "Dieta genérica de usuario hasta implementación.";
             DBConnection.insertDieta(titulo,descripcion,ld); 
             String codigoDieta = DBConnection.getLastCodigoDieta();
+            System.out.println(codigoDieta);
             DBConnection.insertGuardado("pedsanz",codigoDieta);
             DBConnection.insertPlatosMenu(platosElegidos,codigoDieta);
         }else{

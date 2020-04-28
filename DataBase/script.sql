@@ -82,6 +82,7 @@ create table Plato(
 );
 
 create table PlatoMenu(
+	codigoPlatoMenu			integer not null auto_increment,
 	codigoPlato				integer not null,
 	codigoDieta				integer,
 	diaSemana				char(20) not null,
@@ -90,7 +91,7 @@ create table PlatoMenu(
 	check (momento in ('desayuno','comidaPrimero','comidaSegundo','cena')),
 	foreign key(codigoPlato) references Plato(codigoPlato), 
 	foreign key(codigoDieta) references Dieta(codigoDieta),
-	primary key(codigoPlato, codigoDieta)
+	primary key(codigoPlatoMenu)
 );
 
 create table Ingrediente(
@@ -325,7 +326,6 @@ insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('
 insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Plátano',TRUE,TRUE,FALSE,FALSE);
 
 
-<<<<<<< HEAD
 insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Garbanzos con espinacas','Garbanzos de la huerta cocinados con espinaca y aceite de oliva',FALSE,TRUE,TRUE,FALSE,FALSE,140,0,16,3,9);
 insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Pez espada','Pez espada con limón y romero, marinado con piñones',FALSE,FALSE,FALSE,TRUE,FALSE,363,0,0,12,60);
 insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Macarrones a la boloñesa','Macarrones con carne picada, tomate y orégano',FALSE,FALSE,FALSE,FALSE,TRUE,306,3,34,11,15);
