@@ -148,7 +148,7 @@ public class diaDieta extends HttpServlet {
                 e.printStackTrace();
             }
         }
-        
+        System.out.println(usuario);
         if(diaSemana.equals("7")){
             if(usuario.equals("0")){
                 url = "/FrontEnd/dietaGenerada.jsp";
