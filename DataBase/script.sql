@@ -1071,6 +1071,7 @@ insert into Cerdo (codigoIngrediente) Values (92);
 
 insert into Lactosa (codigoIngrediente) Values (27);
 insert into Lactosa (codigoIngrediente) Values (29);
+insert into Lactosa (codigoIngrediente) Values (36);
 insert into Lactosa (codigoIngrediente) Values (58);
 insert into Lactosa (codigoIngrediente) Values (30);
 insert into Lactosa (codigoIngrediente) Values (72);
@@ -1085,7 +1086,7 @@ insert into Hindu (codigoIngrediente) Values (27);
 insert into Hindu (codigoIngrediente) Values (71);
 insert into Hindu (codigoIngrediente) Values (76);
 
-insert into Soja (codigoIngrediente) Values (138);
+insert into Soja (codigoIngrediente) Values (139);
 
-insert into Cacahuete (codigoIngrediente) Values (128);
+insert into Cacahuete (codigoIngrediente) Values (127);
 
