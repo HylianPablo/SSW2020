@@ -47,7 +47,7 @@ public class DietaGenerada extends HttpServlet {
         if(usuario.equals("1")){
             url = "/FrontEnd/paginaUsuario.jsp";
             String titulo = "Dieta de usuario";
-            Timestamp ld = Timestamp.valueOf("2020-4-28");
+            Timestamp ld = Timestamp.valueOf("2020-4-28 18:00:00");
             String descripcion = "Dieta genérica de usuario hasta implementación.";
             DBConnection.insertDieta(titulo,descripcion,ld); 
             String codigoDieta = DBConnection.getLastCodigoDieta();

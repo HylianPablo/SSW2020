@@ -478,8 +478,9 @@ public class DBConnection {
         String queryExample = "INSERT INTO PlatoMenu (codigoPlato, codigoDieta, diaSemana, momento) VALUES(?,?,?,?)";
         try {
             for(int i=0;i<platosElegidos.size();i++){
+                String s = platosElegidos.get(i).getCodigoPlato();
                 ps = connection.prepareStatement(queryExample);
-                ps.setString(1, platosElegidos.get(i).getCodigoPlato());
+                ps.setString(1, s);
                 ps.setString(2, codigoDieta);
                 ps.setString(3,diaSemana[dia]);
                 ps.setString(4,momento[i%4]);
