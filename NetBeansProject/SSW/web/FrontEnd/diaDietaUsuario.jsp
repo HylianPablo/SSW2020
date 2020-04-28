@@ -167,7 +167,9 @@
                     </div>
                     <div class="row text-center my-3">
                         <div class="col"></div>
-                        <div class="col"></div>
+                        <div class="col">
+                            <button id="back" class="botonEstandar btn btn-success botonesEntrada" type="button" onclick="history.back()">Anterior</button>
+                        </div>
                         <div class="col"></div>
                         <div class="col"></div>
                         <div class="col"></div>
