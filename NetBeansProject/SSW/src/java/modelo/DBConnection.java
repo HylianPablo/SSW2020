@@ -429,6 +429,99 @@ public class DBConnection {
             return 0;
         }
     }
+    
+    public static void insertDieta(String titulo, String desc, Timestamp ld){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String queryExample = "INSERT INTO Dieta (titulo, descripcion, fecha) VALUES(?,?,?)";
+        try {
+            ps = connection.prepareStatement(queryExample);
+            ps.setString(1, titulo);
+            ps.setString(2, desc);
+            ps.setTimestamp(2, ld);
+            int res = ps.executeUpdate();
+            ps.close();
+            pool.freeConnection(connection);
+        } catch (SQLException e) {
+            pool.freeConnection(connection);
+            e.printStackTrace();
+        }
+    }
+    
+    public static void insertGuardado(String nombreUsuario, String codigoDieta){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String queryExample = "INSERT INTO Guardado (nombreUsuario, codigoDieta) VALUES(?,?)";
+        try {
+            ps = connection.prepareStatement(queryExample);
+            ps.setString(1, nombreUsuario);
+            ps.setString(2, codigoDieta);
+            int res = ps.executeUpdate();
+            ps.close();
+            pool.freeConnection(connection);
+        } catch (SQLException e) {
+            pool.freeConnection(connection);
+            e.printStackTrace();
+        }
+    }
+    
+    public static void insertPlatosMenu(ArrayList<Plato> platosElegidos, String codigoDieta){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String[] diaSemana = new String[] {"lunes","martes","miercoles","jueves","viernes","sabado","domingo"};
+        String[] momento = new String[] {"desayuno","comidaPrimero","comidaSegundo","cena"};
+        int dia =0;
+        int counter=0;
+        String queryExample = "INSERT INTO PlatoMenu (codigoPlato, codigoDieta, diaSemana, momento) VALUES(?,?,?,?)";
+        try {
+            for(int i=0;i<platosElegidos.size();i++){
+                ps = connection.prepareStatement(queryExample);
+                ps.setString(1, platosElegidos.get(i).getCodigoPlato());
+                ps.setString(2, codigoDieta);
+                ps.setString(3,diaSemana[dia]);
+                ps.setString(4,momento[i%4]);
+                counter++;
+                if(counter==4){
+                    dia++;
+                    counter=0;
+                }
+                int res = ps.executeUpdate();
+            }
+            ps.close();
+            pool.freeConnection(connection);
+        } catch (SQLException e) {
+            pool.freeConnection(connection);
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
+    public static String getLastCodigoDieta(){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String queryExample = "SELECT d.codigoDieta FROM Dieta d WHERE d.codigoDieta >= "
+                + "(SELECT COUNT(*) FROM Dieta d2 WHERE d2.codigoDieta > d.codigoDieta)";
+        String resultado = null;
+        ResultSet rs;
+        try {
+            ps = connection.prepareStatement(queryExample);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                resultado = rs.getString("codigoDieta");
+            }
+            ps.close();
+            pool.freeConnection(connection);
+        } catch (SQLException e) {
+            pool.freeConnection(connection);
+            e.printStackTrace();
+        }
+        return resultado;
+    }
 
     public static int noGuardarDieta(String codigoDieta, String nombreUsuario) {
         ConnectionPool pool = ConnectionPool.getInstance();

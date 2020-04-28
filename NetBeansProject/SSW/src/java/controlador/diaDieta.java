@@ -184,15 +184,18 @@ public class diaDieta extends HttpServlet {
             for(int i=0; i<Math.min(platosCena.size(), 3);i++)
                 platos.add(platosCena.get(i));
             
-            if(diaSemana.equals("7")){
-                session.setAttribute("platosDATOS",platosDATOS);
-            }
+            
             session.setAttribute("platos",platos);
             session.setAttribute("usuario",usuario);
             session.setAttribute("platosDesayuno",platosDesayuno);
             session.setAttribute("diaSemana", diaSemana);
             session.setAttribute("alergias",alergias);
         }
+        if(diaSemana.equals("7")){
+                platosDATOS = DBConnection.selectPlatosFromCodigo(platosElegidos);
+                session.setAttribute("platosDATOS",platosDATOS);
+                System.out.println(platosDATOS.size());
+            }
         
         session.setAttribute("platosElegidos",platosElegidos);
 

@@ -101,9 +101,12 @@
                 </div>
             </div>
             <br>
+            <form action="./dietaGenerada" method="POST">
+            <input type="hidden" name="platosElegidos" value="<%=platosElegidos%>">
             <div class="mr-auto text-center">
                 <button type="submit" class="btn submitDiet" onclick="window.location.href='paginaUsuario.jsp';">Guardar Dieta</button>
             </div>
+            </form>
         <br/>
         <br/>
     </div>
