@@ -475,10 +475,13 @@ public class DBConnection {
         String[] momento = new String[] {"desayuno","comidaPrimero","comidaSegundo","cena"};
         int dia =0;
         int counter=0;
+        String s;
+        Plato p;
         String queryExample = "INSERT INTO PlatoMenu (codigoPlato, codigoDieta, diaSemana, momento) VALUES(?,?,?,?)";
         try {
             for(int i=0;i<platosElegidos.size();i++){
-                String s = platosElegidos.get(i).getCodigoPlato();
+                p = platosElegidos.get(i);
+                s = p.getCodigoPlato();
                 ps = connection.prepareStatement(queryExample);
                 ps.setString(1, s);
                 ps.setString(2, codigoDieta);

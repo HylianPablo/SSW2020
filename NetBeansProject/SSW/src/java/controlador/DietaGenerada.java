@@ -42,11 +42,13 @@ public class DietaGenerada extends HttpServlet {
         
         String usuario = request.getParameter("usuario");
         HttpSession session = request.getSession();
-        ArrayList<Plato> platosElegidos = (ArrayList)session.getAttribute("platosElegidos");
+        ArrayList<Plato> platosElegidos = (ArrayList)session.getAttribute("platosDATOS");
+        //ArrayList<Plato> platosElegidos = 
         String url;
+        String titulo="";
         if(usuario.equals("1")){
             url = "/FrontEnd/paginaUsuario.jsp";
-            String titulo = "Dieta de usuario";
+            titulo = "Dieta de usuario";
             Timestamp ld = Timestamp.valueOf("2020-4-28 18:00:00");
             String descripcion = "Dieta genérica de usuario hasta implementación.";
             DBConnection.insertDieta(titulo,descripcion,ld); 
@@ -56,6 +58,8 @@ public class DietaGenerada extends HttpServlet {
         }else{
             url = "/FrontEnd/registro.jsp";
         }
+        session.setAttribute("platos",platosElegidos);
+        session.setAttribute("titulo",titulo);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
