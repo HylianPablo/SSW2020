@@ -6,6 +6,7 @@ public class Plato implements Serializable{
 	private String codigoPlato, nombre, descripcion;
 	private boolean desayuno, vegano, vegetariano, frutosSecos, gluten;
 	private int kcal, glucidosSimples, polisacaridos, lipidos, proteinas;
+        private double glucDiarios = 125.0;
 
 	public Plato(){
 
@@ -88,7 +89,7 @@ public class Plato implements Serializable{
 	}
         
         public int getGlucidosSimplesP100(){
-                return (int)(glucidosSimples*100/130.0);
+                return (int)(glucidosSimples*100/glucDiarios);
         }
         
         public int getGlucidosP100(){
@@ -104,7 +105,7 @@ public class Plato implements Serializable{
 	}
         
         public int getPolisacaridosP100(){
-            return (int)(polisacaridos*100/130.0);
+            return (int)(polisacaridos*100/glucDiarios);
         }
         
     	public void setPolisacaridos(int polisacaridos){
@@ -116,7 +117,7 @@ public class Plato implements Serializable{
 	}
         
         public int getLipidosP100(){
-            return (int)(lipidos*100/59.0);
+            return (int)(lipidos*100/60.0);
         }
         
     	public void setLipidos(int lipidos){
@@ -128,7 +129,7 @@ public class Plato implements Serializable{
 	}
         
         public int getProteinasP100(){
-            return (int)(proteinas*100/56.0);
+            return (int)(proteinas*100/75.0);
         }
         
     	public void setProteinas(int proteinas){
