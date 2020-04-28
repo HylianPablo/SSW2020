@@ -99,7 +99,7 @@
             </div>
             <br>
             <div class="mr-auto text-center">
-                <button type="submit" class="btn submitDiet" onclick="window.location.href='iniciarSesion.html';">Guardar Dieta</button>
+                <button type="submit" class="btn submitDiet" onclick="window.location.href='./registro';">Guardar Dieta</button>
             </div>
         <br/>
         <br/>
