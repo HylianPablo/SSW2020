@@ -916,7 +916,7 @@ insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (125,65);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (126,65); 
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (127,66);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (141,66);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (140,66);
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (128,67);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,67);
@@ -972,7 +972,7 @@ insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (137,80);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (43,81);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (13,81);
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (23,81);
-insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (140,81);
+insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (139,81);
 
 
 
@@ -1050,7 +1050,7 @@ insert into Pescado (codigoIngrediente) Values (87);
 insert into Pescado (codigoIngrediente) Values (98);
 insert into Pescado (codigoIngrediente) Values (104);
 insert into Pescado (codigoIngrediente) Values (109);
-insert into Pescado (codigoIngrediente) Values (132);
+insert into Pescado (codigoIngrediente) Values (131);
 
 insert into Cerdo (codigoIngrediente) Values (32);
 insert into Cerdo (codigoIngrediente) Values (35);
@@ -1071,10 +1071,13 @@ insert into Cerdo (codigoIngrediente) Values (92);
 
 insert into Lactosa (codigoIngrediente) Values (27);
 insert into Lactosa (codigoIngrediente) Values (29);
+insert into Lactosa (codigoIngrediente) Values (36);
 insert into Lactosa (codigoIngrediente) Values (58);
 insert into Lactosa (codigoIngrediente) Values (30);
 insert into Lactosa (codigoIngrediente) Values (72);
 insert into Lactosa (codigoIngrediente) Values (90);
+insert into Lactosa (codigoIngrediente) Values (135);
+insert into Lactosa (codigoIngrediente) Values (138);
 
 insert into Huevo (codigoIngrediente) Values (64);
 insert into Huevo (codigoIngrediente) Values (24);
@@ -1085,7 +1088,7 @@ insert into Hindu (codigoIngrediente) Values (27);
 insert into Hindu (codigoIngrediente) Values (71);
 insert into Hindu (codigoIngrediente) Values (76);
 
-insert into Soja (codigoIngrediente) Values (138);
+insert into Soja (codigoIngrediente) Values (139);
 
-insert into Cacahuete (codigoIngrediente) Values (128);
+insert into Cacahuete (codigoIngrediente) Values (127);
 
