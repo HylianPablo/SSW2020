@@ -471,6 +471,7 @@ public class DBConnection {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
+        System.out.println(platosElegidos);
         String[] diaSemana = new String[] {"lunes","martes","miercoles","jueves","viernes","sabado","domingo"};
         String[] momento = new String[] {"desayuno","comidaPrimero","comidaSegundo","cena"};
         int dia =0;

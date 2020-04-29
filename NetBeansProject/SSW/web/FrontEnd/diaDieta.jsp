@@ -91,7 +91,6 @@
                         <input type="hidden" name="alergias" value="<%=alergias%>">
                         <input type="hidden" name="usuario" value="<%=usuario%>">
                         <input type="hidden" name="platosElegidos" value="<%=platosElegidos%>">
-                        <form action="diaDieta" method ="POST" >
                             <%
                                 String nomComida;
                                 int numPlato = 0;
