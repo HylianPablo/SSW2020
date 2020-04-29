@@ -46,6 +46,7 @@ public class DietaGenerada extends HttpServlet {
         //ArrayList<Plato> platosElegidos = 
         String url;
         String titulo="";
+        String escogida = null;
         if(usuario.equals("1")){
             url = "/FrontEnd/paginaUsuario.jsp";
             titulo = "Dieta de usuario";
@@ -56,11 +57,13 @@ public class DietaGenerada extends HttpServlet {
             System.out.println(codigoDieta);
             DBConnection.insertGuardado("pedsanz",codigoDieta);
             DBConnection.insertPlatosMenu(platosElegidos,codigoDieta);
+            escogida = codigoDieta;       
         }else{
             url = "/FrontEnd/registro.jsp";
         }
+
         session.setAttribute("platos",platosElegidos);
-        session.setAttribute("titulo",titulo);
+        session.setAttribute("escodiga",escogida);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

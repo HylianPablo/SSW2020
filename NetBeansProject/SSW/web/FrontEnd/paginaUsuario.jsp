@@ -76,8 +76,6 @@
             </jsp:useBean>
             <jsp:useBean id="escogida" class="java.lang.String" scope="session">  
             </jsp:useBean>
-            <jsp:useBean id="titulo" class="java.lang.String" scope="session">  
-            </jsp:useBean>
             <%
                 int escogidaT = Integer.parseInt(escogida);
                 ArrayList<Dieta> dietasG = dietasGuardadas;
@@ -105,12 +103,8 @@
                 Dias.add("Sábado");
                 Dias.add("Domingo");
                 String title;
-                System.out.println(titulo);
-                if(titulo==null || titulo.equals("")){
-                    title=dietasG.get(escogidaT).getTitulo();
-                }else{
-                    title=titulo;
-                }
+                title=dietasG.get(escogidaT).getTitulo();
+
             %>
             <h2 class="inlineBlock m-2 coolFontParagraph"><%=title%></h2>	
             <div class="inlineBlock">
