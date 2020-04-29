@@ -47,13 +47,14 @@ public class DietaGenerada extends HttpServlet {
         String url;
         String titulo="";
         String escogida = null;
+        String codigoDieta ="";
         if(usuario.equals("1")){
             url = "/FrontEnd/paginaUsuario.jsp";
             titulo = "Dieta de usuario";
             Timestamp ld = Timestamp.valueOf("2020-4-28 18:00:00");
             String descripcion = "Dieta genérica de usuario hasta implementación.";
             DBConnection.insertDieta(titulo,descripcion,ld); 
-            String codigoDieta = DBConnection.getLastCodigoDieta();
+            codigoDieta = DBConnection.getLastCodigoDieta();
             System.out.println(codigoDieta);
             DBConnection.insertGuardado("pedsanz",codigoDieta);
             DBConnection.insertPlatosMenu(platosElegidos,codigoDieta);
@@ -61,7 +62,14 @@ public class DietaGenerada extends HttpServlet {
         }else{
             url = "/FrontEnd/registro.jsp";
         }
-
+        
+        ArrayList<Dieta> dietasGuardadas = DBConnection.selectDietasGuardadas("pedsanz");
+        for (int i = 0; i<dietasGuardadas.size();i++){
+            if(String.valueOf(Integer.parseInt(dietasGuardadas.get(i).getCodigoDieta())).equals(codigoDieta)){
+                escogida = String.valueOf(i);
+            }
+        }
+        
         session.setAttribute("platos",platosElegidos);
         session.setAttribute("escodiga",escogida);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
