@@ -64,6 +64,37 @@ public class DBConnection {
             return null;
         }
     }
+    
+    public static boolean checkRegistrado(String usuario, String password) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        boolean resultado;
+        int res;
+        String query = "SELECT * FROM Usuario u WHERE u.nombreUsuario = ? AND u.contrasena = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, usuario);
+            ps.setString(2,password);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                resultado=true;
+            }else{
+                resultado=false;
+                System.out.println("No se encuentra");
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return resultado;
+        } catch (SQLException e) {
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            System.out.println("Falla");
+            return false;
+        }
+    }
 
     //ENTRADA%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     public static int insertEntrada(Entrada entrada) {

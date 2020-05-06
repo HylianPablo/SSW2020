@@ -60,19 +60,20 @@
 		<hr/>
 		
 		<div class="container">
-			<form class="m-5" role="form">
+			<form class="m-5" action="./paginaUsuario" role="POST">
 				<div class="m-3 form-group">
-					<label for="usuario">Correo electrónico o usuario</label>
-					<input type="text" id="usuario" class="form-control" placeholder="Correo electrónico o contraseña">
+					<label for="usuario">Usuario</label> <!--Correo o usuario? usuario por ahora, por no cambiar todas las consultas-->
+					<input type="text" id="usuario" name="mailInput" class="form-control" placeholder="Correo electrónico">
 				</div>
 				<div class="m-3 form-group">
 					<label for="password">Contraseña</label>
-					<input type="password" id="password" class="form-control" placeholder="Contraseña">
+					<input type="password" id="password" name="passwordInput" class="form-control" placeholder="Contraseña">
 				</div>
-			</form>
-			<div class="m-3 form-group text-center">
-				<button type="button" onclick="window.location.href='./paginaUsuario';" class="btn btn-primary btn-lg">Iniciar sesion</button>
+                            <div class="m-3 form-group text-center">
+				<button type="submit"  class="btn btn-primary btn-lg">Iniciar sesion</button>
 			</div>
+			</form>
+			
 			<div class="m-3 form-group text-center">
 				<h7>¿No tienes una cuenta aún?<h7>
 				<a href="registro">Regístrate ya</a>
