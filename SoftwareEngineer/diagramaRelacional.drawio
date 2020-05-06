@@ -1,10 +1,10 @@
-<mxfile host="app.diagrams.net" modified="2020-04-29T10:15:21.297Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36" etag="A70ZKfWFxi4TUodCWKeW" version="13.0.2" type="github">
+<mxfile host="app.diagrams.net" modified="2020-05-06T12:16:30.110Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36" etag="ZBGs7iGqqVwnAGRNqGMh" version="13.0.3" type="github">
   <diagram id="29hRNnKXACexP1v_duyr" name="Page-1">
     <mxGraphModel dx="2249" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-1" value="Usuario(nombre, &lt;u&gt;nombreUsuario&lt;/u&gt;, contraseña, correo, favorito)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-1" value="Usuario(nombre, nombreUsuario, contraseña, &lt;u&gt;correo&lt;/u&gt;, favorito)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="44" y="180" width="370" height="20" as="geometry" />
         </mxCell>
         <mxCell id="Ck8MsScD6dfkMRM8H-GI-2" value="Plato (&lt;u&gt;códigoPlato&lt;/u&gt;, nombre, desayuno, descripcion, kcal, vegano, vegetariano, frutosSecos, gluten, proteinas, polisacaridos, glucidosSimples, lípidos)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
