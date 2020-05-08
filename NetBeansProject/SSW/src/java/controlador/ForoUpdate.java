@@ -39,12 +39,13 @@ public class ForoUpdate extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
 
         String codigo = DBConnection.getLastCodigoEntrada();
         codigo = String.format("%05d",Integer.parseInt(codigo)+1);
         String titulo = request.getParameter("tituloNuevaEntrada");
         String cuerpo = request.getParameter("cuerpoNuevaEntrada");
-        String usuario = request.getParameter("usuario");
+        String usuario = (String) session.getAttribute("sessionUser");
         LocalDateTime date = LocalDateTime.now();
         Entrada entrada = new Entrada();
         entrada.setCodigoEntrada(codigo);
@@ -54,7 +55,7 @@ public class ForoUpdate extends HttpServlet {
         entrada.setFecha(date);
         DBConnection.insertEntrada(entrada);
         String url = "/FrontEnd/foroUsuario.jsp";
-        HttpSession session = request.getSession();
+        
         ArrayList<Entrada> entradas = DBConnection.getAllEntradas();
         session.setAttribute("entradas", entradas);
         

@@ -85,19 +85,19 @@
                 <img src="img/profile.jpg" alt="img" class="m-3 img-thumbnail">
             </div>
             <div class="m-3">
-                <form action="./paginaUsuario" role="form">
+                <form action="./paginaUsuario" role="form" method="POST">
                     <div class="form-group w-70">
                         <label class="d-inline-block" for="usuario">Usuario: </label>
                         <div class="d-inline-block card"> <%=usuario.getNombreUsuario()%> </div>
-                        <input type="text" id="usuario" class="form-control" placeholder="--sin modificar--">
+                        <input type="text" name="username" id="usuario" class="form-control" placeholder="--sin modificar--">
                     </div>
                     <div class="form-group w-70">
                         <label for="password">Contraseña actual (*)</label>
-                        <input type="password" id="password" class="form-control" placeholder="--obligatorio--">
+                        <input type="password" name="actualPassword" id="password" class="form-control" placeholder="--obligatorio--">
                     </div>
                     <div class="form-group w-70">
                         <label for="npassword">Nueva contraseña</label>
-                        <input type="password" id="npassword" class="form-control" placeholder="--sin modificar--">
+                        <input type="password" name="newPassword" id="npassword" class="form-control" placeholder="--sin modificar--">
                     </div>
                     <div class="form-group w-70">
                         <label for="correo">Correo:</label>
