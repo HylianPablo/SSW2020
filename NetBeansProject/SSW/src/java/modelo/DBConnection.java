@@ -65,17 +65,17 @@ public class DBConnection {
         }
     }
     
-    public static boolean checkRegistrado(String usuario, String password) {
+    public static boolean checkRegistrado(String correo, String password) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps;
-        ResultSet rs;
+            ResultSet rs;
         boolean resultado;
         int res;
-        String query = "SELECT * FROM Usuario u WHERE u.nombreUsuario = ? AND u.contrasena = ?";
+        String query = "SELECT * FROM Usuario u WHERE u.correo = ? AND u.contrasena = ?";
         try {
             ps = connection.prepareStatement(query);
-            ps.setString(1, usuario);
+            ps.setString(1,correo);
             ps.setString(2,password);
             rs = ps.executeQuery();
             if (rs.next()) {
@@ -104,6 +104,7 @@ public class DBConnection {
         String query = "SELECT u.nombreUsuario FROM Usuario u WHERE u.correo = ?";
         try {
             ps = connection.prepareStatement(query);
+            ps.setString(1, correo);
             rs = ps.executeQuery();
             String salida;
             salida = null;
