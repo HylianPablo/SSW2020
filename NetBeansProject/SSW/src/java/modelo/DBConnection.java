@@ -95,6 +95,32 @@ public class DBConnection {
             return false;
         }
     }
+    
+    public static String selectNombreUsuario(String correo){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT u.nombreUsuario FROM Usuario u WHERE u.correo = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            String salida;
+            salida = null;
+            if (rs.next()) {
+                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
+                salida = rs.getString(1);
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return salida;
+        } catch (SQLException e) {
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     //ENTRADA%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     public static int insertEntrada(Entrada entrada) {

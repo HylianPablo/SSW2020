@@ -42,8 +42,9 @@ public class PaginaUsuario extends HttpServlet {
 
         response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
         HttpSession session = request.getSession();
+        String correoUsuario = null;
         if (session.getAttribute("sessionMail") == null) {
-            String correoUsuario = request.getParameter("mailInput");
+            correoUsuario = request.getParameter("mailInput");
             String contraseña = request.getParameter("passwordInput");
             System.out.println(correoUsuario + "," + contraseña);
             Boolean registered = DBConnection.checkRegistrado(correoUsuario, contraseña);
@@ -57,14 +58,15 @@ public class PaginaUsuario extends HttpServlet {
             }
         }
         url = "/FrontEnd/paginaUsuario.jsp";
-        Dieta dieta = DBConnection.selectDietaFavorita("pedsanz");
+        //String usuario = DBConnection.selectNombreUsuario(correoUsuario);
+        Dieta dieta = DBConnection.selectDietaFavorita(correoUsuario);
         String cri = request.getParameter("criterio");
         int criterio = 0;
         int escogida = 0;
         if (cri != null) {
             criterio = Integer.parseInt(cri);
         }
-        ArrayList<Dieta> dietasGuardadas = DBConnection.selectDietasGuardadas("pedsanz");
+        ArrayList<Dieta> dietasGuardadas = DBConnection.selectDietasGuardadas(correoUsuario);
         if (dieta != null) {
             dietasGuardadas.add(0, dieta);
             for (int r = 1; r < dietasGuardadas.size(); r++) {
