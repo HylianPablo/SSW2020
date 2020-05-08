@@ -62,22 +62,26 @@
         <div class="container" id="cuadroPerfil">
             <div class="m-3">
                 
-                <form role="form">
+                <form action="./iniciarSesion" role="POST">
+                    <div class="form-group w-70">
+                        <label for="usuario">Nombre completo (*):</label>
+                        <input type="text" name="realname" class="form-control" placeholder="--obligatorio--">
+                    </div>
                     <div class="form-group w-70">
                         <label for="usuario">Usuario (*):</label>
-                        <input type="text" class="form-control" placeholder="--obligatorio--">
+                        <input type="text" name="username" class="form-control" placeholder="--obligatorio--">
                     </div>
                     <div class="form-group w-70">
                         <label for="password">Contraseña (*):</label>
-                        <input type="password" id="password" class="form-control" placeholder="--obligatorio--">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="--obligatorio--">
                     </div>
                     <div class="form-group w-70">
                         <label for="npassword">Repita la contraseña (*):</label>
-                        <input type="password" id="npassword" class="form-control" placeholder="--obligatorio--">
+                        <input type="password" name="repeatedPassword" id="npassword" class="form-control" placeholder="--obligatorio--">
                     </div>
                     <div class="form-group w-70">
                         <label for="correo">Correo (*):</label>
-                        <input type="text" id="correo" class="form-control" placeholder="--obligatorio--">
+                        <input type="text" name="userMail" id="correo" class="form-control" placeholder="--obligatorio--">
                     </div>
                     <div class="form-group">
                         <label for="archivo">Adjuntar una imagen para tu perfil:</label>
@@ -86,7 +90,7 @@
                     </div>
 					<p>Los campos marcados con (*) son obligatorios.</p>
                     <div class="contenedor text-center">
-                        <button id="guardar" type="button" class="btn btn-primary btn-lg" onclick="window.location.href='iniciarSesion';">Enviar</button>
+                        <button id="guardar" type="input" class="btn btn-primary btn-lg">Enviar</button>
                     </div>
                 </form>
             </div>

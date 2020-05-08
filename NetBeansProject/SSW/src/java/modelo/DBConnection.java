@@ -14,7 +14,7 @@ public class DBConnection {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        String queryExample = "INSERT INTO Usuario(nombre,nombreUsuario,contraseña,correo,favorito) VALUES(?,?,?,?,?)";
+        String queryExample = "INSERT INTO Usuario(nombre,nombreUsuario,contrasena,correo,favorito) VALUES(?,?,?,?,?)";
         try {
             ps = connection.prepareStatement(queryExample);
             ps.setString(1, user.getNombre());
@@ -23,11 +23,13 @@ public class DBConnection {
             ps.setString(4, user.getCorreo());
             ps.setString(5, user.getFavorito());
             int res = ps.executeUpdate();
+            System.out.println("Se inserta");
             ps.close();
             pool.freeConnection(connection);
             return res;
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("No se inserta");
             pool.freeConnection(connection);
             return 0;
         }

@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.DBConnection;
+import modelo.Usuario;
 
 /**
  *
@@ -34,9 +36,30 @@ public class IniciarSesion extends HttpServlet {
             throws ServletException, IOException {
         
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/FrontEnd/iniciarSesion.jsp";
+        String url;
+        RequestDispatcher dispatcher;
         HttpSession session = request.getSession();
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        String username = request.getParameter("username"); //mejor con session? no aparece en la barra
+        if(username!=null){
+            String name = request.getParameter("realname");
+            String password1 = request.getParameter("password");
+            String password2 = request.getParameter("repeatedPassword");
+            if(!password1.equals(password2)){
+                url = "/FrontEnd/registro.jsp";
+                dispatcher = getServletContext().getRequestDispatcher(url);
+                dispatcher.forward(request, response);
+            }
+            String mail = request.getParameter("userMail");
+            Usuario user = new Usuario();
+            user.setNombre(name);
+            user.setNombreUsuario(username);
+            user.setContrasena(password1);
+            user.setCorreo(mail);
+            user.setFavorito("1"); //Por ahora así, pues un usuario recién creado no tiene favorita
+            DBConnection.insertUsuario(user);
+        }
+        url = "/FrontEnd/iniciarSesion.jsp";
+        dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
 
