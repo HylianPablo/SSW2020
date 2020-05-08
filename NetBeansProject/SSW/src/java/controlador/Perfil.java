@@ -38,13 +38,13 @@ public class Perfil extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String nombreUsuario = "pedsanz";
-        Usuario usuario = DBConnection.selectUsuario(nombreUsuario);
-        ArrayList<Dieta> dietas = DBConnection.selectDietasGuardadas(nombreUsuario);
-        Dieta dietaF = DBConnection.selectDietaFavorita(nombreUsuario);
         response.setContentType("text/html;charset=UTF-8");
         String url = "/FrontEnd/perfil.jsp";
         HttpSession session = request.getSession();
+        String nombreUsuario = (String) session.getAttribute("sessionUser");
+        Usuario usuario = DBConnection.selectUsuario(nombreUsuario);
+        ArrayList<Dieta> dietas = DBConnection.selectDietasGuardadas(nombreUsuario);
+        Dieta dietaF = DBConnection.selectDietaFavorita(nombreUsuario);
         session.setAttribute("usuario", usuario);
         session.setAttribute("dietas", dietas);
         String hayDietaF = String.valueOf(dietaF==null);
