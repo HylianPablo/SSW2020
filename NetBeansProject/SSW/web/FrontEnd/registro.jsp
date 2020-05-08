@@ -62,7 +62,7 @@
         <div class="container" id="cuadroPerfil">
             <div class="m-3">
                 
-                <form action="./iniciarSesion" role="POST">
+                <form action="./iniciarSesion" method="POST">
                     <div class="form-group w-70">
                         <label for="usuario">Nombre completo (*):</label>
                         <input type="text" name="realname" class="form-control" placeholder="--obligatorio--">

@@ -60,7 +60,7 @@
 		<hr/>
 		
 		<div class="container">
-			<form class="m-5" action="./paginaUsuario" role="POST">
+			<form class="m-5" action="./paginaUsuario" method="POST">
 				<div class="m-3 form-group">
 					<label for="usuario">Usuario</label> <!--Correo o usuario? usuario por ahora, por no cambiar todas las consultas-->
 					<input type="text" id="usuario" name="usuarioInput" class="form-control" placeholder="Correo electrónico">
