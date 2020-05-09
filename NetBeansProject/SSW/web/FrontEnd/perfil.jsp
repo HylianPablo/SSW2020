@@ -79,8 +79,6 @@
         </jsp:useBean>
         <jsp:useBean id="dietaF" class="modelo.Dieta" scope="session">  
         </jsp:useBean>
-        <jsp:useBean id="nombreUsuario" class="java.lang.String" scope="session">  
-        </jsp:useBean>
         <%
             boolean hayFav = Boolean.parseBoolean(hayDietaF);
             ArrayList<Dieta> dietasTemp = dietas;

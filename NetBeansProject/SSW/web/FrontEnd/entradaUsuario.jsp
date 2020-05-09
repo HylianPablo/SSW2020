@@ -42,6 +42,8 @@
     </jsp:useBean>
     <jsp:useBean id="entrada" class="modelo.Entrada" scope="session">  
     </jsp:useBean>
+    <jsp:useBean id="sessionUser" class="java.lang.String" scope="session">  
+    </jsp:useBean>
     <%
         //String codigoEntrada = request.getParameter("cod");
         ArrayList<Comentario> comentariosTemp = comentarios;
@@ -74,7 +76,7 @@
 
         <div class="card my-3" id="entradaEjemplo">
             <div class="m-2">
-                <p class="font-weight-bold"><%= entrada.getNombreUsuario()%></p>
+                <p class="font-weight-bold"><%=sessionUser%></p>
                 <p>
                     <%= entrada.getCuerpo()%>
                 </p>
@@ -88,7 +90,7 @@
         <div class="collapse" id="collapseForm">
             <form action="./NuevoComentario" method="post" class="m-3">
                 <input name="cuerpoComentario" type="text" id="respuesta" class="form-control" placeholder="Respuesta"/>
-                <input name="usuario" type="hidden" value="pedsanz"/>
+                <input name="usuario" type="hidden" value="sessionUser"/>
                 <input name="codigoEntrada" type="hidden" value="<%=entrada.getCodigoEntrada()%>"/>
                 <button id="botonRespuesta" type="submit" class="botonEstandar btn btn-success">Agregar entrada</button>
             </form>

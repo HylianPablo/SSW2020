@@ -40,6 +40,7 @@ public class IniciarSesion extends HttpServlet {
         RequestDispatcher dispatcher;
         HttpSession session = request.getSession();
         String username = request.getParameter("username"); //mejor con session? no aparece en la barra
+        //System.out.println(username);
         if(username!=null){
             String name = request.getParameter("realname");
             String password1 = request.getParameter("password");
