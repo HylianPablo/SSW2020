@@ -58,7 +58,7 @@ public class PaginaUsuario extends HttpServlet {
                 session.setAttribute("sessionPassword", contraseña);
                 usuario = DBConnection.selectNombreUsuario(correoUsuario);
                 session.setAttribute("sessionUser", usuario);
-
+                System.out.println(usuario);
             }
         }
         usuario = (String) session.getAttribute("sessionUser");

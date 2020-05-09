@@ -55,11 +55,13 @@ public class EntradaUsuario extends HttpServlet {
             response.sendRedirect(url);
         }else{
             ArrayList<Comentario> comentarios = DBConnection.getComentarios(cod);
-
             HttpSession session = request.getSession();
+            String usuario = (String) session.getAttribute("sessionUser");
+            System.out.println(usuario);
             session.setAttribute("cod", cod);
             session.setAttribute("entrada", entrada);
             session.setAttribute("comentarios", comentarios);
+            session.setAttribute("sessionUser", usuario);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
         }
