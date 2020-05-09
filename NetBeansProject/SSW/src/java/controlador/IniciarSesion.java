@@ -39,26 +39,7 @@ public class IniciarSesion extends HttpServlet {
         String url;
         RequestDispatcher dispatcher;
         HttpSession session = request.getSession();
-        String username = request.getParameter("username"); //mejor con session? no aparece en la barra
-        //System.out.println(username);
-        if(username!=null){
-            String name = request.getParameter("realname");
-            String password1 = request.getParameter("password");
-            String password2 = request.getParameter("repeatedPassword");
-            if(!password1.equals(password2)){
-                url = "/FrontEnd/registro.jsp";
-                dispatcher = getServletContext().getRequestDispatcher(url);
-                dispatcher.forward(request, response);
-            }
-            String mail = request.getParameter("userMail");
-            Usuario user = new Usuario();
-            user.setNombre(name);
-            user.setNombreUsuario(username);
-            user.setContrasena(password1);
-            user.setCorreo(mail);
-            user.setFavorito("1"); //Por ahora así, pues un usuario recién creado no tiene favorita
-            DBConnection.insertUsuario(user);
-        }
+        
         url = "/FrontEnd/iniciarSesion.jsp";
         dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);

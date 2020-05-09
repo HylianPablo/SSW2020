@@ -59,7 +59,7 @@ public class PaginaUsuario extends HttpServlet {
                 dispatcher = getServletContext().getRequestDispatcher(url);
                 dispatcher.forward(request, response);
             } else {
-                usuario = DBConnection.selectNombreUsuario(correoUsuario);
+                usuario = DBConnection.selectNombreUsuarioDesdeCorreo(correoUsuario);
                 user = DBConnection.selectUsuario(usuario);
                 session.setAttribute("sessionUserObj", user); 
                 session.setAttribute("sessionMail", correoUsuario);

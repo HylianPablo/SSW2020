@@ -61,7 +61,7 @@
         <div class="container" id="cuadroPerfil">
             <div class="m-3">
                 
-                <form action="./iniciarSesion" method="POST">
+                <form action="./registrarNuevo" method="POST">
                     <div class="form-group w-70">
                         <label for="usuario">Nombre completo (*):</label>
                         <input type="text" id="realname" name="realname" class="form-control" placeholder="--obligatorio--" oninput="checkAllForms()">

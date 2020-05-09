@@ -88,7 +88,7 @@ public class Ranking extends HttpServlet {
         session.setAttribute("fechaLimite", fechaLimite);
         session.setAttribute("selectTiempo", selectTiempo);
 
-        //Lo quito y pongo sendRedirect, asi si das F5 no peta
+        // Quito el sendRedirect que habia puesto
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

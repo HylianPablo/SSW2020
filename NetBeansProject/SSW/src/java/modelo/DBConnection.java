@@ -130,7 +130,7 @@ public class DBConnection {
         }
     }
     
-    public static String selectNombreUsuario(String correo){
+    public static String selectNombreUsuarioDesdeCorreo(String correo){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps;
@@ -143,7 +143,6 @@ public class DBConnection {
             String salida;
             salida = null;
             if (rs.next()) {
-                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
                 salida = rs.getString(1);
             }
             rs.close();
@@ -154,6 +153,35 @@ public class DBConnection {
             pool.freeConnection(connection);
             e.printStackTrace();
             return null;
+        }
+    }
+    
+    public static boolean correoPresente(String userMail) {
+        return selectNombreUsuarioDesdeCorreo(userMail)!=null;
+    }
+
+    public static boolean nombreUsuarioPresente(String username) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT u.nombreUsuario FROM Usuario u WHERE u.nombreUsuario = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            boolean result = false;
+            if (rs.next()) {
+                result = true;
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return result;
+        } catch (SQLException e) {
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return false;
         }
     }
 
@@ -1090,4 +1118,5 @@ public class DBConnection {
             return 0;
         }
     }
+
 }

@@ -35,8 +35,10 @@ public class Registro extends HttpServlet {
             throws ServletException, IOException {
         
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/FrontEnd/registro.jsp";
         HttpSession session = request.getSession();
+        
+        String url = "/FrontEnd/registro.jsp";
+        session.setAttribute("ErrorRegistro", "");
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
