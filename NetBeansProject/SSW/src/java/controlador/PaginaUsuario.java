@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import modelo.DBConnection;
 import modelo.Dieta;
 import modelo.Plato;
+import modelo.Usuario;
 
 /**
  *
@@ -44,22 +45,29 @@ public class PaginaUsuario extends HttpServlet {
         HttpSession session = request.getSession();
         String correoUsuario = null;
         String usuario = null;
+        Usuario user = null;
+        String mensajeErrorIniciarSesion=null;
         if (session.getAttribute("sessionMail") == null) {
             correoUsuario = request.getParameter("usuarioInput");
             String contraseña = request.getParameter("passwordInput");
             System.out.println(correoUsuario + "," + contraseña);
             Boolean registered = DBConnection.checkRegistrado(correoUsuario, contraseña);
             if (!registered) {
+                mensajeErrorIniciarSesion = "Usuario o contraseña erróneos. Introduzca los datos de nuevo.";
+                session.setAttribute("mensajeErrorIniciarSesion",mensajeErrorIniciarSesion);
                 url = "/FrontEnd/iniciarSesion.jsp";
                 dispatcher = getServletContext().getRequestDispatcher(url);
                 dispatcher.forward(request, response);
             } else {
+                usuario = DBConnection.selectNombreUsuario(correoUsuario);
+                user = DBConnection.selectUsuario(usuario);
+                session.setAttribute("sessionUserObj", user); 
                 session.setAttribute("sessionMail", correoUsuario);
                 session.setAttribute("sessionPassword", contraseña);
-                usuario = DBConnection.selectNombreUsuario(correoUsuario);
                 session.setAttribute("sessionUser", usuario);
                 System.out.println(usuario);
             }
+            
         }
         usuario = (String) session.getAttribute("sessionUser");
         url = "/FrontEnd/paginaUsuario.jsp";
@@ -92,9 +100,10 @@ public class PaginaUsuario extends HttpServlet {
         ArrayList<Plato> platos = DBConnection.getPlatosDieta(dietasGuardadas.get(escogida).getCodigoDieta());
 
         session.setAttribute("platos", platos);
-        session.setAttribute("usuario", usuario);
+        session.setAttribute("sessionUser", usuario);
         session.setAttribute("escogida", Integer.toString(escogida));
         session.setAttribute("dietasGuardadas", dietasGuardadas);
+      
         dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

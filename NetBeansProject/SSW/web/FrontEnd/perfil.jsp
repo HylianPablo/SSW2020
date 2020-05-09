@@ -71,7 +71,7 @@
         <br>
         <p style="color:red"> <%=mensajeErrorPerfil%> </p>
         <br>
-        <jsp:useBean id="usuario" class="modelo.Usuario" scope="session">  
+        <jsp:useBean id="sessionUserObj" class="modelo.Usuario" scope="session">  
         </jsp:useBean>
         <jsp:useBean id="dietas" class="java.util.ArrayList" scope="session">  
         </jsp:useBean>
@@ -88,20 +88,20 @@
                 <img src="img/profile.jpg" alt="img" class="m-3 img-thumbnail">
             </div>
             <div class="m-3">
-                <form action="./perfil" role="form" method="POST">
+                <form action="./perfilAct" role="form" method="POST">
                     <div class="form-group w-70">
                         <label class="d-inline-block" for="nombre">Nombre: </label>
-                        <div class="d-inline-block card"> <%=usuario.getNombre()%> </div>
+                        <div class="d-inline-block card"> <%=sessionUserObj.getNombre()%> </div>
                         <input type="text" name="realname" id="nombre" class="form-control" placeholder="--sin modificar--">
                     </div>
                     <div class="form-group w-70">
                         <label class="d-inline-block" for="usuario">Usuario: </label>
-                        <div class="d-inline-block card"> <%=usuario.getNombreUsuario()%> </div>
+                        <div class="d-inline-block card"> <%=sessionUserObj.getNombreUsuario()%> </div>
                         <input type="text" name="username" id="usuario" class="form-control" placeholder="--sin modificar--">
                     </div>
                     <div class="form-group w-70">
                         <label for="password">Contraseña actual (*)</label>
-                        <input type="password" name="actualPassword" id="password" class="form-control" placeholder="--obligatorio--">
+                        <input type="password" name="actualPassword" id="password" class="form-control" placeholder="--obligatorio--" oninput="checkAllForms()">
                     </div>
                     <div class="form-group w-70">
                         <label for="npassword">Nueva contraseña</label>
@@ -109,7 +109,7 @@
                     </div>
                     <div class="form-group w-70">
                         <label for="correo">Correo:</label>
-                        <div class="p-2 card" name="mail" value="<%=usuario.getCorreo()%>"><%=usuario.getCorreo()%></div>
+                        <div class="p-2 card" name="mail" value="<%=sessionUserObj.getCorreo()%>"><%=sessionUserObj.getCorreo()%></div>
                     </div>
                     <div class="form-group">
                         <label for="archivo">Adjuntar una imagen para tu perfil:</label>
@@ -139,7 +139,7 @@
                     </div>
                     <p>Los campos marcados con (*) son obligatorios para cualquier modificación</p>
                     <div class="contenedor">
-                        <button id="guardar" type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                        <button id="guardar" type="submit" class="btn btn-primary btn-lg" disabled>Guardar</button>
                     </div>
                 </form>
             </div>
@@ -147,5 +147,20 @@
         <br/>
     </div>
     <br/>
+    <script>
+                 function checkAllForms(){
+                    var flag = true;
+                    var password = document.getElementById("password");
+                    
+                    var guardar = document.getElementById("guardar");
+            
+                    if(password.value.length == 0)
+                        flag=false;
+                    if (flag)
+                        guardar.disabled=false;
+                    else
+                        guardar.disabled=true;
+                    }
+            </script>
 </body>
 </html>
