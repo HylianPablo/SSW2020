@@ -21,10 +21,10 @@ import modelo.Usuario;
 
 /**
  *
- * @author alejandro
+ * @author pablo
  */
-@WebServlet(name = "Perfil", urlPatterns = {"/FrontEnd/perfil"})
-public class Perfil extends HttpServlet {
+@WebServlet(name = "PerfilAct", urlPatterns = {"/FrontEnd/perfilAct"})
+public class PerfilAct extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,15 +41,46 @@ public class Perfil extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = "/FrontEnd/perfil.jsp";
         HttpSession session = request.getSession();
+        String mensajeErrorPerfil;
+        Usuario userObj = (Usuario) session.getAttribute("sessionUserObj");
+        
+        String nombre = request.getParameter("realname");
+        if(nombre==null){
+            nombre = userObj.getNombre();
+        }
+        String user = request.getParameter("username");
+        if(user == null){
+            user = userObj.getNombreUsuario();
+        }
+        String oldPassword = request.getParameter("actualPassword");
+        String newPassword = request.getParameter("newPassword");
+        if(newPassword==null){
+            newPassword = oldPassword;
+        }
+        String mail = (String) session.getAttribute("sessionMail");
+        if(mail == null){
+            mail = userObj.getCorreo();
+        }
+        boolean passOK = DBConnection.checkRegistrado(mail,oldPassword);
+        if(!passOK){
+            mensajeErrorPerfil = "Contraseña antigua errónea. Vuelva a introducir los datos correctamente.";
+        }else{
+            mensajeErrorPerfil = "";
+            if(nombre!=null)
+            DBConnection.updateUser(mail,nombre,user,newPassword);
+        }
         
         String nombreUsuario = (String) session.getAttribute("sessionUser");
-        
+        Usuario usuario = DBConnection.selectUsuario(nombreUsuario);
         ArrayList<Dieta> dietas = DBConnection.selectDietasGuardadas(nombreUsuario);
         Dieta dietaF = DBConnection.selectDietaFavorita(nombreUsuario);
+        session.setAttribute("usuario", usuario); //Esto ya se hace en iniciarSesion
         session.setAttribute("dietas", dietas);
         String hayDietaF = String.valueOf(dietaF==null);
         session.setAttribute("hayDietaF", hayDietaF);
         session.setAttribute("dietaF", dietaF);
+        session.setAttribute("nombreUsuario", nombreUsuario);
+        session.setAttribute("mensajeErrorPerfil",mensajeErrorPerfil);
         
 
         //Lo quito y pongo sendRedirect, asi si das F5 no peta

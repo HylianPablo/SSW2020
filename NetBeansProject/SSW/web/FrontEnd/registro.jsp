@@ -58,30 +58,29 @@
         <h1 class="h1Size coolFontParagraph center">Registro</h1>
 		<br/>   
 		<hr/>
-                <h2 class="coolFontParagraph selfmadeCenter">¡En proceso de implementación!</h2>
         <div class="container" id="cuadroPerfil">
             <div class="m-3">
                 
                 <form action="./iniciarSesion" method="POST">
                     <div class="form-group w-70">
                         <label for="usuario">Nombre completo (*):</label>
-                        <input type="text" name="realname" class="form-control" placeholder="--obligatorio--">
+                        <input type="text" id="realname" name="realname" class="form-control" placeholder="--obligatorio--" oninput="checkAllForms()">
                     </div>
                     <div class="form-group w-70">
                         <label for="usuario">Usuario (*):</label>
-                        <input type="text" name="username" class="form-control" placeholder="--obligatorio--">
+                        <input type="text" id="username" name="username" class="form-control" placeholder="--obligatorio--" oninput="checkAllForms()">
                     </div>
                     <div class="form-group w-70">
                         <label for="password">Contraseña (*):</label>
-                        <input type="password" name="password" id="password" class="form-control" placeholder="--obligatorio--">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="--obligatorio--" oninput="checkAllForms()">
                     </div>
                     <div class="form-group w-70">
                         <label for="npassword">Repita la contraseña (*):</label>
-                        <input type="password" name="repeatedPassword" id="npassword" class="form-control" placeholder="--obligatorio--">
+                        <input type="password" id="npassword" name="repeatedPassword" class="form-control" placeholder="--obligatorio--" oninput="checkAllForms()">
                     </div>
                     <div class="form-group w-70">
                         <label for="correo">Correo (*):</label>
-                        <input type="text" name="userMail" id="correo" class="form-control" placeholder="--obligatorio--">
+                        <input type="text" id="correo" name="userMail" class="form-control" placeholder="--obligatorio--" oninput="checkAllForms()">
                     </div>
                     <div class="form-group">
                         <label for="archivo">Adjuntar una imagen para tu perfil:</label>
@@ -90,7 +89,7 @@
                     </div>
 					<p>Los campos marcados con (*) son obligatorios.</p>
                     <div class="contenedor text-center">
-                        <button id="guardar" type="input" class="btn btn-primary btn-lg">Enviar</button>
+                        <button id="guardar" type="input" class="btn btn-primary btn-lg" disabled>Enviar</button>
                     </div>
                 </form>
             </div>
@@ -98,6 +97,26 @@
 		<br/>
     </div>
 	<br/>
+        
+        <script>
+                 function checkAllForms(){
+                    var flag = true;
+                    var realname = document.getElementById("realname");
+                    var username = document.getElementById("username");
+                    var password = document.getElementById("password");
+                    var npassword = document.getElementById("npassword");
+                    var correo = document.getElementById("correo");
+                    
+                    var guardar = document.getElementById("guardar");
+            
+                    if(realname.value.length == 0 || username.value.length == 0 || password.value.length == 0 || npassword.value.length == 0 || correo.value.length == 0)
+                        flag=false;
+                    if (flag)
+                        guardar.disabled=false;
+                    else
+                        guardar.disabled=true;
+                    }
+            </script>
 </body>
 
 </html>

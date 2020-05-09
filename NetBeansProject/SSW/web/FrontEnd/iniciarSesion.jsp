@@ -58,19 +58,21 @@
         <h1 class="h1Size text-center coolFontParagraph">Iniciar Sesión</h1>
 		<br/>
 		<hr/>
-		
+		<jsp:useBean id="mensajeErrorIniciarSesion" class="java.lang.String" scope="session">  
+                </jsp:useBean>
+                <p style="color:red"> <%=mensajeErrorIniciarSesion%></p>
 		<div class="container">
 			<form class="m-5" action="./paginaUsuario" method="POST">
 				<div class="m-3 form-group">
 					<label for="usuario">Usuario</label> <!--Correo o usuario? usuario por ahora, por no cambiar todas las consultas-->
-					<input type="text" id="usuario" name="usuarioInput" class="form-control" placeholder="Correo electrónico">
+					<input type="text" id="usuario" name="usuarioInput" class="form-control" placeholder="Correo electrónico" oninput="checkAllForms()">
 				</div>
 				<div class="m-3 form-group">
 					<label for="password">Contraseña</label>
-					<input type="password" id="password" name="passwordInput" class="form-control" placeholder="Contraseña">
+					<input type="password" id="password" name="passwordInput" class="form-control" placeholder="Contraseña" oninput="checkAllForms()">
 				</div>
                             <div class="m-3 form-group text-center">
-				<button type="submit"  class="btn btn-primary btn-lg">Iniciar sesion</button>
+                                <button type="submit"  id="iniciarSesion" class="btn btn-primary btn-lg" disabled>Iniciar sesion</button>
 			</div>
 			</form>
 			
@@ -82,6 +84,23 @@
 		<br/>
 	</div>
 	<br/>
+        
+          <script>
+                 function checkAllForms(){
+                    var flag = true;
+                    var usuario = document.getElementById("usuario");
+                    var password = document.getElementById("password");
+                    
+                    var iniciarSesion = document.getElementById("iniciarSesion");
+            
+                    if(usuario.value.length == 0 || password.value.length == 0)
+                        flag=false;
+                    if (flag)
+                        iniciarSesion.disabled=false;
+                    else
+                        iniciarSesion.disabled=true;
+                    }
+            </script>
 </body>
 
 </html>
