@@ -58,7 +58,9 @@
                 <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
             </div>
             <br/>
-
+            
+            <jsp:useBean id="plato" class="modelo.Plato" scope="session">  
+            </jsp:useBean>
             <h1 class="h1Size coolFontParagraph inlineBlock">Top dietas</h1>
             <a class="m-2 btn btn-warning inlineBlock rightAligned" href="./registro" role="button">Regístrate</a>
             <a class="m-2 btn btn-primary inlineBlock rightAligned" href="./iniciarSesion" role="button">Inicia sesión</a>
@@ -67,16 +69,16 @@
             <div class="card bg-transparent mx-3 my-4">
                 <div class="entradaForoTitulo2 rounded-top p-2">
                     <div class="row">
-                        <div class="col font-weight-bold">Titulo</div>
+                        <div class="col font-weight-bold"><%=plato.getNombre()%></div>
                         <div class="col row">
-                            <div class="col"><i class="fa fa-star text-warning"></i> Lípidos: </div>
-                            <div class="col"><i class="fa fa-heart text-danger"></i> Proteinas: </div>
-                            <div class="col"><i class="fa fa-heart text-danger"></i> Polisacáridos: </div>
+                            <div class="col"><i class="fa fa-star text-warning"></i> Lípidos:<%=plato.getLipidos()%> </div>
+                            <div class="col"><i class="fa fa-heart text-danger"></i> Proteinas:<%=plato.getProteinas()%> </div>
+                            <div class="col"><i class="fa fa-heart text-danger"></i> Polisacáridos:<%=plato.getPolisacaridos()%> </div>
                         </div>
                     </div>
                 </div>
                 <div class="entradaForoCuerpo2 rounded-bottom p-2" id="entradaEjemplo">
-                    <p>Descripción</p>
+                    <p><%=plato.getDescripcion()%></p>
                 </div>
             </div>
             <br/>
