@@ -65,7 +65,12 @@
         <h1 class="h1Size coolFontParagraph center inlineBlock">Mi perfil</h1>
         <a class="btn btn-warning inlineBlock rightAligned" href="./index" role="button">Cerrar sesión</a>
         <hr/>
+        <jsp:useBean id="mensajeErrorPerfil" class="java.lang.String" scope="session">  
+        </jsp:useBean>
         <p>Por favor, actualize su información personal si ésta ha cambiado</p>
+        <br>
+        <p style="color:red"> <%=mensajeErrorPerfil%> </p>
+        <br>
         <jsp:useBean id="usuario" class="modelo.Usuario" scope="session">  
         </jsp:useBean>
         <jsp:useBean id="dietas" class="java.util.ArrayList" scope="session">  
@@ -85,7 +90,12 @@
                 <img src="img/profile.jpg" alt="img" class="m-3 img-thumbnail">
             </div>
             <div class="m-3">
-                <form action="./paginaUsuario" role="form" method="POST">
+                <form action="./perfil" role="form" method="POST">
+                    <div class="form-group w-70">
+                        <label class="d-inline-block" for="nombre">Nombre: </label>
+                        <div class="d-inline-block card"> <%=usuario.getNombre()%> </div>
+                        <input type="text" name="realname" id="nombre" class="form-control" placeholder="--sin modificar--">
+                    </div>
                     <div class="form-group w-70">
                         <label class="d-inline-block" for="usuario">Usuario: </label>
                         <div class="d-inline-block card"> <%=usuario.getNombreUsuario()%> </div>
@@ -101,7 +111,7 @@
                     </div>
                     <div class="form-group w-70">
                         <label for="correo">Correo:</label>
-                        <div class="p-2 card"><%=usuario.getCorreo()%></div>
+                        <div class="p-2 card" name="mail" value="<%=usuario.getCorreo()%>"><%=usuario.getCorreo()%></div>
                     </div>
                     <div class="form-group">
                         <label for="archivo">Adjuntar una imagen para tu perfil:</label>

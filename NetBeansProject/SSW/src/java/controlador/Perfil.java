@@ -41,16 +41,33 @@ public class Perfil extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = "/FrontEnd/perfil.jsp";
         HttpSession session = request.getSession();
+        String mensajeErrorPerfil;
+        
+        String nombre = request.getParameter("realname");
+        String user = request.getParameter("username");
+        String oldPassword = request.getParameter("actualPassword");
+        String newPassword = request.getParameter("newPassword");
+        String mail = (String) session.getAttribute("sessionMail");
+        boolean passOK = DBConnection.checkRegistrado(mail,oldPassword);
+        if(!passOK && oldPassword!=null){
+            mensajeErrorPerfil = "Contraseña antigua errónea. Vuelva a introducir los datos correctamente.";
+        }else{
+            mensajeErrorPerfil = "";
+            if(nombre!=null)
+            DBConnection.updateUser(mail,nombre,user,newPassword);
+        }
+        
         String nombreUsuario = (String) session.getAttribute("sessionUser");
         Usuario usuario = DBConnection.selectUsuario(nombreUsuario);
         ArrayList<Dieta> dietas = DBConnection.selectDietasGuardadas(nombreUsuario);
         Dieta dietaF = DBConnection.selectDietaFavorita(nombreUsuario);
-        session.setAttribute("usuario", usuario);
+        session.setAttribute("usuario", usuario); //Esto ya se hace en iniciarSesion
         session.setAttribute("dietas", dietas);
         String hayDietaF = String.valueOf(dietaF==null);
         session.setAttribute("hayDietaF", hayDietaF);
         session.setAttribute("dietaF", dietaF);
         session.setAttribute("nombreUsuario", nombreUsuario);
+        session.setAttribute("mensajeErrorPerfil",mensajeErrorPerfil);
         
 
         //Lo quito y pongo sendRedirect, asi si das F5 no peta

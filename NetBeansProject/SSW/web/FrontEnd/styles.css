@@ -489,3 +489,8 @@ header.masthead {
     text-align: center;
     margin: 0px auto;
 }
+
+.red{
+    color: #CD3330;
+    background-color: #CD3330;
+}
