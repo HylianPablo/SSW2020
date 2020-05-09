@@ -98,6 +98,38 @@ public class DBConnection {
         }
     }
     
+    public static boolean updateUser(String correo, String realname, String username, String password) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+            ResultSet rs;
+        boolean resultado;
+        int res;
+        String query = "UPDATE Usuario SET nombre = ?, nombreUsuario = ?, contrasena = ? WHERE correo = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1,realname);
+            ps.setString(2,username);
+            ps.setString(3, password);
+            ps.setString(4,correo);
+            res = ps.executeUpdate();
+            if (res==1) {
+                resultado=true;
+            }else{
+                resultado=false;
+                System.out.println("No se ha actualizado");
+            }
+            ps.close();
+            pool.freeConnection(connection);
+            return resultado;
+        } catch (SQLException e) {
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            System.out.println("Falla update");
+            return false;
+        }
+    }
+    
     public static String selectNombreUsuario(String correo){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
