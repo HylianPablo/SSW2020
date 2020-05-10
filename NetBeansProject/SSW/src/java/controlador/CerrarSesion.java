@@ -14,15 +14,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import modelo.DBConnection;
-import modelo.Usuario;
 
 /**
  *
  * @author Javier
  */
-@WebServlet(name = "registrarNuevo", urlPatterns = {"/FrontEnd/registrarNuevo"})
-public class registrarNuevo extends HttpServlet {
+@WebServlet(name = "CerrarSesion", urlPatterns = {"/FrontEnd/CerrarSesion"})
+public class CerrarSesion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,39 +33,10 @@ public class registrarNuevo extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
         HttpSession session = request.getSession();
-        String url = "/FrontEnd/iniciarSesion";
-        
-        String username = request.getParameter("username");
-        String realname = request.getParameter("realname");
-        String password = request.getParameter("password");
-        String repeatedPassword = request.getParameter("repeatedPassword");
-        String userMail = request.getParameter("userMail");
-        
-        if(username!=null && realname!=null && password!=null && repeatedPassword!=null && userMail!=null && password.equals(repeatedPassword)){
-            Usuario user = new Usuario();
-            user.setNombre(realname);
-            user.setNombreUsuario(username);
-            user.setContrasena(password);
-            user.setCorreo(userMail);
-            if(DBConnection.correoPresente(userMail)){
-                url = "./registro";
-                session.setAttribute("errorRegistro", "El correo introducido ya esta siendo utilizado");
-            }else if(DBConnection.nombreUsuarioPresente(username)){
-                url = "./registro";
-                session.setAttribute("errorRegistro", "El nombre de usuario introducido ya esta siendo utilizado");
-            }else{
-                session.setAttribute("errorRegistro", "");
-                DBConnection.insertUsuario(user);
-            }
-        }else{
-            url = "./registro";
-            session.setAttribute("errorRegistro", "Las contraseñas no coinciden");
-        }
-        
-        // Como he recibido con post tengo que hacer redirect !!!
-        
+        session.invalidate();
+        String url = "./index";
         response.sendRedirect(url);
     }
 

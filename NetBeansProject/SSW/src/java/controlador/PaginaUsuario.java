@@ -43,35 +43,9 @@ public class PaginaUsuario extends HttpServlet {
 
         response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
         HttpSession session = request.getSession();
-        String correoUsuario = null;
-        String usuario = null;
-        Usuario user = null;
-        String mensajeErrorIniciarSesion=null;
-        if (session.getAttribute("sessionMail") == null) {
-            correoUsuario = request.getParameter("usuarioInput");
-            String contraseña = request.getParameter("passwordInput");
-            System.out.println(correoUsuario + "," + contraseña);
-            Boolean registered = DBConnection.checkRegistrado(correoUsuario, contraseña);
-            if (!registered) {
-                mensajeErrorIniciarSesion = "Usuario o contraseña erróneos. Introduzca los datos de nuevo.";
-                session.setAttribute("mensajeErrorIniciarSesion",mensajeErrorIniciarSesion);
-                url = "/FrontEnd/iniciarSesion.jsp";
-                dispatcher = getServletContext().getRequestDispatcher(url);
-                dispatcher.forward(request, response);
-            } else {
-                usuario = DBConnection.selectNombreUsuarioDesdeCorreo(correoUsuario);
-                user = DBConnection.selectUsuario(usuario);
-                session.setAttribute("sessionUserObj", user); 
-                session.setAttribute("sessionMail", correoUsuario);
-                session.setAttribute("sessionPassword", contraseña);
-                session.setAttribute("sessionUser", usuario);
-                System.out.println(usuario);
-            }
-            
-        }
-        usuario = (String) session.getAttribute("sessionUser");
+        
+        String usuario = (String) session.getAttribute("sessionUser");
         url = "/FrontEnd/paginaUsuario.jsp";
-        System.out.println(usuario);
         Dieta dieta = DBConnection.selectDietaFavorita(usuario);
         String cri = request.getParameter("criterio");
         int criterio = 0;
@@ -100,7 +74,6 @@ public class PaginaUsuario extends HttpServlet {
         ArrayList<Plato> platos = DBConnection.getPlatosDieta(dietasGuardadas.get(escogida).getCodigoDieta());
 
         session.setAttribute("platos", platos);
-        session.setAttribute("sessionUser", usuario);
         session.setAttribute("escogida", Integer.toString(escogida));
         session.setAttribute("dietasGuardadas", dietasGuardadas);
       

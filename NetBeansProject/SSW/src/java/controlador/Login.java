@@ -7,7 +7,6 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +20,8 @@ import modelo.Usuario;
  *
  * @author Javier
  */
-@WebServlet(name = "registrarNuevo", urlPatterns = {"/FrontEnd/registrarNuevo"})
-public class registrarNuevo extends HttpServlet {
+@WebServlet(name = "Login", urlPatterns = {"/FrontEnd/login"})
+public class Login extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,38 +34,28 @@ public class registrarNuevo extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
         HttpSession session = request.getSession();
-        String url = "/FrontEnd/iniciarSesion";
         
-        String username = request.getParameter("username");
-        String realname = request.getParameter("realname");
-        String password = request.getParameter("password");
-        String repeatedPassword = request.getParameter("repeatedPassword");
-        String userMail = request.getParameter("userMail");
-        
-        if(username!=null && realname!=null && password!=null && repeatedPassword!=null && userMail!=null && password.equals(repeatedPassword)){
-            Usuario user = new Usuario();
-            user.setNombre(realname);
-            user.setNombreUsuario(username);
-            user.setContrasena(password);
-            user.setCorreo(userMail);
-            if(DBConnection.correoPresente(userMail)){
-                url = "./registro";
-                session.setAttribute("errorRegistro", "El correo introducido ya esta siendo utilizado");
-            }else if(DBConnection.nombreUsuarioPresente(username)){
-                url = "./registro";
-                session.setAttribute("errorRegistro", "El nombre de usuario introducido ya esta siendo utilizado");
-            }else{
-                session.setAttribute("errorRegistro", "");
-                DBConnection.insertUsuario(user);
-            }
-        }else{
-            url = "./registro";
-            session.setAttribute("errorRegistro", "Las contraseñas no coinciden");
+        String url;
+
+        String correoUsuario = request.getParameter("usuarioInput");
+        String contraseña = request.getParameter("passwordInput");
+        Boolean registered = DBConnection.checkRegistrado(correoUsuario, contraseña);
+        if (!registered) {
+            String mensajeErrorIniciarSesion = "Usuario o contraseña erróneos. Introduzca los datos de nuevo.";
+            session.setAttribute("mensajeErrorIniciarSesion",mensajeErrorIniciarSesion);
+            url = "./iniciarSesion";
+        } else {
+            url = "./index";
+            String usuario = DBConnection.selectNombreUsuarioDesdeCorreo(correoUsuario);
+            Usuario user = DBConnection.selectUsuario(usuario);
+            session.setAttribute("sessionUserObj", user);
+            session.setAttribute("sessionMail", correoUsuario);
+            session.setAttribute("sessionPassword", contraseña);
+            session.setAttribute("sessionUser", usuario);
+            System.out.println(usuario);
         }
-        
-        // Como he recibido con post tengo que hacer redirect !!!
         
         response.sendRedirect(url);
     }

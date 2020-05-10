@@ -37,6 +37,9 @@
         </div>
     </header>
 
+    
+    <jsp:useBean id="errorRegistro" class="java.lang.String" scope="session">  
+    </jsp:useBean>
 
     <div class="container rounded" id="cuerpo">
         <div class="row text-center my-3">
@@ -87,6 +90,12 @@
                         </br>
                         <input type="file" id="imagen">
                     </div>
+                    
+                    <%if(!errorRegistro.equals("")){%>
+                    <div class="alert alert-danger" role="alert">
+                        <%=errorRegistro%>
+                    </div>
+                    <%}%>
 					<p>Los campos marcados con (*) son obligatorios.</p>
                     <div class="contenedor text-center">
                         <button id="guardar" type="input" class="btn btn-primary btn-lg" disabled>Enviar</button>

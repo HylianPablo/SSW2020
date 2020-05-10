@@ -60,9 +60,13 @@
 		<hr/>
 		<jsp:useBean id="mensajeErrorIniciarSesion" class="java.lang.String" scope="session">  
                 </jsp:useBean>
-                <p style="color:red"> <%=mensajeErrorIniciarSesion%></p>
+                <%if(!mensajeErrorIniciarSesion.equals("")){%>
+                <div class="alert alert-danger" role="alert">
+                    <%=mensajeErrorIniciarSesion%>
+                </div>
+                <%}%>
 		<div class="container">
-			<form class="m-5" action="./paginaUsuario" method="POST">
+			<form class="m-5" action="./login" method="POST">
 				<div class="m-3 form-group">
 					<label for="usuario">Usuario</label> <!--Correo o usuario? usuario por ahora, por no cambiar todas las consultas-->
 					<input type="text" id="usuario" name="usuarioInput" class="form-control" placeholder="Correo electrónico" oninput="checkAllForms()">

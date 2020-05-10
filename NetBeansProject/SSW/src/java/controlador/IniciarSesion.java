@@ -39,6 +39,7 @@ public class IniciarSesion extends HttpServlet {
         String url;
         RequestDispatcher dispatcher;
         HttpSession session = request.getSession();
+        session.setAttribute("mensajeErrorIniciarSesion","");
         
         url = "/FrontEnd/iniciarSesion.jsp";
         dispatcher = getServletContext().getRequestDispatcher(url);
