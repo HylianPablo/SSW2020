@@ -54,7 +54,6 @@ public class Login extends HttpServlet {
             session.setAttribute("sessionMail", correoUsuario);
             session.setAttribute("sessionPassword", contraseña);
             session.setAttribute("sessionUser", usuario);
-            System.out.println(usuario);
         }
         
         response.sendRedirect(url);

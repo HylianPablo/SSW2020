@@ -82,7 +82,7 @@
         <button class="my-3 btn btn-success" disabled type="button" id="addEntrada" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
             + Añadir respuesta
 	</button>
-        <a class="btn-info btn inline-block" href="./foro.jsp" role="button">Volver</a>
+        <a class="btn-info btn inline-block" href="./foro" role="button">Volver</a>
         <div class="collapse" id="collapseForm">
             <form class="m-3">
                 <input type="text" id="respuesta" class="form-control" placeholder="Respuesta">

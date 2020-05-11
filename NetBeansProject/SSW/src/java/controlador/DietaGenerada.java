@@ -49,7 +49,7 @@ public class DietaGenerada extends HttpServlet {
         String escogida = null;
         String codigoDieta ="";
         if(usuario.equals("1")){
-            url = "./paginaUsuario";
+            url = "./index"; //ponia ./paginaUsuario
             titulo = "Dieta de usuario";
             Timestamp ld = Timestamp.valueOf("2020-4-28 18:00:00");
             String descripcion = "Dieta genérica de usuario hasta implementación.";

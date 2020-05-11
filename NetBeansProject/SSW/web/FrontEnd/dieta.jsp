@@ -79,12 +79,12 @@
                 Dias.add("Sábado");
                 Dias.add("Domingo");
                 int numPlato = 0;
-                if (cod == null) {
-                    String redirectURL = "rankingUsuario.jsp";
+                if (cod == null) { //ABERRACION
+                    String redirectURL = "./ranking";
                     response.sendRedirect(redirectURL);
                 } else {
                     if (platos == null) {
-                        String redirectURL = "rankingUsuario.jsp";
+                        String redirectURL = "./ranking";
                         response.sendRedirect(redirectURL);
                     } else {
 

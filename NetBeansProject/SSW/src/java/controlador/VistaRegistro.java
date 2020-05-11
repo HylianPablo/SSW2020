@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  * @author alejandro
  */
 @WebServlet(name = "Registro", urlPatterns = {"/FrontEnd/registro"})
-public class Registro extends HttpServlet {
+public class VistaRegistro extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

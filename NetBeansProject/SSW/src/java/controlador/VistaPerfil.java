@@ -16,15 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelo.DBConnection;
-import modelo.Entrada;
+import modelo.Dieta;
+import modelo.Usuario;
 
 /**
  *
  * @author alejandro
  */
-@WebServlet(name = "Foro", urlPatterns = {"/FrontEnd/foro"})
-public class ForoS extends HttpServlet {
-    
+@WebServlet(name = "Perfil", urlPatterns = {"/FrontEnd/perfil"})
+public class VistaPerfil extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,14 +39,22 @@ public class ForoS extends HttpServlet {
             throws ServletException, IOException {
         
         response.setContentType("text/html;charset=UTF-8");
-        ArrayList<Entrada> entradas = DBConnection.getAllEntradas();
-        String url = "/FrontEnd/foro.jsp";
+        String url = "/FrontEnd/perfil.jsp";
         HttpSession session = request.getSession();
-        session.setAttribute("entradas", entradas);
         
+        String nombreUsuario = (String) session.getAttribute("sessionUser");
+        
+        ArrayList<Dieta> dietas = DBConnection.selectDietasGuardadas(nombreUsuario);
+        Dieta dietaF = DBConnection.selectDietaFavorita(nombreUsuario);
+        session.setAttribute("dietas", dietas);
+        String hayDietaF = String.valueOf(dietaF==null);
+        session.setAttribute("hayDietaF", hayDietaF);
+        session.setAttribute("dietaF", dietaF);
+        
+
+        //Lo quito y pongo sendRedirect, asi si das F5 no peta
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

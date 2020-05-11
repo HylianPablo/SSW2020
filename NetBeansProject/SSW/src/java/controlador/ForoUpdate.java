@@ -54,14 +54,9 @@ public class ForoUpdate extends HttpServlet {
         entrada.setNombreUsuario(usuario);
         entrada.setFecha(date);
         DBConnection.insertEntrada(entrada);
-        String url = "/FrontEnd/foroUsuario.jsp";
+        String url = "./foro";
         
-        ArrayList<Entrada> entradas = DBConnection.getAllEntradas();
-        session.setAttribute("entradas", entradas);
-        
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request, response);
-
+        response.sendRedirect(url);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

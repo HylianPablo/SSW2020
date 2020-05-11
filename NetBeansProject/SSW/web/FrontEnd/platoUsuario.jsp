@@ -46,13 +46,13 @@
             <div class="row text-center my-3">
                 <div class="col"></div>
                 <div class="col">
-                    <a class="coolFont btn w-100" href="./paginaUsuario" role="button">INICIO</a>
+                    <a class="coolFont btn w-100" href="./index" role="button">INICIO</a>
                 </div>
                 <div class="col">
-                    <a class="coolFont btn w-100" href="./foroUsuario" role="button">FORO</a>
+                    <a class="coolFont btn w-100" href="./foro" role="button">FORO</a>
                 </div>
                 <div class="col">
-                    <a class="oneLine coolFont btn w-100 actualPage" href="./rankingUsuario" role="button">TOP DIETAS</a>
+                    <a class="oneLine coolFont btn w-100 actualPage" href="./ranking" role="button">TOP DIETAS</a>
                 </div>
                 <div class="col">
                     <a class="coolFont btn w-100" href="./perfil" role="button">MI PERFIL</a>

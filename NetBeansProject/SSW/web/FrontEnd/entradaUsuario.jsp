@@ -55,13 +55,13 @@
         <div class="row text-center my-3">
             <div class="col"></div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./paginaUsuario" role="button">INICIO</a>
+                <a class="coolFont btn w-100" href="./index" role="button">INICIO</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100 actualPage" href="./foroUsuario" role="button">FORO</a>
+                <a class="coolFont btn w-100 actualPage" href="./foro" role="button">FORO</a>
             </div>
             <div class="col">
-                <a class="oneLine coolFont btn w-100" href="./rankingUsuario" role="button">TOP DIETAS</a>
+                <a class="oneLine coolFont btn w-100" href="./ranking" role="button">TOP DIETAS</a>
             </div>
             <div class="col">
                 <a class="coolFont btn w-100" href="./perfil" role="button">MI PERFIL</a>
@@ -86,7 +86,7 @@
         <button class="my-3 botonEstandar btn btn-success" type="button" id="addEntrada" data-toggle="collapse" data-target="#collapseForm" aria-expanded="false" aria-controls="collapseForm">
             + Añadir respuesta
         </button>
-        <a class="btn-info btn inline-block" href="./foroUsuario.jsp" role="button">Volver</a>
+        <a class="btn-info btn inline-block" href="./foro" role="button">Volver</a>
         <div class="collapse" id="collapseForm">
             <form action="./NuevoComentario" method="post" class="m-3">
                 <input name="cuerpoComentario" type="text" id="respuesta" class="form-control" placeholder="Respuesta"/>

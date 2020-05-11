@@ -6,6 +6,7 @@
 package controlador;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,17 +15,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.Comentario;
 import modelo.DBConnection;
-import modelo.Dieta;
-import modelo.Plato;
-import modelo.Usuario;
+import modelo.Entrada;
 
 /**
  *
  * @author alejandro
  */
-@WebServlet(name = "PaginaUsuario", urlPatterns = {"/FrontEnd/paginaUsuario"})
-public class PaginaUsuario extends HttpServlet {
+@WebServlet(name = "Entrada", urlPatterns = {"/FrontEnd/entrada"})
+public class VistaEntrada extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,51 +37,43 @@ public class PaginaUsuario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String url;
-        RequestDispatcher dispatcher;
-
+        
         response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
         HttpSession session = request.getSession();
         
-        String usuario = (String) session.getAttribute("sessionUser");
-        url = "/FrontEnd/paginaUsuario.jsp";
-        Dieta dieta = DBConnection.selectDietaFavorita(usuario);
-        String cri = request.getParameter("criterio");
-        int criterio = 0;
-        int escogida = 0;
-        if (cri != null) {
-            criterio = Integer.parseInt(cri);
-        }
-        ArrayList<Dieta> dietasGuardadas = DBConnection.selectDietasGuardadas(usuario);
-        if (dieta != null) {
-            dietasGuardadas.add(0, dieta);
-            for (int r = 1; r < dietasGuardadas.size(); r++) {
-                if (dietasGuardadas.get(r).getCodigoDieta().equals(dietasGuardadas.get(0).getCodigoDieta())) {
-                    dietasGuardadas.remove(r);
-                }
-            }
-        }
-
-        for (int i = 0; i < dietasGuardadas.size(); i++) {
-            if (Integer.parseInt(dietasGuardadas.get(i).getCodigoDieta()) == criterio) {
-                escogida = i;
-            }
-        }
+        String url;
         
-        System.out.println("hola" + escogida);
+        Entrada entrada = null;
+        String cod = request.getParameter("cod");
+        if (cod == null) {
+            url = "./foro";
+            response.sendRedirect(url);
+        } else {
+            entrada = DBConnection.selectEntrada(cod);
+            if (entrada == null) {
+                url = "./foro";
+                response.sendRedirect(url);
+            } else {
+                String usuario = (String) session.getAttribute("sessionUser");
+                if(usuario==null){
+                    url = "/FrontEnd/entrada.jsp";
+                }else{
+                    url = "/FrontEnd/entradaUsuario.jsp";
+                }
+                
+                ArrayList<Comentario> comentarios = DBConnection.getComentarios(cod);
 
-        ArrayList<Plato> platos = DBConnection.getPlatosDieta(dietasGuardadas.get(escogida).getCodigoDieta());
+                session.setAttribute("cod", cod);
+                session.setAttribute("entrada", entrada);
+                session.setAttribute("comentarios", comentarios);
 
-        session.setAttribute("platos", platos);
-        session.setAttribute("escogida", Integer.toString(escogida));
-        session.setAttribute("dietasGuardadas", dietasGuardadas);
-      
-        dispatcher = getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request, response);
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+                dispatcher.forward(request, response);
+            }
+        }
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

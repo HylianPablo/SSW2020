@@ -26,7 +26,7 @@ import modelo.Dieta;
  * @author alejandro
  */
 @WebServlet(name = "Ranking", urlPatterns = {"/FrontEnd/ranking"})
-public class Ranking extends HttpServlet {
+public class VistaRanking extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,7 +39,16 @@ public class Ranking extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
+        HttpSession session = request.getSession();
+        
+        String url;
+        String usuario = (String) session.getAttribute("sessionUser");
+        if(usuario==null)
+            url = "/FrontEnd/ranking.jsp";
+        else
+            url = "/FrontEnd/rankingUsuario.jsp";
+        
         Boolean favoritasTemp;
         String criterio = request.getParameter("criterio");
         if (criterio != null && criterio.equals("Favoritas")) {
@@ -73,10 +82,7 @@ public class Ranking extends HttpServlet {
         } else {
             dietas = DBConnection.getDietasGuardadas();
         }
-
-        //ArrayList<Comentario> comentarios = DBConnection.getComentarios(cod);
-        String url = "/FrontEnd/ranking.jsp";
-        HttpSession session = request.getSession();
+        
         String siempre = String.valueOf(siempreTemp);
         String fechaLimite = fechaLimiteTemp.toString();
         String selectTiempo = String.valueOf(selectTiempoTemp);
@@ -87,8 +93,7 @@ public class Ranking extends HttpServlet {
         session.setAttribute("tiempo", tiempo);
         session.setAttribute("fechaLimite", fechaLimite);
         session.setAttribute("selectTiempo", selectTiempo);
-
-        // Quito el sendRedirect que habia puesto
+        
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

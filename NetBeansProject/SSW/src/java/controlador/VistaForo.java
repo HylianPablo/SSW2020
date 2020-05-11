@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import modelo.Comentario;
 import modelo.DBConnection;
 import modelo.Entrada;
 
@@ -23,9 +22,9 @@ import modelo.Entrada;
  *
  * @author alejandro
  */
-@WebServlet(name = "Entrada", urlPatterns = {"/FrontEnd/entrada"})
-public class EntradaS extends HttpServlet {
-
+@WebServlet(name = "Foro", urlPatterns = {"/FrontEnd/foro"})
+public class VistaForo extends HttpServlet {
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,33 +37,21 @@ public class EntradaS extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        response.setContentType("text/html;charset=UTF-8");
-        
-        String url = null;
-        
-        Entrada entrada = null;
-        String cod = request.getParameter("cod");
-        if (cod == null) {
-            url = "/FrontEnd/foro.jsp";
-        } else {
-            entrada = DBConnection.selectEntrada(cod);
-            if (entrada == null) {
-                url = "/FrontEnd/foro.jsp";
-            } else {
-                url = "/FrontEnd/entrada.jsp"; //ahora la url tiene SSW
-            }
-        }
-        
-        ArrayList<Comentario> comentarios = DBConnection.getComentarios(cod);
-
+        response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
         HttpSession session = request.getSession();
-        session.setAttribute("cod", cod);
-        session.setAttribute("entrada", entrada);
-        session.setAttribute("comentarios", comentarios);
-
-        //Lo quito y pongo sendRedirect, asi si das F5 no peta
+        ArrayList<Entrada> entradas = DBConnection.getAllEntradas();
+        String url;
+        String usuario = (String) session.getAttribute("sessionUser");
+        if(usuario==null){
+            url = "/FrontEnd/foro.jsp";
+        }else{
+            url = "/FrontEnd/foroUsuario.jsp";
+        }
+        session.setAttribute("entradas", entradas);
+        
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

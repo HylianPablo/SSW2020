@@ -43,13 +43,13 @@
         <div class="row text-center my-3">
             <div class="col"></div>
             <div class="col">
-                <a class="coolFont btn w-100" href="./paginaUsuario" role="button">INICIO</a>
+                <a class="coolFont btn w-100" href="./index" role="button">INICIO</a>
             </div>
             <div class="col">
-                <a class="coolFont btn w-100 actualPage" href="./foroUsuario" role="button">FORO</a>
+                <a class="coolFont btn w-100 actualPage" href="./foro" role="button">FORO</a>
             </div>
             <div class="col">
-                <a class="oneLine coolFont btn w-100" href="./rankingUsuario" role="button">TOP DIETAS</a>
+                <a class="oneLine coolFont btn w-100" href="./ranking" role="button">TOP DIETAS</a>
             </div>
             <div class="col">
                 <a class="coolFont btn w-100" href="./perfil" role="button">MI PERFIL</a>
@@ -74,7 +74,7 @@
         <div class="card my-3">
             <div class="mx-3 mt-3 entradaForoTitulo">
                 <%= entradasTemp.get(i).getTitulo()%>
-                <form action="./EntradaUsuario" class="d-inline-block">
+                <form action="./entrada" class="d-inline-block">
                     <input name="cod" type="hidden" value="<%= entradasTemp.get(i).getCodigoEntrada()%>"/>
                     <button class="botonEstandar btn btn-success botonesEntrada" type="submit">Ir al hilo</button>
                 </form>

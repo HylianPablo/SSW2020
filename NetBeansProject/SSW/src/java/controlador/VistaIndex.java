@@ -16,15 +16,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import modelo.DBConnection;
-import modelo.Entrada;
+import modelo.Dieta;
 
 /**
  *
  * @author alejandro
  */
-@WebServlet(name = "ForoUsuario", urlPatterns = {"/FrontEnd/foroUsuario"})
-public class ForoUsuario extends HttpServlet {
-    
+@WebServlet(name = "Index", urlPatterns = {"/FrontEnd/index"})
+public class VistaIndex extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,15 +37,45 @@ public class ForoUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        response.setContentType("text/html;charset=UTF-8");
-        ArrayList<Entrada> entradas = DBConnection.getAllEntradas();
-        String url = "/FrontEnd/foroUsuario.jsp";
+        String url;
+        response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
         HttpSession session = request.getSession();
-        session.setAttribute("entradas", entradas);
-        
+        String usuario = (String) session.getAttribute("sessionUser");
+        if(usuario==null){
+            url = "/FrontEnd/index.jsp";
+        }else{
+            url = "/FrontEnd/paginaUsuario.jsp";
+            Dieta dieta = DBConnection.selectDietaFavorita(usuario);
+            String cri = request.getParameter("criterio");
+            int criterio = 0;
+            int escogida = 0;
+            if (cri != null) {
+                criterio = Integer.parseInt(cri);
+            }
+            ArrayList<Dieta> dietasGuardadas = DBConnection.selectDietasGuardadas(usuario);
+            if (dieta != null) {
+                dietasGuardadas.add(0, dieta);
+                for (int r = 1; r < dietasGuardadas.size(); r++) {
+                    if (dietasGuardadas.get(r).getCodigoDieta().equals(dietasGuardadas.get(0).getCodigoDieta())) {
+                        dietasGuardadas.remove(r);
+                    }
+                }
+            }
+
+            for (int i = 0; i < dietasGuardadas.size(); i++) {
+                if (Integer.parseInt(dietasGuardadas.get(i).getCodigoDieta()) == criterio) {
+                    escogida = i;
+                }
+            }
+
+            ArrayList<modelo.Plato> platos = DBConnection.getPlatosDieta(dietasGuardadas.get(escogida).getCodigoDieta());
+
+            session.setAttribute("platos", platos);
+            session.setAttribute("escogida", Integer.toString(escogida));
+            session.setAttribute("dietasGuardadas", dietasGuardadas);
+        }
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
