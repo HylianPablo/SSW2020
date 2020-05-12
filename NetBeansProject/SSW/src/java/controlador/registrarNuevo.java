@@ -37,7 +37,7 @@ public class registrarNuevo extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        String url = "/FrontEnd/iniciarSesion";
+        String url = "/SSW/FrontEnd/iniciarSesion.jsp";
         
         String username = request.getParameter("username");
         String realname = request.getParameter("realname");
@@ -51,6 +51,7 @@ public class registrarNuevo extends HttpServlet {
             user.setNombreUsuario(username);
             user.setContrasena(password);
             user.setCorreo(userMail);
+            user.setFavorito("1"); //HACER DIETA GENERICA
             if(DBConnection.correoPresente(userMail)){
                 url = "./registro";
                 session.setAttribute("errorRegistro", "El correo introducido ya esta siendo utilizado");

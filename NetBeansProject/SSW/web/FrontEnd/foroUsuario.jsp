@@ -61,7 +61,7 @@
 
         <h1 class="h1Size coolFontParagraph inlineBlock">Foro principal</h1>
 
-        <a class="btn btn-warning inlineBlock rightAligned" href="./index" role="button">Cerrar sesión</a>
+        <a class="btn btn-warning inlineBlock rightAligned" href="./cerrarSesion" role="button">Cerrar sesión</a>
         <br/>
         <hr/>
         <button class="botonEstandar btn btn-success botonesEntrada my-3" onclick="window.location.href = '/SSW/FrontEnd/nuevaEntrada.html';">Agregar nueva entrada</button>

@@ -70,7 +70,7 @@
             <br/>
 
             <h1 class="h1Size coolFontParagraph inlineBlock">Dieta semanal</h1>
-            <a class="btn btn-warning inlineBlock rightAligned" href="./index" role="button">Cerrar sesión</a>
+            <a class="btn btn-warning inlineBlock rightAligned" href="./cerrarSesion" role="button">Cerrar sesión</a>
             <br>
             <hr/>
             <jsp:useBean id="dietasGuardadas" class="java.util.ArrayList" scope="session">  

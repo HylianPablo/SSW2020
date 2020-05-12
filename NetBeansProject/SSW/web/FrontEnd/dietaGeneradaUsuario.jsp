@@ -107,7 +107,7 @@
             <input type="hidden" name="platosDATOS" value="<%=platosDATOS%>">
             <input type="hidden" name="usuario" value="<%=usuario%>">
             <div class="mr-auto text-center">
-                <button type="submit" class="btn submitDiet" onclick="window.location.href='paginaUsuario.jsp';">Guardar Dieta</button>
+                <button type="submit" class="btn submitDiet">Guardar Dieta</button>
             </div>
             </form>
         <br/>

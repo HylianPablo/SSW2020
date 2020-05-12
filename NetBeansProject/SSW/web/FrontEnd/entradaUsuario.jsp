@@ -72,7 +72,7 @@
         <br/>
 
         <h1 class="coolFontParagraph inlineBlock"><%=entrada.getTitulo()%></h1>
-        <a class="btn btn-warning inlineBlock rightAligned" href="./index" role="button">Cerrar sesión</a>
+        <a class="btn btn-warning inlineBlock rightAligned" href="./cerrarSesion" role="button">Cerrar sesión</a>
 
         <div class="card my-3" id="entradaEjemplo">
             <div class="m-2">

@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Javier
  */
-@WebServlet(name = "CerrarSesion", urlPatterns = {"/FrontEnd/CerrarSesion"})
+@WebServlet(name = "CerrarSesion", urlPatterns = {"/FrontEnd/cerrarSesion"})
 public class CerrarSesion extends HttpServlet {
 
     /**
@@ -36,8 +36,9 @@ public class CerrarSesion extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
         HttpSession session = request.getSession();
         session.invalidate();
-        String url = "./index";
-        response.sendRedirect(url);
+        String url = "/FrontEnd/index.jsp";
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

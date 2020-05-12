@@ -98,7 +98,7 @@
                     <%}%>
 					<p>Los campos marcados con (*) son obligatorios.</p>
                     <div class="contenedor text-center">
-                        <button id="guardar" type="input" class="btn btn-primary btn-lg" disabled>Enviar</button>
+                        <button id="guardar" type="submit" class="btn btn-primary btn-lg" disabled>Enviar</button>
                     </div>
                 </form>
             </div>

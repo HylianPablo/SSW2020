@@ -113,7 +113,7 @@
                     <i class="fa fa-heart text-rosa"></i><%if (!guardadoTemp) {%> Guardar<%} else {%> Guardado<%}%>
                 </button>
             </form>
-            <a class="btn btn-warning inlineBlock rightAligned" href="./index.html" role="button">Cerrar sesión</a>
+            <a class="btn btn-warning inlineBlock rightAligned" href="./cerrarSesion" role="button">Cerrar sesión</a>
 
             <div class="row">
                 <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="false">

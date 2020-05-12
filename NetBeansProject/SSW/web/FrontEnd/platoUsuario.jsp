@@ -65,7 +65,7 @@
             <jsp:useBean id="plato" class="modelo.Plato" scope="session">  
             </jsp:useBean>
             <h1 class="h1Size coolFontParagraph inlineBlock">Descripción platos</h1>
-            <a class="btn btn-warning inlineBlock rightAligned" href="./index" role="button">Cerrar sesión</a>
+            <a class="btn btn-warning inlineBlock rightAligned" href="./cerrarSesion" role="button">Cerrar sesión</a>
             <hr/>
             <hr/>
             <br>
