@@ -61,7 +61,7 @@
                 <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
             </div>
             <br/>
-            
+
             <jsp:useBean id="plato" class="modelo.Plato" scope="session">  
             </jsp:useBean>
             <h1 class="h1Size coolFontParagraph inlineBlock">Descripción platos</h1>
@@ -69,22 +69,36 @@
             <hr/>
             <hr/>
             <br>
-            <div class="card bg-transparent mx-3 my-4">
-                <div class="entradaForoTitulo2 rounded-top p-2">
-                    <div class="row">
-                        <div class="col font-weight-bold"><%=plato.getNombre()%></div>
-                        <div class="col row">
-                            <div class="col"><i class="fa fa-star text-warning"></i> Lípidos:<%=plato.getLipidos()%> </div>
-                            <div class="col"><i class="fa fa-heart text-danger"></i> Proteinas:<%=plato.getProteinas()%> </div>
-                            <div class="col"><i class="fa fa-heart text-danger"></i> Polisacáridos:<%=plato.getPolisacaridos()%> </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="card bg-transparent mx-3 my-4">
+                            <div class="entradaForoTitulo2 rounded-top p-2">
+                                <div class="row">
+                                    <div class="col font-weight-bold"><%=plato.getNombre()%></div>
+
+                                </div>
+                            </div>
+                            <div class="entradaForoCuerpo2 rounded-bottom p-2" id="entradaEjemplo">
+                                <div class="col row">
+                                    <div class="col"><i class="fa fa-star text-warning"></i> Lípidos:<%=plato.getLipidos()%> </div>
+                                    <div class="col"><i class="fa fa-heart text-danger"></i> Proteinas:<%=plato.getProteinas()%> </div>
+                                    <div class="col"><i class="fa fa-heart text-danger"></i> Polisacáridos:<%=plato.getPolisacaridos()%> </div>
+                                </div>
+                            </div>
                         </div>
+                        <br/>
+                    </div>
+                    <div class="col-sm" align="center">
+                        <img src="/SSW/FrontEnd/img/macarrones.jpg" alt="" class="m-3 img-thumbnail" style="width:300px">
                     </div>
                 </div>
-                <div class="entradaForoCuerpo2 rounded-bottom p-2" id="entradaEjemplo">
-                    <p><%=plato.getDescripcion()%></p>
-                </div>
             </div>
-            <br/>
+            <div class="entradaForoCuerpo2 rounded-bottom p-2" id="entradaEjemplo">
+                <p><%=plato.getDescripcion()%></p>
+            </div>
+            <br>
+            <br>    
         </div>
         <br/>
     </body>

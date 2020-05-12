@@ -439,12 +439,13 @@ header.masthead {
     background-color: rgb(212, 333, 222);
 }
 
-img {
-    margin-left: center;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
-    width: 150px;
+
+
+.containerFood{
+    max-width: 1000%;
+    max-height: 1000%;
+    width:580px;
+    height: auto;
 }
 
 header.masthead {
@@ -489,3 +490,6 @@ header.masthead {
     text-align: center;
     margin: 0px auto;
 }
+
+
+
