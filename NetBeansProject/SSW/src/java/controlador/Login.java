@@ -48,7 +48,7 @@ public class Login extends HttpServlet {
             url = "./iniciarSesion";
         } else {
             url = "./index";
-            if(!correoUsuario.contains("@")){
+            if(correoUsuario.contains("@")){
                 usuario = DBConnection.selectNombreUsuarioDesdeCorreo(correoUsuario); 
             }else{
                 usuario = correoUsuario;
