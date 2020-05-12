@@ -39,7 +39,8 @@ public class VistaIniciarSesion extends HttpServlet {
         String url;
         RequestDispatcher dispatcher;
         HttpSession session = request.getSession();
-        session.setAttribute("mensajeErrorIniciarSesion","");
+        if(null == session.getAttribute("mensajeErrorIniciarSesion"))
+            session.setAttribute("mensajeErrorIniciarSesion","");
         
         url = "/FrontEnd/iniciarSesion.jsp";
         dispatcher = getServletContext().getRequestDispatcher(url);
