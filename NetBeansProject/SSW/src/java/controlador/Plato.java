@@ -22,7 +22,7 @@ import modelo.Dieta;
  *
  * @author alejandro
  */
-@WebServlet(name = "Plato", urlPatterns = {"/FrontEnd/Plato"})
+@WebServlet(name = "Plato", urlPatterns = {"/FrontEnd/plato"})
 public class Plato extends HttpServlet {
 
     /**
@@ -38,12 +38,19 @@ public class Plato extends HttpServlet {
             throws ServletException, IOException {
         
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/FrontEnd/plato.jsp";
+        String url;
         HttpSession session = request.getSession();
         
         String codigoPlato = request.getParameter("cod");
-    
-        modelo.Plato plato = DBConnection.selectPlato(codigoPlato);
+        
+        String usuario = (String) session.getAttribute("sessionUser");
+        if(usuario==null){
+            url = "/FrontEnd/plato.jsp";
+        }else{
+            url = "/FrontEnd/platoUsuario.jsp";
+        }
+        
+        modelo.Plato plato = DBConnection.selectPlatoAll(codigoPlato);
         session.setAttribute("codigoPlato", codigoPlato);
         
         session.setAttribute("plato", plato);
