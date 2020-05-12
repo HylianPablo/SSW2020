@@ -36,7 +36,6 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
         HttpSession session = request.getSession();
-        boolean bandera = false;
         String url;
 
         String correoUsuario = request.getParameter("usuarioInput");
@@ -48,13 +47,8 @@ public class Login extends HttpServlet {
             session.setAttribute("mensajeErrorIniciarSesion",mensajeErrorIniciarSesion);
             url = "./iniciarSesion";
         } else {
-            for(int i = 0; i < correoUsuario.length();i++){
-                if(correoUsuario.charAt(i)=='@'){
-                    bandera = true;
-                }
-            }
             url = "./index";
-            if(bandera){
+            if(!correoUsuario.contains("@")){
                 usuario = DBConnection.selectNombreUsuarioDesdeCorreo(correoUsuario); 
             }else{
                 usuario = correoUsuario;

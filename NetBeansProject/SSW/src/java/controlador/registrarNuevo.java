@@ -54,6 +54,9 @@ public class registrarNuevo extends HttpServlet {
             if(DBConnection.correoPresente(userMail)){
                 url = "./registro";
                 session.setAttribute("errorRegistro", "El correo introducido ya esta siendo utilizado");
+            }else if(username.contains("@")){
+                url = "./registro";
+                session.setAttribute("errorRegistro","El nombre de usuario no puede contener '@'");
             }else if(DBConnection.nombreUsuarioPresente(username)){
                 url = "./registro";
                 session.setAttribute("errorRegistro", "El nombre de usuario introducido ya esta siendo utilizado");
