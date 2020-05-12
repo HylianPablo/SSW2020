@@ -39,11 +39,12 @@ public class NuevoComentario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
         response.setContentType("text/html;charset=UTF-8");
         String codigoComentario = DBConnection.getLastCodigoComentario();
         codigoComentario = String.format("%05d",Integer.parseInt(codigoComentario)+1);
         String cuerpo = request.getParameter("cuerpoComentario");
-        String usuario = request.getParameter("usuario");
+        String usuario = (String) session.getAttribute("sessionUser");
         String codigoEntrada = request.getParameter("codigoEntrada");
         LocalDateTime date = LocalDateTime.now();
         Comentario comentario = new Comentario();
@@ -54,7 +55,6 @@ public class NuevoComentario extends HttpServlet {
         comentario.setNombreUsuario(usuario);
         DBConnection.insertComentario(comentario);
         String url = "/FrontEnd/entradaUsuario.jsp"; 
-        HttpSession session = request.getSession();
         ArrayList<Comentario> comentarios = DBConnection.getComentarios(codigoEntrada);
         Entrada entrada = DBConnection.selectEntrada(codigoEntrada);
         session.setAttribute("codigoEntrada", codigoEntrada);
