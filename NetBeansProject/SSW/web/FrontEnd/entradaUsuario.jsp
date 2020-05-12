@@ -90,7 +90,6 @@
         <div class="collapse" id="collapseForm">
             <form action="./NuevoComentario" method="post" class="m-3">
                 <input name="cuerpoComentario" type="text" id="respuesta" class="form-control" placeholder="Respuesta"/>
-                <input name="usuario" type="hidden" value="sessionUser"/>
                 <input name="codigoEntrada" type="hidden" value="<%=entrada.getCodigoEntrada()%>"/>
                 <button id="botonRespuesta" type="submit" class="botonEstandar btn btn-success">Agregar entrada</button>
             </form>
