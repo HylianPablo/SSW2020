@@ -36,20 +36,20 @@ create table Usuario(
 );
 
 create table Guardado(
-	nombreUsuario			char(20) not null,
+	correo					char(40) not null,
 	codigoDieta				integer not null,
-	foreign key(nombreUsuario) references Usuario(nombreUsuario),
+	foreign key(correo) references Usuario(correo),
 	foreign key(codigoDieta) references Dieta(codigoDieta),
-	primary key(nombreUsuario, codigoDieta)
+	primary key(correo, codigoDieta)
 );
 
 create table Entrada(
 	codigoEntrada			integer not null auto_increment,
 	titulo					char(50) not null,
 	cuerpo					text,
-	nombreUsuario			char(20) not null,
+	correo					char(40) not null,
 	fecha					date not null,
-	foreign key(nombreUsuario) references Usuario(nombreUsuario),
+	foreign key(correo) references Usuario(correo),
 	primary key(codigoEntrada)
 );
 
@@ -57,10 +57,10 @@ create table Comentario(
 	codigoComentario		integer not null auto_increment,
 	codigoPadre				integer not null,
 	cuerpo					text not null,
-	nombreUsuario			char(20) not null,
+	correo					char(40) not null,
 	fecha					date not null,
 	foreign key(codigoPadre) references Entrada(codigoEntrada),
-	foreign key(nombreUsuario) references Usuario(nombreUsuario),
+	foreign key(correo) references Usuario(correo),
 	primary key(codigoComentario)
 );	
 
@@ -79,6 +79,7 @@ create table Plato(
 	lipidos					integer not null ,
 	proteinas				integer not null,
 	foto 					char(40) default null,
+	enlace					char(100) default null,
 	primary key(codigoPlato)
 );
 
@@ -170,20 +171,20 @@ insert into Usuario (nombre,nombreUsuario,contrasena,correo,favorito) Values ('P
 insert into Usuario (nombre,nombreUsuario,contrasena,correo,favorito) Values ('Marta Sanchez Rojo', 'martsanro', 'farola4','marta1912@gmail.com',2);
 insert into Usuario (nombre,nombreUsuario,contrasena,correo,favorito) Values ('Marcos Moya Gallo', 'marmoyaga', 'tirabuzon89','marcos.mg@yahoo.com',3);
 
-insert into Guardado (nombreUsuario,codigoDieta) Values ('pedsanz',1);
-insert into Guardado (nombreUsuario,codigoDieta) Values ('pedsanz',2);
-insert into Guardado (nombreUsuario,codigoDieta) Values ('martsanro',2);
-insert into Guardado (nombreUsuario,codigoDieta) Values ('marmoyaga',3);
+insert into Guardado (correo,codigoDieta) Values ('pedrosanzl@gmail.com',1);
+insert into Guardado (correo,codigoDieta) Values ('pedrosanzl@gmail.com',2);
+insert into Guardado (correo,codigoDieta) Values ('marta1912@gmail.com',2);
+insert into Guardado (correo,codigoDieta) Values ('marcos.mg@yahoo.com',3);
 
 
-insert into Entrada (titulo,cuerpo,nombreUsuario,fecha) Values ('Quiero comer bien','Quiero tener una alimentación sana y no se cocinar.','pedsanz','2020-04-03');
-insert into Entrada (titulo,cuerpo,nombreUsuario,fecha) Values ('Quiero ser vegana.','Me he dado cuenta de que los animales merecen vivir','martsanro','2020-03-23');
-insert into Entrada (titulo,cuerpo,nombreUsuario,fecha) Values ('Receta de cupcakes.','Esta receta me la enseño mi abuela. Lleva harina y huevos.','marmoyaga','2020-03-08');
+insert into Entrada (titulo,cuerpo,correo,fecha) Values ('Quiero comer bien','Quiero tener una alimentación sana y no se cocinar.','pedrosanzl@gmail.com','2020-04-03');
+insert into Entrada (titulo,cuerpo,correo,fecha) Values ('Quiero ser vegana.','Me he dado cuenta de que los animales merecen vivir','marta1912@gmail.com','2020-03-23');
+insert into Entrada (titulo,cuerpo,correo,fecha) Values ('Receta de cupcakes.','Esta receta me la enseño mi abuela. Lleva harina y huevos.','marcos.mg@yahoo.com','2020-03-08');
 
 
-insert into Comentario (codigoPadre,cuerpo,nombreUsuario,fecha) Values (1,'Prueba a evitar demasiadas grasas saturadas y calorías vacías como las propocionadas por bebidas alcohólicas o la bollería industrial.','pedsanz','2020-04-05');
-insert into Comentario (codigoPadre,cuerpo,nombreUsuario,fecha) Values (1,'El aguacate es un alimento muy sano, inclúyelo en tus platos.','marmoyaga','2020-04-06');
-insert into Comentario (codigoPadre,cuerpo,nombreUsuario,fecha) Values (2,'No comas carne.','pedsanz','2020-03-25');
+insert into Comentario (codigoPadre,cuerpo,correo,fecha) Values (1,'Prueba a evitar demasiadas grasas saturadas y calorías vacías como las propocionadas por bebidas alcohólicas o la bollería industrial.','pedrosanzl@gmail.com','2020-04-05');
+insert into Comentario (codigoPadre,cuerpo,correo,fecha) Values (1,'El aguacate es un alimento muy sano, inclúyelo en tus platos.','marcos.mg@yahoo.com','2020-04-06');
+insert into Comentario (codigoPadre,cuerpo,correo,fecha) Values (2,'No comas carne.','pedrosanzl@gmail.com','2020-03-25');
 
 insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Espinacas',TRUE,TRUE,FALSE,FALSE);
 insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Garbanzos',TRUE,TRUE,FALSE,FALSE);
@@ -326,167 +327,167 @@ insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('
 insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Tofu',TRUE,TRUE,FALSE,FALSE);
 insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Plátano',TRUE,TRUE,FALSE,FALSE);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Garbanzos con espinacas','Garbanzos de la huerta cocinados con espinaca y aceite de oliva',FALSE,TRUE,TRUE,FALSE,FALSE,140,2,200,25,12,'GarbanzosConEspinacas.jpg');
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Garbanzos con espinacas','Garbanzos de la huerta cocinados con espinaca y aceite de oliva',FALSE,TRUE,TRUE,FALSE,FALSE,140,2,200,25,12,'GarbanzosConEspinacas.jpg',null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Pez espada','Pez espada con limón y romero, marinado con piñones',FALSE,FALSE,FALSE,TRUE,FALSE,363,0,32,19,47,'PezEspada.jpg');
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Pez espada','Pez espada con limón y romero, marinado con piñones',FALSE,FALSE,FALSE,TRUE,FALSE,363,0,32,19,47,'PezEspada.jpg',null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Macarrones a la boloñesa','Macarrones con carne picada, tomate y orégano',FALSE,FALSE,FALSE,FALSE,TRUE,306,3,205,25,24,'MacarronesALaBoloñesa');
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Macarrones a la boloñesa','Macarrones con carne picada, tomate y orégano',FALSE,FALSE,FALSE,FALSE,TRUE,306,3,205,25,24,'MacarronesALaBoloñesa',null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Sopa de pescado','Sopa de merluza con cebolla, pimiento verde, pimiento rojo, laurel y ajo',FALSE,FALSE,FALSE,FALSE,FALSE,228,0,32,18,46,'SopaDePescado.jpg');
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Sopa de pescado','Sopa de merluza con cebolla, pimiento verde, pimiento rojo, laurel y ajo',FALSE,FALSE,FALSE,FALSE,FALSE,228,0,32,18,46,'SopaDePescado.jpg',null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Filetes de pollo','Filetes de pollo al grill y tomate aliñado',FALSE,FALSE,FALSE,FALSE,FALSE,292,2,42,22,53,'FileteDePollo.jpg');
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Filetes de pollo','Filetes de pollo al grill y tomate aliñado',FALSE,FALSE,FALSE,FALSE,FALSE,292,2,42,22,53,'FileteDePollo.jpg',null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Cóctel de langostinos','Cóctel de langostinos con palitos de cangrejo',FALSE,FALSE,FALSE,FALSE,FALSE,212,0,41,21,18,'CoctelDeLangostinos.jpg');
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Cóctel de langostinos','Cóctel de langostinos con palitos de cangrejo',FALSE,FALSE,FALSE,FALSE,FALSE,212,0,41,21,18,'CoctelDeLangostinos.jpg',null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Espaguetis a la carbonara','Espaguetis con salsa carbonara',FALSE,FALSE,FALSE,FALSE,TRUE,306,1,212,28,16,'EspaguetisDeSalsaCarbonara.jpg');
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Espaguetis a la carbonara','Espaguetis con salsa carbonara',FALSE,FALSE,FALSE,FALSE,TRUE,306,1,212,28,16,'EspaguetisDeSalsaCarbonara.jpg',null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Costillas','Costillas de cerdo a la barbacoa',FALSE,FALSE,FALSE,FALSE,FALSE,226,2,41,15,55,'CostillasDeCerdo.jpg');
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Costillas','Costillas de cerdo a la barbacoa',FALSE,FALSE,FALSE,FALSE,FALSE,226,2,41,15,55,'CostillasDeCerdo.jpg',null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Yogur de frutas del bosque','Yogur de frutas del bosque',TRUE,TRUE,TRUE,FALSE,TRUE,126,12,4,3,5,'YogurDeFrutasDelBosque.jpg');
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Yogur de frutas del bosque','Yogur de frutas del bosque',TRUE,TRUE,TRUE,FALSE,TRUE,126,12,4,3,5,'YogurDeFrutasDelBosque.jpg',null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Melón con jamón','Melón con jamón',FALSE,FALSE,FALSE,FALSE,TRUE,150,8,2,4,10,'MelonConJamon.jpg');
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Melón con jamón','Melón con jamón',FALSE,FALSE,FALSE,FALSE,TRUE,150,8,2,4,10,'MelonConJamon.jpg',null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Baguettes de atún y bacon','Baguettes de atún y bacon',FALSE,FALSE,FALSE,FALSE,TRUE,275,2,33,27,47,'BaguettesDeAtunYBacon.jpg');
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Baguettes de atún y bacon','Baguettes de atún y bacon',FALSE,FALSE,FALSE,FALSE,TRUE,275,2,33,27,47,'BaguettesDeAtunYBacon.jpg',null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Lasaña Boloñesa','Lasaña Boloñesa con carne de cerdo',FALSE,FALSE,FALSE,FALSE,TRUE,280,0,208,24,24,'LasanaBolonesa.jpg');
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Lasaña Boloñesa','Lasaña Boloñesa con carne de cerdo',FALSE,FALSE,FALSE,FALSE,TRUE,280,0,208,24,24,'LasanaBolonesa.jpg',null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Berza cocida','Berza cocida con aceite, ajo y pimentón',FALSE,TRUE,TRUE,FALSE,FALSE,60,1,204,21,9,'BerzaCocida.jpg');
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Berza cocida','Berza cocida con aceite, ajo y pimentón',FALSE,TRUE,TRUE,FALSE,FALSE,60,1,204,21,9,'BerzaCocida.jpg',null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Potaje de garbanzos','Potaje de garbanzos con verduras',FALSE,TRUE,TRUE,FALSE,FALSE,269,4,212,23,11,'PotajeDeGarbanzos.jpg');
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Potaje de garbanzos','Potaje de garbanzos con verduras',FALSE,TRUE,TRUE,FALSE,FALSE,269,4,212,23,11,'PotajeDeGarbanzos.jpg',null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Menestra','Menestra de verduras',FALSE,TRUE,TRUE,FALSE,FALSE,144,0,180,18,9,'Menestra.jpg');
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Menestra','Menestra de verduras',FALSE,TRUE,TRUE,FALSE,FALSE,144,0,180,18,9,'Menestra.jpg',null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Ensalada de endivias','Ensalada de endivias con manzana, queso azul cebolla y nueces',FALSE,TRUE,TRUE,TRUE,FALSE,150,8,40,4,20,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Ensalada de endivias','Ensalada de endivias con manzana, queso azul cebolla y nueces',FALSE,TRUE,TRUE,TRUE,FALSE,150,8,40,4,20,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Conejo guisado','Conejo guisado con patatas y cebolla',FALSE,FALSE,FALSE,FALSE,TRUE,272,0,120,10,56,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Conejo guisado','Conejo guisado con patatas y cebolla',FALSE,FALSE,FALSE,FALSE,TRUE,272,0,120,10,56,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Guisantes con jamón','Guisantes con jamón con ajo, cebolla y perejil',FALSE,FALSE,FALSE,FALSE,FALSE,310,1,45,9,43,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Guisantes con jamón','Guisantes con jamón con ajo, cebolla y perejil',FALSE,FALSE,FALSE,FALSE,FALSE,310,1,45,9,43,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Revuelto de setas','Revuelto de setas con huevos y ajo',FALSE,FALSE,TRUE,FALSE,FALSE,92,2,140,8,23,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Revuelto de setas','Revuelto de setas con huevos y ajo',FALSE,FALSE,TRUE,FALSE,FALSE,92,2,140,8,23,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Arroz frito','Arroz frito con zanahoria, puerro y cebolla',FALSE,TRUE,TRUE,FALSE,FALSE,333,2,170,7,37,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Arroz frito','Arroz frito con zanahoria, puerro y cebolla',FALSE,TRUE,TRUE,FALSE,FALSE,333,2,170,7,37,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Merluza al horno','Merluza al horno con cebolla, ajo, vino blanco, zumo de limon, pimentón y perejil',FALSE,FALSE,FALSE,FALSE,FALSE,264,0,30,8,52,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Merluza al horno','Merluza al horno con cebolla, ajo, vino blanco, zumo de limon, pimentón y perejil',FALSE,FALSE,FALSE,FALSE,FALSE,264,0,30,8,52,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Ternera asada','Ternera asada con pimiento rojo, cebolla, ajo, zanahorias, brandy, tomillo y patatas',FALSE,FALSE,FALSE,FALSE,FALSE,227,0,28,15,58,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Ternera asada','Ternera asada con pimiento rojo, cebolla, ajo, zanahorias, brandy, tomillo y patatas',FALSE,FALSE,FALSE,FALSE,FALSE,227,0,28,15,58,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Puré de patata','Puré de patata con mantequilla y leche entera',FALSE,TRUE,TRUE,FALSE,TRUE,260,8,200,7,8,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Puré de patata','Puré de patata con mantequilla y leche entera',FALSE,TRUE,TRUE,FALSE,TRUE,260,8,200,7,8,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Tortilla francesa','Tortilla francesa',FALSE,FALSE,TRUE,FALSE,FALSE,126,1,70,10,38,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Tortilla francesa','Tortilla francesa',FALSE,FALSE,TRUE,FALSE,FALSE,126,1,70,10,38,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Ensaladilla rusa','Ensaladilla rusa con patatas, zanahorias, huevos, aceitunas y atún',FALSE,FALSE,TRUE,FALSE,FALSE,194,4,157,13,35,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Ensaladilla rusa','Ensaladilla rusa con patatas, zanahorias, huevos, aceitunas y atún',FALSE,FALSE,TRUE,FALSE,FALSE,194,4,157,13,35,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Lentejas','Lentejas con chorizo, cebolla, patatas, zanahorias, ajo y aceite',FALSE,FALSE,FALSE,FALSE,FALSE,178,1,170,18,46,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Lentejas','Lentejas con chorizo, cebolla, patatas, zanahorias, ajo y aceite',FALSE,FALSE,FALSE,FALSE,FALSE,178,1,170,18,46,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Filete de ternera','Filete de ternera a la plancha',FALSE,FALSE,FALSE,FALSE,FALSE,318,0,27,12,58,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Filete de ternera','Filete de ternera a la plancha',FALSE,FALSE,FALSE,FALSE,FALSE,318,0,27,12,58,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Lenguado al horno','Lenguado al horno con harina, limón, pimienta blanca y perejil',FALSE,FALSE,FALSE,FALSE,FALSE,346,1,28,10,55,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Lenguado al horno','Lenguado al horno con harina, limón, pimienta blanca y perejil',FALSE,FALSE,FALSE,FALSE,FALSE,346,1,28,10,55,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Tortilla de patata','Tortilla de patata con cebolla',FALSE,FALSE,FALSE,FALSE,FALSE,266,2,35,16,37,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Tortilla de patata','Tortilla de patata con cebolla',FALSE,FALSE,FALSE,FALSE,FALSE,266,2,35,16,37,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Crema calabacín','Crema calabacín con patatas, cebolla y ajo',FALSE,TRUE,TRUE,FALSE,FALSE,169,3,156,7,12,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Crema calabacín','Crema calabacín con patatas, cebolla y ajo',FALSE,TRUE,TRUE,FALSE,FALSE,169,3,156,7,12,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Paella de marisco','Paella de marisco con arroz, rape, gambas y mejillones',FALSE,FALSE,FALSE,FALSE,FALSE,343,2,193,13,59,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Paella de marisco','Paella de marisco con arroz, rape, gambas y mejillones',FALSE,FALSE,FALSE,FALSE,FALSE,343,2,193,13,59,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Solomillo de cerdo','Solomillo de cerdo con arroz',FALSE,FALSE,FALSE,FALSE,FALSE,222,2,28,13,57,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Solomillo de cerdo','Solomillo de cerdo con arroz',FALSE,FALSE,FALSE,FALSE,FALSE,222,2,28,13,57,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Gazpacho','Gazpacho con pimiento verde y pepino',FALSE,TRUE,TRUE,FALSE,FALSE,110,6,160,7,28,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Gazpacho','Gazpacho con pimiento verde y pepino',FALSE,TRUE,TRUE,FALSE,FALSE,110,6,160,7,28,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Berenjenas en escabeche','Berenjenas en escabeche',FALSE,TRUE,TRUE,FALSE,FALSE,98,5,140,4,9,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Berenjenas en escabeche','Berenjenas en escabeche',FALSE,TRUE,TRUE,FALSE,FALSE,98,5,140,4,9,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Lubina al horno','Lubina al horno con patatas y cebolla',FALSE,FALSE,FALSE,FALSE,FALSE,220,0,28,7,52,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Lubina al horno','Lubina al horno con patatas y cebolla',FALSE,FALSE,FALSE,FALSE,FALSE,220,0,28,7,52,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Espaguetis con calabacín','Espaguetis de calabacín con gambas',FALSE,FALSE,FALSE,FALSE,FALSE,176,1,180,11,25,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Espaguetis con calabacín','Espaguetis de calabacín con gambas',FALSE,FALSE,FALSE,FALSE,FALSE,176,1,180,11,25,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Ensalada mixta','Ensalada mixta con espárragos, aceitunas, huevos y atún',FALSE,FALSE,TRUE,FALSE,FALSE,135,2,80,8,7,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Ensalada mixta','Ensalada mixta con espárragos, aceitunas, huevos y atún',FALSE,FALSE,TRUE,FALSE,FALSE,135,2,80,8,7,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Hamburguesa de espinacas','Hamburguesa de espinacas con queso y tomate',FALSE,FALSE,TRUE,FALSE,TRUE,248,3,180,15,23,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Hamburguesa de espinacas','Hamburguesa de espinacas con queso y tomate',FALSE,FALSE,TRUE,FALSE,TRUE,248,3,180,15,23,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Espárragos trigueros a la plancha','Espárragos trigueros a la plancha',FALSE,TRUE,TRUE,FALSE,FALSE,21,2,70,7,9,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Espárragos trigueros a la plancha','Espárragos trigueros a la plancha',FALSE,TRUE,TRUE,FALSE,FALSE,21,2,70,7,9,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Codillo de cerdo asado','Codillo de cerdo asado',FALSE,FALSE,FALSE,FALSE,FALSE,199,3,32,23,57,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Codillo de cerdo asado','Codillo de cerdo asado',FALSE,FALSE,FALSE,FALSE,FALSE,199,3,32,23,57,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Ensalada César','Ensalada César con queso, pan y pechuga',FALSE,FALSE,FALSE,FALSE,TRUE,116,10,133,7,8,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Ensalada César','Ensalada César con queso, pan y pechuga',FALSE,FALSE,FALSE,FALSE,TRUE,116,10,133,7,8,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Sopa de pollo','Sopa de pollo con puerro y zanahoria',FALSE,FALSE,FALSE,FALSE,FALSE,11,0,152,12,21,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Sopa de pollo','Sopa de pollo con puerro y zanahoria',FALSE,FALSE,FALSE,FALSE,FALSE,11,0,152,12,21,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Albóndigas con tomate','Albóndigas con tomate',FALSE,FALSE,FALSE,FALSE,TRUE,169,12,42,24,48,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Albóndigas con tomate','Albóndigas con tomate',FALSE,FALSE,FALSE,FALSE,TRUE,169,12,42,24,48,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Fabada','Fabada con chorizo, panceta y morcilla',FALSE,FALSE,FALSE,FALSE,FALSE,142,9,14,11,33,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Fabada','Fabada con chorizo, panceta y morcilla',FALSE,FALSE,FALSE,FALSE,FALSE,142,9,14,11,33,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Espirales con tomate','Espirales con tomate con pisto',FALSE,TRUE,TRUE,FALSE,FALSE,345,4,178,17,28,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Espirales con tomate','Espirales con tomate con pisto',FALSE,TRUE,TRUE,FALSE,FALSE,345,4,178,17,28,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Huevo frito con tomate','Huevo frito con tomate',FALSE,TRUE,TRUE,FALSE,FALSE,345,4,40,19,47,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Huevo frito con tomate','Huevo frito con tomate',FALSE,TRUE,TRUE,FALSE,FALSE,345,4,40,19,47,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Patatas con carne','Patatas con carne picada, cebolla y pimiento',FALSE,FALSE,FALSE,FALSE,FALSE,60,7,56,14,54,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Patatas con carne','Patatas con carne picada, cebolla y pimiento',FALSE,FALSE,FALSE,FALSE,FALSE,60,7,56,14,54,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Salmón al horno','Salmón al horno con patatas, pimiento verde cebolla y vino tinto',FALSE,FALSE,FALSE,FALSE,FALSE,227,16,56,11,52,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Salmón al horno','Salmón al horno con patatas, pimiento verde cebolla y vino tinto',FALSE,FALSE,FALSE,FALSE,FALSE,227,16,56,11,52,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Escalivada de verduras','Escalivada de verduras',FALSE,TRUE,TRUE,FALSE,FALSE,68,2,140,7,9,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Escalivada de verduras','Escalivada de verduras',FALSE,TRUE,TRUE,FALSE,FALSE,68,2,140,7,9,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Arroz con sepia','Arroz con sepia con pisto y cebolla',FALSE,FALSE,FALSE,FALSE,FALSE,101,7,50,16,30,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Arroz con sepia','Arroz con sepia con pisto y cebolla',FALSE,FALSE,FALSE,FALSE,FALSE,101,7,50,16,30,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Filete de lomo al ajillo','Filete de cinta de lomo de cerdo al ajillo',FALSE,FALSE,FALSE,FALSE,FALSE,117,19,49,17,58,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Filete de lomo al ajillo','Filete de cinta de lomo de cerdo al ajillo',FALSE,FALSE,FALSE,FALSE,FALSE,117,19,49,17,58,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Merluza en salsa verde','Merluza en rodajas con salsa verde',FALSE,FALSE,FALSE,FALSE,TRUE,133,4,44,13,48,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Merluza en salsa verde','Merluza en rodajas con salsa verde',FALSE,FALSE,FALSE,FALSE,TRUE,133,4,44,13,48,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Filete de pavo','Filete de pavo a la plancha',FALSE,FALSE,FALSE,FALSE,FALSE,145,3,41,15,47,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Filete de pavo','Filete de pavo a la plancha',FALSE,FALSE,FALSE,FALSE,FALSE,145,3,41,15,47,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Sopa de verduras','Sopa de verduras con tomate',FALSE,TRUE,TRUE,FALSE,FALSE,59,2,150,11,33,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Sopa de verduras','Sopa de verduras con tomate',FALSE,TRUE,TRUE,FALSE,FALSE,59,2,150,11,33,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Bacalao con tomate','Bacalao fresco o desalatado con tomate',FALSE,FALSE,FALSE,FALSE,FALSE,240,4,53,17,48,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Bacalao con tomate','Bacalao fresco o desalatado con tomate',FALSE,FALSE,FALSE,FALSE,FALSE,240,4,53,17,48,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Negrito rebozado','Negrito fileteado rebozado con huevos y pan',FALSE,FALSE,FALSE,FALSE,TRUE,240,2,48,13,54,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Negrito rebozado','Negrito fileteado rebozado con huevos y pan',FALSE,FALSE,FALSE,FALSE,TRUE,240,2,48,13,54,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Rape al horno','Rape al horno con patatas y cebolla',FALSE,FALSE,FALSE,FALSE,FALSE,240,1,47,12,53,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Rape al horno','Rape al horno con patatas y cebolla',FALSE,FALSE,FALSE,FALSE,FALSE,240,1,47,12,53,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Puré de verduras','Puré de verduras con cebolla, calabacín, cebolla y acelgas',FALSE,TRUE,TRUE,FALSE,FALSE,81,2,183,7,8,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Puré de verduras','Puré de verduras con cebolla, calabacín, cebolla y acelgas',FALSE,TRUE,TRUE,FALSE,FALSE,81,2,183,7,8,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Guisantes con jamón','Guisantes con jamón en tacos',FALSE,FALSE,FALSE,FALSE,FALSE,81,3,163,9,27,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Guisantes con jamón','Guisantes con jamón en tacos',FALSE,FALSE,FALSE,FALSE,FALSE,81,3,163,9,27,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Ensalada de alubias','Ensalada de alubias cocidas con pimiento asado',FALSE,TRUE,TRUE,FALSE,FALSE,85,1,90,12,9,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Ensalada de alubias','Ensalada de alubias cocidas con pimiento asado',FALSE,TRUE,TRUE,FALSE,FALSE,85,1,90,12,9,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Ensalada de escabeche','Ensalada de escabeche con aceitunas, huevos cocidos y chicharro',FALSE,FALSE,FALSE,FALSE,FALSE,81,3,100,10,10,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Ensalada de escabeche','Ensalada de escabeche con aceitunas, huevos cocidos y chicharro',FALSE,FALSE,FALSE,FALSE,FALSE,81,3,100,10,10,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Ensalada de pasta','Ensalada de pasta con tomate, queso, chicharro y jamón cocido',FALSE,FALSE,FALSE,FALSE,FALSE,189,2,87,11,11,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Ensalada de pasta','Ensalada de pasta con tomate, queso, chicharro y jamón cocido',FALSE,FALSE,FALSE,FALSE,FALSE,189,2,87,11,11,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Ensalada de garbanzos','Ensalada de garbanzos cocidos, atún y aceitunas',FALSE,FALSE,FALSE,FALSE,FALSE,189,2,93,8,8,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Ensalada de garbanzos','Ensalada de garbanzos cocidos, atún y aceitunas',FALSE,FALSE,FALSE,FALSE,FALSE,189,2,93,8,8,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Pizza de jamón y bacon','Pizza de jamón y bacon con tomate, queso y almidón',FALSE,FALSE,FALSE,FALSE,FALSE,258,2,57,16,45,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Pizza de jamón y bacon','Pizza de jamón y bacon con tomate, queso y almidón',FALSE,FALSE,FALSE,FALSE,FALSE,258,2,57,16,45,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Vaso de leche con cacao y galletas','Vaso de leche con cacao puro y galletas integrales',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,80,7,10,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Vaso de leche con cacao y galletas','Vaso de leche con cacao puro y galletas integrales',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,80,7,10,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Gachas de plátano y mantequilla de cacahuete','Gachas con plátano fresco y mantequilla de cacahuete con copos de avena',TRUE,FALSE,TRUE,TRUE,FALSE,147,2,53,14,8,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Gachas de plátano y mantequilla de cacahuete','Gachas con plátano fresco y mantequilla de cacahuete con copos de avena',TRUE,FALSE,TRUE,TRUE,FALSE,147,2,53,14,8,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Zumo de mango y tostada','Zumo de mango y tostada con mermelada de frambuesa',TRUE,TRUE,TRUE,FALSE,TRUE,135,6,78,8,9,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Zumo de mango y tostada','Zumo de mango y tostada con mermelada de frambuesa',TRUE,TRUE,TRUE,FALSE,TRUE,135,6,78,8,9,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Sandía aliñada con lima','Sandía aliñada con lima y azúcar moreno',TRUE,TRUE,TRUE,FALSE,FALSE,28,1,100,11,15,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Sandía aliñada con lima','Sandía aliñada con lima y azúcar moreno',TRUE,TRUE,TRUE,FALSE,FALSE,28,1,100,11,15,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Hummus y crudités','Hummus de garbanzos con palitos de zanahoria',TRUE,TRUE,TRUE,FALSE,FALSE,143,1,170,10,31,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Hummus y crudités','Hummus de garbanzos con palitos de zanahoria',TRUE,TRUE,TRUE,FALSE,FALSE,143,1,170,10,31,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Tostadas de anchoa y tomate','Tostadas de tomate triturado con anchoas',TRUE,FALSE,FALSE,FALSE,FALSE,102,7,87,14,9,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Tostadas de anchoa y tomate','Tostadas de tomate triturado con anchoas',TRUE,FALSE,FALSE,FALSE,FALSE,102,7,87,14,9,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Huevos y aguacate','Huevos revueltos con aguacate',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,67,10,8,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Huevos y aguacate','Huevos revueltos con aguacate',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,67,10,8,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Café y campurrianas','Café con pastas tradicionales',TRUE,FALSE,TRUE,FALSE,FALSE,110,8,77,10,8,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Café y campurrianas','Café con pastas tradicionales',TRUE,FALSE,TRUE,FALSE,FALSE,110,8,77,10,8,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Queso con membrillo','Queso fresco con membrillo y pan',TRUE,FALSE,TRUE,FALSE,TRUE,146,8,57,10,8,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Queso con membrillo','Queso fresco con membrillo y pan',TRUE,FALSE,TRUE,FALSE,TRUE,146,8,57,10,8,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Tostadas con aceite y tomate','Tostadas de aceite de oliva y sal con tomate',TRUE,TRUE,TRUE,FALSE,TRUE,135,6,47,10,11,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Tostadas con aceite y tomate','Tostadas de aceite de oliva y sal con tomate',TRUE,TRUE,TRUE,FALSE,TRUE,135,6,47,10,11,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Bizcocho de zanahoria y café','Bizcocho tradicional de zanahoria Y café cortado',TRUE,FALSE,TRUE,FALSE,FALSE,98,2,51,4,12,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Bizcocho de zanahoria y café','Bizcocho tradicional de zanahoria Y café cortado',TRUE,FALSE,TRUE,FALSE,FALSE,98,2,51,4,12,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Yogur con fresas','Yogur con fresas y copos de avena',TRUE,FALSE,TRUE,FALSE,FALSE,67,0,0,3,11,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Yogur con fresas','Yogur con fresas y copos de avena',TRUE,FALSE,TRUE,FALSE,FALSE,67,0,0,3,11,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Batido de espinacas y aguacate','Batido de espinacas, aguacate y leche',TRUE,FALSE,TRUE,FALSE,FALSE,75,4,42,5,14,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Batido de espinacas y aguacate','Batido de espinacas, aguacate y leche',TRUE,FALSE,TRUE,FALSE,FALSE,75,4,42,5,14,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Baguel de salmón','Baguel de salmón con ricota',TRUE,FALSE,FALSE,FALSE,TRUE,158,3,6,7,9,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Baguel de salmón','Baguel de salmón con ricota',TRUE,FALSE,FALSE,FALSE,TRUE,158,3,6,7,9,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Pan de leche con mantequilla','Bollo tradicional de leche con mantequilla',TRUE,FALSE,TRUE,FALSE,FALSE,158,3,6,7,13,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Pan de leche con mantequilla','Bollo tradicional de leche con mantequilla',TRUE,FALSE,TRUE,FALSE,FALSE,158,3,6,7,13,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Tortitas de avena y yogur','Tortillas de avena acompañadas de yogur',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,14,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Tortitas de avena y yogur','Tortillas de avena acompañadas de yogur',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,7,10,14,null,null);
 
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas) Values ('Sándwich vegetal','Sándwich de tomate, lechuga y tofu',TRUE,TRUE,TRUE,FALSE,TRUE,146,8,7,10,15,null);
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Sándwich vegetal','Sándwich de tomate, lechuga y tofu',TRUE,TRUE,TRUE,FALSE,TRUE,146,8,7,10,15,null,null);
 
 
 insert into PertenenciaPlato (codigoIngrediente,codigoPlato) Values (1,1);
