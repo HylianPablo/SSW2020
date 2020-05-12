@@ -40,7 +40,7 @@ public class Login extends HttpServlet {
 
         String correoUsuario = request.getParameter("usuarioInput");
         String contraseña = request.getParameter("passwordInput");
-        String usuario = null;
+        String usuario = correoUsuario;
         Boolean registered = DBConnection.checkRegistrado(correoUsuario, contraseña);
         if (!registered) {
             String mensajeErrorIniciarSesion = "Usuario o contraseña erróneos. Introduzca los datos de nuevo.";
@@ -48,10 +48,8 @@ public class Login extends HttpServlet {
             url = "./iniciarSesion";
         } else {
             url = "./index";
-            if(!correoUsuario.contains("@")){
+            if(correoUsuario.contains("@")){
                 usuario = DBConnection.selectNombreUsuarioDesdeCorreo(correoUsuario); 
-            }else{
-                usuario = correoUsuario;
             }
             Usuario user = DBConnection.selectUsuario(usuario);
             session.setAttribute("sessionUserObj", user);
