@@ -26,30 +26,30 @@ create table Dieta(
 
 create table Usuario(
 	nombre					char(50) not null,
-	nombreUsuario			char(20) unique not null,
+	nombreUsuario			char(20) not null,
 	contrasena				char(20) not null,
-	correo					char(40) not null,
+	correo					char(40) unique not null,
 	favorito				integer,
 	codigoImg				integer,
 	foreign key(favorito) references Dieta(codigoDieta),
-	primary key(correo)
+	primary key(nombreUsuario)
 );
 
 create table Guardado(
-	correo					char(40) not null,
+	nombreUsuario					char(20) not null,
 	codigoDieta				integer not null,
-	foreign key(correo) references Usuario(correo),
+	foreign key(nombreUsuario) references Usuario(nombreUsuario),
 	foreign key(codigoDieta) references Dieta(codigoDieta),
-	primary key(correo, codigoDieta)
+	primary key(nombreUsuario, codigoDieta)
 );
 
 create table Entrada(
 	codigoEntrada			integer not null auto_increment,
 	titulo					char(50) not null,
 	cuerpo					text,
-	correo					char(40) not null,
+	nombreUsuario			char(20) not null,
 	fecha					date not null,
-	foreign key(correo) references Usuario(correo),
+	foreign key(nombreUsuario) references Usuario(nombreUsuario),
 	primary key(codigoEntrada)
 );
 
@@ -57,10 +57,10 @@ create table Comentario(
 	codigoComentario		integer not null auto_increment,
 	codigoPadre				integer not null,
 	cuerpo					text not null,
-	correo					char(40) not null,
+	nombreUsuario			char(20) not null,
 	fecha					date not null,
 	foreign key(codigoPadre) references Entrada(codigoEntrada),
-	foreign key(correo) references Usuario(correo),
+	foreign key(nombreUsuario) references Usuario(nombreUsuario),
 	primary key(codigoComentario)
 );	
 
@@ -171,20 +171,20 @@ insert into Usuario (nombre,nombreUsuario,contrasena,correo,favorito) Values ('P
 insert into Usuario (nombre,nombreUsuario,contrasena,correo,favorito) Values ('Marta Sanchez Rojo', 'martsanro', 'farola4','marta1912@gmail.com',2);
 insert into Usuario (nombre,nombreUsuario,contrasena,correo,favorito) Values ('Marcos Moya Gallo', 'marmoyaga', 'tirabuzon89','marcos.mg@yahoo.com',3);
 
-insert into Guardado (correo,codigoDieta) Values ('pedrosanzl@gmail.com',1);
-insert into Guardado (correo,codigoDieta) Values ('pedrosanzl@gmail.com',2);
-insert into Guardado (correo,codigoDieta) Values ('marta1912@gmail.com',2);
-insert into Guardado (correo,codigoDieta) Values ('marcos.mg@yahoo.com',3);
+insert into Guardado (nombreUsuario,codigoDieta) Values ('pedsanz',1);
+insert into Guardado (nombreUsuario,codigoDieta) Values ('pedsanz',2);
+insert into Guardado (nombreUsuario,codigoDieta) Values ('martsanro',2);
+insert into Guardado (nombreUsuario,codigoDieta) Values ('marmoyaga',3);
 
 
-insert into Entrada (titulo,cuerpo,correo,fecha) Values ('Quiero comer bien','Quiero tener una alimentación sana y no se cocinar.','pedrosanzl@gmail.com','2020-04-03');
-insert into Entrada (titulo,cuerpo,correo,fecha) Values ('Quiero ser vegana.','Me he dado cuenta de que los animales merecen vivir','marta1912@gmail.com','2020-03-23');
-insert into Entrada (titulo,cuerpo,correo,fecha) Values ('Receta de cupcakes.','Esta receta me la enseño mi abuela. Lleva harina y huevos.','marcos.mg@yahoo.com','2020-03-08');
+insert into Entrada (titulo,cuerpo,nombreUsuario,fecha) Values ('Quiero comer bien','Quiero tener una alimentación sana y no se cocinar.','pedsanz','2020-04-03');
+insert into Entrada (titulo,cuerpo,nombreUsuario,fecha) Values ('Quiero ser vegana.','Me he dado cuenta de que los animales merecen vivir','martsanro','2020-03-23');
+insert into Entrada (titulo,cuerpo,nombreUsuario,fecha) Values ('Receta de cupcakes.','Esta receta me la enseño mi abuela. Lleva harina y huevos.','marmoyaga','2020-03-08');
 
 
-insert into Comentario (codigoPadre,cuerpo,correo,fecha) Values (1,'Prueba a evitar demasiadas grasas saturadas y calorías vacías como las propocionadas por bebidas alcohólicas o la bollería industrial.','pedrosanzl@gmail.com','2020-04-05');
-insert into Comentario (codigoPadre,cuerpo,correo,fecha) Values (1,'El aguacate es un alimento muy sano, inclúyelo en tus platos.','marcos.mg@yahoo.com','2020-04-06');
-insert into Comentario (codigoPadre,cuerpo,correo,fecha) Values (2,'No comas carne.','pedrosanzl@gmail.com','2020-03-25');
+insert into Comentario (codigoPadre,cuerpo,nombreUsuario,fecha) Values (1,'Prueba a evitar demasiadas grasas saturadas y calorías vacías como las propocionadas por bebidas alcohólicas o la bollería industrial.','pedsanz','2020-04-05');
+insert into Comentario (codigoPadre,cuerpo,nombreUsuario,fecha) Values (1,'El aguacate es un alimento muy sano, inclúyelo en tus platos.','marmoyaga','2020-04-06');
+insert into Comentario (codigoPadre,cuerpo,nombreUsuario,fecha) Values (2,'No comas carne.','pedsanz','2020-03-25');
 
 insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Espinacas',TRUE,TRUE,FALSE,FALSE);
 insert into Ingrediente (nombre,vegano,vegetariano,frutosSecos,gluten) Values ('Garbanzos',TRUE,TRUE,FALSE,FALSE);

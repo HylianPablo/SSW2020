@@ -705,7 +705,49 @@ public class DBConnection {
             return null;
         }
     }
+    
+    public static Plato selectPlatoAll(String codigoPlato) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT * FROM Plato p WHERE p.codigoPlato=?";
+        //ArrayList<Plato> retorno = new ArrayList<>();
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, codigoPlato);
+            rs = ps.executeQuery();
+            Plato plato = null;
 
+            if (rs.next()) {
+                //Igual es mejor tener las clases vacías y usar setters en vez de constructor
+                plato = new Plato();
+                plato.setCodigoPlato(rs.getString("codigoPlato"));
+                plato.setNombre(rs.getString("nombre"));
+                plato.setDescripcion(rs.getString("descripcion"));
+                plato.setDesayuno(rs.getBoolean("desayuno"));
+                plato.setVegano(rs.getBoolean("vegano"));
+                plato.setVegetariano(rs.getBoolean("vegetariano"));
+                plato.setFrutosSecos(rs.getBoolean("frutosSecos"));
+                plato.setGluten(rs.getBoolean("gluten"));
+                plato.setKcal(rs.getInt("kcal"));
+                plato.setGlucidosSimples(rs.getInt("glucidosSimples"));
+                plato.setPolisacaridos(rs.getInt("polisacaridos"));
+                plato.setLipidos(rs.getInt("lipidos"));
+                plato.setProteinas(rs.getInt("proteinas"));
+                //retorno.add(entrada);
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return plato;
+        } catch (SQLException e) {
+            pool.freeConnection(connection);
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     public static Plato selectPlato(String codigoPlato) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
