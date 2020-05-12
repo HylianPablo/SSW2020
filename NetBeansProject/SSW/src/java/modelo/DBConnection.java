@@ -74,11 +74,13 @@ public class DBConnection {
             ResultSet rs;
         boolean resultado;
         int res;
-        String query = "SELECT * FROM Usuario u WHERE u.correo = ? AND u.contrasena = ?";
+        String query = "SELECT * FROM Usuario u WHERE (u.correo = ? AND u.contrasena = ?) OR (u.nombreUsuario = ? AND u.contrasena = ?)";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1,correo);
             ps.setString(2,password);
+            ps.setString(3,correo);
+            ps.setString(4,password);
             rs = ps.executeQuery();
             if (rs.next()) {
                 resultado=true;

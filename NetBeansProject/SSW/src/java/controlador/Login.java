@@ -36,19 +36,29 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
         HttpSession session = request.getSession();
-        
+        boolean bandera = false;
         String url;
 
         String correoUsuario = request.getParameter("usuarioInput");
         String contraseña = request.getParameter("passwordInput");
+        String usuario = null;
         Boolean registered = DBConnection.checkRegistrado(correoUsuario, contraseña);
         if (!registered) {
             String mensajeErrorIniciarSesion = "Usuario o contraseña erróneos. Introduzca los datos de nuevo.";
             session.setAttribute("mensajeErrorIniciarSesion",mensajeErrorIniciarSesion);
             url = "./iniciarSesion";
         } else {
+            for(int i = 0; i < correoUsuario.length();i++){
+                if(correoUsuario.charAt(i)=='@'){
+                    bandera = true;
+                }
+            }
             url = "./index";
-            String usuario = DBConnection.selectNombreUsuarioDesdeCorreo(correoUsuario);
+            if(bandera){
+                usuario = DBConnection.selectNombreUsuarioDesdeCorreo(correoUsuario); 
+            }else{
+                usuario = correoUsuario;
+            }
             Usuario user = DBConnection.selectUsuario(usuario);
             session.setAttribute("sessionUserObj", user);
             session.setAttribute("sessionMail", correoUsuario);
