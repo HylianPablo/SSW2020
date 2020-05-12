@@ -61,7 +61,7 @@
             
             <jsp:useBean id="plato" class="modelo.Plato" scope="session">  
             </jsp:useBean>
-            <h1 class="h1Size coolFontParagraph inlineBlock">Top dietas</h1>
+                <h1 class="h1Size coolFontParagraph inlineBlock">Descripción platos</h1>
             <a class="m-2 btn btn-warning inlineBlock rightAligned" href="./registro" role="button">Regístrate</a>
             <a class="m-2 btn btn-primary inlineBlock rightAligned" href="./iniciarSesion" role="button">Inicia sesión</a>
             <hr/>
