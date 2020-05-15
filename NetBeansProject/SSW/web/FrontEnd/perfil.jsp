@@ -67,8 +67,7 @@
         <hr/>
         <jsp:useBean id="mensajeErrorPerfil" class="java.lang.String" scope="session">  
         </jsp:useBean>
-        <p>Por favor, actualize su información personal si ésta ha cambiado</p>
-        <br>
+        <h4>Por favor, actualize su información personal si ésta ha cambiado</h4>
         <p style="color:red"> <%=mensajeErrorPerfil%> </p>
         <br>
         <jsp:useBean id="sessionUserObj" class="modelo.Usuario" scope="session">  
@@ -84,9 +83,6 @@
             ArrayList<Dieta> dietasTemp = dietas;
         %>
         <div class="container rounded" id="cuadroPerfil">
-            <div class="imagen" align="center">
-                <img src="img/profile.jpg" alt="img" class="m-3 img-thumbnail">
-            </div>
             <div class="m-3">
                 <form action="./perfilAct" role="form" method="POST">
                     <div class="form-group w-70">
@@ -111,11 +107,7 @@
                         <label for="correo">Correo:</label>
                         <div class="p-2 card" name="mail" value="<%=sessionUserObj.getCorreo()%>"><%=sessionUserObj.getCorreo()%></div>
                     </div>
-                    <div class="form-group">
-                        <label for="archivo">Adjuntar una imagen para tu perfil:</label>
-                        </br>
-                        <input type="file" id="imagen">
-                    </div>
+                    <br/>
                     <div class="alert alert-warning">
                         Dieta Favorita <i class="fa fa-star text-warning"> </i> :
                         <%if(hayFav){%>
