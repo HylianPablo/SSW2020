@@ -106,6 +106,8 @@
             <form action="./dietaGenerada" method="POST">
             <input type="hidden" name="platosDATOS" value="<%=platosDATOS%>">
             <input type="hidden" name="usuario" value="<%=usuario%>">
+            <h4 class="coolFontParagraph inlineBlock">Introduzca un nombre para su dieta:</h4>
+            <input type="text" name="nombreDieta" id="nombre" class="form-control" placeholder="--mi nueva dieta--">
             <div class="mr-auto text-center">
                 <button type="submit" class="btn submitDiet">Guardar Dieta</button>
             </div>
