@@ -23,8 +23,8 @@ import modelo.Plato;
  *
  * @author alejandro
  */
-@WebServlet(name = "Dieta", urlPatterns = {"/FrontEnd/dieta"})
-public class DietaS extends HttpServlet {
+@WebServlet(name = "DietaUsuario", urlPatterns = {"/FrontEnd/dieta"})
+public class VistaDieta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,17 +38,27 @@ public class DietaS extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8 pageEncoding=UTF-8");
+        HttpSession session = request.getSession();
         String cod = request.getParameter("cod");
         String url = "/FrontEnd/dieta.jsp";
         Dieta dieta;
+        String usuario = (String) session.getAttribute("sessionUser");
         ArrayList<Plato> platos = null;
         if(cod != null){
             platos = DBConnection.getPlatosDieta(cod);
             if(platos != null && !platos.isEmpty()){
-                dieta = DBConnection.selectDieta(cod);
                 
-                HttpSession session = request.getSession();
+                dieta = DBConnection.selectDieta(cod);
+                if(usuario == null){
+                    boolean guardadoTemp = DBConnection.checkGuardado(usuario, cod);
+                    boolean favoritoTemp = DBConnection.checkFavorito(usuario, cod);
+                    String guardado = String.valueOf(guardadoTemp);
+                    String favorito = String.valueOf(favoritoTemp);
+                    session.setAttribute("guardado", guardado);
+                    session.setAttribute("favorito", favorito);
+                    url = "/FrontEnd/dietaUsuario.jsp";
+                }
                 session.setAttribute("platos", platos);
                 session.setAttribute("cod", cod);
                 session.setAttribute("dieta", dieta);
@@ -59,6 +69,7 @@ public class DietaS extends HttpServlet {
         if(platos == null || platos.isEmpty()){
             response.sendRedirect("/SSW/FrontEnd/ranking");
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

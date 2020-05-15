@@ -76,8 +76,6 @@
             </jsp:useBean>
             <jsp:useBean id="guardado" class="java.lang.String" scope="session">  
             </jsp:useBean>
-            <jsp:useBean id="nombreUsuario" class="java.lang.String" scope="session">  
-            </jsp:useBean>
             <%
                 boolean guardadoTemp = Boolean.parseBoolean(guardado);
                 boolean favoritoTemp = Boolean.parseBoolean(favorito);
@@ -107,7 +105,6 @@
             </button>
             <form method="post" class="d-inline-block" action="./guardarDieta">
                 <input type="hidden" name="guardadoTemp" value="<%=!guardadoTemp%>"/>
-                <input type="hidden" name="nombreUsuario" value="<%=nombreUsuario%>"/>
                 <input type="hidden" name="codigoDieta" value="<%=cod%>"/>
                 <button type="submit" class="<%if (!guardadoTemp) {%>uncheckedButton<%}%> btn btn-success inlineBlock">
                     <i class="fa fa-heart text-rosa"></i><%if (!guardadoTemp) {%> Guardar<%} else {%> Guardado<%}%>
@@ -190,7 +187,6 @@
                         <form method="post" action="./favoritoDieta">
                             <input type="hidden" name="codigoDieta" value="<%=cod%>"/>
                             <input type="hidden" name="favorito" value="<%=!favoritoTemp%>"/>
-                            <input type="hidden" name="nombreUsuario" value="<%=nombreUsuario%>"/>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Confirmar</button>
                         </form>
