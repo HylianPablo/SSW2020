@@ -107,16 +107,15 @@ public class DBConnection {
             ResultSet rs;
         boolean resultado;
         int res;
-        String query = "UPDATE Usuario SET nombre = ?, nombreUsuario = ?, contrasena = ? WHERE correo = ?";
+        String query = "UPDATE Usuario SET nombre = ?, correo = ?, contrasena = ? WHERE nombreUsuario = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1,realname);
-            ps.setString(2,username);
+            ps.setString(2,correo);
             ps.setString(3, password);
-            ps.setString(4,correo);
+            ps.setString(4,username);
             res = ps.executeUpdate();
-            if (res==1) {
-            }else{
+            if (res!=1) {
                 System.out.println("No se ha actualizado");
             }
             ps.close();

@@ -43,7 +43,7 @@ public class registrarNuevo extends HttpServlet {
         String repeatedPassword = request.getParameter("repeatedPassword");
         String userMail = request.getParameter("userMail");
         
-        if(username!=null && realname!=null && password!=null && repeatedPassword!=null && userMail!=null && password.equals(repeatedPassword)){
+        if(!username.equals("") && !realname.equals("") && !password.equals("") && !repeatedPassword.equals("") && !userMail.equals("") && password.equals(repeatedPassword)){
             Usuario user = new Usuario();
             user.setNombre(realname);
             user.setNombreUsuario(username);

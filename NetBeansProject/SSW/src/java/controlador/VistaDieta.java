@@ -44,7 +44,7 @@ public class VistaDieta extends HttpServlet {
         Dieta dieta;
         String usuario = (String) session.getAttribute("sessionUser");
         ArrayList<Plato> platos = null;
-        if(cod != null){
+        if(cod.equals("")){
             platos = DBConnection.getPlatosDieta(cod);
             if(platos != null && !platos.isEmpty()){
                 

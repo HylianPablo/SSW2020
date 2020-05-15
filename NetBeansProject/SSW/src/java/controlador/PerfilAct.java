@@ -44,20 +44,20 @@ public class PerfilAct extends HttpServlet {
         Usuario userObj = (Usuario) session.getAttribute("sessionUserObj");
         
         String nombre = request.getParameter("realname");
-        if(nombre==null){
+        if(nombre.equals("")){
             nombre = userObj.getNombre();
         }
         String user = request.getParameter("username");
-        if(user == null){
+        if(user.equals("")){
             user = userObj.getNombreUsuario();
         }
         String oldPassword = request.getParameter("actualPassword");
         String newPassword = request.getParameter("newPassword");
-        if(newPassword==null){
+        if(newPassword.equals("")){
             newPassword = oldPassword;
         }
         String mail = (String) session.getAttribute("sessionMail");
-        if(mail == null){
+        if(mail.equals("")){
             mail = userObj.getCorreo();
         }
         boolean passOK = DBConnection.checkRegistrado(mail,oldPassword);
@@ -65,7 +65,6 @@ public class PerfilAct extends HttpServlet {
             mensajeErrorPerfil = "Contraseña antigua errónea. Vuelva a introducir los datos correctamente.";
         }else{
             mensajeErrorPerfil = "";
-            if(nombre!=null)
             DBConnection.updateUser(mail,nombre,user,newPassword);
         }
         
