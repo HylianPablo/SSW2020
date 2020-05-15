@@ -47,7 +47,7 @@ public class DietaGenerada extends HttpServlet {
         String titulo = request.getParameter("nombreDieta");
         if(usuario!=null){
             url = "./index";
-            if(titulo==""){
+            if(titulo.equals("")){
                 titulo = "Dieta de "+usuario;
             }
             Timestamp ld = Timestamp.valueOf("2020-4-28 18:00:00");

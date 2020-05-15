@@ -49,7 +49,7 @@ public class VistaRanking extends HttpServlet {
         
         Boolean favoritasTemp;
         String criterio = request.getParameter("criterio");
-        if (!criterio.equals("") && criterio.equals("Favoritas")) {
+        if (criterio==null && criterio.equals("Favoritas")) {
             favoritasTemp = true;
         } else {
             favoritasTemp = false;
