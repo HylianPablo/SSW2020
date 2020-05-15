@@ -47,7 +47,7 @@
             </div>
         </header>
 
-        <jsp:useBean id="usuario" class="java.lang.String" scope="session">  
+        <jsp:useBean id="sessionUser" class="java.lang.String" scope="session">  
         </jsp:useBean>
         <div class="container rounded" id="cuerpo">
             <div class="row text-center my-3">

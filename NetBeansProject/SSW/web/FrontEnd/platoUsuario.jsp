@@ -109,12 +109,12 @@
                     </div>
                 </div>
             </div>
-            <div class="entradaForoCuerpo2 rounded-bottom p-2" id="entradaEjemplo">
-                <p><%=plato.getDescripcion() + "."%></p>
+            <div class="entradaForoCuerpo2 rounded p-3" id="entradaEjemplo">
+                <%=plato.getDescripcion() + "."%>
             </div>
-            <br>
-            <div class="entradaForoCuerpo2 rounded-bottom p-2" id="entradaEjemplo">
-                <p>Un enlace de interés: <a href="<%=plato.getEnlace()%>"><%=plato.getEnlace() + "."%></a></p>
+            <br/>
+            <div class="entradaForoCuerpo2 rounded p-3" id="entradaEjemplo">
+                Un enlace de interés: <a href="<%=plato.getEnlace()%>"><%=plato.getEnlace() + "."%></a>
             </div>
             <br>
             <br>    
