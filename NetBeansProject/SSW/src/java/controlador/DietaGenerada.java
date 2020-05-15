@@ -40,7 +40,6 @@ public class DietaGenerada extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String usuario = request.getParameter("usuario");
         HttpSession session = request.getSession();
         ArrayList<Plato> platosElegidos = (ArrayList)session.getAttribute("platosDATOS");
         //ArrayList<Plato> platosElegidos = 
@@ -48,17 +47,18 @@ public class DietaGenerada extends HttpServlet {
         String titulo="";
         String escogida = null;
         String codigoDieta ="";
-        if(usuario.equals("1")){
-            url = "./index"; //ponia ./paginaUsuario
-            titulo = "Dieta de usuario";
+        String usuario = (String) session.getAttribute("sessionUser");
+        if(usuario!=null){
+            url = "./index";
+            titulo = "Dieta de "+usuario;
             Timestamp ld = Timestamp.valueOf("2020-4-28 18:00:00");
             String descripcion = "Dieta genérica de usuario hasta implementación.";
-            DBConnection.insertDieta(titulo,descripcion,ld); 
+            DBConnection.insertDieta(titulo,descripcion,ld);
             codigoDieta = DBConnection.getLastCodigoDieta();
-            System.out.println(codigoDieta);
-            DBConnection.insertGuardado("pedsanz",codigoDieta);
+            
+            DBConnection.insertGuardado(usuario,codigoDieta);
             DBConnection.insertPlatosMenu(platosElegidos,codigoDieta);
-            escogida = codigoDieta;       
+            escogida = codigoDieta;
         }else{
             url = "./registro";
         }
