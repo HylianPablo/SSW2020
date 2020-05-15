@@ -82,15 +82,15 @@
                                     <tbody>
                                         <tr>
                                             <th scope="row">Lípidos</th>
-                                            <td><%=plato.getLipidos()%></td>
+                                            <td><%=plato.getLipidos()%> g</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Proteínas</th>
-                                            <td><%=plato.getProteinas()%></td>
+                                            <td><%=plato.getProteinas()%> g</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Hidratos de carbono</th>
-                                            <td><%=plato.getPolisacaridos()+plato.getGlucidosSimples()%></td>
+                                            <td><%=plato.getPolisacaridos()+plato.getGlucidosSimples()%> g</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Kilocalorías</th>
@@ -109,12 +109,12 @@
                     </div>
                 </div>
             </div>
-            <div class="entradaForoCuerpo2 rounded-bottom p-2" id="entradaEjemplo">
-                <p><%=plato.getDescripcion() + "."%></p>
+            <div class="entradaForoCuerpo2 rounded p-3" id="entradaEjemplo">
+                <%=plato.getDescripcion() + "."%>
             </div>
             <br>
-            <div class="entradaForoCuerpo2 rounded-bottom p-2" id="entradaEjemplo">
-                <p>Un enlace de interés: <a href="<%=plato.getEnlace()%>"><%=plato.getEnlace() + "."%></a></p>
+            <div class="entradaForoCuerpo2 rounded p-3" id="entradaEjemplo">
+                Un enlace de interés: <a href="<%=plato.getEnlace()%>"><%=plato.getEnlace() + "."%></a>
             </div>
             <br>
             <br>    
