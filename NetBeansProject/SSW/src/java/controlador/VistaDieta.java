@@ -47,7 +47,7 @@ public class VistaDieta extends HttpServlet {
         String guardado = request.getParameter("guardado");
         System.out.println("hola " + favorito);
         ArrayList<Plato> platos = null;
-        if(cod != null){
+        if(cod!=null){
             platos = DBConnection.getPlatosDieta(cod);
             if(platos != null && !platos.isEmpty()){
                 
