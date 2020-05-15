@@ -6,7 +6,6 @@
 package controlador;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -63,7 +62,7 @@ public class VistaEntrada extends HttpServlet {
                 
                 ArrayList<Comentario> comentarios = DBConnection.getComentarios(cod);
 
-                session.setAttribute("cod", cod);
+                session.setAttribute("codEntrada", cod);
                 session.setAttribute("entrada", entrada);
                 session.setAttribute("comentarios", comentarios);
 

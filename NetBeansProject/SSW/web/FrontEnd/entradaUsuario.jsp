@@ -45,9 +45,7 @@
     <jsp:useBean id="sessionUser" class="java.lang.String" scope="session">  
     </jsp:useBean>
     <%
-        //String codigoEntrada = request.getParameter("cod");
         ArrayList<Comentario> comentariosTemp = comentarios;
-        //entrada = (Entrada)session.getAttribute("entrada");
     %>
 
     <div class="container rounded" id="cuerpo">
@@ -94,9 +92,7 @@
                 <button id="botonRespuesta" type="submit" class="botonEstandar btn btn-success">Agregar entrada</button>
             </form>
         </div>
-        <%
-            //ArrayList<Comentario> comentarios = (ArrayList<Comentario>)request.getAttribute("comentarios");     
-            //ArrayList<Comentario> comentarios = DBConnection.getComentarios(codigoEntrada);        
+        <%     
             for(int i = 0; i < comentarios.size(); i++){
         %>
         <div class="card m-3">

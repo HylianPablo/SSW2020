@@ -6,7 +6,6 @@
 package controlador;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -60,7 +59,7 @@ public class VistaDieta extends HttpServlet {
                     url = "/FrontEnd/dietaUsuario.jsp";
                 }
                 session.setAttribute("platos", platos);
-                session.setAttribute("cod", cod);
+                session.setAttribute("codDieta", cod);
                 session.setAttribute("dieta", dieta);
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
                 dispatcher.forward(request, response);

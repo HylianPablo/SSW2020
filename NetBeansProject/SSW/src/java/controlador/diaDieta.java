@@ -41,7 +41,7 @@ public class diaDieta extends HttpServlet {
             if(rango > 220)
                 break;
         }while(respuesta.size()<3);
-        if(respuesta.size()==0){
+        if(respuesta.isEmpty()){
             Plato platoEmergencia = DBConnection.selectPlato("33");
             respuesta.add(platoEmergencia);
         }

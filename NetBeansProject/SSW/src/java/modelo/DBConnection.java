@@ -100,7 +100,7 @@ public class DBConnection {
         }
     }
     
-    public static boolean updateUser(String correo, String realname, String username, String password) {
+    public static void updateUser(String correo, String realname, String username, String password) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps;
@@ -116,19 +116,15 @@ public class DBConnection {
             ps.setString(4,correo);
             res = ps.executeUpdate();
             if (res==1) {
-                resultado=true;
             }else{
-                resultado=false;
                 System.out.println("No se ha actualizado");
             }
             ps.close();
             pool.freeConnection(connection);
-            return resultado;
         } catch (SQLException e) {
             pool.freeConnection(connection);
             e.printStackTrace();
             System.out.println("Falla update");
-            return false;
         }
     }
     

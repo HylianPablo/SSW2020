@@ -63,7 +63,7 @@
         <br/>
 
         <h1 class="h1Size coolFontParagraph center inlineBlock">Mi perfil</h1>
-        <a class="btn btn-warning inlineBlock rightAligned" href="./index" role="button">Cerrar sesión</a>
+        <a class="btn btn-warning inlineBlock rightAligned" href="./cerrarSesion" role="button">Cerrar sesión</a>
         <hr/>
         <jsp:useBean id="mensajeErrorPerfil" class="java.lang.String" scope="session">  
         </jsp:useBean>

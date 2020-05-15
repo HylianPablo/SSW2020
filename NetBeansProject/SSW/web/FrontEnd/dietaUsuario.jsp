@@ -66,7 +66,7 @@
                 <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
             </div>
             <br/>
-            <jsp:useBean id="cod" class="java.lang.String" scope="session">  
+            <jsp:useBean id="codDieta" class="java.lang.String" scope="session">  
             </jsp:useBean>
             <jsp:useBean id="platos" class="java.util.ArrayList" scope="session">  
             </jsp:useBean>

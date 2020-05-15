@@ -6,7 +6,6 @@
 package controlador;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -70,16 +69,23 @@ public class PerfilAct extends HttpServlet {
             DBConnection.updateUser(mail,nombre,user,newPassword);
         }
         
-        String nombreUsuario = (String) session.getAttribute("sessionUser");
-        Usuario usuario = DBConnection.selectUsuario(nombreUsuario);
-        ArrayList<Dieta> dietas = DBConnection.selectDietasGuardadas(nombreUsuario);
-        Dieta dietaF = DBConnection.selectDietaFavorita(nombreUsuario);
-        session.setAttribute("usuario", usuario); //Esto ya se hace en iniciarSesion
+        Usuario u = new Usuario();
+        u.setNombreUsuario(user);
+        u.setNombre(nombre);
+        u.setContrasena(newPassword);
+        u.setCorreo(mail);
+        u.setFavorito("1");
+        
+        ArrayList<Dieta> dietas = DBConnection.selectDietasGuardadas(u.getNombreUsuario());
+        Dieta dietaF = DBConnection.selectDietaFavorita(u.getNombreUsuario());
+        session.removeAttribute("sessionUser");
+        session.setAttribute("sessionUser", user);
+        session.removeAttribute("sessionUserObj");
+        session.setAttribute("sessionUserObj",u);
         session.setAttribute("dietas", dietas);
         String hayDietaF = String.valueOf(dietaF==null);
         session.setAttribute("hayDietaF", hayDietaF);
         session.setAttribute("dietaF", dietaF);
-        session.setAttribute("nombreUsuario", nombreUsuario);
         session.setAttribute("mensajeErrorPerfil",mensajeErrorPerfil);
         
 
