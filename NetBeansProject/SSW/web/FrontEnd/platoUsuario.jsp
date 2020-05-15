@@ -82,15 +82,15 @@
                                     <tbody>
                                         <tr>
                                             <th scope="row">Lípidos</th>
-                                            <td><%=plato.getLipidos()%></td>
+                                            <td><%=plato.getLipidos()%> g</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Proteínas</th>
-                                            <td><%=plato.getProteinas()%></td>
+                                            <td><%=plato.getProteinas()%> g</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Hidratos de carbono</th>
-                                            <td><%=plato.getPolisacaridos()+plato.getGlucidosSimples()%></td>
+                                            <td><%=plato.getPolisacaridos()+plato.getGlucidosSimples()%> g</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Kilocalorías</th>
