@@ -119,8 +119,8 @@ public class diaDieta extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url;
         String diaSemana = request.getParameter("diaSemana");
-        String usuario = request.getParameter("usuario");
         HttpSession session = request.getSession();
+        String usuario = (String) session.getAttribute("sessionUser");
         int glucidos=0, lipidos=0, proteinas=0;
         
         ArrayList <String> platosElegidos=null; //Array de codigos de platos elegidos hasta esta iteracion
@@ -148,15 +148,15 @@ public class diaDieta extends HttpServlet {
                 e.printStackTrace();
             }
         }
-        System.out.println(usuario);
+        
         if(diaSemana.equals("7")){
-            if(usuario.equals("0")){
+            if(usuario==null){
                 url = "/FrontEnd/dietaGenerada.jsp";
             }else{
                 url = "/FrontEnd/dietaGeneradaUsuario.jsp";
             }
         }else{
-            if(usuario.equals("0")){
+            if(usuario==null){
                 url = "/FrontEnd/diaDieta.jsp";
             }else{
                 url = "/FrontEnd/diaDietaUsuario.jsp";
@@ -192,7 +192,6 @@ public class diaDieta extends HttpServlet {
             
             
             session.setAttribute("platos",platos);
-            session.setAttribute("usuario",usuario);
             session.setAttribute("platosDesayuno",platosDesayuno);
             session.setAttribute("diaSemana", diaSemana);
             session.setAttribute("alergias",alergias);
