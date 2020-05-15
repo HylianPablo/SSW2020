@@ -43,17 +43,31 @@ public class VistaDieta extends HttpServlet {
         String url = "/FrontEnd/dieta.jsp";
         Dieta dieta;
         String usuario = (String) session.getAttribute("sessionUser");
+        String favorito = request.getParameter("favorito");
+        String guardado = request.getParameter("guardado");
+        System.out.println("hola " + favorito);
         ArrayList<Plato> platos = null;
         if(cod != null){
             platos = DBConnection.getPlatosDieta(cod);
             if(platos != null && !platos.isEmpty()){
                 
                 dieta = DBConnection.selectDieta(cod);
-                if(usuario == null){
+                if(usuario != null){
                     boolean guardadoTemp = DBConnection.checkGuardado(usuario, cod);
                     boolean favoritoTemp = DBConnection.checkFavorito(usuario, cod);
-                    String guardado = String.valueOf(guardadoTemp);
-                    String favorito = String.valueOf(favoritoTemp);
+                    
+                    if(favorito == null){
+                        favorito = String.valueOf(favoritoTemp);
+                    }
+                    if(guardado == null){
+                        guardado = String.valueOf(guardadoTemp);
+                    }
+                    if(String.valueOf(guardadoTemp).equals(guardado)){
+                        guardado = String.valueOf(guardadoTemp);
+                    }
+                    if(String.valueOf(favoritoTemp).equals(favorito)){
+                        favorito = String.valueOf(favoritoTemp);
+                    }
                     session.setAttribute("guardado", guardado);
                     session.setAttribute("favorito", favorito);
                     url = "/FrontEnd/dietaUsuario.jsp";
