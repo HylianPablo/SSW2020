@@ -44,13 +44,15 @@ public class DietaGenerada extends HttpServlet {
         ArrayList<Plato> platosElegidos = (ArrayList)session.getAttribute("platosDATOS");
         //ArrayList<Plato> platosElegidos = 
         String url;
-        String titulo="";
         String escogida = null;
         String codigoDieta ="";
         String usuario = (String) session.getAttribute("sessionUser");
+        String titulo = request.getParameter("nombreDieta");
         if(usuario!=null){
             url = "./index";
-            titulo = "Dieta de "+usuario;
+            if(titulo==""){
+                titulo = "Dieta de "+usuario;
+            }
             Timestamp ld = Timestamp.valueOf("2020-4-28 18:00:00");
             String descripcion = "Dieta genérica de usuario hasta implementación.";
             DBConnection.insertDieta(titulo,descripcion,ld);
