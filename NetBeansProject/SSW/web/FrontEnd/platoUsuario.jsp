@@ -104,12 +104,17 @@
                     </div>
                     <div class="col-sm" align="center">
                         <br>
-                        <img src="/SSW/FrontEnd/img/macarrones.jpg" alt="" class="m-3 img-thumbnail" style="width:350px; height:250px;">
+                        <% String rutaFoto = "/SSW/FrontEnd/platos/"+plato.getFoto();%>
+                        <img src="<%=rutaFoto%>" alt="" class="m-3 img-thumbnail border border-dark" style="width:350px; height:250px;">
                     </div>
                 </div>
             </div>
             <div class="entradaForoCuerpo2 rounded-bottom p-2" id="entradaEjemplo">
                 <p><%=plato.getDescripcion() + "."%></p>
+            </div>
+            <br>
+            <div class="entradaForoCuerpo2 rounded-bottom p-2" id="entradaEjemplo">
+                <p>Un enlace de interés: <a href="<%=plato.getEnlace()%>"><%=plato.getEnlace() + "."%></a></p>
             </div>
             <br>
             <br>    

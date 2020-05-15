@@ -735,6 +735,8 @@ public class DBConnection {
                 plato.setPolisacaridos(rs.getInt("polisacaridos"));
                 plato.setLipidos(rs.getInt("lipidos"));
                 plato.setProteinas(rs.getInt("proteinas"));
+                plato.setFoto(rs.getString("foto"));
+                plato.setEnlace(rs.getString("enlace"));
                 //retorno.add(entrada);
             }
             rs.close();
@@ -777,6 +779,8 @@ public class DBConnection {
                 plato.setPolisacaridos(rs.getInt("polisacaridos"));
                 plato.setLipidos(rs.getInt("lipidos"));
                 plato.setProteinas(rs.getInt("proteinas"));
+                plato.setFoto(rs.getString("foto"));
+                plato.setEnlace(rs.getString("enlace"));
                 //retorno.add(entrada);
             }
             rs.close();
@@ -1023,7 +1027,10 @@ public class DBConnection {
                 plato.setPolisacaridos(rs.getInt("polisacaridos"));
                 plato.setLipidos(rs.getInt("lipidos"));
                 plato.setProteinas(rs.getInt("proteinas"));
+                plato.setFoto(rs.getString("foto"));
+                plato.setEnlace(rs.getString("enlace"));
                 platosFinal.add(plato);
+                
             }
             rs.close();
             ps.close();

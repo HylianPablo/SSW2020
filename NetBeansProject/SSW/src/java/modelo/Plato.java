@@ -3,7 +3,7 @@ package modelo;
 import java.io.Serializable;
 
 public class Plato implements Serializable{
-	private String codigoPlato, nombre, descripcion;
+	private String codigoPlato, nombre, descripcion,foto,enlace;
 	private boolean desayuno, vegano, vegetariano, frutosSecos, gluten;
 	private int kcal, glucidosSimples, polisacaridos, lipidos, proteinas;
         private static double glucDiarios = 250.0, protDiarios = 75, lipDiarios = 60;
@@ -147,4 +147,20 @@ public class Plato implements Serializable{
     	public void setProteinas(int proteinas){
 		this.proteinas=proteinas;
 	}
+        
+        public void setFoto(String foto){
+            this.foto=foto;
+        }
+        
+        public String getFoto(){
+            return foto;
+        }
+        
+        public void setEnlace(String enlace){
+            this.enlace=enlace;
+        }
+        
+        public String getEnlace(){
+            return enlace;
+        }
 }
