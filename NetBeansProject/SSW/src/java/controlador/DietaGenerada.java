@@ -50,8 +50,8 @@ public class DietaGenerada extends HttpServlet {
             if(titulo.equals("")){
                 titulo = "Dieta de "+usuario;
             }
-            Timestamp ld = Timestamp.valueOf("2020-4-28 18:00:00");
-            String descripcion = "Dieta genérica de usuario hasta implementación.";
+            Timestamp ld = new Timestamp(System.currentTimeMillis());
+            String descripcion = "Dieta creada por el usuario "+usuario;
             DBConnection.insertDieta(titulo,descripcion,ld);
             codigoDieta = DBConnection.getLastCodigoDieta();
             
