@@ -45,7 +45,6 @@ public class VistaDieta extends HttpServlet {
         String usuario = (String) session.getAttribute("sessionUser");
         String favorito = request.getParameter("favorito");
         String guardado = request.getParameter("guardado");
-        System.out.println("hola " + favorito);
         ArrayList<Plato> platos = null;
         if(cod!=null){
             platos = DBConnection.getPlatosDieta(cod);
@@ -69,7 +68,15 @@ public class VistaDieta extends HttpServlet {
                         favorito = String.valueOf(favoritoTemp);
                     }
                     session.setAttribute("guardado", guardado);
-                    session.setAttribute("favorito", favorito);
+                    session.setAttribute("favorito", favorito);             
+                    if(favorito.equals("true")){
+                        DBConnection.borrarFavorito(usuario);
+                        DBConnection.setFavorito(cod, usuario);  
+                    }    
+                    if(guardado.equals("true")){
+                        System.out.println(guardado);
+                        DBConnection.setGuardado(cod, usuario);
+                    }
                     url = "/FrontEnd/dietaUsuario.jsp";
                 }
                 session.setAttribute("platos", platos);

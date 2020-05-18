@@ -49,7 +49,7 @@ public class VistaRanking extends HttpServlet {
         
         Boolean favoritasTemp;
         String criterio = request.getParameter("criterio");
-        if (criterio==null && criterio.equals("Favoritas")) {
+        if (criterio==null || criterio.equals("Favoritas")) {
             favoritasTemp = true;
         } else {
             favoritasTemp = false;
@@ -59,7 +59,7 @@ public class VistaRanking extends HttpServlet {
         LocalDateTime hoy = LocalDateTime.of(2020, Month.APRIL, 03, 19, 30, 40);
         LocalDateTime fechaLimiteTemp;
         String tiempo = request.getParameter("tiempo");
-        if (tiempo.equals("") || tiempo.equals("Siempre")) {
+        if (tiempo==null || tiempo.equals("") || tiempo.equals("Siempre")) {
             siempreTemp = true;
             selectTiempoTemp = 0;
             fechaLimiteTemp = hoy;
