@@ -61,9 +61,8 @@
 
             <jsp:useBean id="plato" class="modelo.Plato" scope="session">  
             </jsp:useBean>
-            <h1 class="h1Size coolFontParagraph inlineBlock">Descripción platos</h1>
-            <a class="m-2 btn btn-warning inlineBlock rightAligned" href="./registro" role="button">Regístrate</a>
-            <a class="m-2 btn btn-primary inlineBlock rightAligned" href="./iniciarSesion" role="button">Inicia sesión</a>
+            <h1 class="h1Size coolFontParagraph inlineBlock">El plato en detalle</h1>
+            <a class="btn btn-warning inlineBlock rightAligned" href="./cerrarSesion" role="button">Cerrar sesión</a>
             <hr/>
             <br>
             <div class="container">
@@ -73,26 +72,50 @@
                             <div class="entradaForoTitulo2 rounded-top p-2">
                                 <div class="row">
                                     <div class="col font-weight-bold"><%=plato.getNombre()%></div>
-                                    <div class="col row">
-                                        <div class="col"><i class="fa fa-star text-warning"></i> Lípidos:<%=plato.getLipidos()%> </div>
-                                        <div class="col"><i class="fa fa-heart text-danger"></i> Proteinas:<%=plato.getProteinas()%> </div>
-                                        <div class="col"><i class="fa fa-heart text-danger"></i> Polisacáridos:<%=plato.getPolisacaridos()%> </div>
-                                    </div>
                                 </div>
-
+                            </div>
+                            <div class="entradaForoCuerpo2 rounded-bottom p-2" id="entradaEjemplo">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Lípidos</th>
+                                            <td><%=plato.getLipidos()%> g</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Proteínas</th>
+                                            <td><%=plato.getProteinas()%> g</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Hidratos de carbono</th>
+                                            <td><%=plato.getPolisacaridos()+plato.getGlucidosSimples()%> g</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Kilocalorías</th>
+                                            <td><%=plato.getKcal()%></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-
-                        <div class="entradaForoCuerpo2 rounded-bottom p-2" id="entradaEjemplo">
-                            <p><%=plato.getDescripcion()%></p>
-                        </div>
+                        <br/>
                     </div>
-                    <div class="col-sm">
-                        <p>Imagen</p>
+                    <div class="col-sm" align="center">
+                        <br>
+                        <% String rutaFoto = "/SSW/FrontEnd/platos/"+plato.getFoto();%>
+                        <img src="<%=rutaFoto%>" alt="" class="m-3 img-thumbnail border border-dark" style="width:350px; height:250px;">
                     </div>
                 </div>
-                <br/>
+            </div>
+            <div class="entradaForoCuerpo2 rounded p-3" id="entradaEjemplo">
+                <%=plato.getDescripcion() + "."%>
             </div>
             <br/>
+            <div class="entradaForoCuerpo2 rounded p-3" id="entradaEjemplo">
+                Un enlace de interés: <a href="<%=plato.getEnlace()%>"><%=plato.getEnlace() + "."%></a>
+            </div>
+            <br>
+            <br>    
+        </div>
+        <br/>
     </body>
 </html>
