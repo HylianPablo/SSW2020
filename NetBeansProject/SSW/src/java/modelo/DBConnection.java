@@ -1137,24 +1137,6 @@ public class DBConnection {
             return 0;
         }
     }
-    
-    public static void setGuardado(String codigoDieta, String nombreUsuario){
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-        String queryExample = "INSERT INTO Guardado (nombreUsuario, codigoDieta) VALUES(?,?)";
-        try {
-            ps = connection.prepareStatement(queryExample);
-            ps.setString(1, nombreUsuario);
-            ps.setString(2, codigoDieta);
-            int res = ps.executeUpdate();
-            ps.close();
-            pool.freeConnection(connection);
-        } catch (SQLException e) {
-            pool.freeConnection(connection);
-            e.printStackTrace();
-        }
-    }
 
     public static int borrarFavorito(String nombreUsuario) {
         ConnectionPool pool = ConnectionPool.getInstance();

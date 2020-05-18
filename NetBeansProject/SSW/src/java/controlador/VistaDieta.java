@@ -49,7 +49,6 @@ public class VistaDieta extends HttpServlet {
         if(cod!=null){
             platos = DBConnection.getPlatosDieta(cod);
             if(platos != null && !platos.isEmpty()){
-                
                 dieta = DBConnection.selectDieta(cod);
                 if(usuario != null){
                     boolean guardadoTemp = DBConnection.checkGuardado(usuario, cod);
@@ -77,7 +76,7 @@ public class VistaDieta extends HttpServlet {
                         DBConnection.borrarFavoritoS(usuario, cod);
                     }
                     if(guardado.equals("true")){
-                        DBConnection.setGuardado(cod, usuario);
+                        DBConnection.guardarDieta(cod, usuario);
                     }
                     if(guardado.equals("false")){
                         DBConnection.borrarGuardado(cod, usuario);
