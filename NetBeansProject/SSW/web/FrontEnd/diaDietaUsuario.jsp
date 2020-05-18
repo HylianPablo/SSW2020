@@ -133,6 +133,7 @@
                                                         <label class="custom-control-label" for="<%=nomComida + i%>">
                                                             <%=p.getNombre()%>
                                                         </label>
+                                                        <p><a href="plato?cod=<%=p.getCodigoPlato()%>">Ver más</a></p>
                                                     </div>
                                                 </td>
                                                 <%    }}else{
@@ -148,6 +149,7 @@
                                                         <label class="custom-control-label" for="<%=nomComida + i%>">
                                                             <%=p.getNombre()%>
                                                         </label>
+                                                        <p><a href="plato?cod=<%=p.getCodigoPlato()%>">Ver más</a></p>
                                                     </div>
                                                 </td>
                                                 <%  }} else {   %>
