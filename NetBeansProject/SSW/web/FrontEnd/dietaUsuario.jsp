@@ -89,7 +89,7 @@
                 Dias.add("Sábado");
                 Dias.add("Domingo");
                 int numPlato = 0;
-                if (cod == null) {  //ESTO ES UNA ABERRACION, SE CONTROLA EN CONTROLADOR NO AQUI
+                if (codDieta == null) {  //ESTO ES UNA ABERRACION, SE CONTROLA EN CONTROLADOR NO AQUI
                     String redirectURL = "./ranking";
                     response.sendRedirect(redirectURL);
                 } else {
@@ -103,9 +103,9 @@
             <button class="<%if (!favoritoTemp) {%>uncheckedButton<%}%> btn btn-success inlineBlock" data-toggle="modal" href="#confirmarFav">
                 <i class="fa fa-star text-warning"></i> Favorito
             </button>
-            <form method="post" class="d-inline-block" action="./guardarDieta">
-                <input type="hidden" name="guardadoTemp" value="<%=!guardadoTemp%>"/>
-                <input type="hidden" name="codigoDieta" value="<%=cod%>"/>
+            <form method="post" class="d-inline-block" action="./dieta?cod=<%=codDieta%>">
+                <input type="hidden" name="guardado" value="<%=!guardadoTemp%>"/>
+                <input type="hidden" name="codigoDieta" value="<%=codDieta%>"/>
                 <button type="submit" class="<%if (!guardadoTemp) {%>uncheckedButton<%}%> btn btn-success inlineBlock">
                     <i class="fa fa-heart text-rosa"></i><%if (!guardadoTemp) {%> Guardar<%} else {%> Guardado<%}%>
                 </button>
@@ -184,8 +184,8 @@
                         <%}%>
                     </div>
                     <div class="modal-footer">
-                        <form method="post" action="./favoritoDieta">
-                            <input type="hidden" name="codigoDieta" value="<%=cod%>"/>
+                        <form method="post" action="./dieta?cod=<%=codDieta%>">
+                            <input type="hidden" name="codigoDieta" value="<%=codDieta%>"/>
                             <input type="hidden" name="favorito" value="<%=!favoritoTemp%>"/>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Confirmar</button>
