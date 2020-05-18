@@ -134,7 +134,7 @@
                                 </div>
                                 <div class="my-4">
                                     <h5>Cena</h5>
-                                    <p><a href="plato=?cod=<%=platosTemp.get(numPlato).getCodigoPlato()%>"><%=platosTemp.get(numPlato).getNombre()%></a></p>
+                                    <p><a href="plato?cod=<%=platosTemp.get(numPlato).getCodigoPlato()%>"><%=platosTemp.get(numPlato).getNombre()%></a></p>
                                     <%numPlato++;%>
                                     <p>Postre</p>
                                 </div>
