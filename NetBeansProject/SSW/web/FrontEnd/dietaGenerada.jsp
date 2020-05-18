@@ -76,17 +76,17 @@
                                 <h4 class="font-weight-bold"><%=dias[i]%></h4>
                                 <div class="my-4">
                                 <h5>Desayuno</h5>
-                                <p><%=platosElegidos.get((i*4)).getNombre()%></p>
+                                <p><a href="plato?cod=<%=platosElegidos.get((i*4)).getCodigoPlato()%>"><%=platosElegidos.get((i*4)).getNombre()%></a></p>
                                 </div>
                                 <div class="my-4">
                                 <h5>Comida</h5>
-                                <p><%=platosElegidos.get((i*4)+1).getNombre()%></p>
-                                <p><%=platosElegidos.get((i*4)+2).getNombre()%></p>
+                                <p><a href="plato?cod=<%=platosElegidos.get((i*4)+1).getCodigoPlato()%>"><%=platosElegidos.get((i*4)+1).getNombre()%></a></p>
+                                <p><a href="plato?cod=<%=platosElegidos.get((i*4)+2).getCodigoPlato()%>"><%=platosElegidos.get((i*4)+2).getNombre()%></a></p>
                                 <p>Postre</p>
                                 </div>
                                 <div class="my-4">
                                 <h5>Cena</h5>
-                                <p><%=platosElegidos.get((i*4)+3).getNombre()%></p>
+                                <p><a href="plato?cod=<%=platosElegidos.get((i*4)+3).getCodigoPlato()%>"><%=platosElegidos.get((i*4)+3).getNombre()%></a></p>
                                 <p>Postre</p>
                                 </div>
                             </div>
