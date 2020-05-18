@@ -42,7 +42,7 @@ public class guardarDieta extends HttpServlet {
             DBConnection.guardarDieta(codigoDieta, nombreUsuario);
         else
             DBConnection.noGuardarDieta(codigoDieta, nombreUsuario);
-        String url = "/SSW/FrontEnd/dietaUsuario?cod="+codigoDieta;
+        String url = "/SSW/FrontEnd/dieta?cod="+codigoDieta;
         
         response.sendRedirect(url);
     }
