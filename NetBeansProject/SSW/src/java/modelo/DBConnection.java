@@ -23,13 +23,11 @@ public class DBConnection {
             ps.setString(4, user.getCorreo());
             ps.setString(5, user.getFavorito());
             int res = ps.executeUpdate();
-            System.out.println("Se inserta");
             ps.close();
             pool.freeConnection(connection);
             return res;
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("No se inserta");
             pool.freeConnection(connection);
             return 0;
         }
@@ -86,7 +84,6 @@ public class DBConnection {
                 resultado=true;
             }else{
                 resultado=false;
-                System.out.println("No se encuentra");
             }
             rs.close();
             ps.close();
@@ -95,7 +92,6 @@ public class DBConnection {
         } catch (SQLException e) {
             pool.freeConnection(connection);
             e.printStackTrace();
-            System.out.println("Falla");
             return false;
         }
     }
@@ -116,14 +112,12 @@ public class DBConnection {
             ps.setString(4,username);
             res = ps.executeUpdate();
             if (res!=1) {
-                System.out.println("No se ha actualizado");
             }
             ps.close();
             pool.freeConnection(connection);
         } catch (SQLException e) {
             pool.freeConnection(connection);
             e.printStackTrace();
-            System.out.println("Falla update");
         }
     }
     
@@ -588,7 +582,6 @@ public class DBConnection {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        System.out.println(platosElegidos);
         String[] diaSemana = new String[] {"lunes","martes","miercoles","jueves","viernes","sabado","domingo"};
         String[] momento = new String[] {"desayuno","comidaPrimero","comidaSegundo","cena"};
         int dia =0;
@@ -1002,7 +995,6 @@ public class DBConnection {
             ps.setInt(5,lipidos-rango);
             ps.setInt(6,proteinas+rango);
             ps.setInt(7,proteinas-rango);
-            System.out.println(ps);
             rs = ps.executeQuery();
             Plato plato = null;
 
@@ -1145,6 +1137,24 @@ public class DBConnection {
             return 0;
         }
     }
+    
+    public static void setGuardado(String codigoDieta, String nombreUsuario){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String queryExample = "INSERT INTO Guardado (nombreUsuario, codigoDieta) VALUES(?,?)";
+        try {
+            ps = connection.prepareStatement(queryExample);
+            ps.setString(1, nombreUsuario);
+            ps.setString(2, codigoDieta);
+            int res = ps.executeUpdate();
+            ps.close();
+            pool.freeConnection(connection);
+        } catch (SQLException e) {
+            pool.freeConnection(connection);
+            e.printStackTrace();
+        }
+    }
 
     public static int borrarFavorito(String nombreUsuario) {
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -1164,5 +1174,4 @@ public class DBConnection {
             return 0;
         }
     }
-
 }
