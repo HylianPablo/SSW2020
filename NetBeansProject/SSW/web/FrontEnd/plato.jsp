@@ -114,7 +114,10 @@
                 Un enlace de interés: <a href="<%=plato.getEnlace()%>"><%=plato.getEnlace() + "."%></a>
             </div>
             <br>
-            <br>    
+            <br>
+            <button id="back" class="botonEstandar btn btn-success btn-lg btn-block botonesEntrada" type="button" onclick="history.back()">Volver</button>
+            <br>
+            <br>
         </div>
         <br/>
     </body>
