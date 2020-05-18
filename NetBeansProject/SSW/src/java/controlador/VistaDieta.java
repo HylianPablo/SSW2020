@@ -79,7 +79,7 @@ public class VistaDieta extends HttpServlet {
                         DBConnection.guardarDieta(cod, usuario);
                     }
                     if(guardado.equals("false")){
-                        DBConnection.borrarGuardado(cod, usuario);
+                        DBConnection.noGuardarDieta(cod, usuario);
                     }
                     url = "/FrontEnd/dietaUsuario.jsp";
                 }

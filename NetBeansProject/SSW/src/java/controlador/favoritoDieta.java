@@ -39,7 +39,7 @@ public class favoritoDieta extends HttpServlet {
             DBConnection.setFavorito(codigoDieta, nombreUsuario);
         else
             DBConnection.borrarFavorito(nombreUsuario);
-        String url = "/SSW/FrontEnd/dietaUsuario?cod="+codigoDieta;
+        String url = "/SSW/FrontEnd/dieta?cod="+codigoDieta;
         
         response.sendRedirect(url);
     }
