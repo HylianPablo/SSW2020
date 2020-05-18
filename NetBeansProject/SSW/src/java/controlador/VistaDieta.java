@@ -72,10 +72,15 @@ public class VistaDieta extends HttpServlet {
                     if(favorito.equals("true")){
                         DBConnection.borrarFavorito(usuario);
                         DBConnection.setFavorito(cod, usuario);  
-                    }    
+                    }  
+                    if(favorito.equals("false")){
+                        DBConnection.borrarFavoritoS(usuario, cod);
+                    }
                     if(guardado.equals("true")){
-                        System.out.println(guardado);
                         DBConnection.setGuardado(cod, usuario);
+                    }
+                    if(guardado.equals("false")){
+                        DBConnection.borrarGuardado(cod, usuario);
                     }
                     url = "/FrontEnd/dietaUsuario.jsp";
                 }
