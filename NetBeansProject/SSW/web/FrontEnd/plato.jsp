@@ -62,7 +62,8 @@
             <jsp:useBean id="plato" class="modelo.Plato" scope="session">  
             </jsp:useBean>
             <h1 class="h1Size coolFontParagraph inlineBlock">El plato en detalle</h1>
-            <a class="btn btn-warning inlineBlock rightAligned" href="./cerrarSesion" role="button">Cerrar sesión</a>
+            <a class="m-2 btn btn-warning inlineBlock rightAligned" href="./registro" role="button">Regístrate</a>
+            <a class="m-2 btn btn-primary inlineBlock rightAligned" href="./iniciarSesion" role="button">Inicia sesión</a>
             <hr/>
             <br>
             <div class="container">
