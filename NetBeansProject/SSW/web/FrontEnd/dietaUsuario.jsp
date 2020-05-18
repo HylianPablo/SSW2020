@@ -121,20 +121,20 @@
                                 <h4 class="font-weight-bold"><%=Dias.get(c)%></h4>
                                 <div class="my-4">
                                     <h5>Desayuno</h5>
-                                    <p><%=platosTemp.get(numPlato).getNombre()%></p>
+                                    <p><a href="plato?cod=<%=platosTemp.get(numPlato).getCodigoPlato()%>"><%=platosTemp.get(numPlato).getNombre()%></a></p>
                                     <%numPlato++;%>
                                 </div>
                                 <div class="my-4">
                                     <h5>Comida</h5>
-                                    <p><%=platosTemp.get(numPlato).getNombre()%></p>
+                                    <p><a href="plato?cod=<%=platosTemp.get(numPlato).getCodigoPlato()%>"><%=platosTemp.get(numPlato).getNombre()%></a></p>
                                     <%numPlato++;%>
-                                    <p><%=platosTemp.get(numPlato).getNombre()%></p>
+                                    <p><a href="plato?cod=<%=platosTemp.get(numPlato).getCodigoPlato()%>"><%=platosTemp.get(numPlato).getNombre()%></a></p>
                                     <%numPlato++;%>
                                     <p>Postre</p>
                                 </div>
                                 <div class="my-4">
                                     <h5>Cena</h5>
-                                    <p><%=platosTemp.get(numPlato).getNombre()%></p>
+                                    <p><a href="plato=?cod=<%=platosTemp.get(numPlato).getCodigoPlato()%>"><%=platosTemp.get(numPlato).getNombre()%></a></p>
                                     <%numPlato++;%>
                                     <p>Postre</p>
                                 </div>
