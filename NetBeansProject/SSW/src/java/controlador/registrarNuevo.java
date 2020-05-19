@@ -80,6 +80,7 @@ public class registrarNuevo extends HttpServlet {
                     String codigoDieta = DBConnection.getLastCodigoDieta();
                     DBConnection.insertPlatosMenu(platosRegistro,codigoDieta);
                     DBConnection.insertGuardado(username,codigoDieta);
+                    DBConnection.setFavorito(codigoDieta, username);
                     String escodiga = codigoDieta;
                     session.setAttribute("platos",platosRegistro);
                     session.setAttribute("escogida","0");
