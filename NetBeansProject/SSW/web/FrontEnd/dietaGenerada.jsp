@@ -98,9 +98,14 @@
                 </div>
             </div>
             <br>
+            <form action="./dietaGenerada" method="POST">
+            <input type="hidden" name="platosDATOS" value="<%=platosDATOS%>">
+            <h4 class="coolFontParagraph inlineBlock">Introduzca un nombre para su dieta:</h4>
+            <input type="text" name="nombreDieta" id="nombre" class="form-control" placeholder="--mi nueva dieta--">
             <div class="mr-auto text-center">
-                <button type="submit" class="btn submitDiet" onclick="window.location.href='./dietaGenerada';">Guardar Dieta</button>
+                <button type="submit" class="btn submitDiet">Guardar Dieta</button>
             </div>
+            </form>
         <br/>
         <br/>
     </div>

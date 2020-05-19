@@ -72,7 +72,7 @@ public class registrarNuevo extends HttpServlet {
                     String titulo = (String) session.getAttribute("tituloDieta");
                     System.out.println(titulo);
                     if(titulo.equals("")){
-                        titulo = "Dieta de "+user;
+                        titulo = "Dieta de "+username;
                     }
                     Timestamp ld = new Timestamp(System.currentTimeMillis());
                     String descripcion = "Dieta creada por el usuario "+username;
