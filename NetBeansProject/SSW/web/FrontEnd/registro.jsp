@@ -85,11 +85,6 @@
                         <label for="correo">Correo (*):</label>
                         <input type="text" id="correo" name="userMail" class="form-control" placeholder="--obligatorio--" oninput="checkAllForms()">
                     </div>
-                    <div class="form-group">
-                        <label for="archivo">Adjuntar una imagen para tu perfil:</label>
-                        </br>
-                        <input type="file" id="imagen">
-                    </div>
                     
                     <%if(!errorRegistro.equals("")){%>
                     <div class="alert alert-danger" role="alert">
