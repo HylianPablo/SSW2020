@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-05-06T12:16:30.110Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36" etag="ZBGs7iGqqVwnAGRNqGMh" version="13.0.3" type="github">
+<mxfile host="app.diagrams.net" modified="2020-05-19T10:50:20.485Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36" etag="e5K0P3hUBBfy7r8ExQHK" version="13.1.2" type="github">
   <diagram id="29hRNnKXACexP1v_duyr" name="Page-1">
     <mxGraphModel dx="2249" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -7,8 +7,8 @@
         <mxCell id="Ck8MsScD6dfkMRM8H-GI-1" value="Usuario(nombre, nombreUsuario, contraseña, &lt;u&gt;correo&lt;/u&gt;, favorito)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="44" y="180" width="370" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-2" value="Plato (&lt;u&gt;códigoPlato&lt;/u&gt;, nombre, desayuno, descripcion, kcal, vegano, vegetariano, frutosSecos, gluten, proteinas, polisacaridos, glucidosSimples, lípidos)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="40" y="460" width="950" height="20" as="geometry" />
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-2" value="Plato (&lt;u&gt;códigoPlato&lt;/u&gt;, nombre, desayuno, descripcion, kcal, vegano, vegetariano, frutosSecos, gluten, proteinas, polisacaridos, glucidosSimples, lípidos, enlace, imagen)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="60" y="460" width="950" height="20" as="geometry" />
         </mxCell>
         <mxCell id="Ck8MsScD6dfkMRM8H-GI-3" value="Ingrediente(&lt;u&gt;códigoIngrediente&lt;/u&gt;, nombre, vegano, vegetariano, frutosSecos, gluten)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="75" y="610" width="580" height="20" as="geometry" />
@@ -45,7 +45,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-11" value="" style="endArrow=classic;html=1;entryX=0.148;entryY=-0.1;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.479;exitY=1.15;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="Ck8MsScD6dfkMRM8H-GI-7" target="Ck8MsScD6dfkMRM8H-GI-2" edge="1">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-11" value="" style="endArrow=classic;html=1;entryX=0.126;entryY=0.1;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.479;exitY=1.15;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="Ck8MsScD6dfkMRM8H-GI-7" target="Ck8MsScD6dfkMRM8H-GI-2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="440" y="420" as="sourcePoint" />
             <mxPoint x="490" y="370" as="targetPoint" />
@@ -61,7 +61,7 @@
             <mxPoint x="440" y="540" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-13" value="" style="endArrow=classic;html=1;entryX=0.142;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" parent="1" source="Ck8MsScD6dfkMRM8H-GI-6" target="Ck8MsScD6dfkMRM8H-GI-2" edge="1">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-13" value="" style="endArrow=classic;html=1;entryX=0.12;entryY=1.1;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" parent="1" source="Ck8MsScD6dfkMRM8H-GI-6" target="Ck8MsScD6dfkMRM8H-GI-2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="240" y="550" as="sourcePoint" />
             <mxPoint x="290" y="500" as="targetPoint" />
@@ -81,7 +81,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ck8MsScD6dfkMRM8H-GI-15" value="" style="endArrow=classic;html=1;exitX=0.868;exitY=0.95;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.364;entryY=0.05;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Ck8MsScD6dfkMRM8H-GI-1" target="Ck8MsScD6dfkMRM8H-GI-4" edge="1">
+        <mxCell id="Ck8MsScD6dfkMRM8H-GI-15" value="" style="endArrow=classic;html=1;exitX=0.868;exitY=0.95;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.324;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="Ck8MsScD6dfkMRM8H-GI-1" target="Ck8MsScD6dfkMRM8H-GI-4" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="430" y="250" as="sourcePoint" />
             <mxPoint x="480" y="200" as="targetPoint" />
