@@ -78,8 +78,8 @@ create table Plato(
 	polisacaridos 			integer not null,
 	lipidos					integer not null ,
 	proteinas				integer not null,
-	foto 					char(40) default null,
-	enlace					char(150) default null,
+	foto 					char(80),
+	enlace					char(150),
 	primary key(codigoPlato)
 );
 
@@ -394,7 +394,7 @@ insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gl
 insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Vaso de leche con cacao y galletas','Vaso de leche con cacao puro y galletas integrales',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,80,7,10,'VasoDeLecheConGalletas.jpg','https://www.directoalpaladar.com/postres/galletas-integrales-avena-italianas-receta-vegana-para-desayuno-merienda');
 insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Gachas de plátano','Gachas con plátano fresco y mantequilla de cacahuete con copos de avena',TRUE,FALSE,TRUE,TRUE,FALSE,147,2,53,14,8,'GachasDePlatanoYMantequillaDeCacahuete.jpg','https://www.hsnstore.com/blog/gachas-de-avena-con-mantequilla-de-cacahuete/');
 insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Zumo de mango y tostada','Zumo de mango y tostada con mermelada de frambuesa',TRUE,TRUE,TRUE,FALSE,TRUE,135,6,78,8,9,'ZumoYTostadaConMermeladaDeFrambuesa.jpg','https://www.kiwilimon.com/receta/postres/postres-con-frutas/pan-tostado-con-mermelada-de-fresa');
-insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Sandía aliñada con lima','Sandía aliñada con lima y azúcar moreno',TRUE,TRUE,TRUE,FALSE,FALSE,28,1,100,11,15,'SandíaAlinadaConLima.jpg','https://alimentarte.net/sandia-alinada-con-lima-y-pimienta-el-postre-del-verano/');
+insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Sandía aliñada con lima','Sandía aliñada con lima y azúcar moreno',TRUE,TRUE,TRUE,FALSE,FALSE,28,1,100,11,15,'SandiaAlinadaConLima.jpg','https://alimentarte.net/sandia-alinada-con-lima-y-pimienta-el-postre-del-verano/');
 insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Hummus y crudités','Hummus de garbanzos con palitos de zanahoria',TRUE,TRUE,TRUE,FALSE,FALSE,143,1,170,10,31,'HummusDeGarbanzosConPalitosDeZanahoria.jpg','https://www.kiwilimon.com/receta/botanas/dips/zanahoria-con-hummus-de-garbanzo');
 insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Tostadas de anchoa y tomate','Tostadas de tomate triturado con anchoas',TRUE,FALSE,FALSE,FALSE,FALSE,102,7,87,14,9,'Tostadas de anchoa y tomate.jpg','http://www.laguita.com/vivaelpicoteo/index.php?option=com_k2&view=item&id=119:pan-tostado-con-fritada-de-tomates-y-anchoas-ahumadas&Itemid=190&lang=es');
 insert into Plato (nombre,descripcion,desayuno,vegano,vegetariano,frutosSecos,gluten,kcal,glucidosSimples,polisacaridos,lipidos,proteinas,foto,enlace) Values ('Huevos y aguacate','Huevos revueltos con aguacate',TRUE,FALSE,TRUE,FALSE,FALSE,146,8,67,10,8,'HuevosRevuletosConAguacate.jpg','https://www.hatcook.com/receta/huevos-revueltos-con-aguacate');
