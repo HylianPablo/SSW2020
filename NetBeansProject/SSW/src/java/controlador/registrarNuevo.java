@@ -66,9 +66,11 @@ public class registrarNuevo extends HttpServlet {
                 DBConnection.insertUsuario(user);
                 System.out.println("hola");
                 ArrayList<modelo.Plato> platosRegistro = (ArrayList) session.getAttribute("platosRegistro");
+                System.out.println(platosRegistro);
                 if(platosRegistro!=null){
                     System.out.println("hola2");
                     String titulo = (String) session.getAttribute("tituloDieta");
+                    System.out.println(titulo);
                     if(titulo.equals("")){
                         titulo = "Dieta de "+user;
                     }
