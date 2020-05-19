@@ -19,8 +19,8 @@ public class Dia {
         platos = new ArrayList<>();
     }
     
-    public Plato getPlato(int i){
-        return platos.get(i);
+    public Plato getPlato(int indice){
+        return platos.get(indice);
     }
     
     public void addPlato(Plato plato){

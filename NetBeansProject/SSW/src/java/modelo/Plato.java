@@ -3,6 +3,7 @@ package modelo;
 import java.io.Serializable;
 
 public class Plato implements Serializable{
+    
 	private String codigoPlato, nombre, descripcion,foto,enlace;
 	private boolean desayuno, vegano, vegetariano, frutosSecos, gluten;
 	private int kcal, glucidosSimples, polisacaridos, lipidos, proteinas;

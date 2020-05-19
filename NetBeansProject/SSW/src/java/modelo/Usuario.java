@@ -3,6 +3,7 @@ package modelo;
 import java.io.Serializable;
 
 public class Usuario implements Serializable{
+    
 	private String nombreUsuario, nombre, contrasena, correo, favorito;
         
         public Usuario(){

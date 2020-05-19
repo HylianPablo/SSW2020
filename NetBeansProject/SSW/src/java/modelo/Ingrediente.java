@@ -3,6 +3,7 @@ package modelo;
 import java.io.Serializable;
 
 public class Ingrediente implements Serializable{
+    
 	private String nombre, codigoIngrediente;
 	private boolean vegano, vegetariano, frutosSecos, gluten;
         

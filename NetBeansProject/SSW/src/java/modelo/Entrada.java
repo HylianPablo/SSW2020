@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class Entrada implements Serializable{
+    
 	private String codigoEntrada, titulo, cuerpo, nombreUsuario;
         private LocalDateTime fecha;
         

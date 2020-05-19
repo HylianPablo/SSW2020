@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class Dieta implements Serializable{
+    
 	private String codigoDieta, titulo, descripcion;
         private int guardados, favoritos;
         private LocalDateTime fecha;

@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class Comentario implements Serializable{
+    
 	private String codigoComentario, codigoPadre, cuerpo, nombreUsuario;
         private LocalDateTime fecha;
         
