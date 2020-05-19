@@ -100,7 +100,7 @@
 
             %>
             <h1 class="coolFontParagraph inlineBlock"><%=dieta.getTitulo()%>. </h1>
-            <button class="<%if (!favoritoTemp) {%>uncheckedButton<%}%> btn btn-success inlineBlock" data-toggle="modal" href="#confirmarFav">
+            <button class="<%if (!favoritoTemp) {%>uncheckedButton<%}else{%> disabled <%}%> btn btn-success inlineBlock" data-toggle="modal" <%if(!favoritoTemp){%> href="#confirmarFav"<%}%>>
                 <i class="fa fa-star text-warning"></i> Favorito
             </button>
             <form method="post" class="d-inline-block" action="./dieta?cod=<%=codDieta%>">
