@@ -6,6 +6,8 @@
 package controlador;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -62,12 +64,29 @@ public class registrarNuevo extends HttpServlet {
             }else{
                 session.setAttribute("errorRegistro", "");
                 DBConnection.insertUsuario(user);
+                System.out.println("hola");
+                ArrayList<modelo.Plato> platosRegistro = (ArrayList) session.getAttribute("platosRegistro");
+                if(platosRegistro!=null){
+                    System.out.println("hola2");
+                    String titulo = (String) session.getAttribute("tituloDieta");
+                    if(titulo.equals("")){
+                        titulo = "Dieta de "+user;
+                    }
+                    Timestamp ld = new Timestamp(System.currentTimeMillis());
+                    String descripcion = "Dieta creada por el usuario "+username;
+                    DBConnection.insertDieta(titulo,descripcion,ld);
+                    String codigoDieta = DBConnection.getLastCodigoDieta();
+                    DBConnection.insertPlatosMenu(platosRegistro,codigoDieta);
+                    DBConnection.insertGuardado(username,codigoDieta);
+                    String escodiga = codigoDieta;
+                    session.setAttribute("platos",platosRegistro);
+                    session.setAttribute("escogida","0");
+                }
             }
         }else{
             url = "./registro";
             session.setAttribute("errorRegistro", "Las contraseñas no coinciden");
         }
-        
         // Como he recibido con post tengo que hacer redirect !!!
         
         response.sendRedirect(url);

@@ -45,6 +45,7 @@ public class DietaGenerada extends HttpServlet {
         String codigoDieta ="";
         String usuario = (String) session.getAttribute("sessionUser");
         String titulo = request.getParameter("nombreDieta");
+
         if(usuario!=null){
             url = "./index";
             if(titulo.equals("")){
@@ -54,11 +55,13 @@ public class DietaGenerada extends HttpServlet {
             String descripcion = "Dieta creada por el usuario "+usuario;
             DBConnection.insertDieta(titulo,descripcion,ld);
             codigoDieta = DBConnection.getLastCodigoDieta();
-            
-            DBConnection.insertGuardado(usuario,codigoDieta);
             DBConnection.insertPlatosMenu(platosElegidos,codigoDieta);
+            DBConnection.insertGuardado(usuario,codigoDieta);
+            
             escogida = codigoDieta;
         }else{
+            session.setAttribute("platosRegistro",platosElegidos);
+            session.setAttribute("tituloDieta",titulo);
             url = "./registro";
         }
         
