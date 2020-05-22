@@ -30,7 +30,6 @@ create table Usuario(
 	contrasena				char(20) not null,
 	correo					char(40) unique not null,
 	favorito				integer,
-	codigoImg				integer,
 	foreign key(favorito) references Dieta(codigoDieta),
 	primary key(nombreUsuario)
 );
