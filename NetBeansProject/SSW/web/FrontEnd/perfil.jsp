@@ -92,8 +92,7 @@
                     </div>
                     <div class="form-group w-70">
                         <label class="d-inline-block" for="usuario">Usuario: </label>
-                        <div class="d-inline-block card"> <%=sessionUserObj.getNombreUsuario()%> </div>
-                        <input type="text" name="username" id="usuario" class="form-control" placeholder="--sin modificar--">
+                        <div class="p-2 card" name="usser" value="<%=sessionUserObj.getNombreUsuario()%>"><%=sessionUserObj.getNombreUsuario()%></div>
                     </div>
                     <div class="form-group w-70">
                         <label for="password">Contraseña actual (*)</label>
