@@ -47,10 +47,7 @@ public class PerfilAct extends HttpServlet {
         if(nombre.equals("")){
             nombre = userObj.getNombre();
         }
-        String user = request.getParameter("username");
-        if(user.equals("")){
-            user = userObj.getNombreUsuario();
-        }
+        String user = userObj.getNombreUsuario();
         String oldPassword = request.getParameter("actualPassword");
         String newPassword = request.getParameter("newPassword");
         if(newPassword.equals("")){

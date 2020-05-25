@@ -92,7 +92,7 @@
                     </div>
                     <div class="form-group w-70">
                         <label class="d-inline-block" for="usuario">Usuario: </label>
-                        <div class="p-2 card" name="usser" value="<%=sessionUserObj.getNombreUsuario()%>"><%=sessionUserObj.getNombreUsuario()%></div>
+                        <div class="p-2 card" name="user" value="<%=sessionUserObj.getNombreUsuario()%>"><%=sessionUserObj.getNombreUsuario()%></div>
                     </div>
                     <div class="form-group w-70">
                         <label for="password">Contraseña actual (*)</label>
